@@ -54,7 +54,6 @@ require_once("modelo/".$pagina.".php");
 				
 			  $o->set_cedulaEscolar($_POST['cedulaEscolar']);
 				$o->set_cedula_r($_POST['cedula_r']);
-				$o->set_cedula_m($_POST['cedula_m']);
 			  $o->set_apellidoPri($_POST['apellidoPri']);
 			  $o->set_nombrePri($_POST['nombrePri']);
 				$o->set_sexo($_POST['sexo']);

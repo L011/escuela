@@ -28,9 +28,24 @@
         </div>
       </div>
     </div>
+
+    <?php if ($nivel == "Administrador"){ ?>
+
     <div class="page-section">
     <div class="container">
       <div class="row">
+        <div class="col-lg-4">
+          <div class="card-service">
+            <div class="header">
+              <img src="img/services/service-1.svg" alt="">
+            </div>
+            <div class="body">
+              <h5 class="text-secondary">Secciones</h5>
+              <p>Gestionar Secciones</p>
+              <a href="?pagina=seccion" class="btn btn-primary" >Gestionar</a>
+            </div>
+          </div>
+        </div>
         <div class="col-lg-4">
           <div class="card-service wow fadeInUp">
             <div class="header">
@@ -59,6 +74,53 @@
       </div>
     </div> <!-- .container -->
 </div> <!-- .page-section -->
+
+<?php }
+    else if ($nivel == "Maestro"){ ?>
+
+
+      <div class="page-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card-service wow fadeInUp">
+                <div class="header">
+                  <img src="img/services/service-1.svg" alt="">
+                </div>
+                <div class="body">
+                  <h5 class="text-secondary">Pre-escolar</h5>
+                  <p>Gestionar datos de niños antes de primaria</p>
+                  <a href="?pagina=gestionar_preescolar" class="btn btn-primary">Gestionar</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card-service wow fadeInUp">
+                <div class="header">
+                  <img src="img/services/service-2.svg" alt="">
+                </div>
+                <div class="body">
+                  <h5 class="text-secondary">Primaria</h5>
+                  <p>Gestionar datos escolares de nivel basico</p>
+                  <a href="?pagina=gestionar_primaria" class="btn btn-primary">Gestionar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- .container -->
+      </div> <!-- .page-section -->
+
+
+      <?php } else{ ?>
+
+
+   <a href="?pagina=inicio" class="button">
+       Acceder
+      </a>
+       <?php 
+        }
+          ?>
+
 
 <?php
   require_once("comunes/footer.php");

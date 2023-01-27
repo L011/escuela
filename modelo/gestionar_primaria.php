@@ -497,7 +497,7 @@ class primaria extends datos{
 					
 					representante,
 					cedula_es,
-					cedula_ma,
+					
 					talla,
 					peso,
 					calzado,
@@ -508,7 +508,7 @@ class primaria extends datos{
 					Values(
 						'$this->cedula_r',
 						'$this->cedulaEscolar',
-						'$this->cedula_m',
+						
 						'$this->tallaActual',
 						'$this->pesoActual',
 						'$this->calzado',

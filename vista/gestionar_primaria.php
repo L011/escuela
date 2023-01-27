@@ -32,12 +32,7 @@
                                       </div>
                                       <!--  Un check para cedula de ciIdentidad -->
 
-                                      <div class="form-check mb-3">
-                                          <div class="col">
-                                              <input type="radio" id="ciIdentidad" name="ciEstudiante" class="form-check-input" data-target="#ciIdentidadColl" data-toggle="collapse" aria-expanded="off" aria-controls="ciIdentidadColl">
-                                              <label class="form-check-label" for="ciIdentidad">CÉDULA DE IDENTIDAD</label>
-                                          </div>
-                                      </div>
+                                     
 
                                       <div class="col-md-6">
                                           <div class="mb-3" >
@@ -46,26 +41,10 @@
                                               <span id="pCedulaEscolar"></span>
                                           </div>
                                       </div>
-                                      <div class="col-md-6">
-                                          <div class="mb-3" >
-                                              <label for="cedulaEscolar">Cedula Maestro</label>
-                                              <input type="text" class="form-control"id="cedula_m" name="cedula_m" >
-                                              <span id="pCedulaEscolar"></span>
-                                          </div>
-                                      </div>
+                                      
                                   </div>
 
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <div class="collapse mb-3" >
-                                              <label for="cedulaIdent">Cédula de Identidad</label>
-                                              <input type="text" class="form-control " id="ci" name="ci">
-                                              <span id="pCedulaIdent"></span>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
+                                 
 
                                   <div class="row">
                                       <div class="col">
