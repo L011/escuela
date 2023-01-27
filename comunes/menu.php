@@ -38,7 +38,7 @@
             <a class="nav-link" href="?pagina=gestionar">Gestionar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="?pagina=inscripciones">Inscripciones</a>
+            <a class="nav-link" href="?pagina=inscripcion">Inscripciones</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="?pagina=reporte">Reportes</a>
@@ -68,7 +68,7 @@
             <a class="nav-link" href="?pagina=gestionar">Gestionar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="?pagina=inscripciones">Inscripciones</a>
+            <a class="nav-link" href="?pagina=inscripcion">Inscripciones</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="?pagina=reporte">Reportes</a>
