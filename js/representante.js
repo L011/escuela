@@ -18,6 +18,8 @@ $(document).ready(function(){
       enviaAjax(datos,'consultatr');
     }
     else {
+      botonOff();
+    	limpia();
     	limpia2();
       $("#incluir").prop('disabled', false);
 
@@ -423,16 +425,6 @@ function llenarLista() {
 function limpia(){
   $('input[type=text]').val("");
   $('input[type=select]').prop("selected",true);
-
-
-	/*
-
-	//NO SE COMO FUNCIONA ESTO... O SIQUIERA SI AQUI ES NECESARIO.
-
-	$("#sexo").prop("selectedIndex",0);
-
-	*/
-
 
 
 }

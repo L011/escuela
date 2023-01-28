@@ -30,10 +30,14 @@
 
   <body class="text-center">
 
+
+    <h1>Unidad Educativa Nacional<hr> "Divino Niño"</h1>
+
 <form class="form-signin" method="post" action="" id="f">
   <input type="text" name="accion_inicio_sesion" style="display:none">
 
   <h1 class="h3 mb-3 font-weight-normal">Bienvenido</h1>
+
 
   <div id="mensajes" style="display:none">
 <?php
@@ -44,8 +48,8 @@
 </div>
 
   <div class="form-group row">
-  <label for="usuario" >Usuario</label>
-  <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Nombre de usuario" 
+  <label for="usuario" >Ingresar Cedula</label>
+  <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Cedula" 
     pattern="[A-Za-z0-9,#\b\s\u00f1\u00d1\u00E0-\u00FC-]{4,12}" 
     required 
     maxlength="10" 
@@ -67,9 +71,10 @@
 
 
   <button class="btn btn-lg btn-primary btn-block" id="iniciar">Ingresar</button>
-  <a href="?pagina=principal">Ingreso directo (Provisional)</a>
-  <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
+ <p class="mt-5 mb-3 text-muted">&copy; Luis Colmenarez</p>
 </form>
+
+ 
 
 
 

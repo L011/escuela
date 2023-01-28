@@ -23,6 +23,7 @@ $(document).ready(function(){
 		}
 		else {
 			limpia2();
+			botonOff();
 			$("#incluir").prop('disabled', false);
 
 		}
@@ -235,6 +236,7 @@ function botonOff() {
 
 function botonOn() {
 
+	$("#incluir").prop('disabled', true);
 	$("#modificar").prop('disabled', false);
 	$("#eliminar").prop('disabled', false);
 }

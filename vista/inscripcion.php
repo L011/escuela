@@ -5,6 +5,7 @@
         <?php  require_once("comunes/menu.php"); ?>
         <?php require_once("comunes/modal.php"); ?>
       <main>
+        
           <form class="container mb-5">
             <h2 class="text-center">INSCRIPCIONES NIVEL PRIMARIA</h2>
             <hr>
@@ -70,7 +71,7 @@
                           <option value="">Seleccionar</option>
                           <?php $year = date("Y");
                               for ($i=2022; $i<=$year+1; $i++){
-                                  echo '<option value="'.$i.'">'.$i.'</option>';
+                                  echo '<option value="'.$i.'">'.$i."-".($i+1).'</option>';
                               }
                           ?>
                       </select>
@@ -90,15 +91,40 @@
                   </div>
               </div><hr>
 
-               <div class="row">
+<div class="container" style="  display: flex;
+    justify-content: center;">
 
-            <div class="col">
-             <button type="button" class="btn btn-primary" id="inscribir" >Inscribir </button>
-           </div>
-           <div class="col">
-             <button type="button" class="btn btn-primary" id="eliminar" >Eliminar alumno </button>
-           </div>
+      <div class="row">
 
+        <div class="col" style="margin-left: -2rem;">
+          <a href="?pagina=registro" style="margin-left: -13rem;" class="btn btn-primary">
+            <svg xmlns="img/arrow-return-left.svg" width="25" height="22" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class   ="col">
+          <button type ="button" class="btn btn-primary" id="inscribir" >
+            <svg xmlns   ="img/file-earmark-plus.svg" width="25" height="22" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+            <path d      ="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
+            <path d      ="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+            </svg>
+          </button>
+        </div>
+
+
+        <div class   ="col">
+          <button type="button" class="btn btn-primary" id="eliminar" >
+            <svg xmlns ="img/trash-fill.svg" width="25" height="22" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+            <path d    ="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+            </svg>
+          </button>
+        </div>
+
+
+
+        </div>
 
         </div>
 
@@ -106,6 +132,9 @@
     
             </form>
         </main>
+
+      </body>
+
 
 
         <div class="container mb-5">
