@@ -145,6 +145,14 @@ $("#incluir").on("click",function(){
 	}
 });
 $("#modificar").on("click",function(){
+
+
+	confirmar();
+
+	$('#si').on('click', function() {
+
+		$('#botones').remove();
+
 	if(validarenvio()){
     	var datos = new FormData();
 		   datos.append('accion','modificar');
@@ -172,9 +180,17 @@ $("#modificar").on("click",function(){
 		enviaAjax(datos,'modificar');
 
 	}
+	});
 });
 
 $("#eliminar").on("click",function(){
+
+	
+	confirmar();
+
+	$('#si').on('click', function() {
+
+		$('#botones').remove();
 
 	if(validarkeyup(/^[0-9]{7,8}$/,$("#cedula"),
 		$("#pCiRepre"),"El formato debe ser 9999999")==0){
@@ -189,7 +205,7 @@ $("#eliminar").on("click",function(){
 		datos.append('cedula',$("#cedula").val());
 		enviaAjax(datos,'eliminar');
 	}
-
+});
 });
 
 $("#consultar").on("click",function(){
@@ -423,8 +439,10 @@ function llenarLista() {
 
 
 function limpia(){
-  $('input[type=text]').val("");
-  $('input[type=select]').prop("selected",true);
+
+	$('input:gt(0)').val("");
+ 
+  $('input[type=select]').prop("selectedIndex",0);
 
 
 }

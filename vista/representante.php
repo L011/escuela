@@ -302,4 +302,5 @@
         ?>
     </body>
     <script src="js/representante.js"></script>
+    <script src="js/confirmar.js"></script>
 </html>

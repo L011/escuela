@@ -57,6 +57,13 @@ $("#incluir").on("click",function(){
 	}
 });
 $("#modificar").on("click",function(){
+
+	confirmar();
+
+	$('#si').on('click', function() {
+
+		$('#botones').remove();
+		
 	if(validarenvio()){
 		//console.log("M1");
 		var datos = new FormData();
@@ -66,9 +73,19 @@ $("#modificar").on("click",function(){
 		enviaAjax(datos,'modificar');
 
 	}
+
+});
 });
 
 $("#eliminar").on("click",function(){
+
+
+	confirmar();
+
+	$('#si').on('click', function() {
+
+		$('#botones').remove();
+		
 
 	if(validarkeyup(/^[0-9]{7,8}$/,$("#cedula"),
 		$("#scedula"),"El formato debe ser 9999999")==0){
@@ -83,6 +100,8 @@ $("#eliminar").on("click",function(){
 		datos.append('cedula',$("#cedula").val());
 		enviaAjax(datos,'eliminar');
 	}
+
+});
 
 });
 
@@ -227,6 +246,12 @@ function enviaAjax(datos,accion){
 
     });
 
+
+
+
+
+
+
 }
 //desabulita los botones modificar y eliminar para un cdigo mas limpio
 function botonOff() {
@@ -248,6 +273,8 @@ function limpia(){
 	$("#cargo").val("");
 	$("#clave").val("");
 }
+
+
 
 //esta funcion lipia todo menos cedula
 function limpia2(){

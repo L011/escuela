@@ -130,7 +130,7 @@ class seccion extends datos{
 		
 		}
 		else{
-			return "Ya existe la cedula que desea ingresar";
+			return "Ya esta asignado a una sección";
 		}
 
 		//Listo eso es todo y es igual para el resto de las operaciones
@@ -274,7 +274,7 @@ class seccion extends datos{
 		try{
 
 		
-			$resultado = $co->query("SELECT nombres, cedula FROM empleados");
+			$resultado = $co->query("SELECT nombres, apellidos, cedula FROM empleados");
 			if($resultado){
 
 				$respuesta = '';
@@ -285,11 +285,15 @@ class seccion extends datos{
 					$respuesta = $respuesta."<option value=";
 					$respuesta = $respuesta.$r['cedula'];
 					$respuesta = $respuesta.">";
-					$respuesta = $respuesta.$r['nombres'];
-					
-					$respuesta = $respuesta." ";
-
 					$respuesta = $respuesta.$r['cedula'];
+					$respuesta = $respuesta." ";
+					$respuesta = $respuesta.$r['nombres'];
+
+					$respuesta = $respuesta." ";				
+
+					$respuesta = $respuesta.$r['apellidos'];
+
+					
 
 					$respuesta = $respuesta."</option>";
 

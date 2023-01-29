@@ -98,25 +98,40 @@ $("#incluir").on("click",function(){
 	}
 });
 $("#modificar").on("click",function(){
-	if(validarenvio()){
-		//console.log("M1");
-		var datos = new FormData();
-		datos.append('accion','modificar');
-		datos.append('cedula',$("#cedula").val());
-		datos.append('apellidos',$("#apellidos").val());
-		datos.append('nombres',$("#nombres").val());
-		datos.append('fechadenacimiento',$("#fechadenacimiento").val());
-		datos.append('sexo',$("#sexo").val());
-		datos.append('correo',$("#correo").val());
-		datos.append('telefono',$("#telefono").val());
-		datos.append('cargo',$("#cargo").val());
-		llenarLista();
-		enviaAjax(datos,'modificar');
+	confirmar();
+
+	$('#si').on('click', function() {
+
+		$('#botones').remove();
+		
+		if(validarenvio()){
+			//console.log("M1");
+			var datos = new FormData();
+			datos.append('accion','modificar');
+			datos.append('cedula',$("#cedula").val());
+			datos.append('apellidos',$("#apellidos").val());
+			datos.append('nombres',$("#nombres").val());
+			datos.append('fechadenacimiento',$("#fechadenacimiento").val());
+			datos.append('sexo',$("#sexo").val());
+			datos.append('correo',$("#correo").val());
+			datos.append('telefono',$("#telefono").val());
+			datos.append('cargo',$("#cargo").val());
+			llenarLista();
+			enviaAjax(datos,'modificar');
 
 	}
+
+
+	});
+	
 });
 
 $("#eliminar").on("click",function(){
+	confirmar();
+
+	$('#si').on('click', function() {
+
+		$('#botones').remove();
 
 	if(validarkeyup(/^[0-9]{7,8}$/,$("#cedula"),
 		$("#scedula"),"El formato debe ser 9999999")==0){
@@ -131,6 +146,8 @@ $("#eliminar").on("click",function(){
 		datos.append('cedula',$("#cedula").val());
 		enviaAjax(datos,'eliminar');
 	}
+
+});
 
 });
 
@@ -329,6 +346,12 @@ function enviaAjax(datos,accion){
     });
 
 }
+
+// funcion para confirmar la eliminacion o modificaion 
+
+
+
+
 //desabulita los botones modificar y eliminar para un cdigo mas limpio
 function botonOff() {
 	$("#modificar").prop('disabled', true);

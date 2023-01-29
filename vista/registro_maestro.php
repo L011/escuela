@@ -130,6 +130,7 @@
 
 
 	</div>	
+	
 </div>
 
 <hr/>
@@ -172,6 +173,7 @@
 
 <?php require_once("comunes/footer.php"); ?>
 <script type="text/javascript" src="js/registro_maestro.js"></script>
+<script src="js/confirmar.js"></script>
 
 </body>
 </html>

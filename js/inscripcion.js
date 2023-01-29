@@ -38,6 +38,7 @@ $("#cedulaEscolar").on("keypress",function(e){
 			enviaAjax(datos,'consultatr');
 		}
 		else {
+			console.log("slasd");
 			limpia2();
 
 
@@ -444,6 +445,12 @@ $("#inscribir").on("click",function(){
 
 $("#eliminar").on("click",function(){
 
+	confirmar();
+
+	$('#si').on('click', function() {
+
+		$('#botones').remove();
+
 	if(validarkeyup(/^[0-9]{7,19}$/,$("#cedulaEscolar"),
 		$("#pCedulaEscolar"),"El formato debe ser 28406750")==0){
 	    muestraMensaje("La cedulaEscolar debe coincidir con el formato <br/>"+
@@ -458,6 +465,8 @@ $("#eliminar").on("click",function(){
 		llenarLista();
 		enviaAjax(datos,'eliminar');
 	}
+
+	});
 
 });
 
@@ -824,78 +833,17 @@ function inicio() {
 }
 
 
-// function limpia(){
-// 	$("#cedulaEscolar").val("");
-// 	$("#apellidoPri").val("");
-// 	$("#nombrePri").val("");
-//
-//
-// 	$("#fechaNaciPri").val("");
-// 	$("#estadoprimaria").val("");
-// 	$("#ciudadprimaria").val("");
-// 	$("#viveConO").val("");
-// 	$("#apellidoRepre").val("");
-// 	$("#nombreRepre").val("");
-// 	$("#ciRepre").val("");
-// 	$("#telfRepre").val("");
-// 	$("#direccionRepre").val("");
-// 	$("#profesionRepre").val("");
-// 	$("#correoRepre").val("");
-// 	$("#cuentaBancR").val("");
-// 	$("#codigoCPR").val("");
-// 	$("#serialCPR").val("");
-// 	$("#apellidoMadre").val("");
-// 	$("#nombreMadre").val("");
-// 	$("#ciMadre").val("");
-// 	$("#telefonoMadre").val("");
-// 	$("#direccionMadre").val("");
-// 	$("#apellidoPadre").val("");
-// 	$("#nombrePadre").val("");
-// 	$("#ciPadre").val("");
-// 	$("#telefonoPadre").val("");
-// 	$("#direccionPadre").val("");
-// 	$("#nombre_hermano1").val("");
-// 	$("#nombre_hermano2").val("");
-// 	$("#nombre_hermano3").val("");
-// 	$("#nombre_hermano4").val("");
-// 	$("#quienRetirada").val("");
-// 	$("#quienTelefono").val("");
-// }
-//
-// function limpia2(){
-//
-// 	$("#apellidoPri").val("");
-// 	$("#nombrePri").val("");
-//
-//
-// 	$("#fechaNaciPri").val("");
-// 	$("#estadoprimaria").val("");
-// 	$("#ciudadprimaria").val("");
-// 	$("#viveConO").val("");
-// 	$("#apellidoRepre").val("");
-// 	$("#nombreRepre").val("");
-// 	$("#ciRepre").val("");
-// 	$("#telfRepre").val("");
-// 	$("#direccionRepre").val("");
-// 	$("#profesionRepre").val("");
-// 	$("#correoRepre").val("");
-// 	$("#cuentaBancR").val("");
-// 	$("#codigoCPR").val("");
-// 	$("#serialCPR").val("");
-// 	$("#apellidoMadre").val("");
-// 	$("#nombreMadre").val("");
-// 	$("#ciMadre").val("");
-// 	$("#telefonoMadre").val("");
-// 	$("#direccionMadre").val("");
-// 	$("#apellidoPadre").val("");
-// 	$("#nombrePadre").val("");
-// 	$("#ciPadre").val("");
-// 	$("#telefonoPadre").val("");
-// 	$("#direccionPadre").val("");
-// 	$("#nombre_hermano1").val("");
-// 	$("#nombre_hermano2").val("");
-// 	$("#nombre_hermano3").val("");
-// 	$("#nombre_hermano4").val("");
-// 	$("#quienRetirada").val("");
-// 	$("#quienTelefono").val("");
-// }
+
+
+
+function limpia2(){
+
+	$('input:gt(1)').val("");
+ 
+	$('input[type=select]').val('');
+	$("#grado").val('');
+	$("#seccion").val('');
+	$("#anioe").val('');
+	
+
+}

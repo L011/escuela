@@ -54,7 +54,7 @@
                 <div class="col">
                 <label for="">Grado</label>
                     <select id="grado" name="grado" class="form-control form-select mb-3">
-                        <option selected>Seleccionar</option>
+                        <option disabled selected value="">Seleccionar</option>
                      
                     </select>
                 </div>
@@ -97,7 +97,7 @@
       <div class="row">
 
         <div class="col" style="margin-left: -2rem;">
-          <a href="?pagina=registro" style="margin-left: -13rem;" class="btn btn-primary">
+          <a onclick ="history.back()" style="margin-left: -13rem;" class="btn btn-primary">
             <svg xmlns="img/arrow-return-left.svg" width="25" height="22" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
             </svg>
@@ -169,4 +169,5 @@
 
     </body>
     <script src="js/inscripcion.js"></script>
+    <script src="js/confirmar.js"></script>
 </html>
