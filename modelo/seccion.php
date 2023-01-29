@@ -191,56 +191,6 @@ class seccion extends datos{
 	}
 
 
-	function consultar(){
-		$co = $this->conecta();
-		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		try{
-
-			$resultado = $co->query("SELECT * FROM `seccion` s INNER JOIN empleados e ON s.cedula_mm= e.cedula");
-
-
-			if($resultado){
-
-				$respuesta = '';
-				foreach($resultado as $r){
-					$respuesta = $respuesta."<tr style='cursor:pointer' onclick='coloca(this);'>";
-							$respuesta = $respuesta."<td>";
-								$respuesta = $respuesta.$r['grado'];
-							$respuesta = $respuesta."</td>";
-							$respuesta = $respuesta."<td>";
-								$respuesta = $respuesta.$r['seccion'];
-							$respuesta = $respuesta."</td>";
-							$respuesta = $respuesta."<td>";
-								$respuesta = $respuesta.$r['anio_escolar'];
-							$respuesta = $respuesta."</td>";
-							$respuesta = $respuesta."<td>";
-								$respuesta = $respuesta.$r['nombres'];
-							$respuesta = $respuesta."</td>";
-							$respuesta = $respuesta."<td>";
-								$respuesta = $respuesta.$r['apellidos'];
-							$respuesta = $respuesta."</td>";
-							$respuesta = $respuesta."<td>";
-								$respuesta = $respuesta.$r['cedula'];
-							$respuesta = $respuesta."</td>";
-						
-
-
-
-						$respuesta = $respuesta."</tr>";
-
-				}
-				return $respuesta;
-
-			}
-			else{
-				return '';
-			}
-
-		}catch(Exception $e){
-			return $e->getMessage();
-		}
-
-	}
 
 
 	private function existe($cedulaE){
@@ -266,6 +216,27 @@ class seccion extends datos{
 			return false;
 		}
 	}
+
+
+		function tabla(){
+
+		$co = $this->conecta();
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			try{
+
+				$resultado = $co->query("Select cedula, apellidos, nombres, sexo,fechadenacimiento, telefono  from empleados");
+
+				
+
+				
+				$rs = $resultado->fetchAll(PDO::FETCH_FUNC, fn ($cedula, $apellido, $nombre, $sexo, $fechadenacimiento, $telefono ) => [$cedula, $apellido, $nombre, $sexo, $fechadenacimiento, $telefono] );
+				echo json_encode(['data' => $rs,]);
+
+			}catch(Exception $e){
+				$envia = array('resultado'=>$e->getMessage());
+				return json_encode($envia);
+			}
+		}
 
 
 	function consultatr(){

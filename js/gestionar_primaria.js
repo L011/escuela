@@ -486,6 +486,14 @@ $("#incluir").on("click",function(){
 });
 
 $("#modificar").on("click",function(){
+
+	confirmar();
+
+	$('#si').on('click', function() {
+
+		$('#botones').remove();
+
+
 	if(validarenvio()){
 		//console.log("M1");
 		var datos = new FormData();
@@ -558,11 +566,20 @@ $("#modificar").on("click",function(){
 
 
 	}
+
+	});
 });
 
 
 
 $("#eliminar").on("click",function(){
+
+
+	confirmar();
+
+	$('#si').on('click', function() {
+
+		$('#botones').remove();
 
 	if(validarkeyup(/^[0-9]{7,19}$/,$("#cedulaEscolar"),
 		$("#pCedulaEscolar"),"El formato debe ser 28406750")==0){
@@ -579,8 +596,10 @@ $("#eliminar").on("click",function(){
 		enviaAjax(datos,'eliminar');
 	}
 
-});
 
+
+	});
+});
 /*
 
 $("#consultar").on("click",function(){

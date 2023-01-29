@@ -1,6 +1,9 @@
 $(document).ready(function(){
 
-llenarLista();
+//llenarLista();
+ tabla();
+
+
 
 
 //VALIDACION DE DATOS
@@ -124,12 +127,11 @@ function validarenvio(){
 }
 
 function llenarLista() {
-	var datos = new FormData();
-	datos.append('accion','consultar');
-	enviaAjax(datos,'consultar');
-	var datos2 = new FormData();
-		    datos2.append('accion','consultatr');
-			enviaAjax(datos2,'consultatr');
+var datos4 = new FormData();
+	datos4.append('accion','tabla');
+	enviaAjax(datos4,'tabla');
+
+	
 }
 
 
@@ -202,6 +204,11 @@ function enviaAjax(datos,accion){
 					  $("#maestro").html(respuesta);
 				   
 			   }
+			    else if(accion=='consultatr'){
+				
+								   
+			   }
+			 
 
 				 // Aqui se muestra informacion si se Ingreso la informacion
 			   else{
@@ -219,29 +226,81 @@ function enviaAjax(datos,accion){
     });
 
 }
-
 function tabla(){
 
-	$.fn.dataTable.ext.errMode = 'throw';
 
-
-	console.log("nhaiusd");
-    		$("#json_data").DataTable({
-        "order": [[ 1, "asc" ]],
-        ajax: 'modelo/tabla.php',
-        'aLengthMenu': [[100, 250, 500, -1], [100, 250, 500, 'All']],
-        'iDisplayLength': 100,
-        "columns": [
-            { "data": "cedula_e" },
-            { "data": "nombre" },
-            { "data": "number_of_people" }
-        ]
-    });
-
-
-
+		var data=$("#tableajax").DataTable({
+			ajax:'modelo/tabla.php',
+			columns: [
+			        { data: 0 },
+			        { data: 1 },
+			        { data: 2 },
+			        { data: 3 },
+			    
+			    	{"render": function () {
+            return '<button type="button" id="ButtonEditar" class="editar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> Editar</span></button>';
+        }},
+    ]
+		
+	});
+		editar("#tableajax tbody",data );
 
 }
+
+
+function editar(tbody, table){
+  $(tbody).on("click","button.editar", function(){
+	console.log("sakdopkaspo");
+    if(table.row(this).child.isShown()){
+        var data = table.row(this).data();
+    }else{
+        var data = table.row($(this).parents("tr")).data();
+        console.log(data);
+    }
+
+    $("#grado").val(data[0]);
+	$("#seccion").val(data[1]);
+	$("#anioe").val(data[3]);
+	$("#maestro").val(data[4]);
+
+   
+    
+    
+  })
+}
+
+
+
+/*$("#MyTable").addClass("nowrap").DataTable({
+    "pageLength": 5,
+    "order": [[0, "desc"]],
+    data: MiArregloDeDatos,
+    columns: [
+        { title: "cell1" },
+        { title: "cell2" },
+        { title: "cell3" },
+        { title: "cell4" },
+        { title: "cell5" },
+    ],
+    columnDefs: [
+        { targets: 3, visible: false },
+        {
+            targets: -1,
+            orderable: false,
+            data: null,
+            render: function (data, type, row, meta) {
+                let fila = meta.row;
+                let botones = `
+                        <button class='btn btn-primary btn-circle'
+                            onclick='toggle("#div_misAcciones"); return false;'>
+                            <i class="fa fa-list" style="font-size:15px;"></i>
+                        </button>`;
+                return botones;
+            }
+        }
+    ],
+    "bDestroy": true
+});*/
 
 
 
@@ -251,6 +310,7 @@ function tabla(){
 //funcion para pasar de la lista a el formulario
 function coloca(linea){
 
+console.log(linea);
 	$("#grado").val($(linea).find("td:eq(0)").text());
 	$("#seccion").val($(linea).find("td:eq(1)").text());
 	$("#anioe").val($(linea).find("td:eq(2)").text());

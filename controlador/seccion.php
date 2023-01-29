@@ -40,7 +40,6 @@ require_once("modelo/".$pagina.".php");
 			
 			 echo  $o->consultatr();
 		  }
-		 
 			
 		  elseif($accion=='eliminar'){
 			 $o->set_maestro($_POST['maestro']);
