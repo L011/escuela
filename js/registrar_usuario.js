@@ -259,7 +259,7 @@ function enviaAjax(datos,accion){
 
 
 
-unction tabla(){
+function tabla(){
 
 
 
@@ -267,7 +267,7 @@ unction tabla(){
 		var data=$("#tableajax").DataTable({
 			ajax:{
 
-			url:'modelo/tablarepresentante.php',
+			url:'modelo/tablausuario.php',
 			
 			},
 			columns: [
@@ -299,19 +299,24 @@ function editar(tbody, table){
         console.log(data);
     }
 
-botonOn();
+	botonOn();
 	$("#incluir").prop('disabled', true);
 
-  $("#cedula").val(data[0]);
+  botonOn();
 
+	$("#cedula").val(data[0]);
+	if($("#cedula").val().length > 6){
+		  var datos = new FormData();
+		    datos.append('accion','consultatr');
+			datos.append('cedula',data[0]);
+			enviaAjax(datos,'consultatr');
+		}
+		else {
+			limpia2();
+			botonOff();
+			$("#incluir").prop('disabled', false);
 
-  if($("#cedula").val().length > 6){
-    var datos = new FormData();
-      datos.append('accion','consultatr');
-    datos.append('cedula',$("#cedula").val());
-    enviaAjax(datos,'consultatr');
-  }
- 
+		}
    
     
     

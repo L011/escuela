@@ -111,6 +111,39 @@
 </div>
 </div> <!-- fin de container -->
 
+
+<div class="container">
+
+    <div>
+
+    <h2> Lista de empleados</h2>
+  </div>
+
+  <table class="table table-striped table-hover" id="tableajax">
+   <thead>
+   <tr>
+   <th>Cedula</th>
+   <th>Apellidos</th>
+   <th>Nombres</th>
+   <th>Cargo</th>
+   <th>Clave</th>
+   <th>Acciones</th>
+   </tr>
+  </thead>
+
+  <tbody id="resultadoconsulta">
+
+
+
+  </tbody>
+
+
+</table>
+
+</div>
+
+
+
 <div class="container">
 
     <div>
