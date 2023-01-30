@@ -197,6 +197,10 @@ function enviaAjax(datos,accion){
 					 
 					  $("#maestro").html(respuesta);
 				   
+			   }else if (respuesta == 'Ya esta asignado a una sección') {
+			   		 muestraMensaje(respuesta);
+			   		 console.log("toalla");
+
 			   }
 
 				 // Aqui se muestra informacion si se Ingreso la informacion
@@ -204,6 +208,12 @@ function enviaAjax(datos,accion){
 				   //limpia();
 					
 				   muestraMensaje(respuesta);
+				   $('#contenido').css('display', 'none');
+					$('#tableajax').DataTable().ajax.reload();
+					if (!$('#formulario').is(":visible")) {
+					$('#formulario').css('display', 'block');
+				}
+
 
 			   }
             },

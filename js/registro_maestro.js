@@ -364,6 +364,8 @@ function enviaAjax(datos,accion){
 
 
 			   }
+
+
 			   else{
 
 					limpia();

@@ -147,7 +147,7 @@ $("#consultar").on("click",function(){
 function validarenvio(){
 
 	
-	if(validarkeyup(/^[0-9]{7,8}$/,$("#cedulaEscolar"),
+	if(validarkeyup(/^[0-9]{7,9}$/,$("#cedulaEscolar"),
 		$("#pCedulaEscolar"),"Formato 99999999")==0){
 	    muestraMensaje("Seleccionar estudiante valido");
 		return false;

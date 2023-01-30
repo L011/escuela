@@ -183,7 +183,7 @@
         </tfoot>
 
         <div class="modal-footer">
-        <div class="col"><h2> Lista de sección</h2></div>
+        <div class="col-6"><h2> Lista de secciones asignadas</h2></div>
 
     <div class="col"></div>
 
