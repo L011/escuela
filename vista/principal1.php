@@ -31,7 +31,10 @@
 </header>
 
 <main role="main">
-  <section class="jumbotron text-center">
+
+  <div class="row">
+    <div class="col">
+      <section class="jumbotron text-center">
     <div class="container">
       <h1>Unidad Educativa Nacional "Divino Niño"</h1>
       <p class="lead text-muted">     Optimizar y asegurar la atención educativa de los niños y niñas de la comunidad de Llano Alto y sus adyacentes, desde el momento de su ingreso al nivel prescolar hasta la educación básica, sumados a las políticas educativas a través de planes y programas de estudio basado en los lineamientos curriculares.<hr>Misión</p>
@@ -41,12 +44,9 @@
       </p>
     </div>
   </section>
-
-  <div class="album py-5 bg-light">
-  <div class="container">
-
-    <div class="row justify-content-between justify-content-sm-around">
-      <div class="col-sm">
+    </div>
+    <div class="col">
+       <div class="col-sm">
         <div class="card mb-4 shadow-sm">
           <img class="bd-placeholder-img card-img-top" width="100%" height="100%" src="img/amm8.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
 
@@ -60,6 +60,11 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
       <div class="col-sm">
         <div class="card mb-4 shadow-sm">
           <img class="bd-placeholder-img card-img-top" width="100%" height="100%" src="img/amm12.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
@@ -75,20 +80,24 @@
           </div>
         </div>
       </div>
+      
     </div>
-  </div>
-</div>
-
-<hr>
-<section class="jumbotron text-center">
+    <div class="col">
+      <section class="jumbotron text-center">
     <div class="container">
       <p class="lead text-muted">     Ser la institución pionera que contribuya a la formación integral de los niños y niñas de la comunidad desde el nivel prescolar y prosecución al subsistema primario enmarcado en las políticas educativas del estado venezolano y las exigencias curriculares, incorporando a la triada (Escuela-Familia-Comunidad), así como también realizar todas aquellas actividades y convenios que sean necesarias para la consecución de los objetivos.<hr>Visión</p>
-      <p>
-        <a href="?pagina=inicio" class="btn btn-primary my-2">Iniciar Sesión</a>
-
-      </p>
+      
     </div>
   </section>
+    </div>
+
+  </div>
+  
+
+  
+
+<hr>
+
 
 
 </main>

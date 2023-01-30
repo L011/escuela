@@ -337,7 +337,7 @@
            
 
             <div class="modal-footer">
-            <div class="col"><h3> Lista de representantes</h3></div>
+            <div class="col-6"><h3> Lista de representantes</h3></div>
 
     <div class="col"></div>
 
