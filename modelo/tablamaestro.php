@@ -14,7 +14,7 @@
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		try{
 
-			$resultado = $co->query("Select * from empleados
+			$resultado = $co->query("Select cedula, apellidos, nombres, sexo, telefono, correo, cargo from empleados
 ");
 
 			
@@ -25,7 +25,6 @@
 			 	$apellidos,
 			 	$nombres,
 			 	$sexo, 
-			 	$fechadenacimiento, 
 			 	$telefono, 
 			 	$correo, 
 			 	$cargo) =>
@@ -33,8 +32,7 @@
 			 	$cedula, 
 			 	$apellidos, 
 			 	$nombres, 
-			 	$sexo, 
-			 	$fechadenacimiento, 
+			 	$sexo,  
 			 	$telefono, 
 			 	$correo, 
 			 	$cargo

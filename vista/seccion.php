@@ -5,9 +5,38 @@
         <?php  require_once("comunes/menu.php"); ?>
         <?php require_once("comunes/modal.php"); ?>
       <main>
-          <form class="container mb-5">
-            <h2 class="text-center">Gestionar Secciones</h2>
-            <hr>
+
+
+<div class="container"> <!-- todo el contenido ira dentro de esta etiqueta-->
+         
+  <div class="container" style="display: none;" id="contenido">        
+    
+    <div class="container text-center h2 text-primary">
+
+      <div class="row">
+          <div class="col">
+
+          </div>
+          <div class="col-6">
+              <h2 class="text-center text-xxl mb-4">GESTIONAR SECCIONES</h2>
+              
+          </div>
+          <div class="col">
+              <div class   ="col">
+            <button type ="button" class="btn btn-primary" id="formulario1" >
+             X
+            </button>
+          </div>
+
+
+              
+          </div>
+          <hr>
+      </div>
+
+      <hr>
+  </div>
+           
 
 
        
@@ -15,6 +44,7 @@
                 <!-- iasndiansdi -->
 
                 
+          <form class="container mb-5">
 
 
                 <div class="row">
@@ -119,12 +149,14 @@
 
     
             </form>
+          </div>
+        </div>  
         </main>
 
 
       <div class="container mb-5">
-        <table class="table table-striped table-hover" id="tableajax">
-         <thead>
+        <table class="table table-bordered table-hover" id="tableajax">
+         <thead class="thead-dark">
          <tr>
          <th>Grado</th>
          <th>Seccion</th>
@@ -137,10 +169,32 @@
          </tr>
         </thead>
 
-        <div class="modal-footer bg-light">
-        <div class="col">
+        <tfoot class="thead-dark">
+         <tr>
+         <th>Grado</th>
+         <th>Seccion</th>
+         <th>Año Escolar</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+         <th>Cedula</th>
+         <th>Accciones</th>
+         
+         </tr>
+        </tfoot>
 
-        </div>
+        <div class="modal-footer">
+        <div class="col"><h2> Lista de sección</h2></div>
+
+    <div class="col"></div>
+
+    <div class  ="col">
+            <button type ="button" class="btn btn-primary" id="formulario" >
+              <svg xmlns   ="img/file-earmark-plus.svg" width="25" height="22" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+              <path d      ="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
+              <path d      ="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+              </svg>
+            </button>
+    </div>
 
         </div>
         </table>

@@ -702,7 +702,7 @@ class primaria extends datos{
 							$respuesta = $respuesta."</td>";
 							$respuesta = $respuesta."<td>";
 								$respuesta = $respuesta.$r['nombre'];
-							$respuesta = $respuesta."</td>";
+							$respuesta =	 $respuesta."</td>";
 							$respuesta = $respuesta."<td>";
 								$respuesta = $respuesta.$r['representante'];
 							$respuesta = $respuesta."</td>";

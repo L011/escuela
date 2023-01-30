@@ -2,20 +2,9 @@ $(document).ready(function(){
 
 llenarLista();
 tabla();
-
-
 inicio();
 
 //tabla();
-
-	//alert("at1");
-	//console.log("Main")
-	//para obtener la fecha del servidor y calcular la
-	//edad de nacimiento que debe ser mayor a 18
-//	var datos = new FormData();
-	//	datos.append('accion','obtienefecha');
-		//enviaAjax(datos,'obtienefecha');
-	//fin de colocar fecha en input fecha de nacimiento
 
 
 //VALIDACION DE DATOS
@@ -60,340 +49,6 @@ $("#seccion").change(function(){
 	select_seccion2();
 });
 
-
-
-
-
-
-
-
-	
-
-/*
-
-
-	$("#cedulaEscolar").on("keypress",function(e){
-		validarkeypress(/^[0-9-\b]*$/,e);
-	});
-
-	$("#cedulaEscolar").on("keyup",function(){
-		validarkeyup(/^[0-9]{7,8}$/,$(this),
-		$("#pCedulaEscolar"),"El formato debe ser 9999999 ");
-		if($("#cedulaEscolar").val().length > 7){
-		  var datos = new FormData();
-		    datos.append('accion','consultatr');
-			datos.append('cedulaEscolar',$(this).val());
-			enviaAjax(datos,'consultatr');
-		}
-	});
-
-
-	$("#apellidoPri").on("keypress",function(e){
-		validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-	});
-
-	$("#apellidoPri").on("keyup",function(){
-		validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-		$(this),$("#pApellidoPri"),"Solo letras  entre 3 y 30 caracteres");
-	});
-
-	$("#nombrePri").on("keypress",function(e){
-		validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-	});
-
-	$("#nombrePri").on("keyup",function(){
-		validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-		$(this),$("#pNombrePri"),"Solo letras  entre 3 y 30 caracteres");
-	});
-
-	$("#fechaNaciPri").on("keyup",function(){
-		validarkeyup(/^(?:(?:1[6-9]|[2-9]\d)?\d{2})(?:(?:(\/|-|\.)(?:0?[13578]|1[02])\1(?:31))|(?:(\/|-|\.)(?:0?[13-9]|1[0-2])\2(?:29|30)))$|^(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(\/|-|\.)0?2\3(?:29)$|^(?:(?:1[6-9]|[2-9]\d)?\d{2})(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:0?[1-9]|1\d|2[0-8])$/,
-		$(this),$("#pFechaNaciPri"),"Ingrese una fecha valida");
-	});
-
-    $("#estadoprimaria").on("keypress",function(e){
-		validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-	});
-
-	$("#estadoprimaria").on("keyup",function(){
-		validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-		$(this),$("#pestadoprimaria"),"Solo letras  entre 3 y 30 caracteres");
-	});
-
-	$("#ciudadprimaria").on("keypress",function(e){
-	validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-	});
-
-	$("#ciudadprimaria").on("keyup",function(){
-		validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-		$(this),$("#pciudadprimaria"),"Solo letras  entre 3 y 30 caracteres");
-	});
-
-    $("#viveConO").on("keypress",function(e){
-		validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-	});
-
-	$("#viveConO").on("keyup",function(){
-		validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-		$(this),$("#pViveConO"),"Solo letras  entre 3 y 30 caracteres");
-	});
-    //FIN DE DATOS DEL NINO
-
-    //DATOS DEL REPRESENTANTE LEGAL
-
-    $("#apellidoRepre").on("keypress",function(e){
-		validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-	});
-
-	$("#apellidoRepre").on("keyup",function(){
-		validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-		$(this),$("#pApellidoRepre"),"Solo letras  entre 3 y 30 caracteres");
-	});
-
-    $("#nombreRepre").on("keypress",function(e){
-		validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-	});
-
-	$("#nombreRepre").on("keyup",function(){
-		validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-		$(this),$("#pNombreRepre"),"Solo letras  entre 3 y 30 caracteres");
-	});
-
-    $("#ciRepre").on("keypress",function(e){
-		validarkeypress(/^[0-9]*$/,e);
-	});
-
-	$("#ciRepre").on("keyup",function(){
-		validarkeyup(/^[0-9]{7,8}$/,
-		$(this),$("#pCiRepre"),"El formato debe ser 9999999");
-	});
-
-    $("#telfRepre").on("keypress",function(e){
-		validarkeypress(/^[0-9\b-]*$/,e);
-	});
-
-	$("#telfRepre").on("keyup",function(){
-	    validarkeyup(/^[0-9]{4}[-]{1}[0-9]{7,8}$/,$(this),$("#pTelfRepre"),"(9999)-9999999");
-	});
-
-    $("#direccionRepre").on("keypress",function(e){
-		validarkeypress(/^[A-Z0-9a-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-	});
-
-	$("#direccionRepre").on("keyup",function(){
-		validarkeyup(/^[A-Z0-9a-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-		$(this),$("#pDireccionRepre"),"Solo letras  entre 3 y 30 caracteres");
-	});
-
-    $("#profesionRepre").on("keypress",function(e){
-		validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-	});
-
-	$("#profesionRepre").on("keyup",function(){
-		validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-		$(this),$("#pProfesionRepre"),"Solo letras  entre 3 y 30 caracteres");
-	});
-
-	$("#correoRepre").on("keypress",function(e){
-		validarkeypress(/^[0-9A-Za-z@_.\b\u00f1\u00d1\u00E0-\u00FC-]*$/,e);
-	});
-
-	$("#correoRepre").on("keyup",function(){
-		validarkeyup(/^[A-Z0-9a-z_\u00f1\u00d1\u00E0-\u00FC-]{3,15}[@]{1}[A-Za-z0-9]{3,8}[.]{1}[A-Za-z]{2,3}$/,
-		$(this),$("#pCorreoRepre"),"Correo Valido alguien@servidor.com");
-	});
-
-	$("#cuentaBancR").on("keypress",function(e){
-		validarkeypress(/^[0-9]*$/,e);
-	});
-
-	$("#cuentaBancR").on("keyup",function(){
-		validarkeyup(/^[0-9]{20}$/,
-		$(this),$("#pcuentaBancR"),"Ingresar un numero de cuenta valido");
-	});
-
-	$("#codigoCPR").on("keypress",function(e){
-		validarkeypress(/^[0-9]*$/,e);
-	});
-
-	$("#codigoCPR").on("keyup",function(){
-		validarkeyup(/^[0-9]{10}$/,
-		$(this),$("#pcodigoCPR"),"Ingresar un codigo valido");
-	});
-
-	$("#serialCPR").on("keypress",function(e){
-		validarkeypress(/^[0-9]*$/,e);
-	});
-
-	$("#serialCPR").on("keyup",function(){
-		validarkeyup(/^[0-9]{10}$/,
-		$(this),$("#pserialCPR"),"Ingresar un codigo valido");
-	});
-
-//FIN DE DATOS DEL REPRESENTANTE
-
-//DATOS DE LA MADRE
-
-$("#apellidoMadre").on("keypress",function(e){
-	validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-});
-
-$("#apellidoMadre").on("keyup",function(){
-	validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-	$(this),$("#pApellidoMadre"),"Solo letras  entre 3 y 30 caracteres");
-});
-
-$("#nombreMadre").on("keypress",function(e){
-	validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-});
-
-$("#nombreMadre").on("keyup",function(){
-	validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-	$(this),$("#pNombreMadre"),"Solo letras  entre 3 y 30 caracteres");
-});
-
-$("#ciMadre").on("keypress",function(e){
-	validarkeypress(/^[0-9]*$/,e);
-});
-
-$("#ciMadre").on("keyup",function(){
-	validarkeyup(/^[0-9]{7,8}$/,
-	$(this),$("#pCiMadre"),"El formato debe ser 9999999");
-});
-
-$("#telefonoMadre").on("keypress",function(e){
-	validarkeypress(/^[0-9\b-]*$/,e);
-});
-
-$("#telefonoMadre").on("keyup",function(){
-	validarkeyup(/^[0-9]{4}[-]{1}[0-9]{7,8}$/,$(this),$("#pTelefonoMadre"),"(9999)-9999999");
-});
-
-$("#direccionMadre").on("keypress",function(e){
-	validarkeypress(/^[A-Z0-9a-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-});
-
-$("#direccionMadre").on("keyup",function(){
-	validarkeyup(/^[A-Z0-9a-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-	$(this),$("#pDireccionMadre"),"Solo letras  entre 3 y 30 caracteres");
-});
-
-//FIN DE DATOS DE LA MADRE
-
-//DATOS DEL PADRE
-
-$("#apellidoPadre").on("keypress",function(e){
-	validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-});
-
-$("#apellidoPadre").on("keyup",function(){
-	validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-	$(this),$("#pApellidoPadre"),"Solo letras  entre 3 y 30 caracteres");
-});
-
-$("#nombrePadre").on("keypress",function(e){
-	validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-});
-
-$("#nombrePadre").on("keyup",function(){
-	validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-	$(this),$("#pNombrePadre"),"Solo letras  entre 3 y 30 caracteres");
-});
-
-$("#ciPadre").on("keypress",function(e){
-	validarkeypress(/^[0-9]*$/,e);
-});
-
-$("#ciPadre").on("keyup",function(){
-	validarkeyup(/^[0-9]{7,8}$/,
-	$(this),$("#pCiPadre"),"El formato debe ser 9999999");
-});
-
-$("#telefonoPadre").on("keypress",function(e){
-	validarkeypress(/^[0-9\b-]*$/,e);
-});
-
-$("#telefonoPadre").on("keyup",function(){
-	validarkeyup(/^[0-9]{4}[-]{1}[0-9]{7,8}$/,$(this),$("#pTelefonoPadre"),"(9999)-9999999");
-});
-
-$("#direccionPadre").on("keypress",function(e){
-	validarkeypress(/^[A-Z0-9a-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-});
-
-$("#direccionPadre").on("keyup",function(){
-	validarkeyup(/^[A-Z0-9a-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-	$(this),$("#pDireccionPadre"),"Solo letras  entre 3 y 30 caracteres");
-});
-
-//FIN DE DATOS DEL PADRE
-
-//DE TENER HERMANOS EN LA INSTITUCIÓN
-
-$("#nombre_hermano1").on("keypress",function(e){
-	validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-});
-
-$("#nombre_hermano1").on("keyup",function(){
-	validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-	$(this),$("#pnombre_hermano1"),"Solo letras  entre 3 y 30 caracteres");
-});
-
-$("#nombre_hermano2").on("keypress",function(e){
-	validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-});
-
-$("#nombre_hermano2").on("keyup",function(){
-	validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-	$(this),$("#pnombre_hermano2"),"Solo letras  entre 3 y 30 caracteres");
-});
-
-$("#nombre_hermano3").on("keypress",function(e){
-	validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-});
-
-$("#nombre_hermano3").on("keyup",function(){
-	validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-	$(this),$("#pnombre_hermano3"),"Solo letras  entre 3 y 30 caracteres");
-});
-
-$("#nombre_hermano4").on("keypress",function(e){
-	validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-});
-
-$("#nombre_hermano4").on("keyup",function(){
-	validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-	$(this),$("#pnombre_hermano4"),"Solo letras  entre 3 y 30 caracteres");
-});
-
-
-
-//FIN DE TENER HERMANOS EN LA INSTITUCIÓN
-
-//CON QUIEN SE RETIRA EL NINO
-
-$("#quienRetirada").on("keypress",function(e){
-	validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-});
-
-$("#quienRetirada").on("keyup",function(){
-	validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-	$(this),$("#pQuienRetirada"),"Solo letras  entre 3 y 30 caracteres");
-});
-
-$("#quienTelefono").on("keypress",function(e){
-	validarkeypress(/^[0-9\b-]*$/,e);
-});
-
-$("#quienTelefono").on("keyup",function(){
-	validarkeyup(/^[0-9]{4}[-]{1}[0-9]{7,8}$/,$(this),$("#pQuienTelefono"),"(9999)-9999999");
-});
-
-//FIN DE CON QUIEN SE RETIRA
-
-//FIN DE VALIDACION DE DATOS
-
-*/
 
 //CONTROL DE BOTONES
 
@@ -507,10 +162,7 @@ function validarenvio(){
 }
 
 function llenarLista() {
-	var datos = new FormData();
-	datos.append('accion','consultar');
-	enviaAjax(datos,'consultar');
-
+	
 	var datos1 = new FormData();
 	datos1.append('accion','llenargrado');
 	llenar(datos1,'llenargrado');
@@ -561,49 +213,6 @@ function validarkeyup(er,etiqueta,etiquetamensaje,mensaje){
 	}
 }
 
-
-
-//funcion para pasar de la lista a el formulario
-
-
-function coloca(linea){
-/*
-	$("#cedulaEscolar").val($(linea).find("td:eq(0)").text());
-	$("#apellidoPri").val($(linea).find("td:eq(1)").text());
-	$("#nombrePri").val($(linea).find("td:eq(2)").text());
-	$("#fechaNaciPri").val($(linea).find("td:eq(3)").text());
-	$("#estadoprimaria").val($(linea).find("td:eq(4)").text());
-	$("#ciudadprimaria").val($(linea).find("td:eq(5)").text());
-	$("#viveConO").val($(linea).find("td:eq(6)").text());
-	$("#apellidoRepre").val($(linea).find("td:eq(7)").text());
-	$("#nombreRepre").val($(linea).find("td:eq(8)").text());
-	$("#ciRepre").val($(linea).find("td:eq(9)").text());
-	$("#telfRepre").val($(linea).find("td:eq(10)").text());
-	$("#direccionRepre").val($(linea).find("td:eq(11)").text());
-	$("#profesionRepre").val($(linea).find("td:eq(12)").text());
-	$("#correoRepre").val($(linea).find("td:eq(13)").text());
-	$("#cuentaBancR").val($(linea).find("td:eq(14)").text());
-	$("#codigoCPR").val($(linea).find("td:eq(15)").text());
-	$("#serialCPR").val($(linea).find("td:eq(16)").text());
-	$("#apellidoMadre").val($(linea).find("td:eq(17)").text());
-	$("#nombreMadre").val($(linea).find("td:eq(18)").text());
-	$("#ciMadre").val($(linea).find("td:eq(19)").text());
-	$("#telefonoMadre").val($(linea).find("td:eq(20)").text());
-	$("#direccionMadre").val($(linea).find("td:eq(21)").text());
-	$("#apellidoPadre").val($(linea).find("td:eq(22)").text());
-	$("#nombrePadre").val($(linea).find("td:eq(23)").text());
-	$("#ciPadre").val($(linea).find("td:eq(24)").text());
-	$("#telefonoPadre").val($(linea).find("td:eq(25)").text());
-	$("#direccionPadre").val($(linea).find("td:eq(26)").text());
-	$("#nombre_hermano1").val($(linea).find("td:eq(27)").text());
-	$("#nombre_hermano2").val($(linea).find("td:eq(28)").text());
-	$("#nombre_hermano3").val($(linea).find("td:eq(29)").text());
-	$("#nombre_hermano4").val($(linea).find("td:eq(30)").text());
-	$("#quienRetirada").val($(linea).find("td:eq(31)").text());
-	$("#quienTelefono").val($(linea).find("td:eq(32)").text());
-
-	*/
-}
 
 
 function llenar(datos,accion){
@@ -759,8 +368,13 @@ function enviaAjax(datos,accion){
 				 // Aqui se muestra informacion si se Ingreso la informacion
 			   else{
 				   //limpia();
-					 llenarLista();
-				   muestraMensaje(respuesta);
+					llenarLista();
+					muestraMensaje(respuesta);
+					$('#contenido').css('display', 'none');
+					$('#tableajax').DataTable().ajax.reload();
+					if (!$('#formulario').is(":visible")) {
+					$('#formulario').css('display', 'block');
+				}
 
 			   }
             },
@@ -773,41 +387,9 @@ function enviaAjax(datos,accion){
 
 }
 
-function tabla(){
-
-	$.fn.dataTable.ext.errMode = 'throw';
-
-
-	console.log("nhaiusd");
-    		$("#json_data").DataTable({
-        "order": [[ 1, "asc" ]],
-        ajax: 'modelo/tabla.php',
-        'aLengthMenu': [[100, 250, 500, -1], [100, 250, 500, 'All']],
-        'iDisplayLength': 100,
-        "columns": [
-            { "data": "cedula_e" },
-            { "data": "nombre" },
-            { "data": "number_of_people" }
-        ]
-    });
-
-
-
-
-}
 
 //funcion para pasar de la lista a el formulario
-function coloca(linea){
 
-	$("#cedulaEscolar").val($(linea).find("td:eq(0)").text());
-	var datos = new FormData();
-	datos.append('accion','consultatr');
-	datos.append('cedulaEscolar',$(linea).find("td:eq(0)").text());
-	enviaAjax(datos,'consultatr');
-
-
-
-}
 
 
 function tabla(){
@@ -851,7 +433,8 @@ function editar(tbody, table){
         console.log(data);
     }
 
-	$("#inscribir").prop('disabled', true);
+	$("#inscribir").prop('disabled', false);
+	$('#contenido').css('display', 'block');
 
   $("#cedulaEscolar").val(data[0]);
 	var datos = new FormData();
@@ -872,16 +455,65 @@ function editar(tbody, table){
         console.log(data);
     }
 
-    $("#grado").val(data[0]);
-	$("#seccion").val(data[1]);
-	$("#anioe").val(data[2]);
-	$("#maestro").val(data[3]);
+   confirmar();
+
+		$('#si').on('click', function() {
+
+			$('#botones').remove();
+
+		if(false){
+
+		}
+		else{
+
+			var datos = new FormData();
+			datos.append('accion','eliminar');
+			datos.append('cedulaEscolar',data[0]);
+			enviaAjax(datos,'eliminar');
+		}
+
+	});
 
    
     
     
   })
 }
+
+
+//boton que muestra y oculta el formulario
+
+$('#formulario').on('click', function() {
+	$('#formulario').css('display', 'none');
+
+	if ($('#contenido').is(":visible")) {
+		console.log("no");
+		$('#contenido').css('display', 'none');
+	}else{
+		$('#contenido').css('display', 'block');
+		console.log("se ve");
+
+	}
+
+	/* Act on the event */
+});
+
+$('#formulario1').on('click', function() {
+
+
+	$('#formulario').css('display', 'block');
+
+	if ($('#contenido').is(":visible")) {
+		console.log("no");
+		$('#contenido').css('display', 'none');
+	}else{
+		$('#contenido').css('display', 'block');
+		console.log("se ve");
+
+	}
+
+	/* Act on the event */
+});
 
 
 

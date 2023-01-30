@@ -8,8 +8,39 @@
             require_once("comunes/menu.php");
         ?>
         <main>
+<div class="container"> <!-- todo el contenido ira dentro de esta etiqueta-->
+
+
+<div class="container" style="display: none;" id="contenido">
+            
+        <div class="container text-center h2 text-primary">
+
+            <div class="row">
+                <div class="col">
+
+                </div>
+                <div class="col-6">
+                    <h2 class="text-center text-xxl mb-4">REGISTRAR REPRESENTANTE</h2>
+                    
+                </div>
+                <div class="col">
+                    <div class   ="col">
+                  <button type ="button" class="btn btn-primary" id="formulario1" >
+                   X
+                  </button>
+                </div>
+
+
+                    
+                </div>
+            </div>
+
+
+        </div>
+              
+          
+
             <form class="container mb-5">
-                <h2 class="text-center">GESTIONAR REPRESENTANTE</h2>
                 <hr>
 
                 <h3 class="text-center text-xl mt-4 mb-4">DATOS DEL REPRESENTANTE LEGAL</h3>
@@ -269,9 +300,19 @@
 
             </form>
 
+            </div>
+            <div>
+
+                <div class="row">
+                    <div class="col">
+                </div>
+                    
+                </div>
+            </div>
+
             <div class="container mb-5">
-            <table class="table table-striped table-hover" id="tableajax">
-             <thead>
+            <table class="table table-bordered table-hover" id="tableajax">
+             <thead class="thead-dark">
              <tr>
              <th>Cedula</th>
              <th>Apellidos</th>
@@ -282,17 +323,39 @@
              </tr>
             </thead>
 
+            <tfoot class="thead-dark">
+                <tr>
+             <th>Cedula</th>
+             <th>Apellidos</th>
+             <th>Nombres</th>
+             <th>Telefono</th>
+             <th>Correo</th>
+             <th>Acciones</th>
+             </tr>
+            </tfoot>
+
            
 
-            <div class="modal-footer bg-light">
-            <div class="col">
+            <div class="modal-footer">
+            <div class="col"><h3> Lista de representantes</h3></div>
 
-            </div>
+    <div class="col"></div>
+
+    <div class  ="col">
+          <button type ="button" class="btn btn-primary" id="formulario" >
+            <svg xmlns   ="img/file-earmark-plus.svg" width="25" height="22" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+            <path d      ="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
+            <path d      ="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+            </svg>
+          </button>
+  </div>
 
             </div>
             </table>
 
           </div>
+
+           </div>
 
         </main>
         <?php

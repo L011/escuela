@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-llenarLista();
+
 tabla();
 
 	//alert("at1");
@@ -478,7 +478,7 @@ $("#incluir").on("click",function(){
 		datos.append('quienTelefono',$("#quienTelefono").val());
 		*/
 
-		llenarLista();
+
 		enviaAjax(datos,'incluir');
 		}
 
@@ -561,7 +561,6 @@ $("#modificar").on("click",function(){
 		datos.append('colab_c',$("#colab_c").val());
 		datos.append('observacion',$("#observacion").val());
 
-		llenarLista();
 		enviaAjax(datos,'modificar');
 
 
@@ -592,7 +591,6 @@ $("#eliminar").on("click",function(){
 		var datos = new FormData();
 		datos.append('accion','eliminar');
 		datos.append('cedulaEscolar',$("#cedulaEscolar").val());
-		llenarLista();
 		enviaAjax(datos,'eliminar');
 	}
 
@@ -818,12 +816,6 @@ function validarenvio(){
 
 
 	return true;
-}
-
-function llenarLista() {
-	var datos = new FormData();
-	datos.append('accion','consultar');
-	enviaAjax(datos,'consultar');
 }
 
 
@@ -1064,8 +1056,13 @@ function enviaAjax(datos,accion){
 				 // Aqui se muestra informacion si se Ingreso la informacion
 			   else{
 				   //limpia();
-					 llenarLista();
+					
 				   muestraMensaje(respuesta);
+				   $('#contenido').css('display', 'none');
+				$('#tableajax').DataTable().ajax.reload();
+				if (!$('#formulario').is(":visible")) {
+					$('#formulario').css('display', 'block');
+				}
 
 			   }
             },
@@ -1123,6 +1120,7 @@ function editar(tbody, table){
 	$("#incluir").prop('disabled', true);
 
   $("#cedulaEscolar").val(data[0]);
+  $('#contenido').css('display', 'block');
 
 
   if($("#cedulaEscolar").val().length > 6){
@@ -1130,7 +1128,11 @@ function editar(tbody, table){
       datos.append('accion','consultatr');
     datos.append('cedulaEscolar',$("#cedulaEscolar").val());
     enviaAjax(datos,'consultatr');
-  }
+  }else{
+	limpia2();
+	botonOff();
+	$("#incluir").prop('disabled', false);
+	}
  
    
     
@@ -1145,11 +1147,27 @@ function editar(tbody, table){
         console.log(data);
     }
 
-    $("#grado").val(data[0]);
-	$("#seccion").val(data[1]);
-	$("#anioe").val(data[2]);
-	$("#maestro").val(data[3]);
+    
 
+
+		confirmar();
+
+		$('#si').on('click', function() {
+
+			$('#botones').remove();
+
+		if(false){
+
+		}
+		else{
+
+			var datos = new FormData();
+		datos.append('accion','eliminar');
+		datos.append('cedulaEscolar',data[0]);
+		enviaAjax(datos,'eliminar');
+		}
+
+	});
    
     
     
@@ -1170,6 +1188,41 @@ function coloca(linea){
 
 
 }
+
+//boton que muestra y oculta el formulario
+
+$('#formulario').on('click', function() {
+	$('#formulario').css('display', 'none');
+
+	if ($('#contenido').is(":visible")) {
+		console.log("no");
+		$('#contenido').css('display', 'none');
+	}else{
+		$('#contenido').css('display', 'block');
+		console.log("se ve");
+
+	}
+
+	/* Act on the event */
+});
+
+$('#formulario1').on('click', function() {
+
+
+	$('#formulario').css('display', 'block');
+
+	if ($('#contenido').is(":visible")) {
+		console.log("no");
+		$('#contenido').css('display', 'none');
+	}else{
+		$('#contenido').css('display', 'block');
+		console.log("se ve");
+
+	}
+
+	/* Act on the event */
+});
+
 
 
 // function limpia(){

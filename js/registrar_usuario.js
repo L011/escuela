@@ -222,7 +222,7 @@ function enviaAjax(datos,accion){
 
 					   $("#apellidos").val(lee[0].apellidos);
 					   $("#nombres").val(lee[0].nombres);
-						 $("#cargo").val(lee[0].cargo);
+						$("#cargo").val(lee[0].cargo);
 				   }
 				   else if(lee['resultado']=='noencontro'){
 
@@ -234,9 +234,14 @@ function enviaAjax(datos,accion){
 
 			   }
 			   else{
-				   limpia();
-					 botonOff();
-				   muestraMensaje(respuesta);
+				limpia();
+				botonOff();
+				muestraMensaje(respuesta);
+				$('#contenido').css('display', 'none');
+				$('#tableajax').DataTable().ajax.reload();
+				if (!$('#formulario').is(":visible")) {
+					$('#formulario').css('display', 'block');
+				}
 
 			   }
             },
@@ -302,9 +307,10 @@ function editar(tbody, table){
 	botonOn();
 	$("#incluir").prop('disabled', true);
 
-  botonOn();
-
+	botonOn();
+	$('#contenido').css('display', 'block');
 	$("#cedula").val(data[0]);
+	
 	if($("#cedula").val().length > 6){
 		  var datos = new FormData();
 		    datos.append('accion','consultatr');
@@ -329,17 +335,66 @@ function editar(tbody, table){
         var data = table.row($(this).parents("tr")).data();
         console.log(data);
     }
+		
+		confirmar();
 
-    $("#grado").val(data[0]);
-	$("#seccion").val(data[1]);
-	$("#anioe").val(data[2]);
-	$("#maestro").val(data[3]);
+		$('#si').on('click', function() {
+
+			$('#botones').remove();
+
+		if(false){
+
+		}
+		else{
+
+			var datos = new FormData();
+		datos.append('accion','eliminar');
+		datos.append('cedula',data[0]);
+		enviaAjax(datos,'eliminar');
+		}
+
+	});
+
 
    
     
     
   })
 }
+
+//boton que muestra y oculta el formulario
+$('#formulario').on('click', function() {
+	$('#formulario').css('display', 'none');
+
+	if ($('#contenido').is(":visible")) {
+		console.log("no");
+		$('#contenido').css('display', 'none');
+	}else{
+		$('#contenido').css('display', 'block');
+		console.log("se ve");
+
+	}
+
+	/* Act on the event */
+});
+
+$('#formulario1').on('click', function() {
+
+
+	$('#formulario').css('display', 'block');
+
+	if ($('#contenido').is(":visible")) {
+		console.log("no");
+		$('#contenido').css('display', 'none');
+	}else{
+		$('#contenido').css('display', 'block');
+		console.log("se ve");
+
+	}
+
+	/* Act on the event */
+});
+
 
 
 //desabulita los botones modificar y eliminar para un cdigo mas limpio

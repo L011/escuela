@@ -4,7 +4,7 @@ $(document).ready(function(){
 	botonOff();
 
 	 tabla();
-	llenarLista();
+	
 	//console.log("Main")
 	//para obtener la fecha del servidor y calcular la
 	//edad de nacimiento que debe ser mayor a 18
@@ -30,6 +30,7 @@ $(document).ready(function(){
 
 		}
 	});
+
 
 
 	$("#apellidos").on("keypress",function(e){
@@ -95,7 +96,6 @@ $("#incluir").on("click",function(){
 		datos.append('correo',$("#correo").val());
 		datos.append('telefono',$("#telefono").val());
 		datos.append('cargo',$("#cargo").val());
-		llenarLista();
 		enviaAjax(datos,'incluir');
 	}
 });
@@ -118,7 +118,7 @@ $("#modificar").on("click",function(){
 			datos.append('correo',$("#correo").val());
 			datos.append('telefono',$("#telefono").val());
 			datos.append('cargo',$("#cargo").val());
-			llenarLista();
+			
 			enviaAjax(datos,'modificar');
 
 	}
@@ -153,6 +153,41 @@ $("#eliminar").on("click",function(){
 
 });
 
+//boton que muestra y oculta el formulario
+
+$('#formulario').on('click', function() {
+	$('#formulario').css('display', 'none');
+
+	if ($('#contenido').is(":visible")) {
+		console.log("no");
+		$('#contenido').css('display', 'none');
+	}else{
+		$('#contenido').css('display', 'block');
+		console.log("se ve");
+
+	}
+
+	/* Act on the event */
+});
+
+$('#formulario1').on('click', function() {
+
+
+	$('#formulario').css('display', 'block');
+
+	if ($('#contenido').is(":visible")) {
+		console.log("no");
+		$('#contenido').css('display', 'none');
+	}else{
+		$('#contenido').css('display', 'block');
+		console.log("se ve");
+
+	}
+
+	/* Act on the event */
+});
+
+
 //FIN DE CONTROL DE BOTONES
 
 
@@ -161,11 +196,6 @@ $("#eliminar").on("click",function(){
 
 });
 
-function llenarLista() {
-	var datos = new FormData();
-	datos.append('accion','consultar');
-	enviaAjax(datos,'consultar');
-}
 
 
 
@@ -315,15 +345,16 @@ function enviaAjax(datos,accion){
 						 //habilita los botones para poder eliminar y modificar
 
 						 botonOn();
-						 $("#incluir").prop('disabled', true);
-					   $("#apellidos").val(lee[0].apellidos);
-					   $("#nombres").val(lee[0].nombres);
-					   $("#fechadenacimiento").val(lee[0].fechadenacimiento);
-					   $("#sexo").val(lee[0].sexo);
-					   $("#correo").val(lee[0].correo);
-					   $("#telefono").val(lee[0].telefono);
-						 $("#cargo").val(lee[0].cargo);
-				   }
+						$("#incluir").prop('disabled', true);
+						$("#apellidos").val(lee[0].apellidos);
+						$("#nombres").val(lee[0].nombres);
+						$("#fechadenacimiento").val(lee[0].fechadenacimiento);
+						$("#sexo").val(lee[0].sexo);
+						$("#correo").val(lee[0].correo);
+						$("#telefono").val(lee[0].telefono);
+						$("#cargo").val(lee[0].cargo);
+
+					}
 				   else if(lee['resultado']=='noencontro'){
 
 				   }
@@ -334,14 +365,20 @@ function enviaAjax(datos,accion){
 
 			   }
 			   else{
-				   limpia();
-					 botonOff();
-				   muestraMensaje(respuesta);
+
+					limpia();
+					botonOff();
+
+					muestraMensaje(respuesta);
+					$('#contenido').css('display', 'none');
+					$('#tableajax').DataTable().ajax.reload();
+					if (!$('#formulario').is(":visible")) {
+					$('#formulario').css('display', 'block');
+				}
 
 			   }
             },
             error: function(){
-            	//console.log("AJX1")
 			   muestraMensaje("Error con ajax");
             }
 
@@ -364,11 +401,11 @@ function tabla(){
 			        { data: 0 },
 			        { data: 1 },
 			        { data: 2 },
-			        { data: 4 },
 			        { data: 3 },
-			        { data: 6 },
 			        { data: 5 },
-			        { data: 7 },
+			        { data: 4 },
+			        { data: 6 },
+			       
 			       
 			    
 			    	{"render": function () {
@@ -393,17 +430,26 @@ function editar(tbody, table){
     }
 
 botonOn();
+
 	$("#incluir").prop('disabled', true);
+	$('#contenido').css('display', 'block');
 
     $("#cedula").val(data[0]);
-	$("#apellidos").val(data[1]);
-	$("#nombres").val(data[2]);
-	$("#sexo").val(data[3]);
-	$("#fechadenacimiento").val(data[4]);
-	console.log(data[3]);
-	$("#telefono").val(data[5]);
-	$("#correo").val(data[6]);
-	$("#cargo").val(data[7]);
+
+	
+		if($("#cedula").val().length > 6){
+		  var datos = new FormData();
+		    datos.append('accion','consultatr');
+			datos.append('cedula',data[0]);
+			enviaAjax(datos,'consultatr');
+		}
+		else {
+			limpia2();
+			botonOff()
+			$("#incluir").prop('disabled', false);
+
+		}
+	
 
  
    
@@ -419,16 +465,32 @@ botonOn();
         console.log(data);
     }
 
-    $("#grado").val(data[0]);
-	$("#seccion").val(data[1]);
-	$("#anioe").val(data[2]);
-	$("#maestro").val(data[3]);
+    confirmar();
+
+	$('#si').on('click', function() {
+
+		$('#botones').remove();
+
+	if(false){
+
+	}
+	else{
+
+		var datos = new FormData();
+		datos.append('accion','eliminar');
+		datos.append('cedula',data[0]);
+		enviaAjax(datos,'eliminar');
+	}
+
+});
 
    
     
     
   })
 }
+
+//actualizacion de datatables
 
 
 

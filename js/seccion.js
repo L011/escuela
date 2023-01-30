@@ -257,6 +257,8 @@ function editar(tbody, table){
         console.log(data);
     }
 
+    $('#contenido').css('display', 'block');
+
     $("#grado").val(data[0]);
 	$("#seccion").val(data[1]);
 	$("#anioe").val(data[2]);
@@ -274,17 +276,66 @@ function editar(tbody, table){
         var data = table.row($(this).parents("tr")).data();
         console.log(data);
     }
+		
+		confirmar();
 
-    $("#grado").val(data[0]);
-	$("#seccion").val(data[1]);
-	$("#anioe").val(data[2]);
-	$("#maestro").val(data[3]);
+		$('#si').on('click', function() {
+
+			$('#botones').remove();
+
+		if(false){
+
+		}
+		else{
+
+			var datos = new FormData();
+		datos.append('accion','eliminar');
+		datos.append('maestro',data[3]);
+		
+		enviaAjax(datos,'eliminar');
+		}
+
+	});
 
    
     
     
   })
 }
+
+
+$('#formulario').on('click', function() {
+	$('#formulario').css('display', 'none');
+
+	if ($('#contenido').is(":visible")) {
+		console.log("no");
+		$('#contenido').css('display', 'none');
+	}else{
+		$('#contenido').css('display', 'block');
+		console.log("se ve");
+
+	}
+
+	/* Act on the event */
+});
+
+$('#formulario1').on('click', function() {
+
+
+	$('#formulario').css('display', 'block');
+
+	if ($('#contenido').is(":visible")) {
+		console.log("no");
+		$('#contenido').css('display', 'none');
+	}else{
+		$('#contenido').css('display', 'block');
+		console.log("se ve");
+
+	}
+
+	/* Act on the event */
+});
+
 
 
 function llenarMaestro(){

@@ -242,7 +242,7 @@ function validarenvio(){
 		 muestraMensaje("TELEFONO <br/>9999-9999999");
 	     return false;
 	}
-	else if(validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
+	else if(validarkeyup(/^[A-Za-z0-9\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
 		$("#direccionRepre"),$("#pDireccionRepre"),"SOLO LETRAS ENTRE 3 Y 30 CARACTERES")==0){
 		muestraMensaje("Dirección <br/>SOLO LETRAS ENTRE 3 Y 30 CARACTERES");
 		return false;
@@ -401,7 +401,11 @@ function enviaAjax(datos,accion){
              console.log(respuesta);
              limpia();
               botonOff();
-             llenarLista();
+             $('#contenido').css('display', 'none');
+						$('#tableajax').DataTable().ajax.reload();
+						if (!$('#formulario').is(":visible")) {
+					$('#formulario').css('display', 'block');
+				}
            }
 
 				   muestraMensaje(respuesta);
@@ -461,6 +465,7 @@ function editar(tbody, table){
 
 botonOn();
 	$("#incluir").prop('disabled', true);
+	$('#contenido').css('display', 'block');
 
   $("#cedula").val(data[0]);
 
@@ -476,6 +481,7 @@ botonOn();
     
     
   })
+
   $(tbody).on("click","button.eliminar", function(){
 	console.log("sakdopkaspo");
     if(table.row(this).child.isShown()){
@@ -485,12 +491,28 @@ botonOn();
         console.log(data);
     }
 
-    $("#grado").val(data[0]);
-	$("#seccion").val(data[1]);
-	$("#anioe").val(data[2]);
-	$("#maestro").val(data[3]);
+     confirmar();
+
+				$('#si').on('click', function() {
+
+					$('#botones').remove();
+
+				if(false){
+
+				}
+				else{
+
+					var datos = new FormData();
+					datos.append('accion','eliminar');
+					datos.append('cedula',data[0]);
+					enviaAjax(datos,'eliminar');
+				}
+
+			});
+
 
    
+			   
     
     
   })
@@ -498,8 +520,44 @@ botonOn();
 
 
 
+//boton que muestra y oculta el formulario
+
+$('#formulario').on('click', function() {
+	$('#formulario').css('display', 'none');
+
+	if ($('#contenido').is(":visible")) {
+		console.log("no");
+		$('#contenido').css('display', 'none');
+	}else{
+		$('#contenido').css('display', 'block');
+		console.log("se ve");
+
+	}
+
+	/* Act on the event */
+});
+
+$('#formulario1').on('click', function() {
+
+
+	$('#formulario').css('display', 'block');
+
+	if ($('#contenido').is(":visible")) {
+		console.log("no");
+		$('#contenido').css('display', 'none');
+	}else{
+		$('#contenido').css('display', 'block');
+		console.log("se ve");
+
+	}
+
+	/* Act on the event */
+});
+
+
+
 function botonOff() {
-	$("#incluir").prop('disabled', false)
+	$("#incluir").prop('disabled', false);
 	$("#modificar").prop('disabled', true);
 	$("#eliminar").prop('disabled', true);
 }
@@ -511,11 +569,7 @@ function botonOn() {
 }
 
 
-function llenarLista() {
-	var datos = new FormData();
-	datos.append('accion','consultar');
-	enviaAjax(datos,'consultar');
-}
+
 
 
 function limpia(){
