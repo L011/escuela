@@ -476,6 +476,7 @@ WHERE e.cedula_e='$this->cedulaEscolar'");
 			$resultado = $co->query("SELECT s.cedula_mm, s.id, e.nombres FROM seccion s
 INNER JOIN empleados e on s.cedula_mm=e.cedula
 WHERE s.grado='$this->grado' and s.seccion='$this->seccion'  ");
+
 			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
 
 			if($fila){
@@ -509,14 +510,7 @@ WHERE s.grado='$this->grado' and s.seccion='$this->seccion'  ");
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		try{
 
-			$grado = array( 0 => 'Preescolar' ,
-										 1 => '1er grado' ,
-										 2 => '2do grado' ,
-										 3 => '3er grado' ,
-										 4 => '4to grado' ,
-										 5 => '5to grado' ,
-										 6 => '6to grado' 
-										 );
+			
 
 		
 			$resultado = $co->query("SELECT DISTINCT grado FROM seccion ORDER BY grado ASC");
@@ -528,9 +522,13 @@ WHERE s.grado='$this->grado' and s.seccion='$this->seccion'  ");
 
 
 					$respuesta = $respuesta."<option value=";
+					$respuesta = $respuesta."'";
+
 					$respuesta = $respuesta.$r['grado'];
+
+					$respuesta = $respuesta."'";
 					$respuesta = $respuesta.">";
-					$respuesta = $respuesta.$grado[$r['grado']];
+					$respuesta = $respuesta.$r['grado'];
 					
 					$respuesta = $respuesta."</option>";
 
@@ -554,19 +552,11 @@ WHERE s.grado='$this->grado' and s.seccion='$this->seccion'  ");
 		$co = $this->conecta();
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		try{
-
-		
-			$grado = array(  1 => '1' ,
-							 2 => '2' ,
-							 3 => '3' ,
-							 4 => '4'
-										 
-							 );
-
-		
+	
 			$resultado = $co->query("SELECT seccion FROM seccion 
-WHERE seccion.grado='$this->grado'
-ORDER BY seccion ASC");
+			WHERE seccion.grado='$this->grado'");
+			
+
 			if($resultado){
 
 				$respuesta = '';
@@ -575,9 +565,15 @@ ORDER BY seccion ASC");
 
 
 					$respuesta = $respuesta."<option value=";
+
+					$respuesta = $respuesta."'";
+
 					$respuesta = $respuesta.$r['seccion'];
+
+					$respuesta = $respuesta."'";
+
 					$respuesta = $respuesta.">";
-					$respuesta = $respuesta.$grado[$r['seccion']];
+					$respuesta = $respuesta.$r['seccion'];
 					
 					$respuesta = $respuesta."</option>";
 

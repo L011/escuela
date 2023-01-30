@@ -247,7 +247,7 @@ function tabla(){
 			        { data: 3 },
 			    
 			    	{"render": function () {
-            return '<button type="button" id="ButtonEditar" class="editar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> M</span></button><button type="button" id="ButtonEliminar" class="eliminar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> E</span></button>';
+            return '<button type="button" id="ButtonEditar" class="editar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> M</span></button><button type="button" id="ButtonEliminar" class="eliminar edit-modal btn btn-danger botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> E</span></button>';
         }},
     ]
 		
@@ -266,10 +266,14 @@ function editar(tbody, table){
         var data = table.row($(this).parents("tr")).data();
         console.log(data);
     }
-
+    $('#seccion').empty();
+    seccion(data[0]);
     $('#contenido').css('display', 'block');
 
     $("#grado").val(data[0]);
+
+    
+
 	$("#seccion").val(data[1]);
 	$("#anioe").val(data[2]);
 	$("#maestro").val(data[3]);
@@ -346,6 +350,122 @@ $('#formulario1').on('click', function() {
 	/* Act on the event */
 });
 
+
+$("#grado").on('change', function(event) {
+	var cambio = $("#grado").val();
+
+
+	if (cambio == "Pre-escolar") {
+
+	console.log("sdas");
+
+	$('#seccion').empty();
+
+	$('#seccion').append($('<option>', {
+    value: "",
+    text: 'Seleccionar'
+
+}));
+
+	$('#seccion').append($('<option>', {
+    value: "Mañana A",
+    text: 'Mañana A'
+}));
+	$('#seccion').append($('<option>', {
+    value: "Mañana B",
+    text: 'Mañana B'
+}));
+	$('#seccion').append($('<option>', {
+    value: "Tarde C",
+    text: 'Tarde C'
+}));
+	$('#seccion').append($('<option>', {
+    value: "Tarde D",
+    text: 'Tarde D'
+}));
+
+
+
+	}
+	else{
+
+	$('#seccion').empty();
+
+	$('#seccion').append($('<option>', {
+    value: "",
+    text: 'Seleccionar'
+
+}));
+
+	$('#seccion').append($('<option>', {
+    value: "Mañana A",
+    text: 'Mañana A'
+}));
+	$('#seccion').append($('<option>', {
+    value: "Tarde B",
+    text: 'Tarde B'
+}));
+
+	}
+	/* Act on the event */
+});
+
+function seccion(grado) {
+	// body...
+
+	if (grado == "Pre-escolar") {
+
+	console.log("sdas");
+
+	$('#seccion').empty();
+
+	$('#seccion').append($('<option>', {
+    value: "",
+    text: 'Seleccionar'
+
+}));
+
+	$('#seccion').append($('<option>', {
+    value: "Mañana A",
+    text: 'Mañana A'
+}));
+	$('#seccion').append($('<option>', {
+    value: "Mañana B",
+    text: 'Mañana B'
+}));
+	$('#seccion').append($('<option>', {
+    value: "Tarde C",
+    text: 'Tarde C'
+}));
+	$('#seccion').append($('<option>', {
+    value: "Tarde D",
+    text: 'Tarde D'
+}));
+
+
+
+	}
+	else{
+
+	$('#seccion').empty();
+
+	$('#seccion').append($('<option>', {
+    value: "",
+    text: 'Seleccionar'
+
+}));
+
+	$('#seccion').append($('<option>', {
+    value: "Mañana A",
+    text: 'Mañana A'
+}));
+	$('#seccion').append($('<option>', {
+    value: "Tarde B",
+    text: 'Tarde B'
+}));
+
+	}
+}
 
 
 function llenarMaestro(){

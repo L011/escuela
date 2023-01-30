@@ -101,7 +101,7 @@
                           <option value="">Seleccionar</option>
                           <?php $year = date("Y");
                               for ($i=2022; $i<=$year+1; $i++){
-                                  echo '<option value="'.$i.'">'.$i."-".($i+1).'</option>';
+                                  echo '<option value="'.$i."-".($i+1).'">'.$i."-".($i+1).'</option>';
                               }
                           ?>
                       </select>

@@ -367,7 +367,7 @@ function enviaAjax(datos,accion){
 
 				 // Aqui se muestra informacion si se Ingreso la informacion
 			   else{
-				   //limpia();
+				   all();
 					llenarLista();
 					muestraMensaje(respuesta);
 					$('#contenido').css('display', 'none');
@@ -413,7 +413,7 @@ function tabla(){
 		       	       
 			   
 			    	{"render": function () {
-            return '<button type="button" id="ButtonEditar" class="editar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> M</span></button><button type="button" id="ButtonEliminar" class="eliminar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> E</span></button>';
+            return '<button type="button" id="ButtonEditar" class="editar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> M</span></button><button type="button" id="ButtonEliminar" class="eliminar edit-modal btn btn-danger botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> E</span></button>';
         }},
     ]
 		
@@ -542,7 +542,17 @@ function inicio() {
 	// body...
 }
 
+function all(){
 
+	$('input:gt(0)').val("");
+ 
+	$('input[type=select]').val('');
+	$("#grado").val('');
+	$("#seccion").val('');
+	$("#anioe").val('');
+	
+
+}
 
 
 

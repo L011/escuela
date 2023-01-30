@@ -52,24 +52,20 @@
                 <label for="">Grado</label>
                     <select id="grado" name="grado" class="form-control form-select mb-3">
                         <option selected>Seleccionar</option>
-                        <option value="0">Pre-escolar</option>
-                        <option value="1">1er Grado</option>
-                        <option value="2">2do Grado</option>
-                        <option value="3">3er Grado</option>
-                        <option value="4">4to Grado</option>
-                        <option value="5">5to Grado</option>
-                        <option value="6">6to Grado</option>
+                        <option value="Pre-escolar">Pre-escolar</option>
+                        <option value="Primer Grado">Primer Grado</option>
+                        <option value="Segundo Grado">Segundo Grado</option>
+                        <option value="Tercer Grado">Tercer Grado</option>
+                        <option value="Cuarto Grado">Cuarto Grado</option>
+                        <option value="Quinto Grado">Quinto Grado</option>
+                        <option value="Sexto Grado">Sexto Grado</option>
                     </select>
                 </div>
 
                   <div class="col">
                   <label for="">Sección</label>
                       <select id="seccion" name="seccion" class="form-control form-select mb-3">
-                          <option selected>Seleccionar</option>
-                          <option value="1">Sección 1</option>
-                          <option value="2">Sección 2</option>
-                          <option value="3">Sección 3</option>
-                          <option value="4">Sección 4</option>
+                         
                       </select>
                   </div>
                   
@@ -79,7 +75,7 @@
                           <option value="">Seleccionar</option>
                           <?php $year = date("Y");
                               for ($i=2022; $i<=$year+1; $i++){
-                                  echo '<option value="'.$i.'">'.$i.'</option>';
+                                  echo '<option value="'.$i."-".($i+1).'">'.$i."-".($i+1).'</option>';
                               }
                           ?>
                       </select>
