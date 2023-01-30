@@ -3,9 +3,9 @@
 	require_once('datos.php');
 	
 
-	class registro_maestro extends datos{
+	class seccion extends datos{
 
-		function consultatr(){
+		function tabla(){
 
 
 
@@ -14,14 +14,14 @@
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		try{
 
-			$resultado = $co->query("SELECT s.grado, s.seccion, s.anio_escolar, s.cedula_mm FROM seccion s 
+			$resultado = $co->query("SELECT s.grado, s.seccion, s.anio_escolar, s.cedula_mm, e.nombres, e.apellidos FROM seccion s 
 INNER JOIN empleados e ON s.cedula_mm= e.cedula
 ");
 
 			
 
 			
-			$rs = $resultado->fetchAll(PDO::FETCH_FUNC, fn ($grado, $seccion, $anio_escolar, $cedula_mm) => [$grado, $seccion, $anio_escolar, $cedula_mm] );
+			$rs = $resultado->fetchAll(PDO::FETCH_FUNC, fn ($grado, $seccion, $anio_escolar,$nombres, $apellidos, $cedula_mm) => [$grado, $seccion, $anio_escolar,$nombres, $apellidos, $cedula_mm] );
 			echo json_encode(['data' => $rs,]);
 
 		}catch(Exception $e){
@@ -32,8 +32,8 @@ INNER JOIN empleados e ON s.cedula_mm= e.cedula
 }
 
 
-$o = new registro_maestro();
+$o = new seccion();
 
-	echo  $o->consultatr();
+	echo  $o->tabla();
 
 ?>

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-//llenarLista();
+llenarMaestro();
  tabla();
 
 
@@ -53,7 +53,7 @@ $("#incluir").on("click",function(){
 		datos.append('maestro',$("#maestro").val());
 
 
-		llenarLista();
+	
 		enviaAjax(datos,'incluir');
 		}
 
@@ -78,7 +78,7 @@ $("#actualizar").on("click",function(){
 		
 
 		console.log("asdo");
-		llenarLista();
+		
 		enviaAjax(datos,'actualizar');
 
 
@@ -100,7 +100,7 @@ $("#eliminar").on("click",function(){
 		var datos = new FormData();
 		datos.append('accion','eliminar');
 		datos.append('maestro',$("#maestro").val());
-		llenarLista();
+		
 		enviaAjax(datos,'eliminar');
 
 	});
@@ -126,13 +126,6 @@ function validarenvio(){
 	return true;
 }
 
-function llenarLista() {
-var datos4 = new FormData();
-	datos4.append('accion','tabla');
-	enviaAjax(datos4,'tabla');
-
-	
-}
 
 
 //Funcion que muestra el modal con un mensaje
@@ -193,6 +186,7 @@ function enviaAjax(datos,accion){
 			processData: false,
 	        cache: false,
             success: function(respuesta) {
+            	console.log("evio justo");
 							//si resulto exitosa la transmision
 
 			   if(accion=='consultar'){
@@ -204,16 +198,11 @@ function enviaAjax(datos,accion){
 					  $("#maestro").html(respuesta);
 				   
 			   }
-			    else if(accion=='consultatr'){
-				
-								   
-			   }
-			 
 
 				 // Aqui se muestra informacion si se Ingreso la informacion
 			   else{
 				   //limpia();
-					 llenarLista();
+					
 				   muestraMensaje(respuesta);
 
 			   }
@@ -226,24 +215,34 @@ function enviaAjax(datos,accion){
     });
 
 }
+
+
 function tabla(){
 
 
+
+
 		var data=$("#tableajax").DataTable({
-			ajax:'modelo/tabla.php',
+			ajax:{
+
+			url:'modelo/tabla.php',
+			
+			},
 			columns: [
 			        { data: 0 },
 			        { data: 1 },
 			        { data: 2 },
+			        { data: 4 },
+			        { data: 5 },
 			        { data: 3 },
 			    
 			    	{"render": function () {
-            return '<button type="button" id="ButtonEditar" class="editar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> Editar</span></button>';
+            return '<button type="button" id="ButtonEditar" class="editar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> M</span></button><button type="button" id="ButtonEliminar" class="eliminar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> E</span></button>';
         }},
     ]
 		
 	});
-		editar("#tableajax tbody",data );
+	editar("#tableajax tbody",data );
 
 }
 
@@ -260,8 +259,26 @@ function editar(tbody, table){
 
     $("#grado").val(data[0]);
 	$("#seccion").val(data[1]);
-	$("#anioe").val(data[3]);
-	$("#maestro").val(data[4]);
+	$("#anioe").val(data[2]);
+	$("#maestro").val(data[3]);
+
+   
+    
+    
+  })
+  $(tbody).on("click","button.eliminar", function(){
+	console.log("sakdopkaspo");
+    if(table.row(this).child.isShown()){
+        var data = table.row(this).data();
+    }else{
+        var data = table.row($(this).parents("tr")).data();
+        console.log(data);
+    }
+
+    $("#grado").val(data[0]);
+	$("#seccion").val(data[1]);
+	$("#anioe").val(data[2]);
+	$("#maestro").val(data[3]);
 
    
     
@@ -270,52 +287,8 @@ function editar(tbody, table){
 }
 
 
-
-/*$("#MyTable").addClass("nowrap").DataTable({
-    "pageLength": 5,
-    "order": [[0, "desc"]],
-    data: MiArregloDeDatos,
-    columns: [
-        { title: "cell1" },
-        { title: "cell2" },
-        { title: "cell3" },
-        { title: "cell4" },
-        { title: "cell5" },
-    ],
-    columnDefs: [
-        { targets: 3, visible: false },
-        {
-            targets: -1,
-            orderable: false,
-            data: null,
-            render: function (data, type, row, meta) {
-                let fila = meta.row;
-                let botones = `
-                        <button class='btn btn-primary btn-circle'
-                            onclick='toggle("#div_misAcciones"); return false;'>
-                            <i class="fa fa-list" style="font-size:15px;"></i>
-                        </button>`;
-                return botones;
-            }
-        }
-    ],
-    "bDestroy": true
-});*/
-
-
-
-
-
-
-//funcion para pasar de la lista a el formulario
-function coloca(linea){
-
-console.log(linea);
-	$("#grado").val($(linea).find("td:eq(0)").text());
-	$("#seccion").val($(linea).find("td:eq(1)").text());
-	$("#anioe").val($(linea).find("td:eq(2)").text());
-	$("#maestro").val($(linea).find("td:eq(5)").text());
-	
-
+function llenarMaestro(){
+	var datos = new FormData();
+		datos.append('accion','consultatr');
+		enviaAjax(datos,'consultatr');
 }
-

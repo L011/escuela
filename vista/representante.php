@@ -270,7 +270,7 @@
             </form>
 
             <div class="container mb-5">
-            <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover" id="tableajax">
              <thead>
              <tr>
              <th>Cedula</th>
@@ -278,14 +278,11 @@
              <th>Nombres</th>
              <th>Telefono</th>
              <th>Correo</th>
+             <th>Acciones</th>
              </tr>
             </thead>
 
-            <tbody id="resultadoconsulta">
-
-
-
-            </tbody>
+           
 
             <div class="modal-footer bg-light">
             <div class="col">
@@ -296,6 +293,7 @@
             </table>
 
           </div>
+
         </main>
         <?php
             require_once("comunes/footer.php");

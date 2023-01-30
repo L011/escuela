@@ -122,33 +122,6 @@
         </main>
 
 
-        <div class="container mb-5">
-          <table class="table table-striped table-hover" id="json_data">
-           <thead>
-           <tr>
-           <th>Grado</th>
-           <th>Sección</th>
-           <th>Año</th>
-           <th>Nombre</th>
-           <th>Apellidos</th>
-            <th>Cedula</th>
-           </tr>
-          </thead>
-
-          <tbody id="resultadoconsulta">
-
-          </tbody>
-
-        <div class="modal-footer bg-light">
-        <div class="col">
-
-        </div>
-
-        </div>
-        </table>
-
-      </div>
-
       <div class="container mb-5">
         <table class="table table-striped table-hover" id="tableajax">
          <thead>
@@ -156,6 +129,8 @@
          <th>Grado</th>
          <th>Seccion</th>
          <th>Año Escolar</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
          <th>Cedula</th>
          <th>Accciones</th>
          

@@ -2,6 +2,7 @@
 $(document).ready(function(){
 
 	llenarLista();
+	tabla();
 	botonOff();
 	//console.log("Main")
 	//para obtener la fecha del servidor y calcular la
@@ -253,6 +254,89 @@ function enviaAjax(datos,accion){
 
 
 }
+
+
+
+
+
+unction tabla(){
+
+
+
+
+		var data=$("#tableajax").DataTable({
+			ajax:{
+
+			url:'modelo/tablarepresentante.php',
+			
+			},
+			columns: [
+			        { data: 0 },
+			        { data: 1 },
+			        { data: 2 },
+			        { data: 3 },
+			        { data: 4 },
+			       	       
+			   
+			    	{"render": function () {
+            return '<button type="button" id="ButtonEditar" class="editar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> M</span></button><button type="button" id="ButtonEliminar" class="eliminar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> E</span></button>';
+        }},
+    ]
+		
+	});
+	editar("#tableajax tbody",data );
+
+}
+
+
+function editar(tbody, table){
+  $(tbody).on("click","button.editar", function(){
+	console.log("sakdopkaspo");
+    if(table.row(this).child.isShown()){
+        var data = table.row(this).data();
+    }else{
+        var data = table.row($(this).parents("tr")).data();
+        console.log(data);
+    }
+
+botonOn();
+	$("#incluir").prop('disabled', true);
+
+  $("#cedula").val(data[0]);
+
+
+  if($("#cedula").val().length > 6){
+    var datos = new FormData();
+      datos.append('accion','consultatr');
+    datos.append('cedula',$("#cedula").val());
+    enviaAjax(datos,'consultatr');
+  }
+ 
+   
+    
+    
+  })
+  $(tbody).on("click","button.eliminar", function(){
+	console.log("sakdopkaspo");
+    if(table.row(this).child.isShown()){
+        var data = table.row(this).data();
+    }else{
+        var data = table.row($(this).parents("tr")).data();
+        console.log(data);
+    }
+
+    $("#grado").val(data[0]);
+	$("#seccion").val(data[1]);
+	$("#anioe").val(data[2]);
+	$("#maestro").val(data[3]);
+
+   
+    
+    
+  })
+}
+
+
 //desabulita los botones modificar y eliminar para un cdigo mas limpio
 function botonOff() {
 	$("#modificar").prop('disabled', true);

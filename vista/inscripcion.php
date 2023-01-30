@@ -135,7 +135,32 @@
 
       </body>
 
+<div class="container mb-5">
+        <table class="table table-striped table-hover" id="tableajax">
+         <thead>
+         <tr>
+         <th>Cedula</th>
+         <th>Apellidos</th>
+         <th>Nombres</th>
+         <th>Grado</th>
+         <th>Sección</th>
+         <th>Año</th>
+         <th>Acciones</th>
 
+         </tr>
+        </thead>
+
+      
+
+        <div class="modal-footer bg-light">
+        <div class="col">
+
+        </div>
+
+        </div>
+        </table>
+
+      </div>
 
         <div class="container mb-5">
         <table class="table table-striped table-hover" id="json_data">

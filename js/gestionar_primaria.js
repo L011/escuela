@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 llenarLista();
-//tabla();
+tabla();
 
 	//alert("at1");
 	//console.log("Main")
@@ -920,6 +920,9 @@ function coloca(linea){
 
 
 
+
+
+
 //funcion que envia y recibe datos por AJAX
 function enviaAjax(datos,accion){
 
@@ -1075,28 +1078,85 @@ function enviaAjax(datos,accion){
 
 }
 
+
 function tabla(){
 
-	$.fn.dataTable.ext.errMode = 'throw';
-
-
-	console.log("nhaiusd");
-    		$("#json_data").DataTable({
-        "order": [[ 1, "asc" ]],
-        ajax: 'modelo/tabla.php',
-        'aLengthMenu': [[100, 250, 500, -1], [100, 250, 500, 'All']],
-        'iDisplayLength': 100,
-        "columns": [
-            { "data": "cedula_e" },
-            { "data": "nombre" },
-            { "data": "number_of_people" }
-        ]
-    });
 
 
 
+		var data=$("#tableajax").DataTable({
+			ajax:{
+
+			url:'modelo/tablaingresoprimaria.php',
+			
+			},
+			columns: [
+			        { data: 0 },
+			        { data: 1 },
+			        { data: 2 },
+			        { data: 3 },
+			       
+			       	       
+			   
+			    	{"render": function () {
+            return '<button type="button" id="ButtonEditar" class="editar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> M</span></button><button type="button" id="ButtonEliminar" class="eliminar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> E</span></button>';
+        }},
+    ]
+		
+	});
+	editar("#tableajax tbody",data );
 
 }
+
+
+function editar(tbody, table){
+  $(tbody).on("click","button.editar", function(){
+	console.log("sakdopkaspo");
+    if(table.row(this).child.isShown()){
+        var data = table.row(this).data();
+    }else{
+        var data = table.row($(this).parents("tr")).data();
+        console.log(data);
+    }
+
+
+	$("#incluir").prop('disabled', true);
+
+  $("#cedulaEscolar").val(data[0]);
+
+
+  if($("#cedulaEscolar").val().length > 6){
+    var datos = new FormData();
+      datos.append('accion','consultatr');
+    datos.append('cedulaEscolar',$("#cedulaEscolar").val());
+    enviaAjax(datos,'consultatr');
+  }
+ 
+   
+    
+    
+  })
+  $(tbody).on("click","button.eliminar", function(){
+	console.log("sakdopkaspo");
+    if(table.row(this).child.isShown()){
+        var data = table.row(this).data();
+    }else{
+        var data = table.row($(this).parents("tr")).data();
+        console.log(data);
+    }
+
+    $("#grado").val(data[0]);
+	$("#seccion").val(data[1]);
+	$("#anioe").val(data[2]);
+	$("#maestro").val(data[3]);
+
+   
+    
+    
+  })
+}
+
+
 
 //funcion para pasar de la lista a el formulario
 function coloca(linea){

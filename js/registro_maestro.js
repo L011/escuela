@@ -2,6 +2,8 @@
 $(document).ready(function(){
 
 	botonOff();
+
+	 tabla();
 	llenarLista();
 	//console.log("Main")
 	//para obtener la fecha del servidor y calcular la
@@ -347,7 +349,86 @@ function enviaAjax(datos,accion){
 
 }
 
-// funcion para confirmar la eliminacion o modificaion 
+function tabla(){
+
+
+
+
+		var data=$("#tableajax").DataTable({
+			ajax:{
+
+			url:'modelo/tablamaestro.php',
+			
+			},
+			columns: [
+			        { data: 0 },
+			        { data: 1 },
+			        { data: 2 },
+			        { data: 4 },
+			        { data: 3 },
+			        { data: 6 },
+			        { data: 5 },
+			        { data: 7 },
+			       
+			    
+			    	{"render": function () {
+            return '<button type="button" id="ButtonEditar" class="editar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> M</span></button><button type="button" id="ButtonEliminar" class="eliminar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> E</span></button>';
+        }},
+    ]
+		
+	});
+	editar("#tableajax tbody",data );
+
+}
+
+
+function editar(tbody, table){
+  $(tbody).on("click","button.editar", function(){
+	console.log("sakdopkaspo");
+    if(table.row(this).child.isShown()){
+        var data = table.row(this).data();
+    }else{
+        var data = table.row($(this).parents("tr")).data();
+        console.log(data);
+    }
+
+botonOn();
+	$("#incluir").prop('disabled', true);
+
+    $("#cedula").val(data[0]);
+	$("#apellidos").val(data[1]);
+	$("#nombres").val(data[2]);
+	$("#sexo").val(data[3]);
+	$("#fechadenacimiento").val(data[4]);
+	console.log(data[3]);
+	$("#telefono").val(data[5]);
+	$("#correo").val(data[6]);
+	$("#cargo").val(data[7]);
+
+ 
+   
+    
+    
+  })
+  $(tbody).on("click","button.eliminar", function(){
+	console.log("sakdopkaspo");
+    if(table.row(this).child.isShown()){
+        var data = table.row(this).data();
+    }else{
+        var data = table.row($(this).parents("tr")).data();
+        console.log(data);
+    }
+
+    $("#grado").val(data[0]);
+	$("#seccion").val(data[1]);
+	$("#anioe").val(data[2]);
+	$("#maestro").val(data[3]);
+
+   
+    
+    
+  })
+}
 
 
 

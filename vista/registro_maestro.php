@@ -140,7 +140,7 @@
 <h2> Lista de empleados</h2>
 </div>
 
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover" id="tableajax">
 	<thead>
 	<tr>
 	<th>Cedula</th>
@@ -151,6 +151,7 @@
 	<th>Correo</th>
 	<th>Telefono</th>
 	<th>Cargo</th>
+	<th>Accciones</th>
 	</tr>
 </thead>
 

@@ -218,26 +218,6 @@ class seccion extends datos{
 	}
 
 
-		function tabla(){
-
-		$co = $this->conecta();
-		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			try{
-
-				$resultado = $co->query("Select cedula, apellidos, nombres, sexo,fechadenacimiento, telefono  from empleados");
-
-				
-
-				
-				$rs = $resultado->fetchAll(PDO::FETCH_FUNC, fn ($cedula, $apellido, $nombre, $sexo, $fechadenacimiento, $telefono ) => [$cedula, $apellido, $nombre, $sexo, $fechadenacimiento, $telefono] );
-				echo json_encode(['data' => $rs,]);
-
-			}catch(Exception $e){
-				$envia = array('resultado'=>$e->getMessage());
-				return json_encode($envia);
-			}
-		}
-
 
 	function consultatr(){
 		$co = $this->conecta();
@@ -285,9 +265,6 @@ class seccion extends datos{
 
 
 
-	
-
-	
 	
 
 	function obtienefecha(){
