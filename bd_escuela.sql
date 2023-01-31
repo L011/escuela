@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-01-2023 a las 21:22:10
--- Versión del servidor: 10.1.35-MariaDB
--- Versión de PHP: 7.2.9
+-- Tiempo de generación: 31-01-2023 a las 14:09:40
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -50,7 +49,7 @@ CREATE TABLE `antecedentes_prenatales_postnatales` (
   `forceps` varchar(2) NOT NULL,
   `edad_madre_parto` int(2) NOT NULL,
   `problema_en_parto` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -63,7 +62,7 @@ CREATE TABLE `colaboracion` (
   `colab_comun` varchar(20) NOT NULL,
   `dia_disp` varchar(11) NOT NULL,
   `horario` varchar(7) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -76,7 +75,7 @@ CREATE TABLE `control_esfinteres` (
   `se_orina` varchar(2) NOT NULL,
   `banio_solo` varchar(2) NOT NULL,
   `edad_no_panales` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -113,7 +112,7 @@ CREATE TABLE `desarrollo_evolutivo` (
   `sindrome_down` varchar(2) NOT NULL,
   `sindrome_autista` varchar(2) NOT NULL,
   `otro_sindrome` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -128,7 +127,7 @@ CREATE TABLE `documentos` (
   `fotos` varchar(2) NOT NULL,
   `cedula_r` varchar(2) NOT NULL,
   `constancia_s` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `documentos`
@@ -160,17 +159,25 @@ CREATE TABLE `empleados` (
   `correo` varchar(50) NOT NULL,
   `cargo` varchar(14) NOT NULL,
   `clave` varchar(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `empleados`
 --
 
 INSERT INTO `empleados` (`cedula`, `apellidos`, `nombres`, `sexo`, `fechadenacimiento`, `telefono`, `correo`, `cargo`, `clave`) VALUES
-('11111111', 'Alfonzino', 'Alfonzo', 'M', '1994-06-24', '3243-5645473', 'alfonzinogutierrez@gmail.com', 'Maestro', '121212'),
-('11111342', 'Iebrin', 'Suus', 'M', '2022-06-02', '0426-9597196', '232343qq@gmail.com', 'Maestro', ''),
-('12345678', 'Abra cadabra', 'Elgato man', 'F', '2004-11-27', '0239-2324023', 'mkfnwefn@serinf.com', 'Administrador', '232323'),
-('22334455', 'Kirkland', 'Huus', 'M', '2022-08-10', '0041-6455075', 'empleadodenadie@gmail.com', 'Maestro', '');
+('12345678', 'Sera Mejor', 'CHeque', 'F', '2004-11-27', '0239-2324023', 'mkfnwefn@serinf.com', 'Administrador', '12345678'),
+('22334455', 'Kirkland', 'Huus', 'F', '2022-08-10', '0041-6455075', 'empleadodenadie@gmail.com', 'Maestro', '232323'),
+('28764865', 'Favorita', 'Malo', 'M', '2023-01-12', '2332-4324323', 'venir@gmail.com', 'Administrador', ''),
+('54785123', 'Preguntas', 'Retoricas', 'M', '2021-09-08', '8734-2342643', 'mejores@hotmail.com', 'Maestro', '2435'),
+('56234986', 'Moonlight', 'XXXTENTATION', 'M', '1967-04-23', '3244-5435345', 'spotlight@gmail.com', 'Maestro', ''),
+('56432578', 'Tove Lo', 'Say It', 'F', '1992-04-23', '2343-3245435', 'freewannabe@gmail.com', 'Maestro', ''),
+('56872567', 'Futuro', 'Desconocido', 'M', '1940-04-02', '5434-4325463', 'atardecer@gmail.com', 'Maestro', ''),
+('78086345', 'Diplo', 'DeorroJi', 'M', '1976-06-30', '4564-3254634', 'ningunlugar@gmai.com', 'Maestro', ''),
+('78237463', 'Cambur', 'Pinton', 'M', '2022-04-20', '2324-4234234', 'polarpolar@gmail.com', 'Maestro', ''),
+('78755733', 'First You', 'Follow Me Down', 'M', '1976-04-02', '3454-3234235', 'needyoulove@gmail.com', 'Maestro', ''),
+('87650765', 'tranqui', 'Hecho parce', 'F', '2023-01-27', '4335-4324343', 'alguien@servidor.com', 'Maestro', ''),
+('90876345', 'Mar Ci', 'Noches Lunares', 'F', '1974-10-16', '3243-3653433', 'futuro@gmail.com', 'Maestro', '');
 
 -- --------------------------------------------------------
 
@@ -181,7 +188,7 @@ INSERT INTO `empleados` (`cedula`, `apellidos`, `nombres`, `sexo`, `fechadenacim
 CREATE TABLE `enfermedades` (
   `id_enfermedad` varchar(2) NOT NULL,
   `enfermedad` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -192,7 +199,7 @@ CREATE TABLE `enfermedades` (
 CREATE TABLE `enfermedad_estudiante` (
   `id_enfermedad` varchar(2) NOT NULL,
   `cedula_e` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -225,7 +232,7 @@ CREATE TABLE `equilibrio_emocional` (
   `escenas_familiar` varchar(2) NOT NULL,
   `discusiones` varchar(2) NOT NULL,
   `amigos` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -246,18 +253,18 @@ CREATE TABLE `estudiante` (
   `retira_solo` varchar(2) NOT NULL,
   `posee_canai` varchar(2) NOT NULL,
   `inf_medica` text NOT NULL,
-  `observ` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `observ` varchar(50) NOT NULL,
+  `quien_vive` varchar(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `estudiante`
 --
 
-INSERT INTO `estudiante` (`cedula_e`, `nombre`, `apellido`, `sexo`, `fecha_n`, `estado_n`, `ciudad_n`, `cedula_mama`, `cedula_p`, `retira_solo`, `posee_canai`, `inf_medica`, `observ`) VALUES
-('12344321', 'Hd Graphics', 'RTX Geoforce', 'm', '2022-06-17', 'Lara', 'Barquisimeto', '12332434', 'dasd32324', 'Se', 'si', 'lopsum adertf dascs kumd', 'lopsum adertf dascs kumd'),
-('12345678', 'San Andreas', 'Gt Racing', 'm', '2022-06-17', 'Lara', 'Barquisimeto', '12332434', 'dasd32324', 'si', 'si', 'lopsum adertf dascs kumd', 'lopsum adertf dascs kumd'),
-('12365533', 'Tengo Hambre', 'Hamburgue', 'f', '2022-06-17', 'China', 'Carbon fiber mu', '12332434', 'dasd32324', 'si', 'no', 'lopsum adertf dascs kumd', 'lopsum adertf dascs kumd'),
-('12399993', 'Pantalla camara', 'Corneta Rania', 'f', '2022-06-17', 'China', 'Carbon fiber mu', '12332434', 'dasd32324', 'si', 'no', 'lopsum adertf dascs kumd', 'lopsum adertf dascs kumd');
+INSERT INTO `estudiante` (`cedula_e`, `nombre`, `apellido`, `sexo`, `fecha_n`, `estado_n`, `ciudad_n`, `cedula_mama`, `cedula_p`, `retira_solo`, `posee_canai`, `inf_medica`, `observ`, `quien_vive`) VALUES
+('123456654', 'Hd Graphics', 'RTX Geoforce', 'm', '2023-01-06', 'Lara', 'Barquisimeto', '7263724234', '726372412', 'si', 'si', 'bnbnbnasasas', 'bnbnbnbnbasasasasas', ''),
+('28965384', 'San Andreas', 'Gt Racing', 'm', '2023-01-13', 'Lara', 'Barquisimeto', '7263724234', '32565532423', '0', 'si', 'rtygfr sadnaisjd askdnsakjnd', 'sandinsadasndiasdd sadnisandas ', 'papamama'),
+('28967899', 'Pantalla camara', 'Corneta Rania', 'm', '2023-01-13', 'Lara', 'Barquisimeto', '7263724234', 'dasd32324', 'si', 'si', '----------------------------------------aaa---------', '----------------------------------------aaa-------', '');
 
 -- --------------------------------------------------------
 
@@ -271,7 +278,7 @@ CREATE TABLE `familiar` (
   `personas_ingreso_dep` varchar(2) NOT NULL,
   `tipo_vivienda` varchar(10) NOT NULL,
   `tenencia_vivienda` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -300,7 +307,7 @@ CREATE TABLE `habitos` (
   `cubiertos` varchar(2) NOT NULL,
   `tareas_hogar` varchar(2) NOT NULL,
   `normas_cortesia` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -314,29 +321,7 @@ CREATE TABLE `hermanos` (
   `nom_ape` varchar(40) NOT NULL,
   `grado` varchar(10) NOT NULL,
   `turno` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `hermanos`
---
-
-INSERT INTO `hermanos` (`id`, `cedula_e`, `nom_ape`, `grado`, `turno`) VALUES
-(47, '12345678', '', 'Selecciona', 'Selecciona'),
-(48, '12345678', '', 'Selecciona', 'Selecciona'),
-(49, '12345678', '', '', 'Selecciona'),
-(50, '12345678', '', 'Selecciona', 'Selecciona'),
-(51, '12344321', '', 'null', 'null'),
-(52, '12344321', '', 'Selecciona', 'Selecciona'),
-(53, '12344321', '', '', 'Selecciona'),
-(54, '12344321', '', 'Selecciona', 'Selecciona'),
-(55, '12399993', '', 'null', 'null'),
-(56, '12399993', '', 'Selecciona', 'Selecciona'),
-(57, '12399993', '', '', 'Selecciona'),
-(58, '12399993', '', 'Selecciona', 'Selecciona'),
-(59, '12365533', '', 'null', 'null'),
-(60, '12365533', '', 'Selecciona', 'Selecciona'),
-(61, '12365533', '', '', 'Selecciona'),
-(62, '12365533', '', 'Selecciona', 'Selecciona');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -351,18 +336,21 @@ CREATE TABLE `padres` (
   `telefono_m` varchar(15) NOT NULL,
   `direc_trab` varchar(40) NOT NULL,
   `parentesco` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `padres`
 --
 
 INSERT INTO `padres` (`cedula_m`, `nombre_m`, `apellido_m`, `telefono_m`, `direc_trab`, `parentesco`) VALUES
+('', '', '', '', '', ''),
 ('1231231', 'Francisco', 'Bertino', '03245545345', 'Via las veritas, zona norte', ''),
 ('12332434', 'Yusus', 'Francisca', '03277787877', 'Barquisimeto, calle 4', ''),
 ('2342134343', 'Ramona', 'Ramno', 'sakdajsiodjas', 'Por ahi', ''),
 ('273488732523', 'Fania', 'Gutierrez', '23442523532523', 'Ama de casa', ''),
-('32565532423', 'Pedro', 'Pedriño', '324234235234523', 'Via las industrias', ''),
+('32565532423', 'Ulala', 'Carton Piedra', '2323423543', 'jhajshjdahsjdsad', ''),
+('726372412', 'Tengo Hambre', 'Hamburgue', 'sadasdas', 'sadsadasda', ''),
+('7263724234', 'Ulala', 'Carton Piedra', '2323423543', 'jhajshjdahsjdsad', ''),
 ('983954533', 'Yusus', 'Francisca', '03277787877', 'Barquisimeto, calle 4', ''),
 ('dasd32324', 'Francisco', 'Bertino', '03245545345', 'Via las veritas, zona norte', '');
 
@@ -380,7 +368,7 @@ CREATE TABLE `personas_en_casa` (
   `edad` int(2) NOT NULL,
   `parentesco` varchar(30) NOT NULL,
   `ocupacion` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -392,7 +380,7 @@ CREATE TABLE `personas_estudiante` (
   `id` int(2) NOT NULL,
   `cedula_e` varchar(15) NOT NULL,
   `id_persona` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -404,7 +392,7 @@ CREATE TABLE `persona_retira` (
   `id_persona` int(1) NOT NULL,
   `nombre_apellido` varchar(30) NOT NULL,
   `telefono` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -430,7 +418,7 @@ CREATE TABLE `representante` (
   `banco` varchar(20) NOT NULL,
   `carnet_p` varchar(15) NOT NULL,
   `serial_p` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `representante`
@@ -438,17 +426,8 @@ CREATE TABLE `representante` (
 
 INSERT INTO `representante` (`cedula`, `nombre`, `apellido`, `telefono`, `estudio`, `religion`, `civil`, `nacion`, `direc`, `paren_repre`, `ocupa`, `correo`, `cuenta_b`, `tipo_c`, `banco`, `carnet_p`, `serial_p`) VALUES
 ('1221321', 'Antonio', 'Pedro', '0244-9485434', 'bachillar', 'Ateísmo', 'divorciado', 'extranjero', 'Las veritas', 'tia', 'Ama de casa', 'hioiiss@gmail.com', '2904893859353553535444444', 'ahorro', '9', '245325453454353', '435983495834944'),
-('12213212', 'Antonio', 'Pedro', '0244-9485434', 'bachillar', 'Ateísmo', 'divorciado', 'extranjero', 'Las veritas', 'tia', 'Ama de casa', 'hioiiss@gmail.com', '74757574737475747372', 'ahorro', '9', '245325453454353', '435983495834944'),
-('13356433', 'Mamamamaxd', 'MAsojdo', '3234-2343234', 'primaria', 'Católica', 'soltero', 'venezolano', 'Via turaja', 'madre', 'Viajando a las estrellas', 'agiujsuikdm@gmail.com', '2342342354354363342423423', 'corriente', '10', '214234234233224', '234234234232343'),
-('22456434', 'skjfksdf sdfkl sd', 'ksamdakmdsk askd', '3234-2343234', 'primaria', 'Católica', 'soltero', 'venezolano', 'sdkmaskdmsad', 'madre', 'kspdofjasfoa', 'agiujsuikdm@gmail.com', '2342342354354363342423423', 'corriente', '10', '214234234233224', '234234234232343'),
-('23356138', 'Mamamamaxd', 'MAsojdo', '3234-2343234', 'primaria', 'Católica', 'divorciado', 'venezolano', 'Via turaja', 'madre', 'Viajando a las estrellas', 'agiujsuikdm@gmail.com', '2342342354354363342423423', 'corriente', '10', '214234234233224', '234234234232343'),
-('23356238', 'Mamamamaxd', 'MAsojdo', '3234-2343234', 'primaria', 'Católica', 'divorciado', 'venezolano', 'Via turaja', 'madre', 'Viajando a las estrellas', 'agiujsuikdm@gmail.com', '2342342354354363342423423', 'corriente', '10', '214234234233224', '234234234232343'),
-('23356438', 'Mamamamaxd', 'MAsojdo', '3234-2343234', 'primaria', 'Católica', 'soltero', 'venezolano', 'Via turaja', 'madre', 'Viajando a las estrellas', 'agiujsuikdm@gmail.com', '2342342354354363342423423', 'corriente', '10', '214234234233224', '234234234232343'),
-('23456434', 'skjfksdf sdfkl sd', 'ksamdakmdsk askd', '3234-2343234', 'primaria', 'Católica', 'soltero', 'venezolano', 'sdkmaskdmsad', 'madre', 'kspdofjasfoa', 'agiujsuikdm@gmail.com', '2342342354354363342423423', 'corriente', '10', '214234234233224', '234234234232343'),
-('23456436', 'skjfksdf sdfkl sd', 'ksamdakmdsk askd', '3234-2343234', 'primaria', 'Católica', 'soltero', 'venezolano', 'sdkmaskdmsad', 'madre', 'kspdofjasfoa', 'agiujsuikdm@gmail.com', '2342342354354363342423423', 'corriente', '10', '214234234233224', '234234234232343'),
-('23456437', 'skjfksdf sdfkl sd', 'ksamdakmdsk askd', '3234-2343234', 'primaria', 'Católica', 'soltero', 'venezolano', 'sdkmaskdmsad', 'madre', 'kspdofjasfoa', 'agiujsuikdm@gmail.com', '2342342354354363342423423', 'corriente', '10', '214234234233224', '234234234232343'),
-('23456438', 'skjfksdf sdfkl sd', 'ksamdakmdsk askd', '3234-2343234', 'primaria', 'Católica', 'soltero', 'venezolano', 'sdkmaskdmsad', 'madre', 'kspdofjasfoa', 'agiujsuikdm@gmail.com', '2342342354354363342423423', 'corriente', '10', '214234234233224', '234234234232343'),
-('28406750', 'quuuquququq', 'quququqququq', '3234-2343234', 'primaria', 'Católica', 'soltero', 'venezolano', 'ququuquq', 'abuelo', 'qiqiiqiqiqiq', 'ququuquqm@gmail.com', '2342342354354363342423423', 'corriente', '10', '214234234233224', '234234234232343');
+('23356238', 'Marco', 'Eduardo', '3234-2343234', 'primaria', 'Católica', 'divorciado', 'venezolano', 'Via turaja', 'padre', 'Viajando a las estrellas', 'agiujsuikdm@gmail.com', '23324235235324344333', 'corriente', '10', '2142342343', '2342342343'),
+('23456436', 'Recuerdos', 'Salsa Casino', '3234-2343234', 'primaria', 'Católica', 'soltero', 'venezolano', 'sdkmaskdmsad', 'madre', 'kspdofjasfoa', 'agiujsuikdm@gmail.com', '01023938473284233434', 'corriente', '10', '0000423434', '0000034233');
 
 -- --------------------------------------------------------
 
@@ -459,7 +438,7 @@ INSERT INTO `representante` (`cedula`, `nombre`, `apellido`, `telefono`, `estudi
 CREATE TABLE `retira_estudiantes` (
   `id_persona` int(1) NOT NULL,
   `cedula_e` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -469,21 +448,29 @@ CREATE TABLE `retira_estudiantes` (
 
 CREATE TABLE `seccion` (
   `id` int(2) NOT NULL,
-  `seccion` varchar(1) NOT NULL,
-  `grado` varchar(12) NOT NULL,
+  `seccion` varchar(8) NOT NULL,
+  `grado` varchar(14) NOT NULL,
   `cedula_mm` varchar(15) NOT NULL,
   `anio_escolar` varchar(9) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `seccion`
 --
 
 INSERT INTO `seccion` (`id`, `seccion`, `grado`, `cedula_mm`, `anio_escolar`) VALUES
-(1, '2', '5', '11111111', '2023'),
-(5, '1', '1', '11111342', '2022'),
-(10, '1', '5', '12345678', '2023'),
-(6, '3', '5', '22334455', '2023');
+(10, 'Mañana A', 'Quinto Grado', '12345678', '2022-2023'),
+(6, 'Tarde B', 'Quinto Grado', '22334455', '2022-2023'),
+(22, 'Tarde D', 'Pre-escolar', '28764865', '2022-2023'),
+(15, 'Mañana A', 'Primer Grado', '54785123', '2022-2023'),
+(19, 'Mañana B', 'Pre-escolar', '56234986', '2022-2023'),
+(20, 'Mañana A', 'Pre-escolar', '56432578', '2022-2023'),
+(18, 'Mañana A', 'Sexto Grado', '56872567', '2022-2023'),
+(11, 'Mañana A', 'Segundo Grado', '78086345', '2022-2023'),
+(12, 'Tarde B', 'Cuarto Grado', '78237463', '2022-2023'),
+(13, 'Tarde B', 'Sexto Grado', '78755733', '2022-2023'),
+(16, 'Tarde B', 'Tercer Grado', '87650765', '2022-2023'),
+(17, 'Mañana A', 'Cuarto Grado', '90876345', '2022-2023');
 
 -- --------------------------------------------------------
 
@@ -504,17 +491,16 @@ CREATE TABLE `seccion_estudiante` (
   `colab_comun` varchar(50) NOT NULL,
   `dia_disp` varchar(10) NOT NULL,
   `horario` varchar(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `seccion_estudiante`
 --
 
 INSERT INTO `seccion_estudiante` (`id`, `representante`, `cedula_es`, `seccion_1`, `talla`, `peso`, `calzado`, `camisa`, `pantalon`, `colab_comun`, `dia_disp`, `horario`) VALUES
-(84, '22456434', '12345678', NULL, '34.4', '22.3', '34', '4342', '3434', 'lopsum adertf dascs kumd', '', ''),
-(85, '22456434', '12344321', NULL, '34.4', '22.3', '34', '4342', '3434', 'lopsum adertf dascs kumd', '', ''),
-(86, '22456434', '12399993', NULL, '34.4', '22.3', '34', '4342', '3434', 'lopsum adertf dascs kumd', '', ''),
-(87, '22456434', '12365533', NULL, '34.4', '22.3', '34', '4342', '3434', 'lopsum adertf dascs kumd', '', '');
+(90, '1221321', '123456654', 10, '435.', '23.4', '32.3', '43.2', '43.4', 'bnbnbnbnbsasasas', '', ''),
+(91, '23356238', '28965384', 17, '43.3', '23.4', '32', 'S', 'M', 'asdjiosan dsan dasnd', '', ''),
+(92, '23456436', '28967899', 18, '435.', '23.4', '32.3', '43.2', '43.4', '----------------------------------------aaa-------', '', '');
 
 -- --------------------------------------------------------
 
@@ -525,7 +511,7 @@ INSERT INTO `seccion_estudiante` (`id`, `representante`, `cedula_es`, `seccion_1
 CREATE TABLE `vacuna` (
   `id_vacuna` varchar(2) NOT NULL,
   `vacuna` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -537,7 +523,7 @@ CREATE TABLE `vacunacion` (
   `id_vacuna` varchar(2) NOT NULL,
   `cedula_e` varchar(15) NOT NULL,
   `dosis` varchar(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tablas volcadas
@@ -709,19 +695,19 @@ ALTER TABLE `vacunacion`
 -- AUTO_INCREMENT de la tabla `hermanos`
 --
 ALTER TABLE `hermanos`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT de la tabla `seccion`
 --
 ALTER TABLE `seccion`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `seccion_estudiante`
 --
 ALTER TABLE `seccion_estudiante`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- Restricciones para tablas volcadas
@@ -816,7 +802,7 @@ ALTER TABLE `retira_estudiantes`
 -- Filtros para la tabla `seccion`
 --
 ALTER TABLE `seccion`
-  ADD CONSTRAINT `seccion_ibfk_1` FOREIGN KEY (`cedula_mm`) REFERENCES `empleados` (`cedula`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `seccion_ibfk_1` FOREIGN KEY (`cedula_mm`) REFERENCES `empleados` (`cedula`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `seccion_estudiante`
