@@ -15,7 +15,7 @@
 
 			</div>
 			<div class="col-6">
-				<h2 class="text-center text-xxl mb-4">REGISTRAR EMPLEADOS</h2>
+				<h2 class="text-center text-xxl mb-1">REGISTRAR EMPLEADOS</h2>
 				
 			</div>
 			<div class="col">

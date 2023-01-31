@@ -69,7 +69,7 @@
                                           <div class="mb-3" >
                                               <label for="cedulaEscolar">Cedula Representante</label>
                                               <input type="text" class="form-control"id="cedula_r" name="cedula_r" >
-                                              <span id="pCedulaEscolar"></span>
+                                              <span id="pcedula_r"></span>
                                           </div>
                                       </div>
                                       
@@ -94,15 +94,15 @@
                                       </div>
                                       <div class="col-2">
                                           <label for="">Sexo</label>
-                                          <select id="sexo" name="sexo" class="form-control mb-3">
-                                              <option selected="">Seleccionar</option>
+                                          <select id="sexo" name="sexo" class="form-control mb-3"> 
+                                              <option value='0' selected >Seleccionar</option>
                                               <option value="m">Masculino</option>
                                               <option value="f">Femenino</option>
                                           </select>
                                       </div>
                                   </div>
                                   <div class="row">
-                                      <div class="col-3">
+                                      <div class="col">
                                           <div class=" mb-3">
                                               <label for="fechaNaciPri">Fecha de Nacimiento</label>
                                               <input type="date" class="form-control " id="fechaNaciPri" name="fechaNaciPri">
@@ -113,7 +113,7 @@
                                           <div class="form-floating mb-3">
                                               <label for="estadoprimaria">Estado de nacimiento</label>
                                               <input type="text" class="form-control" id="estado_p" name="estado_p">
-                                              <span id="'estadoprimaria"></span>
+                                              <span id="estadoprimaria"></span>
                                           </div>
                                       </div>
                                       <div class="col">
@@ -126,10 +126,10 @@
                                   </div>
                                   <div class="row">
 
-                                      <div class="col-2">
+                                      <div class="col">
                                           <label for="">Vive en casa con:</label>
                                           <select id="vive_con" name="vive_con" class="form-control mb-3">
-                                              <option selected="">Seleccionar</option>
+                                              <option value="0" selected>Seleccionar</option>
                                               <option value="papamama">Papá y Mamá</option>
                                               <option value="papa">Solo papá</option>
                                               <option value="mama">Mamá</option>
@@ -138,19 +138,19 @@
                                           </select>
                                       </div>
 
-                                      <div class="col-2">
+                                      <div class="col">
                                           <label for="">Posee canaima</label>
                                           <select id="canaima" name="canaima" class="form-control mb-3">
-                                              <option selected="">Seleccionar</option>
+                                              <option value="0" selected>Seleccionar</option>
                                               <option value="si">Si</option>
                                               <option value="no">No</option>
                                           </select>
                                       </div>
 
-                                      <div class="col-2">
+                                      <div class="col">
                                           <label for="">Se retira solo de la institucion</label>
                                           <select id="retirada" name="retirada" class="form-control mb-3">
-                                              <option selected="">Seleccionar</option>
+                                              <option value="0" selected>Seleccionar</option>
                                               <option value="si">Si</option>
                                               <option value="no">No</option>
                                           </select>
@@ -333,7 +333,7 @@
                         <label for="">Grado</label>
                         <div class=" mb-3">
                              <select class="form-control mb-3" id="grado_hermano1" name="grado_hermano1">
-                                <option selected="">Seleccionar</option>
+                                <option value="0" selected>Seleccionar</option>
                                 <option value="preescolar">Pre-escolar</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -348,7 +348,7 @@
                         <label for="">Turno</label>
                         <div class=" mb-3">
                              <select class="form-control mb-3" id="turno_hermano1" name="turno_hermano1">
-                                <option selected="">Seleccionar</option>
+                                <option value="0" selected>Seleccionar</option>
                                 <option value="m">Mañana</option>
                                 <option value="t">Tarde</option>
                             </select>
@@ -371,7 +371,7 @@
                         <label for="">Grado</label>
                         <div class=" mb-3">
                              <select class="form-control mb-3" id="grado_hermano2" name="grado_hermano2">
-                                <option selected="">Seleccionar</option>
+                                <option value="0" selected>Seleccionar</option>
                                 <option value="preescolar">Pre-escolar</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -386,7 +386,7 @@
                         <label for="">Turno</label>
                         <div class=" mb-3">
                              <select class="form-control mb-3" id="turno_hermano2" name="turno_hermano2">
-                                <option selected="">Seleccionar</option>
+                                <option value="0" selected>Seleccionar</option>
                                 <option value="m">Mañana</option>
                                 <option value="t">Tarde</option>
                             </select>
@@ -408,7 +408,7 @@
                         <label for="">Grado</label>
                         <div class=" mb-3">
                              <select class="form-control mb-3" id="grado_hermano3" name="grado_hermano3">
-                                <option selected="">Seleccionar</option>
+                                <option value="0" selected>Seleccionar</option>
                                 <option value="preescolar">Pre-escolar</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -423,7 +423,7 @@
                         <label for="">Turno</label>
                         <div class=" mb-3">
                              <select class="form-control mb-3" id="turno_hermano3" name="turno_hermano3">
-                                <option selected="">Seleccionar</option>
+                                <option value="0" selected>Seleccionar</option>
                                 <option value="m">Mañana</option>
                                 <option value="t">Tarde</option>
                             </select>
@@ -445,7 +445,7 @@
                         <label for="">Grado</label>
                         <div class=" mb-3">
                              <select class="form-control mb-3" id="grado_hermano4" name="grado_hermano4">
-                                <option selected="">Seleccionar</option>
+                                <option value="0" selected>Seleccionar</option>
                                 <option value="preescolar">Pre-escolar</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -460,7 +460,7 @@
                         <label for="">Turno</label>
                         <div class=" mb-3">
                              <select class="form-control mb-3" id="turno_hermano4" name="turno_hermano4">
-                                <option selected="">Seleccionar</option>
+                                <option value="0" selected>Seleccionar</option>
                                 <option value="m">Mañana</option>
                                 <option value="t">Tarde</option>
                             </select>
@@ -645,7 +645,7 @@
         </tbody>
 
         <div class="modal-footer">
-        <div class="col"><h2> Lista de estudiantes</h2></div>
+        <div class="col-6"><h2> Lista de estudiantes</h2></div>
 
   <div class="col"></div>
 

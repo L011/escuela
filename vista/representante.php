@@ -19,8 +19,8 @@
                 <div class="col">
 
                 </div>
-                <div class="col-6">
-                    <h2 class="text-center text-xxl mb-4">REGISTRAR REPRESENTANTE</h2>
+                <div class="col-8">
+                    <h2 class="text-center text-xxl mb-1">REGISTRAR REPRESENTANTE</h2>
                     
                 </div>
                 <div class="col">

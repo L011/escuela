@@ -467,6 +467,7 @@ class primaria extends datos{
 					fecha_n,
 					estado_n,
 					ciudad_n,
+					quien_vive,
 					cedula_mama,
 					cedula_p,
 					retira_solo,
@@ -483,6 +484,7 @@ class primaria extends datos{
 						'$this->fechaNaciPri',
 						'$this->estado_p',
 						'$this->ciudad_p',
+						'$this->vive_con',
 						'$this->ciMadre',
 						'$this->ciPadre',
 						'$this->retirada',
@@ -605,7 +607,8 @@ class primaria extends datos{
 						retira_solo = '$this->retirada',
 						posee_canai = '$this->canaima',
 						inf_medica = '$this->infom',
-						observ = '$this->observacion'
+						observ = '$this->observacion',
+						quien_vive = '$this->vive_con'
 
 						where
 						cedula_e = '$this->cedulaEscolar'

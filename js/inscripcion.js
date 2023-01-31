@@ -289,12 +289,17 @@ function enviaAjax(datos,accion){
 						
 
 						}else{
-							$("#seccion").append($("<option>", {
-								value: lee[0].seccion,
-								text:   lee[0].seccion
-							}))
+						var datos2 = new FormData();
+							alert("sjdioasj");
+							datos2.append('accion','llenarseccion');
+							datos2.append('grado',$("#grado").val());
+							llenar(datos2,'llenarseccion');
+						
+
+						$("#seccion").val(lee[0].seccion+"wdkaosdk");
 						}
-						$("#seccion").val(lee[0].seccion);
+
+						console.log(lee[0].seccion);
 						select_seccion2()
 
 						$("#maestro").val(lee[0].nombres);
@@ -320,13 +325,13 @@ function enviaAjax(datos,accion){
 			   }
 
 			   else if(accion=='llenargrado'){
-			    	console.log(respuesta);
-					$("#grado").html(respuesta);
+			    	
+					$("#grado").html(respuesta + 100010101);
 				   
 			   }
 			   else if(accion=='llenarseccion'){
-					 console.log(respuesta+"sas");
-					 $("#seccion").html(respuesta);
+					
+					 $("#seccion").html(respuesta+ 220202020);
 				   
 			   }
 
@@ -335,7 +340,7 @@ function enviaAjax(datos,accion){
 
 
 			   else if(accion=='maestro_seccion'){
-					 console.log(respuesta);
+					
 				   lee = JSON.parse(respuesta);
 
 				  console.log(lee['resultado']);
@@ -345,7 +350,7 @@ function enviaAjax(datos,accion){
 						
 						 $("#maestro").val(lee[0].nombres);
 						 $("#id").val(lee[0].id);
-						 console.log($("#id").val());
+						
 						
 
 						
@@ -552,6 +557,18 @@ function all(){
 	$("#anioe").val('');
 	
 
+}
+
+function botonOff() {
+	$("#modificar").prop('disabled', true);
+	$("#eliminar").prop('disabled', true);
+}
+
+function botonOn() {
+
+	$("#incluir").prop('disabled', true);
+	$("#modificar").prop('disabled', false);
+	$("#eliminar").prop('disabled', false);
 }
 
 

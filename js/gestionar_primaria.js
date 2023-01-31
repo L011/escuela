@@ -408,13 +408,6 @@ $("#incluir").on("click",function(){
 		datos.append('accion','incluir');
 		//datos del niño
 
-		datos.append('grado',$("#grado").val());
-		datos.append('seccion',$("#seccion").val());
-		datos.append('turno',$("#turno").val());
-		datos.append('anioe',$("#anioe").val());
-		datos.append('maestro',$("#maestro").val());
-
-
 		datos.append('cedulaEscolar',$("#cedulaEscolar").val());
 		datos.append('cedula_r',$("#cedula_r").val());
 		
@@ -499,11 +492,7 @@ $("#modificar").on("click",function(){
 		var datos = new FormData();
 		datos.append('accion','modificar');
 		//datos del niño
-		datos.append('grado',$("#grado").val());
-		datos.append('seccion',$("#seccion").val());
-		datos.append('turno',$("#turno").val());
-		datos.append('anioe',$("#anioe").val());
-		datos.append('maestro',$("#maestro").val());
+		
 
 
 		datos.append('cedulaEscolar',$("#cedulaEscolar").val());
@@ -625,11 +614,16 @@ function llenarpapa(cedula) {
 
 //Validación de todos los campos antes del envio
 function validarenvio(){
+	
 
-	/*
-	if(validarkeyup(/^[0-9]{7,8}$/,$("#cedulaEscolar"),
-		$("#pCedulaEscolar"),"Formato 99999999")==0){
-	    muestraMensaje("Formato 99999999");
+	if(validarkeyup(/^[0-9]{7,9}$/,$("#cedulaEscolar"),
+		$("#pCedulaEscolar"),"Formato 12345678")==0){
+	    muestraMensaje("Revisar Cedula");
+		return false;
+	}
+	else if(validarkeyup(/^[0-9]{7,9}$/,$("#cedula_r"),
+		$("#pcedula_r"),"Formato 12345678")==0){
+	    muestraMensaje("Revisar Cedula Representante");
 		return false;
 	}
 	else if(validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
@@ -642,21 +636,73 @@ function validarenvio(){
 		muestraMensaje("NOMBRE <br/>SOLO LETRAS ENTRE 3 Y 30 CARACTERES");
 		return false;
 	}
-	else if(validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-		$("#estadoprimaria"),$("#pestadoprimaria"),"SOLO LETRAS ENTRE 3 Y 30 CARACTERES")==0){
-		muestraMensaje("NOMBRE <br/>SOLO LETRAS ENTRE 3 Y 30 CARACTERES");
+
+	else if ($("#sexo").val() == '0') {
+		muestraMensaje("Sexo <br/>Seleccionar una opcion");
+		return false;
+	}
+
+	else if(validarkeyup(/^(?:(?:1[6-9]|[2-9]\d)?\d{2})(?:(?:(\/|-|\.)(?:0?[13578]|1[02])\1(?:31))|(?:(\/|-|\.)(?:0?[13-9]|1[0-2])\2(?:29|30)))$|^(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(\/|-|\.)0?2\3(?:29)$|^(?:(?:1[6-9]|[2-9]\d)?\d{2})(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:0?[1-9]|1\d|2[0-8])$/,
+		$("#fechaNaciPri"),$("#pFechaNaciPri"),"Ingrese una fecha valida")==0){
+		muestraMensaje("FECHA MAYOR A 1920-01-01 Y MENOR A LA FECHA ACTUAL");
 		return false;
 	}
 	else if(validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-		$("#ciudadprimaria"),$("#pciudadprimaria"),"SOLO LETRAS ENTRE 3 Y 30 CARACTERES")==0){
-		muestraMensaje("NOMBRE <br/>SOLO LETRAS ENTRE 3 Y 30 CARACTERES");
+		$("#estado_p"),$("#estadoprimaria"),"SOLO LETRAS 3 Y 30 CARACTERES")==0){
+		muestraMensaje("Estado de nacimiento <br/>SOLO LETRAS ENTRE 3 Y 30 CARACTERES");
 		return false;
 	}
 	else if(validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-		$("#viveConO"),$("#pViveConO"),"SOLO LETRAS ENTRE 3 Y 30 CARACTERES")==0){
-		muestraMensaje("NOMBRE <br/>SOLO LETRAS ENTRE 3 Y 30 CARACTERES");
+		$("#ciudad_p"),$("#pciudadprimaria"),"SOLO LETRAS 3 Y 30 CARACTERES")==0){
+		muestraMensaje("Ciudad de nacimiento <br/>SOLO LETRAS ENTRE 3 Y 30 CARACTERES");
 		return false;
 	}
+	else if ($("#vive_con").val() == '0') {
+		muestraMensaje("Vive en casa <br/>Seleccionar una opcion");
+		return false;
+	}
+	else if ($("#canaima").val() == '0') {
+		muestraMensaje("Posee canaima <br/>Seleccionar una opcion");
+		return false;
+	}
+	else if ($("#retirada").val() == '0') {
+		muestraMensaje("Retirada <br/>Seleccionar una opcion");
+		return false;
+	}
+
+
+	else if(validarkeyup(/^[0-9]{1,3}[.]{1}[0-9]{1,2}$/,$("#pesoActual"),
+		$("#ppesoActual"),"Formato 01.00")==0){
+	    muestraMensaje("Revisar campo peso");
+		return false;
+	}
+	else if(validarkeyup(/^[0-9]{1,3}[.]{1}[0-9]{1,2}$/,$("#tallaActual"),
+		$("#ptallaActual"),"Formato 01.00")==0){
+	    muestraMensaje("Revisar campo talla");
+		return false;
+	}
+
+	else if(validarkeyup(/^[A-Z]{1,3}$/,$("#camisa"),
+		$("#pcamisa"),"Formato 'S' o 'M'")==0){
+	    muestraMensaje("Revisar campo camisa");
+		return false;
+	}
+
+	else if(validarkeyup(/^[A-Z]{1,3}$/,$("#pantalon"),
+		$("#ppantalon"),"Formato 'S' o 'M'")==0){
+	    muestraMensaje("Revisar campo pantalon");
+		return false;
+	}
+	else if(validarkeyup(/^[0-9]{1,2}$/,$("#calzado"),
+		$("#pcalzado"),"Formato '00'")==0){
+	    muestraMensaje("Revisar campo calzado");
+		return false;
+	}
+
+
+
+
+	/*
 	//datos del representante legal
 	else if(validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
 		$("#apellidoRepre"),$("#pApellidoRepre"),"SOLO LETRAS ENTRE 3 Y 30 CARACTERES")==0){
@@ -865,56 +911,6 @@ function validarkeyup(er,etiqueta,etiquetamensaje,mensaje){
 
 
 
-//funcion para pasar de la lista a el formulario
-
-
-function coloca(linea){
-/*
-	$("#cedulaEscolar").val($(linea).find("td:eq(0)").text());
-	$("#apellidoPri").val($(linea).find("td:eq(1)").text());
-	$("#nombrePri").val($(linea).find("td:eq(2)").text());
-	$("#fechaNaciPri").val($(linea).find("td:eq(3)").text());
-	$("#estadoprimaria").val($(linea).find("td:eq(4)").text());
-	$("#ciudadprimaria").val($(linea).find("td:eq(5)").text());
-	$("#viveConO").val($(linea).find("td:eq(6)").text());
-	$("#apellidoRepre").val($(linea).find("td:eq(7)").text());
-	$("#nombreRepre").val($(linea).find("td:eq(8)").text());
-	$("#ciRepre").val($(linea).find("td:eq(9)").text());
-	$("#telfRepre").val($(linea).find("td:eq(10)").text());
-	$("#direccionRepre").val($(linea).find("td:eq(11)").text());
-	$("#profesionRepre").val($(linea).find("td:eq(12)").text());
-	$("#correoRepre").val($(linea).find("td:eq(13)").text());
-	$("#cuentaBancR").val($(linea).find("td:eq(14)").text());
-	$("#codigoCPR").val($(linea).find("td:eq(15)").text());
-	$("#serialCPR").val($(linea).find("td:eq(16)").text());
-	$("#apellidoMadre").val($(linea).find("td:eq(17)").text());
-	$("#nombreMadre").val($(linea).find("td:eq(18)").text());
-	$("#ciMadre").val($(linea).find("td:eq(19)").text());
-	$("#telefonoMadre").val($(linea).find("td:eq(20)").text());
-	$("#direccionMadre").val($(linea).find("td:eq(21)").text());
-	$("#apellidoPadre").val($(linea).find("td:eq(22)").text());
-	$("#nombrePadre").val($(linea).find("td:eq(23)").text());
-	$("#ciPadre").val($(linea).find("td:eq(24)").text());
-	$("#telefonoPadre").val($(linea).find("td:eq(25)").text());
-	$("#direccionPadre").val($(linea).find("td:eq(26)").text());
-	$("#nombre_hermano1").val($(linea).find("td:eq(27)").text());
-	$("#nombre_hermano2").val($(linea).find("td:eq(28)").text());
-	$("#nombre_hermano3").val($(linea).find("td:eq(29)").text());
-	$("#nombre_hermano4").val($(linea).find("td:eq(30)").text());
-	$("#quienRetirada").val($(linea).find("td:eq(31)").text());
-	$("#quienTelefono").val($(linea).find("td:eq(32)").text());
-
-	*/
-}
-
-
-
-
-
-
-
-
-
 //funcion que envia y recibe datos por AJAX
 function enviaAjax(datos,accion){
 
@@ -948,10 +944,10 @@ function enviaAjax(datos,accion){
 					   $("#apellidoPri").val(lee[0].apellido);
 					   $("#nombrePri").val(lee[0].nombre);
 					   $("#sexo").val(lee[0].sexo);
-						 $("#fechaNaciPri").val(lee[0].fecha_n);
+						$("#fechaNaciPri").val(lee[0].fecha_n);
 					   $("#estado_p").val(lee[0].estado_n);
 					   $("#ciudad_p").val(lee[0].ciudad_n);
-					   $("#vive_con").val(lee[0].viveConO);
+					   $("#vive_con").val(lee[0].quien_vive);
 					   $("#canaima").val(lee[0].posee_canai);
 						 $("#canaima").val(lee[0].posee_canai);
 
@@ -1075,6 +1071,17 @@ function enviaAjax(datos,accion){
 
 }
 
+function validaSelec(valor) {
+	// body...
+
+	var i =valor.val();
+	if (i == 'Seleccionar') {
+		return false;
+	}
+
+
+}
+
 
 function tabla(){
 
@@ -1121,6 +1128,7 @@ function editar(tbody, table){
 
   $("#cedulaEscolar").val(data[0]);
   $('#contenido').css('display', 'block');
+  $('#formulario').css('display', 'none');
 
 
   if($("#cedulaEscolar").val().length > 6){
@@ -1223,80 +1231,12 @@ $('#formulario1').on('click', function() {
 	/* Act on the event */
 });
 
+function limpia2() {
+	// body...
+
+	$('input:gt(2)').val("");
+	$('textarea').val("");
+	$('select').val('Seleccionar');
 
 
-// function limpia(){
-// 	$("#cedulaEscolar").val("");
-// 	$("#apellidoPri").val("");
-// 	$("#nombrePri").val("");
-//
-//
-// 	$("#fechaNaciPri").val("");
-// 	$("#estadoprimaria").val("");
-// 	$("#ciudadprimaria").val("");
-// 	$("#viveConO").val("");
-// 	$("#apellidoRepre").val("");
-// 	$("#nombreRepre").val("");
-// 	$("#ciRepre").val("");
-// 	$("#telfRepre").val("");
-// 	$("#direccionRepre").val("");
-// 	$("#profesionRepre").val("");
-// 	$("#correoRepre").val("");
-// 	$("#cuentaBancR").val("");
-// 	$("#codigoCPR").val("");
-// 	$("#serialCPR").val("");
-// 	$("#apellidoMadre").val("");
-// 	$("#nombreMadre").val("");
-// 	$("#ciMadre").val("");
-// 	$("#telefonoMadre").val("");
-// 	$("#direccionMadre").val("");
-// 	$("#apellidoPadre").val("");
-// 	$("#nombrePadre").val("");
-// 	$("#ciPadre").val("");
-// 	$("#telefonoPadre").val("");
-// 	$("#direccionPadre").val("");
-// 	$("#nombre_hermano1").val("");
-// 	$("#nombre_hermano2").val("");
-// 	$("#nombre_hermano3").val("");
-// 	$("#nombre_hermano4").val("");
-// 	$("#quienRetirada").val("");
-// 	$("#quienTelefono").val("");
-// }
-//
-// function limpia2(){
-//
-// 	$("#apellidoPri").val("");
-// 	$("#nombrePri").val("");
-//
-//
-// 	$("#fechaNaciPri").val("");
-// 	$("#estadoprimaria").val("");
-// 	$("#ciudadprimaria").val("");
-// 	$("#viveConO").val("");
-// 	$("#apellidoRepre").val("");
-// 	$("#nombreRepre").val("");
-// 	$("#ciRepre").val("");
-// 	$("#telfRepre").val("");
-// 	$("#direccionRepre").val("");
-// 	$("#profesionRepre").val("");
-// 	$("#correoRepre").val("");
-// 	$("#cuentaBancR").val("");
-// 	$("#codigoCPR").val("");
-// 	$("#serialCPR").val("");
-// 	$("#apellidoMadre").val("");
-// 	$("#nombreMadre").val("");
-// 	$("#ciMadre").val("");
-// 	$("#telefonoMadre").val("");
-// 	$("#direccionMadre").val("");
-// 	$("#apellidoPadre").val("");
-// 	$("#nombrePadre").val("");
-// 	$("#ciPadre").val("");
-// 	$("#telefonoPadre").val("");
-// 	$("#direccionPadre").val("");
-// 	$("#nombre_hermano1").val("");
-// 	$("#nombre_hermano2").val("");
-// 	$("#nombre_hermano3").val("");
-// 	$("#nombre_hermano4").val("");
-// 	$("#quienRetirada").val("");
-// 	$("#quienTelefono").val("");
-// }
+}
