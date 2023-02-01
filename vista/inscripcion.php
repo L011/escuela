@@ -222,4 +222,5 @@
     </body>
     <script src="js/inscripcion.js"></script>
     <script src="js/confirmar.js"></script>
+     <script src="js/botonVolver.js"></script>
 </html>

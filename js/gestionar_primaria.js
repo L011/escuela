@@ -32,6 +32,10 @@ $("#cedulaEscolar").on("keypress",function(e){
 		    datos.append('accion','consultatr');
 			datos.append('cedulaEscolar',$(this).val());
 			enviaAjax(datos,'consultatr');
+		var datos = new FormData();
+		    datos.append('accion','consultahermanos');
+			datos.append('cedulaEscolar',$(this).val());
+			enviaAjax(datos,'consultahermanos');
 		}
 		else {
 			limpia2();
@@ -911,6 +915,79 @@ function validarkeyup(er,etiqueta,etiquetamensaje,mensaje){
 
 
 
+
+function llenarhermanos(datos,accion){
+
+	$.ajax({
+		    async: true,
+            url: '',
+            type: 'POST',//tipo de envio
+			contentType: false,
+            data: datos,
+			processData: false,
+	        cache: false,
+            success: function(data) {
+
+
+ 				if(accion=='consultahermanos'){
+
+					lee = JSON.parse(data);
+            	alert(data);
+
+				 console.log(lee['resultado']);
+					if(lee['resultado']=='encontro'){
+
+						if (lee[0]) {
+							alert("1");
+							$("#nombre_hermano1").val(lee[0].nom_ape);
+							$("#grado_hermano1").val(lee[0].grado);
+							$("#turno_hermano1").val(lee[0].turno);
+							
+							if (lee[1]) {
+								alert("2");
+								$("#nombre_hermano2").val(lee[1].nom_ape);
+								$("#grado_hermano2").val(lee[1].grado);
+								$("#turno_hermano2").val(lee[1].turno);
+
+								if (lee[2]) {
+									alert("3");
+									$("#nombre_hermano3").val(lee[2].nom_ape);
+									$("#grado_hermano3").val(lee[2].grado);
+									$("#turno_hermano3").val(lee[2].turno);
+									
+									if (lee[3]) {
+										alert("4");
+										$("#nombre_hermano4").val(lee[3].nom_ape);
+										$("#grado_hermano4").val(lee[3].grado);
+										$("#turno_hermano4").val(lee[3].turno);
+
+									}
+								}
+							}
+						}
+
+				 }else if(lee['resultado']!='encontro'){
+
+
+				 	
+				 }
+
+			 }
+
+			   },
+            error: function(){
+            	//console.log("AJX1")
+			   muestraMensaje("Error con ajax");
+            }
+
+});
+
+}
+
+
+
+
+
 //funcion que envia y recibe datos por AJAX
 function enviaAjax(datos,accion){
 
@@ -940,7 +1017,7 @@ function enviaAjax(datos,accion){
 
 
 						
-						 $("#cedula_r").val(lee[0].representante);
+					   $("#cedula_r").val(lee[0].representante);
 					   $("#apellidoPri").val(lee[0].apellido);
 					   $("#nombrePri").val(lee[0].nombre);
 					   $("#sexo").val(lee[0].sexo);
@@ -973,28 +1050,6 @@ function enviaAjax(datos,accion){
 					   $("#infom").val(lee[0].inf_medica);
 					   $("#colab_c").val(lee[0].colab_comun);
 					   $("#observacion").val(lee[0].observ);
-
-						  $("#nombre_hermano1").val(lee[0].nombre_hermano4);
-							$("#grado_hermano1").val(lee[0].nombre_hermano4);
-							$("#turno_hermano1").val(lee[0].nombre_hermano4);
-
-							$("#nombre_hermano1").val(lee[0].nombre_hermano4);
-						 $("#grado_hermano1").val(lee[0].nombre_hermano4);
-						 $("#turno_hermano1").val(lee[0].nombre_hermano4);
-
-						 $("#nombre_hermano1").val(lee[0].nombre_hermano4);
-						 $("#grado_hermano1").val(lee[0].nombre_hermano4);
-						 $("#turno_hermano1").val(lee[0].nombre_hermano4);
-
-						 $("#nombre_hermano1").val(lee[0].nombre_hermano4);
-						 $("#grado_hermano1").val(lee[0].nombre_hermano4);
-						 $("#turno_hermano1").val(lee[0].nombre_hermano4);
-
-
-					   $("#nombre_hermano4").val(lee[0].nombre_hermano4);
-					   $("#quienRetirada").val(lee[0].quienRetirada);
-					   $("#quienTelefono").val(lee[0].quienTelefono);
-
 				   }
 					 else	if($("#ciPadre").val().length > 6) {
 					 	console.log("siiiiiiiiii");
@@ -1028,6 +1083,7 @@ function enviaAjax(datos,accion){
 
 				 }
 			 }
+			 
 
 				 else if(accion=='consultapapa'){
 
@@ -1123,7 +1179,7 @@ function editar(tbody, table){
         console.log(data);
     }
 
-
+	all();
 	$("#incluir").prop('disabled', true);
 
   $("#cedulaEscolar").val(data[0]);
@@ -1133,9 +1189,14 @@ function editar(tbody, table){
 
   if($("#cedulaEscolar").val().length > 6){
     var datos = new FormData();
-      datos.append('accion','consultatr');
-    datos.append('cedulaEscolar',$("#cedulaEscolar").val());
-    enviaAjax(datos,'consultatr');
+    	datos.append('accion','consultatr');
+	    datos.append('cedulaEscolar',$("#cedulaEscolar").val());
+	    enviaAjax(datos,'consultatr');
+    var datos1 = new FormData();
+	    datos1.append('accion','consultahermanos');
+		datos1.append('cedulaEscolar',$("#cedulaEscolar").val());
+		llenarhermanos(datos1,'consultahermanos');
+
   }else{
 	limpia2();
 	botonOff();
@@ -1235,6 +1296,16 @@ function limpia2() {
 	// body...
 
 	$('input:gt(2)').val("");
+	$('textarea').val("");
+	$('select').val('Seleccionar');
+
+
+}
+
+function all() {
+	// body...
+
+	$('input').val("");
 	$('textarea').val("");
 	$('select').val('Seleccionar');
 

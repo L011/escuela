@@ -5,12 +5,12 @@ $(document).ready(function(){
   tabla();
 	//DATOS DEL REPRESENTANTE LEGAL
   $("#cedula").on("keypress",function(e){
-    validarkeypress(/^[0-9-\b]*$/,e);
+    validarkeypress(/^[A-Z0-9-\b]*$/,e);
     });
 
   $("#cedula").on("keyup",function(){
-    validarkeyup(/^[0-9]{7,8}$/,$(this),
-    $("#pCiRepre"),"El formato debe ser 9999999 ");
+    validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$(this),
+    $("#pCiRepre"),"El formato debe ser V-10123123 ");
     if($("#cedula").val().length > 6){
       var datos = new FormData();
         datos.append('accion','consultatr');
@@ -50,7 +50,7 @@ $(document).ready(function(){
 	});
 
 	$("#telfRepre").on("keyup",function(){
-	    validarkeyup(/^[0-9]{4}[-]{1}[0-9]{7,8}$/,$(this),$("#pTelfRepre"),"(9999)-9999999");
+	    validarkeyup(/^[0-9]{11,12}$/,$(this),$("#pTelfRepre"),"(9999)-9999999");
 	});
 
     $("#direccionRepre").on("keypress",function(e){
@@ -222,14 +222,14 @@ $("#consultar").on("click",function(){
 
 //Validación de todos los campos antes del envio
 function validarenvio(){
-	if(validarkeyup(/^[0-9]{7,8}$/,$("#cedula"),
-	$("#pCiRepre"),"Formato 99999999")==0){
-		muestraMensaje("Formato 99999999");
+	if(validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$("#cedula"),
+	$("#pCiRepre"),"Formato V-10123123")==0){
+		muestraMensaje("Formato V-10123123");
 		return false;
 	}
 	else if(validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
 		$("#apellidoRepre"),$("#pApellidoRepre"),"SOLO LETRAS ENTRE 3 Y 30 CARACTERES")==0){
-		muestraMensaje("NOMBRE <br/>SOLO LETRAS ENTRE 3 Y 30 CARACTERES");
+		muestraMensaje("Apellido <br/>SOLO LETRAS ENTRE 3 Y 30 CARACTERES");
 		return false;
 	}
 	else if(validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
@@ -237,9 +237,9 @@ function validarenvio(){
 		muestraMensaje("NOMBRE <br/>SOLO LETRAS ENTRE 3 Y 30 CARACTERES");
 		return false;
 	}
-	else if(validarkeyup(/^[0-9]{4}[-]{1}[0-9]{7,8}$/,$("#telfRepre"),
-		 $("#pTelfRepre"),"FORMATO 9999-9999999")==0){
-		 muestraMensaje("TELEFONO <br/>9999-9999999");
+	else if(validarkeyup(/^[0-9]{11,12}$/,$("#telfRepre"),
+		 $("#pTelfRepre"),"Formato 00000000000")==0){
+		 muestraMensaje("Telefono <br/>00000000000");
 	     return false;
 	}
 	else if(validarkeyup(/^[A-Za-z0-9\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,

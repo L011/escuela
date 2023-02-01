@@ -203,4 +203,5 @@
     <!--Llamada a las librerias de javascript para las validaciones de esta pagina -->
         <script type="text/javascript" src="js/registrar_usuario.js"></script>
         <script src="js/confirmar.js"></script>
+        <script src="js/botonVolver.js"></script>
 </html>

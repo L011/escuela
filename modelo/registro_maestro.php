@@ -77,7 +77,7 @@ class registro_maestro extends datos{
 	}
 
 	function get_fechadenacimiento(){
-		return $this->fechanacimiento;
+		return $this->fechadenacimiento;
 	}
 
 	function get_sexo(){

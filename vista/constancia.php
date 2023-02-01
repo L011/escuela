@@ -90,5 +90,6 @@
 
     <!--Llamada a las librerias de javascript para las validaciones de esta pagina -->
         <script type="text/javascript" src="js/incripcion_primaria.js"></script>
+        <script src="js/botonVolver.js"></script>
     </body>
 </html>

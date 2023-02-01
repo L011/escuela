@@ -296,18 +296,15 @@ function enviaAjax(datos,accion){
 							llenar(datos2,'llenarseccion');
 						
 
-						$("#seccion").val(lee[0].seccion+"wdkaosdk");
+						
 						}
 
 						console.log(lee[0].seccion);
 						select_seccion2()
 
 						$("#maestro").val(lee[0].nombres);
-
-						 
 					   $("#anioe").val(lee[0].anio_escolar);
-					   $("#seccion").val(lee[0].seccion);
-					   $("#seccion").val(lee[0].seccion);
+					  
 
 					   
 

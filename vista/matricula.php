@@ -5,62 +5,56 @@
     ?>
     <body>
     <?php
+        require_once("comunes/modal.php");
         require_once("comunes/menu.php");
     ?>
-    <div class="container">
+    <div class="container mb-4" > <!-- todo el contenido ira dentro de esta etiqueta-->
+        <div class="container"  id="contenido">
 
-        <form class="container mb-5">
+        <form method="post" action="" id="f" target="_blank">
             <h2 class="text-center text-xxl mb-4">Matricula Inicial</h2>
 
-        <div class="row g-2">
+      
 
 
             <div class="row">
 
 
                 <div class="col mb-3">
-                   <label for="sexo">Grado</label>
-                   <select class="form-control" id="cargo" name="cargo" >
+                   <label for="grado">Grado</label>
+                   <select class="form-control" id="grado" name="grado" >
                       <option disabled selected value="">Seleccionar Opcion</option>
-                    <option value="preescolar">Preescolar</option>
-                    <option value="primer">Primer Grado</option>
-                    <option value="segundo">Segundo Grado</option>
-                    <option value="tercer">Tercer Grado</option>
-                    <option value="cuarto">Cuarto Grado</option>
-                    <option value="quinto">Quinto Grado</option>
-                    <option value="sexto">Sexto Grado</option>
+                    <option value="Pre-escolar">Preescolar</option>
+                    <option value="Primer Grado">Primer Grado</option>
+                    <option value="Segundo Grado">Segundo Grado</option>
+                    <option value="Tercer Grado">Tercer Grado</option>
+                    <option value="Cuarto Grado">Cuarto Grado</option>
+                    <option value="Quinto Grado">Quinto Grado</option>
+                    <option value="Sexto Grado">Sexto Grado</option>
                    </select>
                 </div>
 
                 <div class="col">
-                  <div class="col mb-3">
-                     <label for="sexo">Sección</label>
-                     <select class="form-control" id="cargo" name="cargo" >
-                        <option disabled selected value="">Seleccionar Opcion</option>
-                      <option value="a">A</option>
-                      <option value="b">B</option>
-                      <option value="c">C</option>
-                      <option value="d">D</option>
+                     <label for="seccion">Sección</label>
+                     <select class="form-control" id="seccion" name="seccion" >
+                        
                      </select>
-                  </div>
+                
                 </div>
-                          </div>
-        </div>
-        <p>*Buscando formato para completar</p>
-        <div class="row">
-            <div class="col">
-                   <button type="button" class="btn btn-primary" id="incluir" name="incluir">GENERAR</button>
             </div>
+      <div class="container" style="justify-content: center;">
+          
+        <div class="row" style=" justify-content: center;" >
+            
+                   <button type="submit" class="btn btn-primary" id="generar" name="generar">GENERAR</button>
+            
 
-
-            <div class="col">
-                   <a href="?pagina=reporte" class="btn btn-primary">REGRESAR</a>
-            </div>
         </div>
+      </div>
 
         </form>
 
-
+        </div>
     </div>
 
 
@@ -99,6 +93,9 @@
 
 
     <!--Llamada a las librerias de javascript para las validaciones de esta pagina -->
-        <script type="text/javascript" src="js/incripcion_primaria.js"></script>
+        <script src="js/matricula.js"></script>
+        <script src="js/botonVolver.js"></script>
+
+
     </body>
 </html>

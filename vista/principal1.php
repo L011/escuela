@@ -37,7 +37,7 @@
       <section class="jumbotron text-center">
     <div class="container">
       <h1>Unidad Educativa Nacional "Divino Niño"</h1>
-      <p class="lead text-muted">     Optimizar y asegurar la atención educativa de los niños y niñas de la comunidad de Llano Alto y sus adyacentes, desde el momento de su ingreso al nivel prescolar hasta la educación básica, sumados a las políticas educativas a través de planes y programas de estudio basado en los lineamientos curriculares.<hr>Misión</p>
+      <p class="lead text-muted" style="text-align: justify;" >     Optimizar y asegurar la atención educativa de los niños y niñas de la comunidad de Llano Alto y sus adyacentes, desde el momento de su ingreso al nivel prescolar hasta la educación básica, sumados a las políticas educativas a través de planes y programas de estudio basado en los lineamientos curriculares.<hr>Misión</p>
       <p>
         <a href="?pagina=inicio" class="btn btn-primary my-2">Iniciar Sesión</a>
 
@@ -85,7 +85,7 @@
     <div class="col">
       <section class="jumbotron text-center">
     <div class="container">
-      <p class="lead text-muted">     Ser la institución pionera que contribuya a la formación integral de los niños y niñas de la comunidad desde el nivel prescolar y prosecución al subsistema primario enmarcado en las políticas educativas del estado venezolano y las exigencias curriculares, incorporando a la triada (Escuela-Familia-Comunidad), así como también realizar todas aquellas actividades y convenios que sean necesarias para la consecución de los objetivos.<hr>Visión</p>
+      <p class="lead text-muted" style="text-align: justify;" >     Ser la institución pionera que contribuya a la formación integral de los niños y niñas de la comunidad desde el nivel prescolar y prosecución al subsistema primario enmarcado en las políticas educativas del estado venezolano y las exigencias curriculares, incorporando a la triada (Escuela-Familia-Comunidad), así como también realizar todas aquellas actividades y convenios que sean necesarias para la consecución de los objetivos.<hr>Visión</p>
       
     </div>
   </section>

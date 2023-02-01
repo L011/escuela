@@ -2209,4 +2209,5 @@
     </main>
 </body>
 <script src="js/gestionar_preescolar.js"></script>
+<script src="js/botonVolver.js"></script>
 </html>

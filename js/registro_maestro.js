@@ -11,12 +11,12 @@ $(document).ready(function(){
 
 //VALIDACION DE DATOS
 	$("#cedula").on("keypress",function(e){
-		validarkeypress(/^[0-9-\b]*$/,e);
+		validarkeypress(/^[A-Z0-9-\b]*$/,e);
 	});
 
 	$("#cedula").on("keyup",function(){
-		validarkeyup(/^[0-9]{7,8}$/,$(this),
-		$("#scedula"),"El formato debe ser 9999999 ");
+		validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$(this),
+		$("#scedula"),"El formato debe ser V-10123123 ");
 		if($("#cedula").val().length > 6){
 		  var datos = new FormData();
 		    datos.append('accion','consultatr');
@@ -67,11 +67,11 @@ $(document).ready(function(){
 
 
 	$("#telefono").on("keypress",function(e){
-		validarkeypress(/^[0-9\b-]*$/,e);
+		validarkeypress(/^[0-9\b]*$/,e);
 	});
 
 	$("#telefono").on("keyup",function(){
-	    validarkeyup(/^[0-9]{4}[-]{1}[0-9]{7,8}$/,$(this),$("#stelefono"),"(9999)-9999999");
+	    validarkeyup(/^[0-9]{11,12}$/,$(this),$("#stelefono"),"Formato 0000000000");
 	});
 
 
@@ -201,9 +201,9 @@ $('#formulario1').on('click', function() {
 
 //Validación de todos los campos antes del envio
 function validarenvio(){
-	if(validarkeyup(/^[0-9]{7,8}$/,$("#cedula"),
-		$("#scedula"),"Formato 99999999")==0){
-	    muestraMensaje("Formato 99999999");
+	if(validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$("#cedula"),
+		$("#scedula"),"Formato V-10123123")==0){
+	    muestraMensaje("Formato V-10123123");
 		return false;
 	}
 	else if(validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
@@ -230,9 +230,9 @@ function validarenvio(){
 		muestraMensaje("FORMATO CORREO <br/> alguien@servidor.com");
 		 return false;
 	}
-	else if(validarkeyup(/^[0-9]{4}[-]{1}[0-9]{7,8}$/,$("#telefono"),
-		 $("#stelefono"),"FORMATO 9999-9999999")==0){
-		 muestraMensaje("TELEFONO <br/>9999-9999999");
+	else if(validarkeyup(/^[0-9]{11,12}$/,$("#telefono"),
+		 $("#stelefono"),"Formato 0000000000")==0){
+		 muestraMensaje("Telefono <br/>Formato 0000000000");
 	     return false;
 	}
 	else if ($("#cargo").val() == null) {
@@ -399,6 +399,9 @@ function tabla(){
 			url:'modelo/tablamaestro.php',
 			
 			},
+			buttons:[
+				'pdf'
+				],
 			columns: [
 			        { data: 0 },
 			        { data: 1 },
