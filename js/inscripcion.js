@@ -15,12 +15,12 @@ inicio();
 //DATOS DEL NINO
 
 $("#cedulaEscolar").on("keypress",function(e){
-		validarkeypress(/^[0-9-\b]*$/,e);
+		validarkeypress(/^[A-Z0-9-\b]*$/,e);
 	});
 
 	$("#cedulaEscolar").on("keyup",function(){
-		validarkeyup(/^[0-9]{7,15}$/,$(this),
-		$("#scedula"),"El formato debe ser 9999999 ");
+		validarkeyup(/^[VE]{1}[-]{1}[0-9]{9,15}$/,$(this),
+		$("#scedula"),"El formato debe ser V-10123123 ");
 		if($("#cedulaEscolar").val().length > 6){
 		  var datos = new FormData();
 		    datos.append('accion','consultatr');
@@ -147,8 +147,8 @@ $("#consultar").on("click",function(){
 function validarenvio(){
 
 	
-	if(validarkeyup(/^[0-9]{7,9}$/,$("#cedulaEscolar"),
-		$("#pCedulaEscolar"),"Formato 99999999")==0){
+	if(validarkeyup(/^[VE]{1}[-]{1}[0-9]{9,15}$/,$("#cedulaEscolar"),
+		$("#pCedulaEscolar"),"Formato V-10123123")==0){
 	    muestraMensaje("Seleccionar estudiante valido");
 		return false;
 	}
@@ -290,7 +290,7 @@ function enviaAjax(datos,accion){
 
 						}else{
 						var datos2 = new FormData();
-							alert("sjdioasj");
+							
 							datos2.append('accion','llenarseccion');
 							datos2.append('grado',$("#grado").val());
 							llenar(datos2,'llenarseccion');

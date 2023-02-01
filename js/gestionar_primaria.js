@@ -723,7 +723,7 @@ function llenarpapa(cedula) {
 function validarenvio(){
 	
 
-	if(validarkeyup(/^[VE]{1}[-]{1}[0-9]{8,12}$/,$("#cedulaEscolar"),
+	if(validarkeyup(/^[VE]{1}[-]{1}[0-9]{8,15}$/,$("#cedulaEscolar"),
 		$("#pCedulaEscolar"),"Formato 12345678")==0){
 	    muestraMensaje("Revisar Cedula");
 		return false;
