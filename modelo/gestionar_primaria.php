@@ -801,16 +801,15 @@ class primaria extends datos{
 		}
 	}
 
-
 	function consultatr(){
 		$co = $this->conecta();
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		try{
 
 			$resultado = $co->query("SELECT estudiante.*, seccion_estudiante.*, padres.* FROM seccion_estudiante
-			INNER JOIN estudiante ON estudiante.cedula_e = seccion_estudiante.cedula_es
-			INNER JOIN padres ON estudiante.cedula_mama = padres.cedula_m
-			WHERE estudiante.cedula_e='$this->cedulaEscolar'");
+INNER JOIN estudiante ON estudiante.cedula_e = seccion_estudiante.cedula_es
+INNER JOIN padres ON estudiante.cedula_mama = padres.cedula_m
+WHERE estudiante.cedula_e='$this->cedulaEscolar'");
 			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
 
 			if($fila){
@@ -837,44 +836,6 @@ class primaria extends datos{
 		}
 
 	}
-
-
-	function consultahermanos(){
-		$co = $this->conecta();
-		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		try{
-
-			$resultado = $co->query("SELECT h.nom_ape, h.grado, h.turno FROM hermanos h
-			INNER JOIN estudiante e ON e.cedula_e = h.cedula_e
-			WHERE e.cedula_e='$this->cedulaEscolar'");
-			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
-
-			if($fila){
-
-				$envia = array('resultado'=>"encontro");
-
-				$envia += $fila;
-
-				return json_encode($envia, JSON_FORCE_OBJECT);
-
-			}
-
-			else{
-
-				$envia = array('resultado'=>"noencontro");
-				return json_encode($envia);
-
-
-			}
-
-		}catch(Exception $e){
-			$envia = array('resultado'=>$e->getMessage());
-			return json_encode($envia);
-		}
-
-	}
-
-
 
 	function consultamama(){
 		$co = $this->conecta();

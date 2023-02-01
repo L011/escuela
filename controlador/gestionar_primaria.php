@@ -46,10 +46,6 @@ require_once("modelo/".$pagina.".php");
 			 $o->set_ciPadre($_POST['ciPadre']);
 			 echo  $o->consultapapa();
 		  }
-		  elseif($accion=='consultahermanos'){
-			 $o->set_cedulaEscolar($_POST['cedulaEscolar']);
-			 echo  $o->consultahermanos();
-		  }
 		  elseif($accion=='eliminar'){
 			 $o->set_cedulaEscolar($_POST['cedulaEscolar']);
 			 echo  $o->eliminar();
