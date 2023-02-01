@@ -1,0 +1,2 @@
+const boton ='<a class="btn" href="javascript: history.back()" style="top: 60px; position: fixed; z-index: 9999; left: 10px;"><img src="img/Imagen3.png" style="width: 70px;"></a>'
+	$('body').append(boton);
