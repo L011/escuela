@@ -397,11 +397,34 @@ $("#quienTelefono").on("keyup",function(){
 	validarkeyup(/^[0-9]{4}[-]{1}[0-9]{7,8}$/,$(this),$("#pQuienTelefono"),"(9999)-9999999");
 });
 
-//FIN DE CON QUIEN SE RETIRA
+*/
+
+
+
+////CONTROL PARA AHCER LA CEDULA ESCOLAR THX GTP 
+
+$("#nacionalidad").on('change', function(event) {
+
+	var c = $("#cedula_r").val();
+	var f = $("#fechaNaciPri").val();
+	var n = $("#nacionalidad").val();
+	var w = $("#cedula_r").val();
+		
+	$("#cedulaEscolar").val(generarCombination(c,f,w,n));
+
+
+	event.preventDefault();
+	/* Act on the event */
+});
+
+
+
+
+
+
 
 //FIN DE VALIDACION DE DATOS
 
-*/
 
 //CONTROL DE BOTONES
 
@@ -1310,4 +1333,21 @@ function all() {
 	$('select').val('Seleccionar');
 
 
+}
+
+// fUNCION QUE RECIVE LOS VALORES DE LOS INPUT Y DEVUELVE LA CEDULA
+
+function generarCombination(cedulam, fechacum, birthtype, nacionalidad){
+
+	var cedu = cedulam.toString().slice(2);
+	console.log(cedu);
+	console.log(fechacum);
+
+	var ultimos_dos_fecha_cum = fechacum.toString().slice(2,4);
+	console.log(ultimos_dos_fecha_cum);
+	var gi = '-';
+	var cedula_e = nacionalidad+ gi + ultimos_dos_fecha_cum + cedu;
+	console.log(nacionalidad);
+	console.log(cedula_e);
+	return cedula_e;
 }

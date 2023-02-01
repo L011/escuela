@@ -53,19 +53,9 @@
 
 
                                   </div>
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <div class="mb-3" >
-                                              <label for="cedulaEscolar">Cédula Escolar</label>
-                                              <input type="text" class="form-control"id="cedulaEscolar" name="cedulaEscolar" >
-                                              <span id="pCedulaEscolar"></span>
-                                          </div>
-                                      </div>
-                                      <!--  Un check para cedula de ciIdentidad -->
+                                  <div class="row">                                     
 
-                                     
-
-                                      <div class="col-md-6">
+                                      <div class="col">
                                           <div class="mb-3" >
                                               <label for="cedulaEscolar">Cedula Representante</label>
                                               <input type="text" class="form-control"id="cedula_r" name="cedula_r" >
@@ -92,7 +82,7 @@
                                               <span id="pNombrePri"></span>
                                           </div>
                                       </div>
-                                      <div class="col-2">
+                                      <div class="col">
                                           <label for="">Sexo</label>
                                           <select id="sexo" name="sexo" class="form-control mb-3"> 
                                               <option value='0' selected >Seleccionar</option>
@@ -124,7 +114,43 @@
                                           </div>
                                       </div>
                                   </div>
+
                                   <div class="row">
+
+                                    <div class="col">
+                                          <label for="">Orden del parto</label>
+                                          <select id="sexo" name="sexo" class="form-control mb-3"> 
+                                              <option value='0' selected >Seleccionar</option>
+                                              <option value="1">Primero</option>
+                                              <option value="2">Segundo (Escojer al ser Gemelos-Morochos)</option>
+                                              <option value="3">Tercero (Escojer al ser Trillizos)</option>
+                                          </select>
+                                      </div>
+
+                                     <div class="col">
+                                          <label for="">Nacionalidad</label>
+                                          <select id="nacionalidad" name="nacionalidad" class="form-control mb-3">
+                                              <option value="0" selected>Seleccionar</option>
+                                              <option value="V">Venezolano(a)</option>
+                                              <option value="E">Extranjero(a)</option>
+                                          </select>
+                                      </div>
+
+                                      <div class="col">
+                                          <div class="mb-3" >
+                                              <label for="cedulaEscolar">Cédula Escolar</label>
+                                              <input type="text" class="form-control"id="cedulaEscolar" name="cedulaEscolar" disabled>
+                                              <span id="pCedulaEscolar"></span>
+                                          </div>
+                                      </div>
+                                      <!--  Un check para cedula de ciIdentidad -->
+                                    
+                                  </div>
+
+                                  <div class="row">
+
+
+                                   
 
                                       <div class="col">
                                           <label for="">Vive en casa con:</label>
@@ -469,41 +495,6 @@
 
                 </div>
 
-
-
-                <div class="row">
-                    <div class="col-2">
-                        <p class="mb-3"><strong>El niño se retira solo de la institución:</strong></p>
-                    </div>
-                    <div class="col-2">
-                        <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
-                            <label for="retiradaSi" class="btn btn-outline-primary ">Si
-                                <input type="radio" class="btn-check" name="retirada" id="retiradaSi" autocomplete="off" data-toggle="collapse" data-target="#retiradaColl" aria-expanded="off" aria-controls="retiradaColl">
-                            </label>
-                            <label for="retiradaNo" class="btn btn-outline-primary ">No
-                                <input type="radio" class="btn-check" name="retirada" id="retiradaNo" autocomplete="off">
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="collapse" id="retiradaColl">
-                    <div class="row">
-                        <div class="col">
-                            <div class=" mb-3">
-                                <label for="quienRetirada">Con quien</label>
-                                <input type="text" class="form-control " id="quienRetirada">
-                                <span id="pQuienRetirada"></span>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class=" mb-3">
-                                <label for="quienTelefono">Telefono</label>
-                                <input type="text" class="form-control " id="quienTelefono">
-                                <span id="pQuienTelefono"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!---final 4ta parteee -->
 
