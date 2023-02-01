@@ -48,21 +48,29 @@
 
              <!-- Inicio segunda parte parteee-->
 
-                    <h3 class="text-center text-xl mt-4 mb-4">DATOS DEL NIÑO, LA NIÑA</h3>
-                                  <div class="row">
-
-
-                                  </div>
-                                  <div class="row">                                     
-
+                                  <div class="row" style="background-color: tomato;border-radius: 8px;" id="repre">                                     
+                                    <div class="col mb-3 mt-4 ml-5">
+                                         <label for="cedula_r">Cedula Representante</label>
+                                    </div>
                                       <div class="col">
-                                          <div class="mb-3" >
-                                              <label for="cedulaEscolar">Cedula Representante</label>
+                                          <div class="mb-3 mt-3" >
+                                            
                                               <input type="text" class="form-control"id="cedula_r" name="cedula_r" >
                                               <span id="pcedula_r"></span>
                                           </div>
                                       </div>
+                                      <div class="col">
+                                        <p id="representanten" style="margin-top: 9%;"></p>
+                                      </div>
+                                      <div class="col">
+                                        <p id="representantea" style="margin-top: 9%;"></p>
+                                      </div>
                                       
+                                  </div>
+                    <h3 class="text-center text-xl mt-4 mb-4">DATOS DEL NIÑO, LA NIÑA</h3>
+                                  <div class="row">
+
+
                                   </div>
 
                                  
@@ -119,7 +127,7 @@
 
                                     <div class="col">
                                           <label for="">Orden del parto</label>
-                                          <select id="sexo" name="sexo" class="form-control mb-3"> 
+                                          <select id="orden" name="orden" class="form-control mb-3"> 
                                               <option value='0' selected >Seleccionar</option>
                                               <option value="1">Primero</option>
                                               <option value="2">Segundo (Escojer al ser Gemelos-Morochos)</option>
@@ -137,14 +145,36 @@
                                       </div>
 
                                       <div class="col">
-                                          <div class="mb-3" >
-                                              <label for="cedulaEscolar">Cédula Escolar</label>
-                                              <input type="text" class="form-control"id="cedulaEscolar" name="cedulaEscolar" disabled>
+                                          <label for="">¿Posee cedula de identidad?</label>
+                                          <select id="c_id" name="c_id" class="form-control mb-3">
+                                              <option value="0" selected>Seleccionar</option>
+                                              <option value="n">No</option>
+                                              <option value="s">Si</option>
+                                          </select>
+                                      </div>
+
+                                      
+                                      <!--  Un check para cedula de ciIdentidad -->
+                                    
+                                  </div>
+
+                                   <div class="row" style="background-color: #daf4f9;border-radius: 8px; display:none;" id="cedula_div" >                                     
+                                    <div class="col mb-3 mt-4 ml-5">
+                                         <label for="cedulaEscolar">Cedula Escolar</label>
+                                    </div>
+
+                                    <div class="col">
+                                          <div class="mb-3 mt-3" >
+                                            
+                                              <input type="text" class="form-control"id="cedulaEscolar" name="cedulaEscolar" >
                                               <span id="pCedulaEscolar"></span>
                                           </div>
                                       </div>
-                                      <!--  Un check para cedula de ciIdentidad -->
-                                    
+                                      
+                                      <div class="col" id="col_boton">
+                                        <button type="button" id="generar" class="btn btn-primary" style="margin-top: 6%;">Generar</button>
+                                      </div>
+                                      
                                   </div>
 
                                   <div class="row">
@@ -268,7 +298,7 @@
                       </div>
                   </div>
                   <div class="row">
-                      <div class="col">
+                      <div class="col-4">
                           <div class=" mb-3">
                               <label for="telefonoMadre">Telefono</label>
                               <input type="text" class="form-control " id="telefonoMadre" name="telefonoMadre">
@@ -313,7 +343,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-4">
                         <div class=" mb-3">
                             <label for="telefonoPadre">Telefono</label>
                             <input type="text" class="form-control " id="telefonoPadre" name="telefonoPadre">

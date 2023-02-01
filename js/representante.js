@@ -50,7 +50,7 @@ $(document).ready(function(){
 	});
 
 	$("#telfRepre").on("keyup",function(){
-	    validarkeyup(/^[0-9]{11,12}$/,$(this),$("#pTelfRepre"),"(9999)-9999999");
+	    validarkeyup(/^[0-9]{11,12}$/,$(this),$("#pTelfRepre"),"00000000000");
 	});
 
     $("#direccionRepre").on("keypress",function(e){

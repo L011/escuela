@@ -32,6 +32,10 @@ class primaria extends datos{
 	private $infom;
 	private $observacion;
 
+	private $orden;
+	private $nacionalidad;
+	private $c_id;
+
 	private $pesoActual;
 	private $tallaActual;
 	private $camisa;
@@ -105,6 +109,16 @@ class primaria extends datos{
 
 	function set_estado_p($valor){
 		$this->estado_p = $valor;
+	}
+
+	function set_orden($valor){
+		$this->orden = $valor;
+	}
+	function set_nacionalidad($valor){
+		$this->nacionalidad = $valor;
+	}
+	function set_c_id($valor){
+		$this->c_id = $valor;
 	}
 
 	function set_ciudad_p($valor){
@@ -473,7 +487,11 @@ class primaria extends datos{
 					retira_solo,
 					posee_canai,
 					inf_medica,
-					observ
+					observ,
+					orden,
+					nacionalidad,
+					c_id
+
 
 					)
 					Values(
@@ -490,7 +508,10 @@ class primaria extends datos{
 						'$this->retirada',
 						'$this->canaima',
 						'$this->infom',
-						'$this->observacion'
+						'$this->observacion',
+						'$this->orden',
+						'$this->nacionalidad',
+						'$this->c_id'
 						)
 				");
 
@@ -608,7 +629,11 @@ class primaria extends datos{
 						posee_canai = '$this->canaima',
 						inf_medica = '$this->infom',
 						observ = '$this->observacion',
-						quien_vive = '$this->vive_con'
+						quien_vive = '$this->vive_con',
+
+						orden = '$this->orden',
+						nacionalidad = '$this->nacionalidad',
+						c_id = '$this->c_id'
 
 						where
 						cedula_e = '$this->cedulaEscolar'
@@ -799,6 +824,41 @@ class primaria extends datos{
 		}catch(Exception $e){
 			return false;
 		}
+	}
+
+
+
+
+
+		function consultarepre(){
+		$co = $this->conecta();
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		try{
+
+			$resultado = $co->query("Select nombre, apellido from representante where cedula='$this->cedula_r'");
+			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
+			if($fila){
+
+				$envia = array('resultado'=>"encontro");
+
+				$envia += $fila;
+
+				return json_encode($envia);
+
+			}
+			else{
+
+				$envia = array('resultado'=>"noencontro");
+				return json_encode($envia);
+
+
+			}
+
+		}catch(Exception $e){
+			$envia = array('resultado'=>$e->getMessage());
+			return json_encode($envia);
+		}
+
 	}
 
 

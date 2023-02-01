@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 
 tabla();
-
+desabilita();
 	//alert("at1");
 	//console.log("Main")
 	//para obtener la fecha del servidor y calcular la
@@ -19,6 +19,33 @@ tabla();
 //se calcula la cedula Estudiantil
 
 //DATOS DEL NINO
+
+
+ $("#cedula_r").on("keypress",function(e){
+    validarkeypress(/^[A-Z0-9-\b]*$/,e);
+    });
+
+  $("#cedula_r").on("keyup",function(){
+    validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$(this),
+    $("#pcedula_r"),"El formato debe ser V-10123123 ");
+    if($("#cedula_r").val().length > 8){
+      var datos = new FormData();
+        datos.append('accion','consultarepre');
+      datos.append('cedula_r',$(this).val());
+      enviaAjax(datos,'consultarepre');
+    }
+    else {
+    	$("#representanten").html('');
+		$("#representantea").html('');
+    	desabilita();
+      botonOff();
+    	limpia();
+    	limpia2();
+      $("#incluir").prop('disabled', false);
+
+    }
+  });
+
 
 $("#cedulaEscolar").on("keypress",function(e){
 		validarkeypress(/^[0-9-\b]*$/,e);
@@ -44,13 +71,53 @@ $("#cedulaEscolar").on("keypress",function(e){
 		}
 	});
 
+	////CONTROL PARA AHCER LA CEDULA ESCOLAR THX GTP 
+
+		$("#generar").on('click', function(event) {
+
+			var c = $("#cedula_r").val();
+			var f = $("#fechaNaciPri").val();
+			var n = $("#nacionalidad").val();
+			var o = $("#orden").val();
+				
+			$("#cedulaEscolar").val(generarCombination(c,f,o,n));
+
+
+			event.preventDefault();
+			/* Act on the event */
+		});
+
+
+		$("#c_id").on('change', function(event) {
+
+			if ($("#c_id").val()== 'n') {
+
+				$("#cedula_div").css('display', 'flex');
+				$("#col_boton").css('display', 'block');
+				$("#cedulaEscolar").prop('disabled', true);
+				
+
+
+
+			}
+			else if ($("#c_id").val()== 's') {
+
+				$("#cedula_div").css('display', 'flex');
+				$("#col_boton").css('display', 'none');
+				$("#cedulaEscolar").prop('disabled', false);
+			}
+
+			event.preventDefault();
+			/* Act on the event */
+		});
+
 	$("#ciMadre").on("keypress",function(e){
-			validarkeypress(/^[0-9-\b]*$/,e);
+			validarkeypress(/^[A-Z0-9-\b]*$/,e);
 		});
 
 		$("#ciMadre").on("keyup",function(){
-			validarkeyup(/^[0-9]{7,15}$/,$(this),
-			$("#scedula"),"El formato debe ser 9999999 ");
+			validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$(this),
+			$("#pCiMadre"),"El formato debe ser V-10123123");
 			if($("#ciMadre").val().length > 6){
 			  var datos = new FormData();
 			    datos.append('accion','consultamama');
@@ -61,13 +128,13 @@ $("#cedulaEscolar").on("keypress",function(e){
 		});
 
 		$("#ciPadre").on("keypress",function(e){
-				validarkeypress(/^[0-9-\b]*$/,e);
+				validarkeypress(/^[A-Z0-9-\b]*$/,e);
 			});
 
 			$("#ciPadre").on("keyup",function(){
-				validarkeyup(/^[0-9]{7,15}$/,$(this),
-				$("#scedula"),"El formato debe ser 9999999 ");
-				if($("#ciPadre").val().length > 6){
+				validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$(this),
+				$("#pCiPadre"),"El formato debe ser V-10123123");
+				if($("#pCiPadre").val().length > 6){
 				  var datos = new FormData();
 				    datos.append('accion','consultapapa');
 					datos.append('ciPadre',$(this).val());
@@ -76,6 +143,24 @@ $("#cedulaEscolar").on("keypress",function(e){
 
 
 			});
+
+
+	$("#telefonoMadre").on("keypress",function(e){
+		validarkeypress(/^[0-9\b-]*$/,e);
+	});
+
+	$("#telefonoMadre").on("keyup",function(){
+	    validarkeyup(/^[0-9]{11,12}$/,$(this),$("#pTelefonoMadre"),"00000000000");
+	});
+
+
+	 $("#telefonoPadre").on("keypress",function(e){
+		validarkeypress(/^[0-9\b-]*$/,e);
+	});
+
+	$("#telefonoPadre").on("keyup",function(){
+	    validarkeyup(/^[0-9]{11,12}$/,$(this),$("#pTelefonoPadre"),"00000000000");
+	});
 
 /*
 
@@ -401,21 +486,7 @@ $("#quienTelefono").on("keyup",function(){
 
 
 
-////CONTROL PARA AHCER LA CEDULA ESCOLAR THX GTP 
 
-$("#nacionalidad").on('change', function(event) {
-
-	var c = $("#cedula_r").val();
-	var f = $("#fechaNaciPri").val();
-	var n = $("#nacionalidad").val();
-	var w = $("#cedula_r").val();
-		
-	$("#cedulaEscolar").val(generarCombination(c,f,w,n));
-
-
-	event.preventDefault();
-	/* Act on the event */
-});
 
 
 
@@ -447,6 +518,9 @@ $("#incluir").on("click",function(){
 		datos.append('vive_con',$("#vive_con").val());
 		datos.append('canaima',$("#canaima").val());
 		datos.append('retirada',$("#retirada").val());
+		datos.append('orden',$("#orden").val());
+		datos.append('nacionalidad',$("#nacionalidad").val());
+		datos.append('c_id',$("#c_id").val());
 
 		datos.append('pesoActual',$("#pesoActual").val());
 		datos.append('tallaActual',$("#tallaActual").val());
@@ -532,6 +606,12 @@ $("#modificar").on("click",function(){
 		datos.append('estado_p',$("#estado_p").val());
 		datos.append('ciudad_p',$("#ciudad_p").val());
 		datos.append('vive_con',$("#vive_con").val());
+
+		datos.append('orden',$("#orden").val());
+		datos.append('nacionalidad',$("#nacionalidad").val());
+		datos.append('c_id',$("#c_id").val());
+
+
 		datos.append('canaima',$("#canaima").val());
 		datos.append('retirada',$("#retirada").val());
 
@@ -643,14 +723,9 @@ function llenarpapa(cedula) {
 function validarenvio(){
 	
 
-	if(validarkeyup(/^[0-9]{7,9}$/,$("#cedulaEscolar"),
+	if(validarkeyup(/^[VE]{1}[-]{1}[0-9]{8,12}$/,$("#cedulaEscolar"),
 		$("#pCedulaEscolar"),"Formato 12345678")==0){
 	    muestraMensaje("Revisar Cedula");
-		return false;
-	}
-	else if(validarkeyup(/^[0-9]{7,9}$/,$("#cedula_r"),
-		$("#pcedula_r"),"Formato 12345678")==0){
-	    muestraMensaje("Revisar Cedula Representante");
 		return false;
 	}
 	else if(validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
@@ -723,6 +798,38 @@ function validarenvio(){
 	else if(validarkeyup(/^[0-9]{1,2}$/,$("#calzado"),
 		$("#pcalzado"),"Formato '00'")==0){
 	    muestraMensaje("Revisar campo calzado");
+		return false;
+	}
+	else if (validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$("#ciMadre"),
+    $("#pCiMadre"),"El formato debe ser V-10123123 ") == 0) {
+    	muestraMensaje("Revisar campo cedula madre");
+		return false;
+
+    }
+    else if (validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$("#ciPadre"),
+    $("#pCiPadre"),"El formato debe ser V-10123123 ") == 0) {
+    	muestraMensaje("Revisar campo cedula padre");
+		return false;
+
+    }
+    else if(validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
+		$("#apellidoMadre"),$("#pApellidoMadre"),"SOLO LETRAS ENTRE 3 Y 30 CARACTERES")==0){
+		muestraMensaje("APELLIDO <br/>SOLO LETRAS ENTRE 3 Y 30 CARACTERES");
+		return false;
+	}
+	else if(validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
+		$("#nombreMadre"),$("#pNombreMadre"),"SOLO LETRAS ENTRE 3 Y 30 CARACTERES")==0){
+		muestraMensaje("APELLIDO <br/>SOLO LETRAS ENTRE 3 Y 30 CARACTERES");
+		return false;
+	}
+	else if(validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
+		$("#apellidoPadre"),$("#pApellidoPadre"),"SOLO LETRAS ENTRE 3 Y 30 CARACTERES")==0){
+		muestraMensaje("APELLIDO <br/>SOLO LETRAS ENTRE 3 Y 30 CARACTERES");
+		return false;
+	}
+	else if(validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
+		$("#nombrePadre"),$("#pNombrePadre"),"SOLO LETRAS ENTRE 3 Y 30 CARACTERES")==0){
+		muestraMensaje("APELLIDO <br/>SOLO LETRAS ENTRE 3 Y 30 CARACTERES");
 		return false;
 	}
 
@@ -955,31 +1062,31 @@ function llenarhermanos(datos,accion){
  				if(accion=='consultahermanos'){
 
 					lee = JSON.parse(data);
-            	alert(data);
+            	
 
 				 console.log(lee['resultado']);
 					if(lee['resultado']=='encontro'){
 
 						if (lee[0]) {
-							alert("1");
+						
 							$("#nombre_hermano1").val(lee[0].nom_ape);
 							$("#grado_hermano1").val(lee[0].grado);
 							$("#turno_hermano1").val(lee[0].turno);
 							
 							if (lee[1]) {
-								alert("2");
+								
 								$("#nombre_hermano2").val(lee[1].nom_ape);
 								$("#grado_hermano2").val(lee[1].grado);
 								$("#turno_hermano2").val(lee[1].turno);
 
 								if (lee[2]) {
-									alert("3");
+									
 									$("#nombre_hermano3").val(lee[2].nom_ape);
 									$("#grado_hermano3").val(lee[2].grado);
 									$("#turno_hermano3").val(lee[2].turno);
 									
 									if (lee[3]) {
-										alert("4");
+										
 										$("#nombre_hermano4").val(lee[3].nom_ape);
 										$("#grado_hermano4").val(lee[3].grado);
 										$("#turno_hermano4").val(lee[3].turno);
@@ -1030,9 +1137,44 @@ function enviaAjax(datos,accion){
 				  $("#resultadoconsulta").html(respuesta);
 
 			   }
+
+			   else if(accion=='consultarepre'){
+			   	console.log(respuesta);
+
+			   		lee = JSON.parse(respuesta);
+
+			   		 if(lee['resultado']=='encontro'){
+
+						   		$("#representanten").html(lee[0].nombre);
+						   		$("#representantea").html(lee[0].apellido);
+						   		console.log(lee[0].nombre);
+
+						   		if (lee[0].nombre != '') {
+
+							   		$("#repre").css({
+							   			'background-color': '#59f94847'
+							   		});
+							   		habilita();
+
+						   		}
+						   								   	}
+						   	else if (lee['resultado']=='noencontro') {
+						   		desabilita();
+						   		$("#representanten").html('');
+						   		$("#representantea").html('');
+						   		$("#repre").css({
+							   			'background-color': 'tomato'
+							   		});
+
+						   	}
+			   		
+
+			    }
 			   else if(accion=='consultatr'){
 					 console.log(respuesta);
 				   lee = JSON.parse(respuesta);
+
+
 
 
 				  console.log(lee['resultado']);
@@ -1040,7 +1182,6 @@ function enviaAjax(datos,accion){
 
 
 						
-					   $("#cedula_r").val(lee[0].representante);
 					   $("#apellidoPri").val(lee[0].apellido);
 					   $("#nombrePri").val(lee[0].nombre);
 					   $("#sexo").val(lee[0].sexo);
@@ -1048,6 +1189,11 @@ function enviaAjax(datos,accion){
 					   $("#estado_p").val(lee[0].estado_n);
 					   $("#ciudad_p").val(lee[0].ciudad_n);
 					   $("#vive_con").val(lee[0].quien_vive);
+
+					   $("#orden").val(lee[0].orden);
+					   $("#nacionalidad").val(lee[0].nacionalidad);
+					   $("#c_id").val(lee[0].c_id);
+
 					   $("#canaima").val(lee[0].posee_canai);
 						 $("#canaima").val(lee[0].posee_canai);
 
@@ -1203,29 +1349,38 @@ function editar(tbody, table){
     }
 
 	all();
-	$("#incluir").prop('disabled', true);
+		$("#incluir").prop('disabled', true);
 
-  $("#cedulaEscolar").val(data[0]);
-  $('#contenido').css('display', 'block');
-  $('#formulario').css('display', 'none');
+		console.log
+
+	  $("#cedulaEscolar").val(data[0]);
+	  $('#contenido').css('display', 'block');
+	  $('#formulario').css('display', 'none');
+
+      $("#cedula_div").css('display', 'flex');
+      $("#col_boton").css('display', 'none');
 
 
-  if($("#cedulaEscolar").val().length > 6){
-    var datos = new FormData();
-    	datos.append('accion','consultatr');
-	    datos.append('cedulaEscolar',$("#cedulaEscolar").val());
-	    enviaAjax(datos,'consultatr');
+	  var datos0 = new FormData();
+    	datos0.append('accion','consultatr');
+	    datos0.append('cedulaEscolar',$("#cedulaEscolar").val());
+	    enviaAjax(datos0,'consultatr');
     var datos1 = new FormData();
 	    datos1.append('accion','consultahermanos');
 		datos1.append('cedulaEscolar',$("#cedulaEscolar").val());
 		llenarhermanos(datos1,'consultahermanos');
 
-  }else{
-	limpia2();
-	botonOff();
-	$("#incluir").prop('disabled', false);
-	}
- 
+      var datos2 = new FormData();
+        datos2.append('accion','consultarepre');
+      datos2.append('cedula_r',data[3]);
+      enviaAjax(datos2,'consultarepre');
+      $("#cedula_r").val(data[3]);
+
+    
+
+
+	 
+	 
    
     
     
@@ -1337,7 +1492,7 @@ function all() {
 
 // fUNCION QUE RECIVE LOS VALORES DE LOS INPUT Y DEVUELVE LA CEDULA
 
-function generarCombination(cedulam, fechacum, birthtype, nacionalidad){
+function generarCombination(cedulam, fechacum, type, nacionalidad){
 
 	var cedu = cedulam.toString().slice(2);
 	console.log(cedu);
@@ -1346,8 +1501,23 @@ function generarCombination(cedulam, fechacum, birthtype, nacionalidad){
 	var ultimos_dos_fecha_cum = fechacum.toString().slice(2,4);
 	console.log(ultimos_dos_fecha_cum);
 	var gi = '-';
-	var cedula_e = nacionalidad+ gi + ultimos_dos_fecha_cum + cedu;
+	var cedula_e = nacionalidad+ gi + type + ultimos_dos_fecha_cum + cedu;
 	console.log(nacionalidad);
 	console.log(cedula_e);
 	return cedula_e;
+}
+
+function desabilita() {
+	// body...
+	$('input:gt(0)').prop('disabled', true);
+	$('textarea').prop('disabled', true);
+	$('select').prop('disabled', true);
+
+}
+function habilita() {
+	// body...
+	$('input:gt(0)').prop('disabled', false);
+	$('textarea').prop('disabled', false);
+	$('select').prop('disabled', false);
+
 }
