@@ -134,11 +134,11 @@ $("#cedulaEscolar").on("keypress",function(e){
 			$("#ciPadre").on("keyup",function(){
 				validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$(this),
 				$("#pCiPadre"),"El formato debe ser V-10123123");
-				if($("#pCiPadre").val().length > 6){
-				  var datos = new FormData();
-				    datos.append('accion','consultapapa');
-					datos.append('ciPadre',$(this).val());
-					enviaAjax(datos,'consultapapa');
+				if($("#ciPadre").val().length > 6){
+				  var datosT = new FormData();
+				    datosT.append('accion','consultapapa');
+					datosT.append('ciPadre',$(this).val());
+					enviaAjax(datosT,'consultapapa');
 				}
 
 
@@ -1185,7 +1185,7 @@ function enviaAjax(datos,accion){
 					   $("#apellidoPri").val(lee[0].apellido);
 					   $("#nombrePri").val(lee[0].nombre);
 					   $("#sexo").val(lee[0].sexo);
-						$("#fechaNaciPri").val(lee[0].fecha_n);
+					 	 $("#fechaNaciPri").val(lee[0].fecha_n);
 					   $("#estado_p").val(lee[0].estado_n);
 					   $("#ciudad_p").val(lee[0].ciudad_n);
 					   $("#vive_con").val(lee[0].quien_vive);
@@ -1195,7 +1195,7 @@ function enviaAjax(datos,accion){
 					   $("#c_id").val(lee[0].c_id);
 
 					   $("#canaima").val(lee[0].posee_canai);
-						 $("#canaima").val(lee[0].posee_canai);
+						 $("#retirada").val(lee[0].retira_solo);
 
 					   $("#pesoActual").val(lee[0].peso);
 					   $("#tallaActual").val(lee[0].talla);

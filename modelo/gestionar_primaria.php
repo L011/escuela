@@ -520,7 +520,6 @@ class primaria extends datos{
 					
 					representante,
 					cedula_es,
-					
 					talla,
 					peso,
 					calzado,
@@ -531,7 +530,6 @@ class primaria extends datos{
 					Values(
 						'$this->cedula_r',
 						'$this->cedulaEscolar',
-						
 						'$this->tallaActual',
 						'$this->pesoActual',
 						'$this->calzado',
@@ -630,14 +628,13 @@ class primaria extends datos{
 						inf_medica = '$this->infom',
 						observ = '$this->observacion',
 						quien_vive = '$this->vive_con',
-
 						orden = '$this->orden',
 						nacionalidad = '$this->nacionalidad',
 						c_id = '$this->c_id'
-
 						where
 						cedula_e = '$this->cedulaEscolar'
 						");
+
 
 						$co->query("Update padres set
 							cedula_m='$this->ciMadre',

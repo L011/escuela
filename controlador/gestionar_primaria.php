@@ -75,9 +75,9 @@ require_once("modelo/".$pagina.".php");
 				$o->set_retirada($_POST['retirada']);
 				$o->set_canaima($_POST['canaima']);
 
-				$o->set_canaima($_POST['orden']);
-				$o->set_canaima($_POST['nacionalidad']);
-				$o->set_canaima($_POST['c_id']);
+				$o->set_orden($_POST['orden']);
+				$o->set_nacionalidad($_POST['nacionalidad']);
+				$o->set_c_id($_POST['c_id']);
 
 				$o->set_pesoActual($_POST['pesoActual']); //agregarrr set
 				$o->set_tallaActual($_POST['tallaActual']); //agregarrr set

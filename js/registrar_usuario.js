@@ -10,11 +10,11 @@ $(document).ready(function(){
 
 //VALIDACION DE DATOS
 	$("#cedula").on("keypress",function(e){
-		validarkeypress(/^[0-9-\b]*$/,e);
+		validarkeypress(/^[A-Z0-9-\b]*$/,e);
 	});
 
 	$("#cedula").on("keyup",function(){
-		validarkeyup(/^[0-9]{7,8}$/,$(this),
+		validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$(this),
 		$("#scedula"),"El formato debe ser 9999999 ");
 		if($("#cedula").val().length > 6){
 		  var datos = new FormData();
@@ -124,9 +124,9 @@ function llenarLista() {
 
 //Validación de todos los campos antes del envio
 function validarenvio(){
-	if(validarkeyup(/^[0-9]{7,8}$/,$("#cedula"),
-		$("#scedula"),"Formato 99999999")==0){
-	    muestraMensaje("Formato 99999999");
+	if(validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$("#cedula"),
+		$("#scedula"),"Formato V-10123123")==0){
+	    muestraMensaje("Formato V-10123123");
 		return false;
 	}
 

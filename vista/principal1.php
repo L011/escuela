@@ -32,71 +32,75 @@
 
 <main role="main">
 
-  <div class="row">
-    <div class="col">
-      <section class="jumbotron text-center">
     <div class="container">
-      <h1>Unidad Educativa Nacional "Divino Niño"</h1>
-      <p class="lead text-muted" style="text-align: justify;" >     Optimizar y asegurar la atención educativa de los niños y niñas de la comunidad de Llano Alto y sus adyacentes, desde el momento de su ingreso al nivel prescolar hasta la educación básica, sumados a las políticas educativas a través de planes y programas de estudio basado en los lineamientos curriculares.<hr>Misión</p>
-      <p>
-        <a href="?pagina=inicio" class="btn btn-primary my-2">Iniciar Sesión</a>
+      
 
-      </p>
-    </div>
-  </section>
-    </div>
-    <div class="col">
-       <div class="col-sm">
-        <div class="card mb-4 shadow-sm">
-          <img class="bd-placeholder-img card-img-top" width="100%" height="100%" src="img/amm8.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
+      <div class="row">
+        <div class="col">
+          <section class="jumbotron text-center">
+        <div class="container">
+          <h1>Unidad Educativa Nacional "Divino Niño"</h1>
+          <p class="lead text-muted" style="text-align: justify;" >     Optimizar y asegurar la atención educativa de los niños y niñas de la comunidad de Llano Alto y sus adyacentes, desde el momento de su ingreso al nivel prescolar hasta la educación básica, sumados a las políticas educativas a través de planes y programas de estudio basado en los lineamientos curriculares.<hr>Misión</p>
+          <p>
+            <a href="?pagina=inicio" class="btn btn-primary my-2">Iniciar Sesión</a>
 
-          <div class="card-body">
-            <p class="card-text text-muted">La Unidad Educativa Nacional Divino Niño, cuenta con una matrícula de 265 estudiantes aproximadamente.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
+          </p>
+        </div>
+      </section>
+        </div>
+        <div class="col">
+           <div class="col-sm">
+            <div class="card mb-4 shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="100%" src="img/amm8.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
+
+              <div class="card-body">
+                <p class="card-text text-muted">La Unidad Educativa Nacional Divino Niño, cuenta con una matrícula de 265 estudiantes aproximadamente.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    </div>
+
                 </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <div class="col-sm">
-        <div class="card mb-4 shadow-sm">
-          <img class="bd-placeholder-img card-img-top" width="100%" height="100%" src="img/amm12.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
-
-          <div class="card-body">
-            <p class="card-text text-muted">Se encuentra ubicada en el estado Lara, específicamente en la  ciudad de Barquisimeto Municipio Iribarren, parroquia Tamaca, sector  Llano Alto calle 3 entre carreras 2 y 3.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <a type="button"  href="https://www.google.com/maps/@10.185128,-69.318987,18.46z?hl=es" target="_blank" class="btn btn-sm btn-outline-secondary">Ver en Google Maps</a>
               </div>
-
             </div>
           </div>
         </div>
       </div>
-      
-    </div>
-    <div class="col">
-      <section class="jumbotron text-center">
-    <div class="container">
-      <p class="lead text-muted" style="text-align: justify;" >     Ser la institución pionera que contribuya a la formación integral de los niños y niñas de la comunidad desde el nivel prescolar y prosecución al subsistema primario enmarcado en las políticas educativas del estado venezolano y las exigencias curriculares, incorporando a la triada (Escuela-Familia-Comunidad), así como también realizar todas aquellas actividades y convenios que sean necesarias para la consecución de los objetivos.<hr>Visión</p>
-      
-    </div>
-  </section>
-    </div>
 
-  </div>
+      <div class="row">
+        <div class="col">
+          <div class="col-sm">
+            <div class="card mb-4 shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="100%" src="img/amm12.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
+
+              <div class="card-body">
+                <p class="card-text text-muted">Se encuentra ubicada en el estado Lara, específicamente en la  ciudad de Barquisimeto Municipio Iribarren, parroquia Tamaca, sector  Llano Alto calle 3 entre carreras 2 y 3.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a type="button"  href="https://www.google.com/maps/@10.185128,-69.318987,18.46z?hl=es" target="_blank" class="btn btn-sm btn-outline-secondary">Ver en Google Maps</a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col">
+          <section class="jumbotron text-center">
+        <div class="container">
+          <p class="lead text-muted" style="text-align: justify;" >     Ser la institución pionera que contribuya a la formación integral de los niños y niñas de la comunidad desde el nivel prescolar y prosecución al subsistema primario enmarcado en las políticas educativas del estado venezolano y las exigencias curriculares, incorporando a la triada (Escuela-Familia-Comunidad), así como también realizar todas aquellas actividades y convenios que sean necesarias para la consecución de los objetivos.<hr>Visión</p>
+          
+        </div>
+      </section>
+        </div>
+
+      </div>
   
+  </div>      
 
-  
+      
 
-<hr>
+    <hr>
 
 
 
