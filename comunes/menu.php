@@ -15,7 +15,9 @@
       session_start();
       }
         if(isset($_SESSION['nivel'])){
-       $nivel = $_SESSION['nivel'];
+       $nivel = $_SESSION['nivel'][0][0];
+       $cedulaUser = $_SESSION['nivel'][0][1];
+       $nombreMaestro = $_SESSION['nivel'][0][2];
       }   
       else{
         $nivel = "";
@@ -79,7 +81,7 @@
             <a class="nav-link" href="?pagina=cerrar_sesion">Cerrar Sesión</a>
           </li> 
           <li class="nav-item">
-           <button type="button" class="btn btn-secondary"><?php echo $nivel; ?></button> 
+           <button type="button" class="btn btn-secondary"><?php echo $nivel; echo " "; echo $nombreMaestro; ?></button> 
           </li>
 
 

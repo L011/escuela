@@ -1,7 +1,15 @@
 $(document).ready(function(){
 
 llenarLista();
-tabla();
+
+var datosx = {
+    cedulau: $("#cedulau").val(),
+    cargou: $("#cargou").val()
+};
+
+tabla(datosx);
+console.log(datosx);
+
 inicio();
 
 //tabla();
@@ -394,15 +402,18 @@ function enviaAjax(datos,accion){
 
 
 
-function tabla(){
+function tabla(datosx){
 
+		
 
 
 
 		var data=$("#tableajax").DataTable({
 			ajax:{
 
-			url:'modelo/tablainscripcion.php',
+			url:'modelo/tablainscripcion.php',	
+			 method: 'POST',
+			data:datosx,
 			
 			},
 			columns: [

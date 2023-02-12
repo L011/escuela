@@ -225,7 +225,10 @@ class seccion extends datos{
 		try{
 
 		
-			$resultado = $co->query("SELECT nombres, apellidos, cedula FROM empleados");
+			$resultado = $co->query("SELECT e.nombres, e.apellidos, e.cedula 
+				FROM empleados e
+				LEFT JOIN seccion s ON e.cedula = s.cedula_mm 
+				WHERE s.cedula_mm IS NULL");
 			if($resultado){
 
 				$respuesta = '';

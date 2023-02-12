@@ -33,7 +33,7 @@ class inicio extends datos{
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		try{
 		
-			$resultado = $co->prepare("SELECT cargo FROM empleados WHERE 
+			$resultado = $co->prepare("SELECT cargo, cedula, nombres FROM empleados WHERE 
 			cedula=:usuario AND clave=:clave");
 			
 			$resultado->bindParam(':usuario',$this->usuario);
@@ -46,7 +46,7 @@ class inicio extends datos{
 			
 			if($fila){
 			
-				return $fila[0][0];
+				return $fila;
 			    
 			}
 			else{

@@ -513,7 +513,16 @@ WHERE s.grado='$this->grado' and s.seccion='$this->seccion'  ");
 			
 
 		
-			$resultado = $co->query("SELECT DISTINCT grado FROM seccion ORDER BY grado ASC");
+			$resultado = $co->query("SELECT DISTINCT grado FROM seccion
+				ORDER BY CASE
+					WHEN grado = 'Pre-escolar' THEN 1
+			        WHEN grado = 'Primer Grado' THEN 2
+			        WHEN grado = 'Segundo Grado' THEN 3
+			        WHEN grado = 'Tercer Grado' THEN 4
+			        WHEN grado = 'Cuarto Grado' THEN 5
+			        WHEN grado = 'Quinto Grado' THEN 6
+			        WHEN grado = 'Sexto Grado' THEN 7
+			       END;");
 			if($resultado){
 
 				$respuesta = '';
@@ -553,8 +562,11 @@ WHERE s.grado='$this->grado' and s.seccion='$this->seccion'  ");
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		try{
 	
-			$resultado = $co->query("SELECT seccion FROM seccion 
-			WHERE seccion.grado='$this->grado'");
+			$resultado = $co->query("SELECT s.seccion FROM seccion s 
+			WHERE s.grado='$this->grado'
+            ORDER BY s.seccion ASC ");
+
+			
 			
 
 			if($resultado){

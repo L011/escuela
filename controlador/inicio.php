@@ -18,17 +18,18 @@
       
       $o->set_usuario($_POST['usuario']);
       $o->set_clave($_POST['contra']);
+
+      $cedulaMaestro = $_POST['usuario'];
       
-      $mensaje = $o->busca();
-      if($mensaje == 1){
-        $mensaje= "Administrador";
-      }
-      if($mensaje == 2){
-        $mensaje= "Maestro";
-      }
+
+      $arrayEmpleado = $o->busca();
+
+      $mensaje = $arrayEmpleado[0][0];
+      $cedulaEmpleado = $arrayEmpleado[0][1];
+      
       if($mensaje == "Administrador" or $mensaje=="Maestro"){
       session_start();
-      $_SESSION['nivel'] = $mensaje;
+      $_SESSION['nivel'] = $arrayEmpleado;
 
       header("Location: .?pagina=principal");
       }

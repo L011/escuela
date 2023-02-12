@@ -207,6 +207,7 @@ function enviaAjax(datos,accion){
 			   else{
 				   //limpia();
 					
+					llenarMaestro();
 				   muestraMensaje(respuesta);
 				   $('#contenido').css('display', 'none');
 					$('#tableajax').DataTable().ajax.reload();

@@ -18,29 +18,42 @@
             <div class="row">
                 <div class="col">
                     <div class="form-floating mb-4">
-                        <label for="scedula_usuario">Cédula</label>
-                        <input type="text" class="form-control " id="cedula_usuario" name="cedula_usuario">
+                        <label for="cedulaEscolar">Cédula Estudiante</label>
+                        <input type="text" class="form-control " id="cedulaEscolar" name="cedulaEscolar">
+                        <span id="scedulaEscolar"></span>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-floating mb-4">
-                        <label for="nombrePreescolar">Nombre</label>
-                        <input type="text"  class="form-control" id="nombrePreescolar" disabled>
+                        <label for="nombre">Nombre</label>
+                        <input type="text"  class="form-control" id="nombre" disabled>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-floating">
-                        <label for="apellido_usuario">Apellido</label>
-                        <input type="text" class="form-control" id="apellidoPreescolar" disabled>
+                        <label for="apellido">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" disabled>
                     </div>
                 </div>
+                <div class="col">
+                    <div class="form-floating">
+                        <label for="grado">Grado</label>
+                        <input type="text" class="form-control" id="grado" disabled>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating">
+                        <label for="seccion">Sección</label>
+                        <input type="text" class="form-control" id="seccion" disabled>
+                    </div>
+                </div>
+                <input type="text" name="user" id="user" style="display: none;" value="<?php echo $cedulaUser ?>">
 
             </div>
         </div>
-        <p>*Buscando formato para completar</p>
         <div class="row">
             <div class="col">
-                   <button type="button" class="btn btn-primary" id="incluir" name="incluir">GENERAR</button>
+                   <button type="button" class="btn btn-primary" id="generar" name="generar">GENERAR</button>
             </div>
                         
             <div class="col">
@@ -89,7 +102,7 @@
 
 
     <!--Llamada a las librerias de javascript para las validaciones de esta pagina -->
-        <script type="text/javascript" src="js/incripcion_primaria.js"></script>
+        <script type="text/javascript" src="js/constancia.js"></script>
         <script src="js/botonVolver.js"></script>
     </body>
 </html>

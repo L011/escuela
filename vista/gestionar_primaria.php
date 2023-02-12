@@ -264,6 +264,36 @@
                         <!-- Fin de la segundaaa parte parteee-->
 
 
+        <div class="tab-pane fade" id="vacu" role="tabpanel" aria-labelledby="vacu-tab">
+
+           <div class="row">
+              <div class="col-auto">
+                  <p class="mb-3"><strong>DATOS DE VACUNACION</strong></p>
+              </div>
+            </div>
+
+            <div class="row" >
+              
+              <div class="col">
+                <label for="">Vacuna</label>
+                    <select id="vacuna" name="vacuna" class="form-control form-select mb-3">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+
+                  <div class="col">
+                  <label for="">Dosis</label>
+                      <select id="dosis" name="dosis" class="form-control form-select mb-3">
+                        
+                      </select>
+                  </div>
+
+
+            </div>
+
+        </div>
+
 
 
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
@@ -621,6 +651,10 @@
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Sección</a>
       </li>
       
+      <li class="nav-item">
+        <a class="nav-link" id="vacu-tab" data-toggle="tab" href="#vacu" role="tab" aria-controls="vacu" aria-selected="false">Vacunación</a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Padres</a>
       </li>

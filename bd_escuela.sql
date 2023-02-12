@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-01-2023 a las 14:09:40
+-- Tiempo de generación: 06-02-2023 a las 02:09:30
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.0.25
 
@@ -166,18 +166,19 @@ CREATE TABLE `empleados` (
 --
 
 INSERT INTO `empleados` (`cedula`, `apellidos`, `nombres`, `sexo`, `fechadenacimiento`, `telefono`, `correo`, `cargo`, `clave`) VALUES
-('12345678', 'Sera Mejor', 'CHeque', 'F', '2004-11-27', '0239-2324023', 'mkfnwefn@serinf.com', 'Administrador', '12345678'),
-('22334455', 'Kirkland', 'Huus', 'F', '2022-08-10', '0041-6455075', 'empleadodenadie@gmail.com', 'Maestro', '232323'),
-('28764865', 'Favorita', 'Malo', 'M', '2023-01-12', '2332-4324323', 'venir@gmail.com', 'Administrador', ''),
-('54785123', 'Preguntas', 'Retoricas', 'M', '2021-09-08', '8734-2342643', 'mejores@hotmail.com', 'Maestro', '2435'),
-('56234986', 'Moonlight', 'XXXTENTATION', 'M', '1967-04-23', '3244-5435345', 'spotlight@gmail.com', 'Maestro', ''),
-('56432578', 'Tove Lo', 'Say It', 'F', '1992-04-23', '2343-3245435', 'freewannabe@gmail.com', 'Maestro', ''),
-('56872567', 'Futuro', 'Desconocido', 'M', '1940-04-02', '5434-4325463', 'atardecer@gmail.com', 'Maestro', ''),
-('78086345', 'Diplo', 'DeorroJi', 'M', '1976-06-30', '4564-3254634', 'ningunlugar@gmai.com', 'Maestro', ''),
-('78237463', 'Cambur', 'Pinton', 'M', '2022-04-20', '2324-4234234', 'polarpolar@gmail.com', 'Maestro', ''),
-('78755733', 'First You', 'Follow Me Down', 'M', '1976-04-02', '3454-3234235', 'needyoulove@gmail.com', 'Maestro', ''),
-('87650765', 'tranqui', 'Hecho parce', 'F', '2023-01-27', '4335-4324343', 'alguien@servidor.com', 'Maestro', ''),
-('90876345', 'Mar Ci', 'Noches Lunares', 'F', '1974-10-16', '3243-3653433', 'futuro@gmail.com', 'Maestro', '');
+('E-4234235', 'Castillo Montero', 'Meiry Angelic', 'F', '2022-12-01', '32458767445', 'sada23@gmai.com', 'Maestro', ''),
+('V-12345678', 'Gerrero Bandera', 'Maribella', 'F', '2004-11-27', '02392324023', 'asbdf@serinf.com', 'Administrador', '12345678'),
+('V-22334455', 'Izaguirre Zambrano', 'Stefany Yohana', 'F', '2022-08-10', '00416455075', 'empleado4@gmail.com', 'Maestro', '232323'),
+('V-28764865', 'Monoga Rios', 'Vanessa Alexandra', 'M', '2023-01-12', '23324324323', 'venir@gmail.com', 'Administrador', ''),
+('V-54785123', 'Preguntas', 'Retoricas', 'M', '2021-09-08', '87342342643', 'mejores@hotmail.com', 'Maestro', '2435'),
+('V-56234986', 'Moonlight', 'TENTATION', 'M', '1967-04-23', '32445435345', 'spotlight@gmail.com', 'Maestro', ''),
+('V-56432578', 'Tove Lo', 'Say It', 'F', '1992-04-23', '23433245435', 'freewannabe@gmail.com', 'Maestro', ''),
+('V-56872567', 'Futuro', 'Desconocido', 'M', '1940-04-02', '54344325463', 'atardecer@gmail.com', 'Maestro', ''),
+('V-78086345', 'Diplo', 'DeorroJi', 'M', '1976-06-30', '45643254634', 'ningunlugar@gmai.com', 'Maestro', ''),
+('V-78237463', 'Cambur', 'Pinton', 'M', '2022-04-20', '23244234234', 'polarpolar@gmail.com', 'Maestro', ''),
+('V-78755733', 'First You', 'Follow Me Down', 'M', '1976-04-02', '34543234235', 'needyoulove@gmail.com', 'Maestro', ''),
+('V-87650765', 'tranqui', 'Hecho parce', 'F', '2023-01-27', '43354324343', 'alguien@servidor.com', 'Maestro', ''),
+('V-90876345', 'Mar Ci', 'Noches Lunares', 'F', '1974-10-16', '32433653433', 'futuro@gmail.com', 'Maestro', '');
 
 -- --------------------------------------------------------
 
@@ -254,17 +255,21 @@ CREATE TABLE `estudiante` (
   `posee_canai` varchar(2) NOT NULL,
   `inf_medica` text NOT NULL,
   `observ` varchar(50) NOT NULL,
-  `quien_vive` varchar(12) NOT NULL
+  `quien_vive` varchar(12) NOT NULL,
+  `orden` varchar(2) NOT NULL,
+  `nacionalidad` varchar(2) NOT NULL,
+  `c_id` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `estudiante`
 --
 
-INSERT INTO `estudiante` (`cedula_e`, `nombre`, `apellido`, `sexo`, `fecha_n`, `estado_n`, `ciudad_n`, `cedula_mama`, `cedula_p`, `retira_solo`, `posee_canai`, `inf_medica`, `observ`, `quien_vive`) VALUES
-('123456654', 'Hd Graphics', 'RTX Geoforce', 'm', '2023-01-06', 'Lara', 'Barquisimeto', '7263724234', '726372412', 'si', 'si', 'bnbnbnasasas', 'bnbnbnbnbasasasasas', ''),
-('28965384', 'San Andreas', 'Gt Racing', 'm', '2023-01-13', 'Lara', 'Barquisimeto', '7263724234', '32565532423', '0', 'si', 'rtygfr sadnaisjd askdnsakjnd', 'sandinsadasndiasdd sadnisandas ', 'papamama'),
-('28967899', 'Pantalla camara', 'Corneta Rania', 'm', '2023-01-13', 'Lara', 'Barquisimeto', '7263724234', 'dasd32324', 'si', 'si', '----------------------------------------aaa---------', '----------------------------------------aaa-------', '');
+INSERT INTO `estudiante` (`cedula_e`, `nombre`, `apellido`, `sexo`, `fecha_n`, `estado_n`, `ciudad_n`, `cedula_mama`, `cedula_p`, `retira_solo`, `posee_canai`, `inf_medica`, `observ`, `quien_vive`, `orden`, `nacionalidad`, `c_id`) VALUES
+('V-123456654', 'Hd Graphics', 'RTX Geoforce', 'm', '2023-01-06', 'Lara', 'Barquisimeto', 'V-12876890', 'V-26987098', 'si', 'si', 'bnbnbnasasas', 'bnbnbnbnbasasasasas', 'abue', '1', 'V', 'n'),
+('V-13228967899', 'Pantalla camara', 'Corneta Rania', 'm', '2023-01-13', 'Lara', 'Barquisimeto', 'V-12876890', 'V-3249876', 'si', 'si', '----------------------------------------aaa---------', '----------------------------------------aaa-------', 'papa', '2', 'V', 'n'),
+('V-21623356238', 'Yisus H', 'Gomes Torrealba', 'm', '2016-03-28', 'Trijillo', 'Trujillo', 'V-3249876', 'V-3249876', 'no', 'si', 'Sin observaciones', 'lopsem ipsum', 'papa', '2', 'V', 'n'),
+('V-2228965384', 'San Andreas', 'Gt Racing', 'm', '2023-01-13', 'Lara', 'Barquisimeto', 'V-12876890', 'V-32565532', 'si', 'si', 'rtygfr sadnaisjd askdnsakjnd', 'sandinsadasndiasdd sadnisandas ', 'papamama', '1', 'E', 's');
 
 -- --------------------------------------------------------
 
@@ -323,6 +328,20 @@ CREATE TABLE `hermanos` (
   `turno` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `hermanos`
+--
+
+INSERT INTO `hermanos` (`id`, `cedula_e`, `nom_ape`, `grado`, `turno`) VALUES
+(79, 'V-2228965384', 'carlitos', '2', 'm'),
+(80, 'V-13228967899', 'carlote', '2', 'm'),
+(81, 'V-2228965384', 'mantequilla nelly', '1', 'm'),
+(82, 'V-2228965384', 'como un quejido que el viento se lleva', '3', 'm'),
+(91, 'V-21623356238', 'asdasd', '1', 't'),
+(92, 'V-21623356238', 'asdas', 'preescolar', 't'),
+(93, 'V-21623356238', 'dasda', '', 'm'),
+(94, 'V-21623356238', 'sdasdas', '2', 't');
+
 -- --------------------------------------------------------
 
 --
@@ -343,16 +362,15 @@ CREATE TABLE `padres` (
 --
 
 INSERT INTO `padres` (`cedula_m`, `nombre_m`, `apellido_m`, `telefono_m`, `direc_trab`, `parentesco`) VALUES
-('', '', '', '', '', ''),
-('1231231', 'Francisco', 'Bertino', '03245545345', 'Via las veritas, zona norte', ''),
-('12332434', 'Yusus', 'Francisca', '03277787877', 'Barquisimeto, calle 4', ''),
-('2342134343', 'Ramona', 'Ramno', 'sakdajsiodjas', 'Por ahi', ''),
-('273488732523', 'Fania', 'Gutierrez', '23442523532523', 'Ama de casa', ''),
-('32565532423', 'Ulala', 'Carton Piedra', '2323423543', 'jhajshjdahsjdsad', ''),
-('726372412', 'Tengo Hambre', 'Hamburgue', 'sadasdas', 'sadsadasda', ''),
-('7263724234', 'Ulala', 'Carton Piedra', '2323423543', 'jhajshjdahsjdsad', ''),
-('983954533', 'Yusus', 'Francisca', '03277787877', 'Barquisimeto, calle 4', ''),
-('dasd32324', 'Francisco', 'Bertino', '03245545345', 'Via las veritas, zona norte', '');
+('V-1231231', 'Francisco', 'Bertino', '03245545345', 'Via las veritas, zona norte', ''),
+('V-1234567', 'Yusus', 'Francisca', '03277787877', 'Barquisimeto, calle 4', ''),
+('V-12876890', 'Ulala', 'Carton Piedra', '2323423543', 'jhajshjdahsjdsad', ''),
+('V-26987098', 'Tengo Hambre', 'Hamburgue', 'sadasdas', 'sadsadasda', ''),
+('V-3249876', 'Francisco', 'Bertino', '03245545345', 'Via las veritas, zona norte', ''),
+('V-32565532', 'Ulala', 'Carton Piedra', '2323423543', 'jhajshjdahsjdsad', ''),
+('V-34567432', 'Ramona', 'Ramno', 'sakdajsiodjas', 'Por ahi', ''),
+('V-34585332', 'Yusus', 'Francisca', '03277787877', 'Barquisimeto, calle 4', ''),
+('V-34678543', 'Fania', 'Gutierrez', '23442523532523', 'Ama de casa', '');
 
 -- --------------------------------------------------------
 
@@ -425,9 +443,9 @@ CREATE TABLE `representante` (
 --
 
 INSERT INTO `representante` (`cedula`, `nombre`, `apellido`, `telefono`, `estudio`, `religion`, `civil`, `nacion`, `direc`, `paren_repre`, `ocupa`, `correo`, `cuenta_b`, `tipo_c`, `banco`, `carnet_p`, `serial_p`) VALUES
-('1221321', 'Antonio', 'Pedro', '0244-9485434', 'bachillar', 'Ateísmo', 'divorciado', 'extranjero', 'Las veritas', 'tia', 'Ama de casa', 'hioiiss@gmail.com', '2904893859353553535444444', 'ahorro', '9', '245325453454353', '435983495834944'),
-('23356238', 'Marco', 'Eduardo', '3234-2343234', 'primaria', 'Católica', 'divorciado', 'venezolano', 'Via turaja', 'padre', 'Viajando a las estrellas', 'agiujsuikdm@gmail.com', '23324235235324344333', 'corriente', '10', '2142342343', '2342342343'),
-('23456436', 'Recuerdos', 'Salsa Casino', '3234-2343234', 'primaria', 'Católica', 'soltero', 'venezolano', 'sdkmaskdmsad', 'madre', 'kspdofjasfoa', 'agiujsuikdm@gmail.com', '01023938473284233434', 'corriente', '10', '0000423434', '0000034233');
+('V-23356238', 'Marco', 'Eduardo', '32342343234', 'primaria', 'Católica', 'divorciado', 'venezolano', 'Via turumero', 'padre', 'Viajando a las estrellas', 'agiujsuikdm@gmail.com', '23324235235324344333', 'corriente', '10', '2142342343', '2342342343'),
+('V-23456436', 'Recuerdos', 'Salsa Casino', '32342343234', 'primaria', 'Católica', 'soltero', 'venezolano', 'sdkmaskdmsad', 'madre', 'kspdofjasfoa', 'agiujsuikdm@gmail.com', '01023938473284233434', 'corriente', '10', '0000423434', '0000034233'),
+('V-32564343', 'Antonio', 'Pedro', '02449485434', 'bachillar', 'Ateísmo', 'divorciado', 'extranjero', 'Las veritas', 'tia', 'Ama de casa', 'hioiiss@gmail.com', '2904893859353553535444444', 'ahorro', '9', '245325453454353', '435983495834944');
 
 -- --------------------------------------------------------
 
@@ -459,18 +477,18 @@ CREATE TABLE `seccion` (
 --
 
 INSERT INTO `seccion` (`id`, `seccion`, `grado`, `cedula_mm`, `anio_escolar`) VALUES
-(10, 'Mañana A', 'Quinto Grado', '12345678', '2022-2023'),
-(6, 'Tarde B', 'Quinto Grado', '22334455', '2022-2023'),
-(22, 'Tarde D', 'Pre-escolar', '28764865', '2022-2023'),
-(15, 'Mañana A', 'Primer Grado', '54785123', '2022-2023'),
-(19, 'Mañana B', 'Pre-escolar', '56234986', '2022-2023'),
-(20, 'Mañana A', 'Pre-escolar', '56432578', '2022-2023'),
-(18, 'Mañana A', 'Sexto Grado', '56872567', '2022-2023'),
-(11, 'Mañana A', 'Segundo Grado', '78086345', '2022-2023'),
-(12, 'Tarde B', 'Cuarto Grado', '78237463', '2022-2023'),
-(13, 'Tarde B', 'Sexto Grado', '78755733', '2022-2023'),
-(16, 'Tarde B', 'Tercer Grado', '87650765', '2022-2023'),
-(17, 'Mañana A', 'Cuarto Grado', '90876345', '2022-2023');
+(10, 'Mañana A', 'Quinto Grado', 'V-12345678', '2022-2023'),
+(6, 'Tarde B', 'Quinto Grado', 'V-22334455', '2022-2023'),
+(22, 'Tarde D', 'Pre-escolar', 'V-28764865', '2022-2023'),
+(15, 'Mañana A', 'Primer Grado', 'V-54785123', '2022-2023'),
+(19, 'Mañana B', 'Pre-escolar', 'V-56234986', '2022-2023'),
+(20, 'Mañana A', 'Pre-escolar', 'V-56432578', '2022-2023'),
+(18, 'Mañana A', 'Sexto Grado', 'V-56872567', '2022-2023'),
+(11, 'Mañana A', 'Segundo Grado', 'V-78086345', '2022-2023'),
+(12, 'Tarde B', 'Cuarto Grado', 'V-78237463', '2022-2023'),
+(13, 'Tarde B', 'Sexto Grado', 'V-78755733', '2022-2023'),
+(16, 'Tarde B', 'Tercer Grado', 'V-87650765', '2022-2023'),
+(17, 'Mañana A', 'Cuarto Grado', 'V-90876345', '2022-2023');
 
 -- --------------------------------------------------------
 
@@ -498,9 +516,10 @@ CREATE TABLE `seccion_estudiante` (
 --
 
 INSERT INTO `seccion_estudiante` (`id`, `representante`, `cedula_es`, `seccion_1`, `talla`, `peso`, `calzado`, `camisa`, `pantalon`, `colab_comun`, `dia_disp`, `horario`) VALUES
-(90, '1221321', '123456654', 10, '435.', '23.4', '32.3', '43.2', '43.4', 'bnbnbnbnbsasasas', '', ''),
-(91, '23356238', '28965384', 17, '43.3', '23.4', '32', 'S', 'M', 'asdjiosan dsan dasnd', '', ''),
-(92, '23456436', '28967899', 18, '435.', '23.4', '32.3', '43.2', '43.4', '----------------------------------------aaa-------', '', '');
+(90, 'V-32564343', 'V-123456654', 15, '435.', '23.4', '32.3', '43.2', '43.4', 'bnbnbnbnbsasasas', '', ''),
+(91, 'V-23356238', 'V-2228965384', 11, '43.3', '23.4', '32', 'S', 'M', 'asdjiosan dsan dasnd', '', ''),
+(92, 'V-23456436', 'V-13228967899', 10, '435.', '23.4', '32.3', '43.2', '43.4', '----------------------------------------aaa-------', '', ''),
+(96, 'V-23356238', 'V-21623356238', NULL, '23.4', '32.3', '34', 'M', 'S', 'lopsem ipsum', '', '');
 
 -- --------------------------------------------------------
 
@@ -695,7 +714,7 @@ ALTER TABLE `vacunacion`
 -- AUTO_INCREMENT de la tabla `hermanos`
 --
 ALTER TABLE `hermanos`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT de la tabla `seccion`
@@ -707,7 +726,7 @@ ALTER TABLE `seccion`
 -- AUTO_INCREMENT de la tabla `seccion_estudiante`
 --
 ALTER TABLE `seccion_estudiante`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- Restricciones para tablas volcadas
@@ -809,8 +828,8 @@ ALTER TABLE `seccion`
 --
 ALTER TABLE `seccion_estudiante`
   ADD CONSTRAINT `fk_cedula_e` FOREIGN KEY (`cedula_es`) REFERENCES `estudiante` (`cedula_e`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_representante` FOREIGN KEY (`representante`) REFERENCES `representante` (`cedula`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `seccion_estudiante_ibfk_1` FOREIGN KEY (`seccion_1`) REFERENCES `seccion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_representante` FOREIGN KEY (`representante`) REFERENCES `representante` (`cedula`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `seccion_estudiante_ibfk_1` FOREIGN KEY (`seccion_1`) REFERENCES `seccion` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `vacuna`

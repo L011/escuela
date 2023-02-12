@@ -57,7 +57,7 @@
 
             <div class="form-group row">
             <label for="usuario" >Ingresar Cedula</label>
-            <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Cedula" 
+            <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Formato V-12345678" 
               pattern="[A-Za-z0-9,#\b\s\u00f1\u00d1\u00E0-\u00FC-]{4,12}" 
               required 
               maxlength="10" 

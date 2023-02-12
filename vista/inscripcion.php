@@ -50,6 +50,11 @@
                      
                           
                           <input type="text" class="form-control" id="id" name="id" >
+
+                          <input type="text" class="form-control" id="cedulau" name="cedulau"
+                          value="<?php echo $cedulaUser; ?>" >
+                          <input type="text" class="form-control" id="cargou" name="cargou" 
+                          value="<?php echo $nivel; ?>">
                       
                   </div>
 
