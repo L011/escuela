@@ -129,9 +129,9 @@ class representante extends datos{
 			//2 Se ejecuta el sql
 			try {
 					$co->query("INSERT INTO representante (cedula,
-						 nombre,
-						 apellido,
-						 telefono,
+						 nombre_r,
+						 apellido_r,
+						 telefono_r,
 						 direc,
 						 estudio,
 						 religion,
@@ -184,9 +184,9 @@ class representante extends datos{
 			try {
 					$co->query("Update representante set
 					cedula = '$this->cedula',
-					nombre = '$this->nombreRepre',
-					apellido = '$this->apellidoRepre',
-					telefono = 	'$this->telfRepre',
+					nombre_r = '$this->nombreRepre',
+					apellido_r = '$this->apellidoRepre',
+					telefono_r = 	'$this->telfRepre',
 					direc = 	'$this->direccionRepre',
 					estudio = 	'$this->estudio',
 					religion = 	'$this->religion',
@@ -231,50 +231,6 @@ class representante extends datos{
 		else{
 			return "Cedula no registrada";
 		}
-	}
-
-
-	function consultar(){
-		$co = $this->conecta();
-		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		try{
-
-			$resultado = $co->query("Select * from representante");
-
-			if($resultado){
-
-				$respuesta = '';
-				foreach($resultado as $r){
-					$respuesta = $respuesta."<tr style='cursor:pointer' onclick='coloca(this);'>";
-						$respuesta = $respuesta."<td>";
-							$respuesta = $respuesta.$r['cedula'];
-						$respuesta = $respuesta."</td>";
-						$respuesta = $respuesta."<td>";
-							$respuesta = $respuesta.$r['apellido'];
-						$respuesta = $respuesta."</td>";
-						$respuesta = $respuesta."<td>";
-							$respuesta = $respuesta.$r['nombre'];
-						$respuesta = $respuesta."</td>";
-						$respuesta = $respuesta."<td>";
-							$respuesta = $respuesta.$r['telefono'];
-						$respuesta = $respuesta."</td>";
-						$respuesta = $respuesta."<td>";
-							$respuesta = $respuesta.$r['correo'];
-						$respuesta = $respuesta."</td>";
-						$respuesta = $respuesta."</tr>";
-
-				}
-				return $respuesta;
-
-			}
-			else{
-				return '';
-			}
-
-		}catch(Exception $e){
-			return $e->getMessage();
-		}
-
 	}
 
 

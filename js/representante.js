@@ -369,9 +369,9 @@ function enviaAjax(datos,accion){
          	botonOn();
          	 $("#incluir").prop('disabled', true);
             $("#ciRepre").val(lee[0].cedula);
-            $("#apellidoRepre").val(lee[0].apellido);
-            $("#nombreRepre").val(lee[0].nombre);
-            $("#telfRepre").val(lee[0].telefono);
+            $("#apellidoRepre").val(lee[0].apellido_r);
+            $("#nombreRepre").val(lee[0].nombre_r);
+            $("#telfRepre").val(lee[0].telefono_r);
             $("#direccionRepre").val(lee[0].direc);
             $("#estudio").val(lee[0].estudio);
             $("#religion").val(lee[0].religion);

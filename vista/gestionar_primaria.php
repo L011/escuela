@@ -4,6 +4,7 @@
     <body>
         <?php  require_once("comunes/menu.php"); ?>
         <?php require_once("comunes/modal.php"); ?>
+         <?php require_once("comunes/modal_vacuna.php"); ?>
       <main>
 
 <div class="container"> <!-- todo el contenido ira dentro de esta etiqueta-->
@@ -272,25 +273,296 @@
               </div>
             </div>
 
-            <div class="row" >
-              
-              <div class="col">
-                <label for="">Vacuna</label>
-                    <select id="vacuna" name="vacuna" class="form-control form-select mb-3">
+            <button class="btn btn-success mb-3" id="add_v">Agregar Vacuna no existente</button>
+
+            <table class="table table-bordered table-sm" style="text-align: center;"  >
+              <tr>
+                <th>
+                  #
+                </th>
+                <th>
+                  Vacuna
+                </th>
+                <th>
+                  Dosis
+                </th>
+              </tr>
+
+
+              <tr>
+                <th scope="row">
+                  1
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna1" name="vacuna" class="form-control vacuna form-select">
                         <option selected value="">Seleccionar</option>
                      
                     </select>
                 </div>
-
-                  <div class="col">
-                  <label for="">Dosis</label>
-                      <select id="dosis" name="dosis" class="form-control form-select mb-3">
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis1" name="dosis" class="form-control form-select">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
                         
                       </select>
                   </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  2
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna2" name="vacuna" class="form-control vacuna form-select">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis2" name="dosis" class="form-control form-select">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  3
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna3" name="vacuna" class="form-control vacuna form-select">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis3" name="dosis" class="form-control form-select">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  4
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna4" name="vacuna" class="form-control vacuna form-select">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis4" name="dosis" class="form-control form-select">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  5
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna5" name="vacuna" class="form-control vacuna form-select ">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis5" name="dosis" class="form-control form-select ">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  6
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna6" name="vacuna" class="form-control vacuna form-select ">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis6" name="dosis" class="form-control form-select ">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  7
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna7" name="vacuna" class="form-control vacuna form-select ">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis7" name="dosis" class="form-control form-select ">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  8
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna8" name="vacuna" class="form-control vacuna form-select ">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis8" name="dosis" class="form-control form-select ">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  9
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna9" name="vacuna" class="form-control vacuna form-select ">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis9" name="dosis" class="form-control form-select ">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
 
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  10
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna10" name="vacuna" class="form-control vacuna form-select ">
+                        <option selected value="">Seleccionar</option>
 
-            </div>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis10" name="dosis" class="form-control form-select ">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+            </table>
 
         </div>
 

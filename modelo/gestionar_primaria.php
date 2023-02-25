@@ -32,6 +32,8 @@ class primaria extends datos{
 	private $infom;
 	private $observacion;
 
+	private $vacuna_name;
+
 	private $orden;
 	private $nacionalidad;
 	private $c_id;
@@ -72,9 +74,102 @@ class primaria extends datos{
 	private $quienRetirada;
 	private $quienTelefono;
 
+	private $vacuna1;
+	private $dosis1;
+	private $vacuna2;
+	private $dosis2;
+	private $vacuna3;
+	private $dosis3;
+	private $vacuna4;
+	private $dosis4;
+	private $vacuna5;
+	private $dosis5;
+	private $vacuna6;
+	private $dosis6;
+	private $vacuna7;
+	private $dosis7;
+	private $vacuna8;
+	private $dosis8;
+	private $vacuna9;
+	private $dosis9;
+	private $vacuna10;
+	private $dosis10;
+
+	
+
+
+	//2
+
+	function set_vacuna1($valor){
+		$this->vacuna1 = $valor;
+	}
+	function set_vacuna2($valor){
+		$this->vacuna2 = $valor;
+	}
+	function set_vacuna3($valor){
+		$this->vacuna3 = $valor;
+	}
+	function set_vacuna4($valor){
+		$this->vacuna4 = $valor;
+	}
+	function set_vacuna5($valor){
+		$this->vacuna5 = $valor;
+	}
+	function set_vacuna6($valor){
+		$this->vacuna6 = $valor;
+	}
+	function set_vacuna7($valor){
+		$this->vacuna7 = $valor;
+	}
+	function set_vacuna8($valor){
+		$this->vacuna8 = $valor;
+	}
+	function set_vacuna9($valor){
+		$this->vacuna9 = $valor;
+	}
+	function set_vacuna10($valor){
+		$this->vacuna10 = $valor;
+	}
+
+	function set_dosis1($valor){
+		$this->dosis1 = $valor;
+	}
+	function set_dosis2($valor){
+		$this->dosis2 = $valor;
+	}
+	function set_dosis3($valor){
+		$this->dosis3 = $valor;
+	}
+	function set_dosis4($valor){
+		$this->dosis4 = $valor;
+	}
+	function set_dosis5($valor){
+		$this->dosis5 = $valor;
+	}
+	function set_dosis6($valor){
+		$this->dosis6 = $valor;
+	}
+	function set_dosis7($valor){
+		$this->dosis7 = $valor;
+	}
+	function set_dosis8($valor){
+		$this->dosis8 = $valor;
+	}
+	function set_dosis9($valor){
+		$this->dosis9 = $valor;
+	}
+	function set_dosis10($valor){
+		$this->dosis10 = $valor;
+	}
+	
 
 
 
+	//vacuna
+
+	function set_agregar_v($valor){
+		$this->vacuna_name = $valor;
+	}
 
 			// Segunda parteee
 
@@ -539,7 +634,7 @@ class primaria extends datos{
 
 						)
 				");
-
+				if ($this->nombre_hermano1) {
 				$co->query("insert into hermanos(
 						cedula_e,
 						nom_ape,
@@ -553,45 +648,135 @@ class primaria extends datos{
 						'$this->turno_hermano1'
 						)
 				");
-				$co->query("insert into hermanos(
+
+					if ($this->nombre_hermano2) {
+						
+					$co->query("insert into hermanos(
+							cedula_e,
+							nom_ape,
+							grado,
+							turno
+						)
+						Values(
+							'$this->cedulaEscolar',
+							'$this->nombre_hermano2',
+							'$this->grado_hermano2',
+							'$this->turno_hermano2'
+							)
+					");
+
+
+						if ($this->nombre_hermano3) {
+							
+						$co->query("insert into hermanos(
+								cedula_e,
+								nom_ape,
+								grado,
+								turno
+							)
+							Values(
+								'$this->cedulaEscolar',
+								'$this->nombre_hermano3',
+								'$this->grado_hermano3',
+								'$this->turno_hermano3'
+								)
+						");
+							if ($this->nombre_hermano4) {
+								
+							$co->query("insert into hermanos(
+									cedula_e,
+									nom_ape,
+									grado,
+									turno
+								)
+								Values(
+									'$this->cedulaEscolar',
+									'$this->nombre_hermano4',
+									'$this->grado_hermano4',
+									'$this->turno_hermano4'
+									)
+							");
+							}
+						}
+					}
+
+					
+				}
+
+				if ($this->vacuna1) {
+					
+				$co->query("insert into vacunacion(
+						id_vacuna,
 						cedula_e,
-						nom_ape,
-						grado,
-						turno
+						dosis
 					)
 					Values(
+						'$this->vacuna1',
 						'$this->cedulaEscolar',
-						'$this->nombre_hermano2',
-						'$this->grado_hermano2',
-						'$this->turno_hermano2'
+						'$this->dosis1'
 						)
 				");
-				$co->query("insert into hermanos(
+				if ($this->vacuna2) {
+					
+				$co->query("insert into vacunacion(
+						id_vacuna,
 						cedula_e,
-						nom_ape,
-						grado,
-						turno
+						dosis
 					)
 					Values(
+						'$this->vacuna2',
 						'$this->cedulaEscolar',
-						'$this->nombre_hermano3',
-						'$this->grado_hermano3',
-						'$this->turno_hermano3'
+						'$this->dosis2'
 						)
 				");
-				$co->query("insert into hermanos(
+
+				if ($this->vacuna3) {
+					
+				$co->query("insert into vacunacion(
+						id_vacuna,
 						cedula_e,
-						nom_ape,
-						grado,
-						turno
+						dosis
 					)
 					Values(
+						'$this->vacuna3',
 						'$this->cedulaEscolar',
-						'$this->nombre_hermano4',
-						'$this->grado_hermano4',
-						'$this->turno_hermano4'
+						'$this->dosis3'
 						)
 				");
+				if ($this->vacuna4) {
+					
+				$co->query("insert into vacunacion(
+						id_vacuna,
+						cedula_e,
+						dosis
+					)
+					Values(
+						'$this->vacuna4',
+						'$this->cedulaEscolar',
+						'$this->dosis4'
+						)
+				");
+				if ($this->vacuna5) {
+					
+				$co->query("insert into vacunacion(
+						id_vacuna,
+						cedula_e,
+						dosis
+					)
+					Values(
+						'$this->vacuna5',
+						'$this->cedulaEscolar',
+						'$this->dosis5'
+						)
+				");
+
+				
+				}
+				}
+				}
+				}
+				}
+
 
 
 
@@ -692,7 +877,7 @@ class primaria extends datos{
 
 						$co->query("delete from seccion_estudiante
 							where
-							cedula_e = '$this->cedulaEscolar'
+							cedula_es = '$this->cedulaEscolar'
 							");
 
 						return "Registro Eliminado";
@@ -703,51 +888,6 @@ class primaria extends datos{
 		else{
 			return "Cedula no registrada";
 		}
-	}
-
-
-	function consultar(){
-		$co = $this->conecta();
-		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		try{
-
-			$resultado = $co->query("SELECT * FROM `estudiante` e INNER JOIN seccion_estudiante s ON e.cedula_e= s.cedula_es");
-
-
-			if($resultado){
-
-				$respuesta = '';
-				foreach($resultado as $r){
-					$respuesta = $respuesta."<tr style='cursor:pointer' onclick='coloca(this);'>";
-							$respuesta = $respuesta."<td>";
-								$respuesta = $respuesta.$r['cedula_e'];
-							$respuesta = $respuesta."</td>";
-							$respuesta = $respuesta."<td>";
-								$respuesta = $respuesta.$r['apellido'];
-							$respuesta = $respuesta."</td>";
-							$respuesta = $respuesta."<td>";
-								$respuesta = $respuesta.$r['nombre'];
-							$respuesta =	 $respuesta."</td>";
-							$respuesta = $respuesta."<td>";
-								$respuesta = $respuesta.$r['representante'];
-							$respuesta = $respuesta."</td>";
-
-
-
-						$respuesta = $respuesta."</tr>";
-
-				}
-				return $respuesta;
-
-			}
-			else{
-				return '';
-			}
-
-		}catch(Exception $e){
-			return $e->getMessage();
-		}
-
 	}
 
 
@@ -773,6 +913,95 @@ class primaria extends datos{
 		}catch(Exception $e){
 			return false;
 		}
+	}
+
+	function agregar_v(){
+		$co = $this->conecta();
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		try{
+
+			$co->query("insert into vacuna(
+						vacuna
+						
+						)
+						Values(
+							'$this->vacuna_name'				
+
+							)
+							");
+
+		}catch(Exception $e){
+			return false;
+		}
+	}
+
+		function consultarVacuna(){
+		$co = $this->conecta();
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		try{
+
+			$resultado = $co->query("Select * from vacuna");
+
+			if($resultado){
+
+				$respuesta = '';
+					$a="1";
+				foreach($resultado as $r){
+					$respuesta = $respuesta."<tr>";
+
+						$respuesta = $respuesta."
+						<td scope='row'>";
+							$respuesta = $respuesta.$a;
+							$a++;
+						$respuesta = $respuesta."</td>";
+						$respuesta = $respuesta."<td>";
+							$respuesta = $respuesta.$r['vacuna'];
+						$respuesta = $respuesta."</td>";
+
+					$respuesta = $respuesta."</tr>";
+				}
+				return $respuesta;
+
+			}
+			else{
+				return '';
+			}
+
+		}catch(Exception $e){
+			return $e->getMessage();
+		}
+
+	}
+
+	function consultarVacuna2(){
+		$co = $this->conecta();
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		try{
+
+			$resultado = $co->query("Select id, vacuna from vacuna");
+			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
+			if($fila){
+
+				$envia = array('resultado'=>"encontro");
+
+				$envia += $fila;
+
+				return json_encode($envia);
+
+			}
+			else{
+
+				$envia = array('resultado'=>"noencontro");
+				return json_encode($envia);
+
+
+			}
+
+		}catch(Exception $e){
+			$envia = array('resultado'=>$e->getMessage());
+			return json_encode($envia);
+		}
+
 	}
 
 	private function existemama($cedula){
@@ -832,7 +1061,7 @@ class primaria extends datos{
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		try{
 
-			$resultado = $co->query("Select nombre, apellido from representante where cedula='$this->cedula_r'");
+			$resultado = $co->query("Select nombre_r, apellido_r from representante where cedula='$this->cedula_r'");
 			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
 			if($fila){
 
@@ -857,6 +1086,8 @@ class primaria extends datos{
 		}
 
 	}
+
+	
 
 
 	function consultatr(){

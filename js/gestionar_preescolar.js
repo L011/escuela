@@ -1,12 +1,128 @@
 
 $(document).ready(function(){
-	//console.log("Main")
-	//para obtener la fecha del servidor y calcular la
-	//edad de nacimiento que debe ser mayor a 18
+	
 
+	$("#add").click();
+	desabilita();
 //VALIDACION DE DATOS
 
 //DATOS DEL NINO
+
+	$('input').on('keypress', function(e) {
+		validarkeypress(/^[A-Za-z0-9-.\b\s]*$/,e);
+		/* Act on the event */
+	});
+
+
+	 $("#cedula_r").on("keypress",function(e){
+    validarkeypress(/^[A-Z0-9-\b]*$/,e);
+    });
+
+  $("#cedula_r").on("keyup",function(){
+    validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$(this),
+    $("#pcedula_r"),"El formato debe ser V-10123123 ");
+    if($("#cedula_r").val().length > 8){
+      var datos = new FormData();
+        datos.append('accion','consultarepre');
+      datos.append('cedula_r',$(this).val());
+      enviaAjax(datos,'consultarepre');
+    }
+    else {
+    	$("#representanten").html('');
+		$("#representantea").html('');
+    	desabilita();
+      botonOff();
+    	limpia();
+    	limpia2();
+      $("#incluir").prop('disabled', false);
+
+    }
+  });
+
+  $("#cedulaEscolar").on("keypress",function(e){
+		validarkeypress(/^[0-9-\b]*$/,e);
+	});
+
+	$("#cedulaEscolar").on("keyup",function(){
+		validarkeyup(/^[0-9]{7,15}$/,$(this),
+		$("#scedula"),"El formato debe ser 9999999 ");
+	});
+
+
+	////CONTROL PARA AHCER LA CEDULA ESCOLAR THX GPT 
+
+		$("#generar").on('click', function(event) {
+
+			var c = $("#cedula_r").val();
+			var f = $("#fechaNaciPri").val();
+			var n = $("#nacionalidad").val();
+			var o = $("#orden").val();
+				
+			$("#cedulaEscolar").val(generarCombination(c,f,o,n));
+
+
+			event.preventDefault();
+			/* Act on the event */
+		});
+
+
+			$("#c_id").on('change', function(event) {
+
+			if ($("#c_id").val()== 'n') {
+
+				$("#cedula_div").css('display', 'flex');
+				$("#col_boton").css('display', 'block');
+				$("#cedulaEscolar").prop('disabled', true);
+				
+
+
+
+			}
+			else if ($("#c_id").val()== 's') {
+
+				$("#cedula_div").css('display', 'flex');
+				$("#col_boton").css('display', 'none');
+				$("#cedulaEscolar").prop('disabled', false);
+			}
+
+			event.preventDefault();
+			/* Act on the event */
+		});
+
+
+	$("#ciMadre").on("keypress",function(e){
+			validarkeypress(/^[A-Z0-9-\b]*$/,e);
+		});
+
+		$("#ciMadre").on("keyup",function(){
+			validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$(this),
+			$("#pCiMadre"),"El formato debe ser V-10123123");
+			if($("#ciMadre").val().length > 6){
+			  var datos = new FormData();
+			    datos.append('accion','consultamama');
+				datos.append('ciMadre',$(this).val());
+				enviaAjax(datos,'consultamama');
+			}
+
+		});
+
+	$("#ciPadre").on("keypress",function(e){
+			validarkeypress(/^[A-Z0-9-\b]*$/,e);
+		});
+
+		$("#ciPadre").on("keyup",function(){
+			validarkeyup(/^[VE]{1}[-]{1}[0-9]{6,8}$/,$(this),
+			$("#pCiPadre"),"El formato debe ser V-10123123");
+			if($("#ciPadre").val().length > 6){
+			  var datosT = new FormData();
+			    datosT.append('accion','consultapapa');
+				datosT.append('ciPadre',$(this).val());
+				enviaAjax(datosT,'consultapapa');
+			}
+
+
+		});
+
 /*
 	$("#cedulaEscolar").on("keypress",function(e){
 		validarkeypress(/^[0-9-\b]*$/,e);
@@ -132,88 +248,6 @@ $(document).ready(function(){
 
 	    //FIN DE DATOS DEL NINO
 
-		//DATOS DEL REPRESENTANTE
-		$("#nombreRepresentante").on("keypress",function(e){
-			validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-		});
-
-		$("#nombreRepresentante").on("keyup",function(){
-			validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-			$(this),$("#pnombreRepresentante"),"Solo letras  entre 3 y 30 caracteres");
-		});
-
-		$("#profesionRepresentante").on("keypress",function(e){
-			validarkeypress(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-		});
-
-		$("#profesionRepresentante").on("keyup",function(){
-			validarkeyup(/^[A-Za-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-			$(this),$("#pprofesionRepresentante"),"Solo letras  entre 3 y 30 caracteres");
-		});
-
-		$("#cedulaRepresentante").on("keypress",function(e){
-			validarkeypress(/^[0-9]*$/,e);
-		});
-
-		$("#cedulaRepresentante").on("keyup",function(){
-			validarkeyup(/^[0-9]{7,8}$/,
-			$(this),$("#pcedulaRepresentante"),"El formato debe ser 9999999");
-		});
-
-		$("#direccionRepresentante").on("keypress",function(e){
-			validarkeypress(/^[A-Z0-9a-z\b\s\u00f1\u00d1\u00E0-\u00FC]*$/,e);
-		});
-
-		$("#direccionRepresentante").on("keyup",function(){
-			validarkeyup(/^[A-Z0-9a-z\b\s\u00f1\u00d1\u00E0-\u00FC]{3,30}$/,
-			$(this),$("#pdireccionRepresentante"),"Solo letras  entre 3 y 30 caracteres");
-		});
-
-		$("#telefonoRepresentante").on("keypress",function(e){
-			validarkeypress(/^[0-9\b-]*$/,e);
-		});
-
-		$("#telefonoRepresentante").on("keyup",function(){
-		    validarkeyup(/^[0-9]{4}[-]{1}[0-9]{7,8}$/,$(this),$("#ptelefonoRepresentante"),"9999-9999999");
-		});
-
-		$("#correoRepre").on("keypress",function(e){
-			validarkeypress(/^[0-9A-Za-z@_.\b\u00f1\u00d1\u00E0-\u00FC-]*$/,e);
-		});
-
-		$("#correoRepre").on("keyup",function(){
-			validarkeyup(/^[A-Z0-9a-z_\u00f1\u00d1\u00E0-\u00FC-]{3,15}[@]{1}[A-Za-z0-9]{3,8}[.]{1}[A-Za-z]{2,3}$/,
-			$(this),$("#pCorreoRepre"),"Correo Valido alguien@servidor.com");
-		});
-
-		$("#cuentaBancR").on("keypress",function(e){
-			validarkeypress(/^[0-9]*$/,e);
-		});
-
-		$("#cuentaBancR").on("keyup",function(){
-			validarkeyup(/^[0-9]{20}$/,
-			$(this),$("#pcuentaBancR"),"Ingresar un numero de cuenta valido");
-		});
-
-		$("#codigoCPR").on("keypress",function(e){
-			validarkeypress(/^[0-9]*$/,e);
-		});
-
-		$("#codigoCPR").on("keyup",function(){
-			validarkeyup(/^[0-9]{10}$/,
-			$(this),$("#pcodigoCPR"),"Ingresar un codigo valido");
-		});
-
-		$("#serialCPR").on("keypress",function(e){
-			validarkeypress(/^[0-9]*$/,e);
-		});
-
-		$("#serialCPR").on("keyup",function(){
-			validarkeyup(/^[0-9]{10}$/,
-			$(this),$("#pserialCPR"),"Ingresar un codigo valido");
-		});
-
-		//fin de datos del representante
 
 		//datos familiares
 
@@ -667,29 +701,113 @@ $(document).ready(function(){
 
 //CONTROL DE BOTONES
 
-$("#incluir").on("click",function(){
-	console.log("sad");
+//CONTROL DE BOTONES
 
+$("#add").on("click",function(){
+
+	var datos = new FormData();
+	datos.append('accion','consultarVacuna');
+
+	enviaAjax(datos,'consultarVacuna');
+
+});
+
+
+
+$("#incluir").on("click",function(){
 	if(validarenvio()){
 		//console.log("I1")
 		var datos = new FormData();
-
 		datos.append('accion','incluir');
-		datos.append('grado',$("#grado").val());
-		datos.append('seccion',$("#seccion").val());
-		datos.append('turno',$("#turno").val());
-		datos.append('anioe',$("#anioe").val());
-		datos.append('maestro',$("#maestro").val());
+		//datos del niño
 
-		datos.append('partidaNacimiento',$("#partidaNacimiento").val());
-		datos.append('certificadoVacuna',$("#certificadoVacuna").val());
-		datos.append('fotos',$("#fotos").val());
-		datos.append('copiasCedulaRepre',$("#copiasCedulaRepre").val());
-		datos.append('constanciaNinoSano',$("#constanciaNinoSano").val());
+		var checkboxs = $('input[type=checkbox][name="doc[]"]:checked');
+
+		checkboxs.each(function() {
+
+		datos.append('doc[]',$(this).val());
+			
+		});
+
+		var checkboxLlegar = $('input[type=checkbox][name="llegar[]"]:checked');
+
+		checkboxLlegar.each(function() {
+
+		datos.append('llegar[]',$(this).val());
+			
+		});
+
+
+		var checkboxhabito = $('input[type=checkbox][name="habito[]"]:checked');
+
+		checkboxhabito.each(function() {
+
+		datos.append('habito[]',$(this).val());
+			
+		});
+
+		var checkboxcontrol = $('input[type=checkbox][name="control[]"]:checked');
+
+		checkboxcontrol.each(function() {
+
+		datos.append('control[]',$(this).val());
+			
+		});
+
+		var checkboxdessarrollo = $('input[type=checkbox][name="desarrollo[]"]:checked');
+
+		checkboxdessarrollo.each(function() {
+
+		datos.append('desarrollo[]',$(this).val());
+
+			
+		});
+
+
+		var checkboxantecedentes = $('input[type=checkbox][name="antece[]"]:checked');
+
+		checkboxantecedentes.each(function() {
+
+		datos.append('antece[]',$(this).val());
+
+			
+		});
+
+
+		var checkboxequilibrio = $('input[type=checkbox][name="equilibrio[]"]:checked');
+
+		checkboxequilibrio.each(function() {
+
+		datos.append('equilibrio[]',$(this).val());
+
+			
+		});
+
+
+		var checkboxfamiliar = $('input[type=checkbox][name="familiar[]"]:checked');
+
+		checkboxfamiliar.each(function() {
+
+		datos.append('familiar[]',$(this).val());
+
+			
+		});
+
+
+		var checkboxenfermedades = $('input[type=checkbox][name="enfermedades[]"]:checked');
+
+		checkboxenfermedades.each(function() {
+
+		datos.append('enfermedades[]',$(this).val());
+
+			
+		});
+
 
 		datos.append('cedulaEscolar',$("#cedulaEscolar").val());
+		datos.append('cedulaEscolar',$("#cedulaEscolar").val());
 		datos.append('cedula_r',$("#cedula_r").val());
-		datos.append('cedula_m',$("#cedula_m").val());
+		
 		datos.append('apellidoPri',$("#apellidoPri").val());
 		datos.append('nombrePri',$("#nombrePri").val());
 		datos.append('sexo',$("#sexo").val());
@@ -698,6 +816,10 @@ $("#incluir").on("click",function(){
 		datos.append('ciudad_p',$("#ciudad_p").val());
 		datos.append('vive_con',$("#vive_con").val());
 		datos.append('canaima',$("#canaima").val());
+		datos.append('retirada',$("#retirada").val());
+		datos.append('orden',$("#orden").val());
+		datos.append('nacionalidad',$("#nacionalidad").val());
+		datos.append('c_id',$("#c_id").val());
 
 		datos.append('pesoActual',$("#pesoActual").val());
 		datos.append('tallaActual',$("#tallaActual").val());
@@ -707,28 +829,382 @@ $("#incluir").on("click",function(){
 
 		datos.append('personasAuto',$("#personasAuto").val());
 		datos.append('telefonoauto',$("#telefonoauto").val());
+
 		datos.append('personasAuto1',$("#personasAuto1").val());
 		datos.append('telefonoauto1',$("#telefonoauto1").val());
 
+		// personas en el hogar
+
+		datos.append('n1',$("#n1").val());
+		datos.append('a1',$("#a1").val());
+		datos.append('sx1',$("#sx1").val());
+		datos.append('ed1',$("#ed1").val());
+		datos.append('pt1',$("#pt1").val());
+		datos.append('oc1',$("#oc1").val());
+
+
+		datos.append('n2',$("#n2").val());
+		datos.append('a2',$("#a2").val());
+		datos.append('sx2',$("#sx2").val());
+		datos.append('ed2',$("#ed2").val());
+		datos.append('pt2',$("#pt2").val());
+		datos.append('oc2',$("#oc2").val());
+
+		datos.append('n3',$("#n3").val());
+		datos.append('a3',$("#a3").val());
+		datos.append('sx3',$("#sx3").val());
+		datos.append('ed3',$("#ed3").val());
+		datos.append('pt3',$("#pt3").val());
+		datos.append('oc3',$("#oc3").val());
+
+		datos.append('n4',$("#n4").val());
+		datos.append('a4',$("#a4").val());
+		datos.append('sx4',$("#sx4").val());
+		datos.append('ed4',$("#ed4").val());
+		datos.append('pt4',$("#pt4").val());
+		datos.append('oc4',$("#oc4").val());
+
+		//familiar
+
+		datos.append('ingreso_m',$("#ingreso_m").val());
+		datos.append('personas_ingreso_dep',$("#personas_ingreso_dep").val());
+		datos.append('tipo_vivienda',$("#tipo_vivienda").val());
+		datos.append('tenencia_vivienda',$("#tenencia_vivienda").val());
+
+		// habitos
+
+		datos.append('alimento',$("#alimento").val());
+		datos.append('come',$("#come").val());
+		datos.append('apetito',$("#apetito").val());
+		datos.append('comeantes',$("#comeantes").val());
+		datos.append('alimento_no',$("#alimento_no").val());
+		datos.append('horaSueno',$("#horaSueno").val());
+		datos.append('horaLevan',$("#horaLevan").val());
+		datos.append('quien_sleep',$("#quien_sleep").val());
+		datos.append('sueno_nino',$("#sueno_nino").val());
+		datos.append('despierta',$("#despierta").val());
+		datos.append('dientes',$("#dientes").val());
+
+		//controlsfinteres
+		datos.append('solo_bano',$("#solo_bano").val());
+		datos.append('dejoPanalEdad',$("#dejoPanalEdad").val());
+
+
+		//antecedentes
+
+		datos.append('embarazo',$("#embarazo").val());
+		datos.append('embarazo1',$("#embarazo1").val());
+		datos.append('trabajoEmbarazoTipo',$("#trabajoEmbarazoTipo").val());
+		datos.append('tiempo_trabajo',$("#tiempo_trabajo").val());
+		datos.append('partoEdadMadre',$("#partoEdadMadre").val());
+		datos.append('partoExplique',$("#partoExplique").val());
+		datos.append('pesoNatal',$("#pesoNatal").val());
+		datos.append('tallaNatal',$("#tallaNatal").val());
+		datos.append('defectosNatalEspe',$("#defectosNatalEspe").val());
 
 
 
 
+		// desarrollo evolutivo
+
+		datos.append('quienLoCuido',$("#quienLoCuido").val());
+		datos.append('cuandoGateo',$("#cuandoGateo").val());
+		datos.append('caminarSinApoyo',$("#caminarSinApoyo").val());
+		datos.append('cuandoHablo',$("#cuandoHablo").val());
+		datos.append('tono_voz',$("#tono_voz").val());
+		datos.append('mano_u',$("#mano_u").val());
+
+		//equilibrio emocional
+
+		datos.append('nino_obe',$("#nino_obe").val());
+		datos.append('formaReprender',$("#formaReprender").val());
+		datos.append('jugueteFav',$("#jugueteFav").val());
+		datos.append('espacioJuego',$("#espacioJuego").val());
+		datos.append('tiempoTv',$("#tiempoTv").val());
+		datos.append('programasTv',$("#programasTv").val());
+		datos.append('imitaPersonaje',$("#imitaPersonaje").val());
+		datos.append('imitaFamiEscen',$("#imitaFamiEscen").val());
+		datos.append('orientComo',$("#orientComo").val());
+		datos.append('anteriorPreescolar',$("#anteriorPreescolar").val());
+		datos.append('tipoJuegoPref',$("#tipoJuegoPref").val());
+		datos.append('conQuienJuega',$("#conQuienJuega").val());
+
+		//enferdades
+
+		datos.append('ex_dificultad',$("#ex_dificultad").val());
+		datos.append('sol_df',$("#sol_df").val());
+		datos.append('psico_pq',$("#psico_pq").val());
+		datos.append('afeccion',$("#afeccion").val());
+		datos.append('quirurgica',$("#quirurgica").val());
+		datos.append('alergia',$("#alergia").val());
+		datos.append('despa',$("#despa").val());
+		datos.append('fiebre_a',$("#fiebre_a").val());
+		
+
+
+
+
+
+		//datos de la madre
+/*
+		datos.append('apellidoMadre',$("#apellidoMadre").val());
+		datos.append('nombreMadre',$("#nombreMadre").val());
+		datos.append('ciMadre',$("#ciMadre").val());
+		datos.append('telefonoMadre',$("#telefonoMadre").val());
+		datos.append('direccionMadre',$("#direccionMadre").val());
+		//datos del padre
+		datos.append('apellidoPadre',$("#apellidoPadre").val());
+		datos.append('nombrePadre',$("#nombrePadre").val());
+		datos.append('ciPadre',$("#ciPadre").val());
+		datos.append('telefonoPadre',$("#telefonoPadre").val());
+		datos.append('direccionPadre',$("#direccionPadre").val());
+
+		//de tener hermanos en la institucion
+
+		
+		datos.append('infom',$("#infom").val());
+		datos.append('colab_c',$("#colab_c").val());
+		datos.append('observacion',$("#observacion").val());
+
+
+
+		//con quien se retira el nino
+
+		datos.append('quienRetirada',$("#quienRetirada").val());
+		datos.append('quienTelefono',$("#quienTelefono").val());
+		*/
+
+		console.log(datos);
 		enviaAjax(datos,'incluir');
-	}
+		}
+
+
 });
+
+
+
 $("#modificar").on("click",function(){
 	if(validarenvio()){
 		//console.log("M1");
 		var datos = new FormData();
-		datos.append('accion','modificar');
+		var checkboxs = $('input[type=checkbox][name="doc[]"]:checked');
+
+		checkboxs.each(function() {
+
+		datos.append('doc[]',$(this).val());
+			
+		});
+
+		var checkboxLlegar = $('input[type=checkbox][name="llegar[]"]:checked');
+
+		checkboxLlegar.each(function() {
+
+		datos.append('llegar[]',$(this).val());
+			
+		});
+
+
+		var checkboxhabito = $('input[type=checkbox][name="habito[]"]:checked');
+
+		checkboxhabito.each(function() {
+
+		datos.append('habito[]',$(this).val());
+			
+		});
+
+		var checkboxcontrol = $('input[type=checkbox][name="control[]"]:checked');
+
+		checkboxcontrol.each(function() {
+
+		datos.append('control[]',$(this).val());
+			
+		});
+
+		var checkboxdessarrollo = $('input[type=checkbox][name="desarrollo[]"]:checked');
+
+		checkboxdessarrollo.each(function() {
+
+		datos.append('desarrollo[]',$(this).val());
+
+			
+		});
+
+
+		var checkboxantecedentes = $('input[type=checkbox][name="antece[]"]:checked');
+
+		checkboxantecedentes.each(function() {
+
+		datos.append('antece[]',$(this).val());
+
+			
+		});
+
+
+		var checkboxequilibrio = $('input[type=checkbox][name="equilibrio[]"]:checked');
+
+		checkboxequilibrio.each(function() {
+
+		datos.append('equilibrio[]',$(this).val());
+
+			
+		});
+
+
+		var checkboxfamiliar = $('input[type=checkbox][name="familiar[]"]:checked');
+
+		checkboxfamiliar.each(function() {
+
+		datos.append('familiar[]',$(this).val());
+
+			
+		});
+
+
+		var checkboxenfermedades = $('input[type=checkbox][name="enfermedades[]"]:checked');
+
+		checkboxenfermedades.each(function() {
+
+		datos.append('enfermedades[]',$(this).val());
+
+			
+		});
+
+
 		datos.append('cedulaEscolar',$("#cedulaEscolar").val());
-		datos.append('apellidoPreescolar',$("#apellidoPreescolar").val());
-		datos.append('nombrePreescolar',$("#nombrePreescolar").val());
-		datos.append('fechNaciPreesco',$("#fechNaciPreesco").val());
+		datos.append('cedulaEscolar',$("#cedulaEscolar").val());
+		datos.append('cedula_r',$("#cedula_r").val());
+		
+		datos.append('apellidoPri',$("#apellidoPri").val());
+		datos.append('nombrePri',$("#nombrePri").val());
 		datos.append('sexo',$("#sexo").val());
-		datos.append('correo',$("#correo").val());
-		datos.append('telefono',$("#telefono").val());
+		datos.append('fechaNaciPri',$("#fechaNaciPri").val());
+		datos.append('estado_p',$("#estado_p").val());
+		datos.append('ciudad_p',$("#ciudad_p").val());
+		datos.append('vive_con',$("#vive_con").val());
+		datos.append('canaima',$("#canaima").val());
+		datos.append('retirada',$("#retirada").val());
+		datos.append('orden',$("#orden").val());
+		datos.append('nacionalidad',$("#nacionalidad").val());
+		datos.append('c_id',$("#c_id").val());
+
+		datos.append('pesoActual',$("#pesoActual").val());
+		datos.append('tallaActual',$("#tallaActual").val());
+		datos.append('camisa',$("#camisa").val());
+		datos.append('pantalon',$("#pantalon").val());
+		datos.append('calzado',$("#calzado").val());
+
+		datos.append('personasAuto',$("#personasAuto").val());
+		datos.append('telefonoauto',$("#telefonoauto").val());
+
+		datos.append('personasAuto1',$("#personasAuto1").val());
+		datos.append('telefonoauto1',$("#telefonoauto1").val());
+
+		// personas en el hogar
+
+		datos.append('n1',$("#n1").val());
+		datos.append('a1',$("#a1").val());
+		datos.append('sx1',$("#sx1").val());
+		datos.append('ed1',$("#ed1").val());
+		datos.append('pt1',$("#pt1").val());
+		datos.append('oc1',$("#oc1").val());
+
+
+		datos.append('n2',$("#n2").val());
+		datos.append('a2',$("#a2").val());
+		datos.append('sx2',$("#sx2").val());
+		datos.append('ed2',$("#ed2").val());
+		datos.append('pt2',$("#pt2").val());
+		datos.append('oc2',$("#oc2").val());
+
+		datos.append('n3',$("#n3").val());
+		datos.append('a3',$("#a3").val());
+		datos.append('sx3',$("#sx3").val());
+		datos.append('ed3',$("#ed3").val());
+		datos.append('pt3',$("#pt3").val());
+		datos.append('oc3',$("#oc3").val());
+
+		datos.append('n4',$("#n4").val());
+		datos.append('a4',$("#a4").val());
+		datos.append('sx4',$("#sx4").val());
+		datos.append('ed4',$("#ed4").val());
+		datos.append('pt4',$("#pt4").val());
+		datos.append('oc4',$("#oc4").val());
+
+		//familiar
+
+		datos.append('ingreso_m',$("#ingreso_m").val());
+		datos.append('personas_ingreso_dep',$("#personas_ingreso_dep").val());
+		datos.append('tipo_vivienda',$("#tipo_vivienda").val());
+		datos.append('tenencia_vivienda',$("#tenencia_vivienda").val());
+
+		// habitos
+
+		datos.append('alimento',$("#alimento").val());
+		datos.append('come',$("#come").val());
+		datos.append('apetito',$("#apetito").val());
+		datos.append('comeantes',$("#comeantes").val());
+		datos.append('alimento_no',$("#alimento_no").val());
+		datos.append('horaSueno',$("#horaSueno").val());
+		datos.append('horaLevan',$("#horaLevan").val());
+		datos.append('quien_sleep',$("#quien_sleep").val());
+		datos.append('sueno_nino',$("#sueno_nino").val());
+		datos.append('despierta',$("#despierta").val());
+		datos.append('dientes',$("#dientes").val());
+
+		//controlsfinteres
+		datos.append('solo_bano',$("#solo_bano").val());
+		datos.append('dejoPanalEdad',$("#dejoPanalEdad").val());
+
+
+		//antecedentes
+
+		datos.append('embarazo',$("#embarazo").val());
+		datos.append('embarazo1',$("#embarazo1").val());
+		datos.append('trabajoEmbarazoTipo',$("#trabajoEmbarazoTipo").val());
+		datos.append('tiempo_trabajo',$("#tiempo_trabajo").val());
+		datos.append('partoEdadMadre',$("#partoEdadMadre").val());
+		datos.append('partoExplique',$("#partoExplique").val());
+		datos.append('pesoNatal',$("#pesoNatal").val());
+		datos.append('tallaNatal',$("#tallaNatal").val());
+		datos.append('defectosNatalEspe',$("#defectosNatalEspe").val());
+
+
+
+
+		// desarrollo evolutivo
+
+		datos.append('quienLoCuido',$("#quienLoCuido").val());
+		datos.append('cuandoGateo',$("#cuandoGateo").val());
+		datos.append('caminarSinApoyo',$("#caminarSinApoyo").val());
+		datos.append('cuandoHablo',$("#cuandoHablo").val());
+		datos.append('tono_voz',$("#tono_voz").val());
+		datos.append('mano_u',$("#mano_u").val());
+
+		//equilibrio emocional
+
+		datos.append('nino_obe',$("#nino_obe").val());
+		datos.append('formaReprender',$("#formaReprender").val());
+		datos.append('jugueteFav',$("#jugueteFav").val());
+		datos.append('espacioJuego',$("#espacioJuego").val());
+		datos.append('tiempoTv',$("#tiempoTv").val());
+		datos.append('programasTv',$("#programasTv").val());
+		datos.append('imitaPersonaje',$("#imitaPersonaje").val());
+		datos.append('imitaFamiEscen',$("#imitaFamiEscen").val());
+		datos.append('orientComo',$("#orientComo").val());
+		datos.append('anteriorPreescolar',$("#anteriorPreescolar").val());
+		datos.append('tipoJuegoPref',$("#tipoJuegoPref").val());
+		datos.append('conQuienJuega',$("#conQuienJuega").val());
+
+		//enferdades
+
+		datos.append('ex_dificultad',$("#ex_dificultad").val());
+		datos.append('sol_df',$("#sol_df").val());
+		datos.append('psico_pq',$("#psico_pq").val());
+		datos.append('afeccion',$("#afeccion").val());
+		datos.append('quirurgica',$("#quirurgica").val());
+		datos.append('alergia',$("#alergia").val());
+		datos.append('despa',$("#despa").val());
+		datos.append('fiebre_a',$("#fiebre_a").val());
 		enviaAjax(datos,'modificar');
 
 	}
@@ -836,6 +1312,15 @@ function muestraMensaje(mensaje){
 			},500000);
 }
 
+function muestraModalVacuna(mensaje){
+
+
+	var a ='<div class="row"><table class="table table-striped table-hover"><thead><tr><th>Vacuna</th><th><button type="button" class="btn btn-outline-success" id="add">ADD</button></th></tr></thead><tbody id="resultadoconsulta"></tbody><div class="modal-footer bg-light"><div class="col"></div></div></table></div>';
+	$("#contenidodemodal").html(a);
+	$("#resultadoconsulta").html(mensaje);
+			$("#mostrarmodal").modal("show");
+}
+
 
 //Función para validar por Keypress
 function validarkeypress(er,e){
@@ -855,6 +1340,110 @@ function validarkeypress(er,e){
 
 
 }
+
+
+
+
+function llenar_personas_hogar(datos,accion){
+
+	$.ajax({
+		    async: true,
+            url: '',
+            type: 'POST',//tipo de envio
+			contentType: false,
+            data: datos,
+			processData: false,
+	        cache: false,
+            success: function(data) {
+
+
+
+
+            	if (accion=='consultahogar') {
+
+			 	alert("aksndkljNADKOABSKJAGSFBASKLFBASJ");
+
+			 	console.log(data);
+
+			 	lee = JSON.parse(data);
+            	
+
+				 console.log(lee['resultado']);
+					if(lee['resultado']=='encontro'){
+
+						if (lee[0]) {
+						
+							$("#n1").val(lee[0].nombre);
+							$("#a1").val(lee[0].apellido);
+							$("#sx1").val(lee[0].sexo);
+							$("#ed1").val(lee[0].edad);
+							$("#pt1").val(lee[0].parentesco);
+							$("#oc1").val(lee[0].ocupacion);
+							
+							
+							
+									if (lee[1]) {
+										
+										$("#n2").val(lee[1].nombre);
+										$("#a2").val(lee[1].apellido);
+										$("#sx2").val(lee[1].sexo);
+										$("#ed2").val(lee[1].edad);
+										$("#pt2").val(lee[1].parentesco);
+										$("#oc2").val(lee[1].ocupacion);
+
+													if (lee[2]) {
+														
+														$("#n3").val(lee[2].nombre);
+														$("#a3").val(lee[2].apellido);
+														$("#sx3").val(lee[2].sexo);
+														$("#ed3").val(lee[2].edad);
+														$("#pt3").val(lee[2].parentesco);
+														$("#oc3").val(lee[2].ocupacion);
+
+																		if (lee[3]) {
+																	
+																				$("#n4").val(lee[3].nombre);
+																				$("#a4").val(lee[3].apellido);
+																				$("#sx4").val(lee[3].sexo);
+																				$("#ed4").val(lee[3].edad);
+																				$("#pt4").val(lee[3].parentesco);
+																				$("#oc4").val(lee[3].ocupacion);
+																	
+																		}
+													}
+									}
+						}
+
+
+
+
+
+			 }else if(lee['resultado']!='encontro'){
+
+
+				 	
+				 }
+
+				}
+
+
+
+
+ 				
+
+
+			   },
+            error: function(){
+            	//console.log("AJX1")
+			   muestraMensaje("Error con ajax");
+            }
+
+});
+
+}
+
+
+
 //Función para validar por keyup
 function validarkeyup(er,etiqueta,etiquetamensaje,
 mensaje){
@@ -870,47 +1459,357 @@ mensaje){
 	}
 }
 
-//funcion para pasar de la lista a el formulario
-function coloca(linea){
-	$("#cedulaEscolar").val($(linea).find("td:eq(0)").text());
-	$("#apellidoPreescolar").val($(linea).find("td:eq(1)").text());
-	$("#nombrePreescolar").val($(linea).find("td:eq(2)").text());
-	$("#fechNaciPreesco").val($(linea).find("td:eq(3)").text());
-	$("#sexo").val($(linea).find("td:eq(4)").text());
-	$("#correo").val($(linea).find("td:eq(5)").text());
-	$("#telefono").val($(linea).find("td:eq(6)").text());
 
-}
 
-//funcion que envia y recibe datos por AJAX
-function enviaAjax(datos,accion){
+
+
+
+// 
+function llenar_retira(datos,accion){
 
 	$.ajax({
 		    async: true,
-            url: '', //la pagina a donde se envia por estar en mvc, se omite la ruta ya que siempre estaremos en la misma pagina
+            url: '',
             type: 'POST',//tipo de envio
 			contentType: false,
             data: datos,
 			processData: false,
 	        cache: false,
-            success: function(respuesta) {//si resulto exitosa la transmision
+            success: function(data) {
 
-			   if(accion=='consultar'){
+
+ 				if(accion=='consultaretira'){
+
+					lee = JSON.parse(data);
+            	
+
+				 console.log(lee['resultado']);
+					if(lee['resultado']=='encontro'){
+
+						if (lee[0]) {
+						
+							$("#personasAuto").val(lee[0].nombre_apellido);
+							$("#telefonoauto").val(lee[0].telefono);
+							
+							
+							if (lee[1]) {
+								
+								$("#personasAuto1").val(lee[1].nombre_apellido);
+								$("#telefonoauto1").val(lee[1].telefono);
+								
+
+							}
+						}
+
+				 }else if(lee['resultado']!='encontro'){
+
+
+				 	
+				 }
+
+			 }
+
+
+			   },
+            error: function(){
+            	//console.log("AJX1")
+			   muestraMensaje("Error con ajax");
+            }
+
+});
+
+}
+
+
+
+//Función para validar por keyup
+function validarkeyup(er,etiqueta,etiquetamensaje,
+mensaje){
+	a = er.test(etiqueta.val());
+	if(a){
+		etiquetamensaje.text("");
+		//console.log("A1");
+		return 1;
+	}
+	else{
+		etiquetamensaje.text(mensaje);
+		return 0;
+	}
+}
+
+
+//funcion que envia y recibe datos por AJAX
+function enviaAjax(datos,accion){
+
+
+	$.ajax({
+		    async: true,
+            url: '',
+            type: 'POST',//tipo de envio
+			contentType: false,
+            data: datos,
+			processData: false,
+	        cache: false,
+            success: function(respuesta) {
+							//si resulto exitosa la transmision
+
+
+			   if(accion=='consultarVacuna'){
 				  $("#resultadoconsulta").html(respuesta);
-				  $("#modal1").modal("show");
+
 			   }
+
+			   else if(accion=='consultarepre'){
+			   	console.log(respuesta);
+
+			   		lee = JSON.parse(respuesta);
+
+			   		 if(lee['resultado']=='encontro'){
+
+						   		$("#representanten").html(lee[0].nombre);
+						   		$("#representantea").html(lee[0].apellido);
+						   		console.log(lee[0].nombre);
+
+						   		if (lee[0].nombre != '') {
+
+							   		$("#repre").css({
+							   			'background-color': '#59f94847'
+							   		});
+							   		habilita();
+
+						   		}
+						   								   	}
+						   	else if (lee['resultado']=='noencontro') {
+						   		desabilita();
+						   		$("#representanten").html('');
+						   		$("#representantea").html('');
+						   		$("#repre").css({
+							   			'background-color': 'tomato'
+							   		});
+
+						   	}
+			   		
+
+			    }
 			   else if(accion=='consultatr'){
+
 				   lee = JSON.parse(respuesta);
 
-				  //console.log(lee['resultado']);
+
 				   if(lee['resultado']=='encontro'){
-					   $("#apellidoPreescolar").val(lee[0].apellidoPreescolar);
-					   $("#nombrePreescolar").val(lee[0].nombrePreescolar);
-					   $("#fechNaciPreesco").val(lee[0].fechNaciPreesco);
+
+//control de checkboxssc
+				   		//1111
+				   		var valor = $('input[name="doc[]"]');
+				   		var datos1 = lee[0].doc;
+
+				   		for (var i = 0; i < valor.length; i++) {
+				   			if (datos1.includes(valor[i].value)) {
+				   				valor[i].checked= true;
+				   			}
+				   		}
+				   			//22222
+				   		var valor = $('input[name="llegar[]"]');
+				   		var datos2 = lee[0].llegar;
+
+				   		for (var i = 0; i < valor.length; i++) {
+				   			if (datos2.includes(valor[i].value)) {
+				   				valor[i].checked= true;
+				   			}
+				   		}
+
+				   		//3333
+
+				   		var valor = $('input[name="habito[]"]');
+				   		var datos3 = lee[0].check_habito;
+
+
+				   		for (var i = 0; i < valor.length; i++) {
+				   			if (datos3.includes(valor[i].value)) {
+				   				valor[i].checked= true;
+				   			}
+				   		}
+
+				   		//4444444
+
+				   		var valor = $('input[name="control[]"]');
+				   		var datos4 = lee[0].se_orina;
+
+
+				   		for (var i = 0; i < valor.length; i++) {
+				   			if (datos4.includes(valor[i].value)) {
+				   				valor[i].checked= true;
+				   			}
+				   		}
+
+				   		//555555
+				   		var valor = $('input[name="desarrollo[]"]');
+				   		var datos5 = lee[0].check_desarrollo;
+
+
+				   		for (var i = 0; i < valor.length; i++) {
+				   			if (datos5.includes(valor[i].value)) {
+				   				valor[i].checked= true;
+				   			}
+				   		}
+
+				   		//666666666
+
+				   		var valor = $('input[name="antece[]"]');
+				   		var datos6 = lee[0].check_antecedentes;
+
+
+				   		for (var i = 0; i < valor.length; i++) {
+				   			if (datos6.includes(valor[i].value)) {
+				   				valor[i].checked= true;
+				   			}
+				   		}
+
+				   		//77777777
+
+				   		var valor = $('input[name="equilibrio[]"]');
+				   		var datos7 = lee[0].check_emocional;
+
+
+				   		for (var i = 0; i < valor.length; i++) {
+				   			if (datos7.includes(valor[i].value)) {
+				   				valor[i].checked= true;
+				   			}
+				   		}
+
+ /////////////////////// QUITAR LUEGO
+
+
+				   		$("#cedula_div").css('display', 'flex');
+
+/////////////////////// QUITAR LUEGO
+
+						$("#apellidoPri").val(valor);
+						$("#cedulaEscolar").val(lee[0].cedula_e);
+
+						$("#cedula_r").val(lee[0].representante);
+
+					   $("#apellidoPri").val(lee[0].apellido);
+					   $("#nombrePri").val(lee[0].nombre);
 					   $("#sexo").val(lee[0].sexo);
-					   $("#correo").val(lee[0].correo);
-					   $("#telefono").val(lee[0].telefono);
+					 	 $("#fechaNaciPri").val(lee[0].fecha_n);
+					   $("#estado_p").val(lee[0].estado_n);
+					   $("#ciudad_p").val(lee[0].ciudad_n);
+					   $("#vive_con").val(lee[0].quien_vive);
+
+					   $("#orden").val(lee[0].orden);
+					   $("#nacionalidad").val(lee[0].nacionalidad);
+					   $("#c_id").val(lee[0].c_id);
+
+					   $("#canaima").val(lee[0].posee_canai);
+						 $("#retirada").val(lee[0].retira_solo);
+
+					   $("#pesoActual").val(lee[0].peso);
+					   $("#tallaActual").val(lee[0].talla);
+					   $("#camisa").val(lee[0].camisa);
+					   $("#pantalon").val(lee[0].pantalon);
+					   $("#calzado").val(lee[0].calzado);
+
+					   $("#apellidoMadre").val(lee[0].apellido_m);
+					   $("#nombreMadre").val(lee[0].nombre_m);
+					   $("#ciMadre").val(lee[0].cedula_mama);
+					   $("#telefonoMadre").val(lee[0].telefono_m);
+					   $("#direccionMadre").val(lee[0].direc_trab);
+					   $("#apellidoPadre").val(lee[0].apellidoPadre);
+
+					   $("#ciPadre").val(lee[0].cedula_p);
+
+					  // llenar valores sin id
+
+						console.log("asas");
+						 var datos1 = new FormData();
+					    datos1.append('accion','consultaretira');
+						datos1.append('cedulaEscolar',$("#cedulaEscolar").val());
+						llenar_retira(datos1,'consultaretira');
+
+						 var datos2 = new FormData();
+					    datos2.append('accion','consultahogar');
+						datos2.append('cedulaEscolar',$("#cedulaEscolar").val());
+						llenar_personas_hogar(datos2,'consultahogar');
+
+
+
+						//------------- --------------
+
+								//HABiTOS
+
+						$("#alimento").val(lee[0].comidas_dia);
+						$("#come").val(lee[0].come_solo);
+						$("#apetito").val(lee[0].buen_apetit);
+						$("#comeantes").val(lee[0].antes_escuela);
+						$("#alimento_no").val(lee[0].alimento_que_no);
+						$("#horaSueno").val(lee[0].hora_domir);
+						$("#horaLevan").val(lee[0].hora_levanta);
+						$("#quien_sleep").val(lee[0].quien_duerme_niño);
+						$("#sueno_nino").val(lee[0].como_es_sueño);
+						$("#despierta").val(lee[0].despierta_const);
+						$("#dientes").val(lee[0].rechinan_dientes);
+
+						//contrl sfinteres
+
+						$("#solo_bano").val(lee[0].banio_solo);
+						$("#dejoPanalEdad").val(lee[0].edad_no_panales);
+
+						//desarrollo
+
+						$("#quienLoCuido").val(lee[0].primeros_meses);
+						$("#cuandoGateo").val(lee[0].meses_gateo);
+						$("#caminarSinApoyo").val(lee[0].edad_caminar);
+						$("#cuandoHablo").val(lee[0].edad_hablar);
+						$("#tono_voz").val(lee[0].tono_voz);
+						$("#mano_u").val(lee[0].mano_u);
+
+						//antecedentes
+
+						$("#embarazo").val(lee[0].tipo_emparazo1);
+						$("#embarazo1").val(lee[0].tipo_emparazo2);
+						$("#trabajoEmbarazoTipo").val(lee[0].trabajo_durante);
+						$("#tiempo_trabajo").val(lee[0].tiempo_trabajo);
+						$("#partoEdadMadre").val(lee[0].edad_madre_parto);
+						$("#partoExplique").val(lee[0].problema_en_parto);
+						$("#pesoNatal").val(lee[0].peso_a);
+						$("#tallaNatal").val(lee[0].talla_a);
+						$("#defectosNatalEspe").val(lee[0].padece_defectos);
+						
+						//equilibrio
+
+						$("#nino_obe").val(lee[0].nino_obe);
+						$("#formaReprender").val(lee[0].formaReprender);
+						$("#jugueteFav").val(lee[0].jugueteFav);
+						$("#espacioJuego").val(lee[0].espacioJuego);
+						$("#tiempoTv").val(lee[0].tiempoTv);
+						$("#programasTv").val(lee[0].programasTv);
+						$("#imitaPersonaje").val(lee[0].imitaPersonaje);
+						$("#imitaFamiEscen").val(lee[0].imitaFamiEscen);
+						$("#orientComo").val(lee[0].orientComo);
+						$("#anteriorPreescolar").val(lee[0].anteriorPreescolar);
+						$("#tipoJuegoPref").val(lee[0].tipoJuegoPref);
+						$("#conQuienJuega").val(lee[0].conQuienJuega);
+
+
+
+
+						 if($("#ciPadre").val().length > 6) {
+								llenarpapa( $("#ciPadre").val());
+						 }
+
+
+					   $("#infom").val(lee[0].inf_medica);
+					   $("#colab_c").val(lee[0].colab_comun);
+					   $("#observacion").val(lee[0].observ);
+
+
 				   }
+
+
+					 else	if($("#ciPadre").val().length > 6) {
+					 	console.log("siiiiiiiiii");
+					 }
 				   else if(lee['resultado']=='noencontro'){
 
 				   }
@@ -920,12 +1819,59 @@ function enviaAjax(datos,accion){
 
 
 			   }
-			   else if(accion=='obtienefecha'){
-				   $("#fechNaciPreesco").val(respuesta);
-			   }
+
+				 else if(accion=='consultamama'){
+
+					 console.log(respuesta);
+					lee = JSON.parse(respuesta);
+
+
+				 console.log(lee['resultado']);
+					if(lee['resultado']=='encontro'){
+
+
+						$("#apellidoMadre").val(lee[0].apellido_m);
+						$("#nombreMadre").val(lee[0].nombre_m);
+
+						$("#telefonoMadre").val(lee[0].telefono_m);
+						$("#direccionMadre").val(lee[0].direc_trab);
+						$("#apellidoPadre").val(lee[0].apellidoPadre);
+
+				 }
+			 }
+			 
+
+				 else if(accion=='consultapapa'){
+
+					 console.log(respuesta);
+					lee = JSON.parse(respuesta);
+
+
+				 console.log(lee['resultado']);
+					if(lee['resultado']=='encontro'){
+
+						$("#apellidoPadre").val(lee[0].apellido_m);
+						$("#nombrePadre").val(lee[0].nombre_m);
+						$("#telefonoPadre").val(lee[0].telefono_m);
+						$("#direccionPadre").val(lee[0].direc_trab);
+						$("#telefonoPadre").val(lee[0].telefono_m);
+
+
+				 }
+
+			 }
+
+				 // Aqui se muestra informacion si se Ingreso la informacion
 			   else{
-				//   limpia();
+				   //limpia();
+					
 				   muestraMensaje(respuesta);
+
+				   $('#contenido').css('display', 'none');
+				$('#tableajax').DataTable().ajax.reload();
+				if (!$('#formulario').is(":visible")) {
+					$('#formulario').css('display', 'block');
+				}
 
 			   }
             },
@@ -938,14 +1884,78 @@ function enviaAjax(datos,accion){
 
 }
 
-function limpia(){
-	$("#cedulaEscolar").val("");
-	$("#apellidoPreescolar").val("");
-	$("#nombrePreescolar").val("");
-	$("#sexo").prop("selectedIndex",0);
-	var datos = new FormData();
-		datos.append('accion','obtienefecha');
-		enviaAjax(datos,'obtienefecha');
-	$("#correo").val("");
-	$("#telefono").val("");
+function limpia2() {
+	// body...
+
+	$('input:gt(2)').val("");
+	$('textarea').val("");
+	$('select').val('Seleccionar');
+
+
 }
+
+function all() {
+	// body...
+
+	$('input').val("");
+	$('textarea').val("");
+	$('select').val('Seleccionar');
+
+
+}
+
+
+// fUNCION QUE RECIVE LOS VALORES DE LOS INPUT Y DEVUELVE LA CEDULA
+
+function generarCombination(cedulam, fechacum, type, nacionalidad){
+
+	var cedu = cedulam.toString().slice(2);
+	console.log(cedu);
+	console.log(fechacum);
+
+	var ultimos_dos_fecha_cum = fechacum.toString().slice(2,4);
+	console.log(ultimos_dos_fecha_cum);
+	var gi = '-';
+	var cedula_e = nacionalidad+ gi + type + ultimos_dos_fecha_cum + cedu;
+	console.log(nacionalidad);
+	console.log(cedula_e);
+	return cedula_e;
+}
+
+function desabilita() {
+	// body...
+	$('input:gt(5)').prop('disabled', true);
+	$('textarea').prop('disabled', true);
+	$('select').prop('disabled', true);
+
+}
+function habilita() {
+	// body...
+	$('input:gt(0)').prop('disabled', false);
+	$('textarea').prop('disabled', false);
+	$('select').prop('disabled', false);
+
+}
+
+function aaa() {
+	// body...
+	var aass="partida_na,vacuna_c,fotos,copia_ce";
+
+	var valor = $('input[name="doc[]"]');
+				   		var datos1 = aass;
+
+				   		for (var i = 0; i < valor.length; i++) {
+				   			if (datos1.includes(valor[i].value)) {
+				   				valor[i].checked= true;
+				   			}
+				   		}
+}
+
+function llenar_f() {
+	// body...
+
+	 var datos = new FormData();
+    datos.append('accion','consultatr');
+	datos.append('cedulaEscolar','V-21623356299');
+	enviaAjax(datos,'consultatr');
+	}		

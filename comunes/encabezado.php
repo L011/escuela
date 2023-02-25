@@ -7,9 +7,7 @@
  <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
 
  <script src="js/jquery.min.js" ></script>
- <script src="DataTables/datatables.min.js" type="text/javascript"></script>
 <script src="DataTables/DataTables-1.12.1/js/jquery.dataTables.min.js" type="text/javascript"></script>
- 
  <script src="js/popper.min.js" ></script>
  <script src="js/bootstrap.min.js" ></script>
  <script src="js/theme.js"></script>

@@ -196,56 +196,6 @@ class registro_maestro extends datos{
 	}
 
 
-	function consultar(){
-		$co = $this->conecta();
-		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		try{
-
-			$resultado = $co->query("Select * from empleados");
-
-			if($resultado){
-
-				$respuesta = '';
-				foreach($resultado as $r){
-					$respuesta = $respuesta."<tr style='cursor:pointer' onclick='coloca(this);'>";
-						$respuesta = $respuesta."<td>";
-							$respuesta = $respuesta.$r['cedula'];
-						$respuesta = $respuesta."</td>";
-						$respuesta = $respuesta."<td>";
-							$respuesta = $respuesta.$r['apellidos'];
-						$respuesta = $respuesta."</td>";
-						$respuesta = $respuesta."<td>";
-							$respuesta = $respuesta.$r['nombres'];
-						$respuesta = $respuesta."</td>";
-						$respuesta = $respuesta."<td>";
-							$respuesta = $respuesta.$r['fechadenacimiento'];
-						$respuesta = $respuesta."</td>";
-						$respuesta = $respuesta."<td>";
-							$respuesta = $respuesta.$r['sexo'];
-						$respuesta = $respuesta."</td>";
-						$respuesta = $respuesta."<td>";
-							$respuesta = $respuesta.$r['correo'];
-						$respuesta = $respuesta."</td>";
-						$respuesta = $respuesta."<td>";
-							$respuesta = $respuesta.$r['telefono'];
-						$respuesta = $respuesta."</td>";
-						$respuesta = $respuesta."<td>";
-							$respuesta = $respuesta.$r['cargo'];
-						$respuesta = $respuesta."</td>";
-					$respuesta = $respuesta."</tr>";
-				}
-				return $respuesta;
-
-			}
-			else{
-				return '';
-			}
-
-		}catch(Exception $e){
-			return $e->getMessage();
-		}
-
-	}
 
 
 	private function existe($cedula){

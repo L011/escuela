@@ -3,6 +3,8 @@ $(document).ready(function(){
 
 tabla();
 desabilita();
+llena_vacuna();
+
 	//alert("at1");
 	//console.log("Main")
 	//para obtener la fecha del servidor y calcular la
@@ -46,6 +48,10 @@ desabilita();
     }
   });
 
+$("#vacuna_name").keyup(function(event) {
+	/* Act on the event */
+	$("#vacuna_name").removeClass('is-invalid');
+});
 
 $("#cedulaEscolar").on("keypress",function(e){
 		validarkeypress(/^[0-9-\b]*$/,e);
@@ -71,7 +77,7 @@ $("#cedulaEscolar").on("keypress",function(e){
 		}
 	});
 
-	////CONTROL PARA AHCER LA CEDULA ESCOLAR THX GTP 
+	////CONTROL PARA AHCER LA CEDULA ESCOLAR THX GPT 
 
 		$("#generar").on('click', function(event) {
 
@@ -161,6 +167,9 @@ $("#cedulaEscolar").on("keypress",function(e){
 	$("#telefonoPadre").on("keyup",function(){
 	    validarkeyup(/^[0-9]{11,12}$/,$(this),$("#pTelefonoPadre"),"00000000000");
 	});
+
+
+
 
 /*
 
@@ -499,6 +508,34 @@ $("#quienTelefono").on("keyup",function(){
 
 //CONTROL DE BOTONES
 
+
+
+	$("#add_v").on("click", function(event) {
+		event.preventDefault();
+
+	
+		var datos = new FormData();
+		    datos.append('accion','consultarVacuna');
+				enviaAjax(datos,'consultarVacuna');
+	});
+
+	$("#agregar_vacuna").on("click", function(event) {
+		event.preventDefault();
+		if ($("#vacuna_name").val() != '') {
+
+		console.log("as,dls,");
+		var datos = new FormData();
+		    datos.append('accion','vacuna_name');
+		    datos.append('vacuna_name',$("#vacuna_name").val());
+				enviaAjax(datos,'vacuna_name');
+				$("#add_v").click();
+		}
+		else{
+			$("#vacuna_name").addClass('is-invalid');
+		}
+
+	});
+
 $("#incluir").on("click",function(){
 	if(validarenvio()){
 		//console.log("I1")
@@ -562,6 +599,37 @@ $("#incluir").on("click",function(){
 		datos.append('infom',$("#infom").val());
 		datos.append('colab_c',$("#colab_c").val());
 		datos.append('observacion',$("#observacion").val());
+
+		datos.append('vacuna1',$("#vacuna1").val());
+		datos.append('dosis1',$("#dosis1").val());
+
+		datos.append('vacuna2',$("#vacuna2").val());
+		datos.append('dosis2',$("#dosis2").val());
+
+		datos.append('vacuna3',$("#vacuna3").val());
+		datos.append('dosis3',$("#dosis3").val());
+
+		datos.append('vacuna4',$("#vacuna4").val());
+		datos.append('dosis4',$("#dosis4").val());
+
+		datos.append('vacuna5',$("#vacuna5").val());
+		datos.append('dosis5',$("#dosis5").val());
+
+		datos.append('vacuna6',$("#vacuna6").val());
+		datos.append('dosis6',$("#dosis6").val());
+
+		datos.append('vacuna7',$("#vacuna7").val());
+		datos.append('dosis7',$("#dosis7").val());
+
+		datos.append('vacuna8',$("#vacuna8").val());
+		datos.append('dosis8',$("#dosis8").val());
+
+		datos.append('vacuna9',$("#vacuna9").val());
+		datos.append('dosis9',$("#dosis9").val());
+
+		datos.append('vacuna10',$("#vacuna10").val());
+		datos.append('dosis10',$("#dosis10").val());
+
 
 
 /*
@@ -774,24 +842,24 @@ function validarenvio(){
 
 
 	else if(validarkeyup(/^[0-9]{1,3}[.]{1}[0-9]{1,2}$/,$("#pesoActual"),
-		$("#ppesoActual"),"Formato 01.00")==0){
+		$("#ppesoActual"),"Formato 001.00")==0){
 	    muestraMensaje("Revisar campo peso");
 		return false;
 	}
 	else if(validarkeyup(/^[0-9]{1,3}[.]{1}[0-9]{1,2}$/,$("#tallaActual"),
-		$("#ptallaActual"),"Formato 01.00")==0){
+		$("#ptallaActual"),"Formato 001.00")==0){
 	    muestraMensaje("Revisar campo talla");
 		return false;
 	}
 
-	else if(validarkeyup(/^[A-Z]{1,3}$/,$("#camisa"),
-		$("#pcamisa"),"Formato 'S' o 'M'")==0){
+	else if(validarkeyup(/^[A-Z0-9]{1,3}$/,$("#camisa"),
+		$("#pcamisa"),"Formato 'S', 'M', '12'")==0){
 	    muestraMensaje("Revisar campo camisa");
 		return false;
 	}
 
-	else if(validarkeyup(/^[A-Z]{1,3}$/,$("#pantalon"),
-		$("#ppantalon"),"Formato 'S' o 'M'")==0){
+	else if(validarkeyup(/^[A-Z0-9]{1,3}$/,$("#pantalon"),
+		$("#ppantalon"),"Formato 'S', 'M', '12'")==0){
 	    muestraMensaje("Revisar campo pantalon");
 		return false;
 	}
@@ -1010,6 +1078,16 @@ function muestraMensaje(mensaje){
 			console.log(mensaje);
 }
 
+function modal_vacuna(mensaje){
+
+	$("#contenidodemodal_v").html(mensaje);
+			$("#mostrarmodal_v").modal("show");
+			setTimeout(function() {
+					$("#mostrarmodal_v").modal("hide");
+			},100000);
+			console.log(mensaje);
+}
+
 
 //Función para validar por Keypress
 function validarkeypress(er,e){
@@ -1133,10 +1211,143 @@ function enviaAjax(datos,accion){
             success: function(respuesta) {
 							//si resulto exitosa la transmision
 
-			   if(accion=='consultar'){
-				  $("#resultadoconsulta").html(respuesta);
+			   if(accion=='consultarVacuna'){
+			   	console.log("ldakds");
+				  $("#contenidodemodal_v").html(respuesta);
+				  modal_vacuna(respuesta)
 
 			   }
+			   else if(accion=='vacuna_name'){
+			   	$("#add_v").click();
+			   	llena_vacuna();
+
+			   }
+
+			   else if(accion=='consultarVacuna2'){
+			   	console.log(respuesta);
+
+			   		lee = JSON.parse(respuesta);
+
+			   		 if(lee['resultado']=='encontro'){
+
+			   		 	console.log("vacunas");
+			   		 			$('select.vacuna').empty();
+
+
+
+									$('select.vacuna').append($('<option>', {
+								    value: "",
+								    text: 'Seleccionar'
+
+								}));
+
+									if (lee[0]) {
+
+
+											$('select.vacuna').append($('<option>', {
+										    value: lee[0][0],
+										    text: lee[0][1]
+
+										}));
+
+												if(lee[1]) {
+
+													$('select.vacuna').append($('<option>', {
+												  	 value: lee[1][0],
+												    text: lee[1][1]
+
+												}));
+
+													if(lee[2]) {
+
+														$('select.vacuna').append($('<option>', {
+													    value: lee[2][0],
+													    text: lee[2][1]
+
+													}));
+
+												}
+														if(lee[3]) {
+
+															$('select.vacuna').append($('<option>', {
+														   value: lee[3][0],
+														    text: lee[3][1]
+
+															}));
+
+															if(lee[4]) {
+
+																	$('select.vacuna').append($('<option>', {
+																    value: lee[4][0],
+																    text: lee[4][1]
+
+																}));
+
+																	if (lee[5]) {
+
+																			$('select.vacuna').append($('<option>', {
+																		    value: lee[5][0],
+																		    text: lee[5][1]
+
+																		}));
+
+
+																			if (lee[6]) {
+
+																					$('select.vacuna').append($('<option>', {
+																				    value: lee[6][0],
+																				    text: lee[6][1]
+
+																				}));
+
+																					if (lee[7]) {
+
+																							$('select.vacuna').append($('<option>', {
+																						    value: lee[7][0],
+																						    text: lee[7][1]
+
+																						}));
+
+																							if (lee[8]) {
+
+																									$('select.vacuna').append($('<option>', {
+																								    value: lee[8][0],
+																								    text: lee[8][1]
+
+																								}));
+
+																										if (lee[9]) {
+
+																												$('select.vacuna').append($('<option>', {
+																											    value: lee[9][0],
+																											    text: lee[9][1]
+
+																											}));
+																										}
+
+																							}
+
+																					}
+
+																			}
+
+																	}
+
+															}
+
+													}
+
+											}
+
+									}
+						   								   	}
+						   	else if (lee['resultado']=='noencontro') {
+						   		
+
+						   	}
+			   		
+
+			    }
 
 			   else if(accion=='consultarepre'){
 			   	console.log(respuesta);
@@ -1145,11 +1356,11 @@ function enviaAjax(datos,accion){
 
 			   		 if(lee['resultado']=='encontro'){
 
-						   		$("#representanten").html(lee[0].nombre);
-						   		$("#representantea").html(lee[0].apellido);
-						   		console.log(lee[0].nombre);
+						   		$("#representanten").html(lee[0].nombre_r);
+						   		$("#representantea").html(lee[0].apellido_r);
+						   		console.log(lee[0].nombre_r);
 
-						   		if (lee[0].nombre != '') {
+						   		if (lee[0].nombre_r != '') {
 
 							   		$("#repre").css({
 							   			'background-color': '#59f94847'
@@ -1519,5 +1730,14 @@ function habilita() {
 	$('input:gt(0)').prop('disabled', false);
 	$('textarea').prop('disabled', false);
 	$('select').prop('disabled', false);
+
+}
+
+function llena_vacuna() {
+
+	 var datos = new FormData();
+        datos.append('accion','consultarVacuna2');
+      enviaAjax(datos,'consultarVacuna2');
+
 
 }

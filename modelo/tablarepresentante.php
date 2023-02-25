@@ -14,7 +14,7 @@
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		try{
 
-			$resultado = $co->query("Select cedula,nombre,apellido,telefono,correo from representante");
+			$resultado = $co->query("Select cedula,nombre_r,apellido_r,telefono_r,correo from representante");
 
 			
 

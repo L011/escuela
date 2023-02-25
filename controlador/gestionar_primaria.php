@@ -44,9 +44,19 @@ require_once("modelo/".$pagina.".php");
 			 $o->set_cedulaEscolar($_POST['cedulaEscolar']);
 			 echo  $o->consultatr();
 		  }
+		  elseif($accion=='vacuna_name'){
+			 $o->set_agregar_v($_POST['vacuna_name']);
+			 echo  $o->agregar_v();
+		  }
 			elseif($accion=='consultamama'){
 			 $o->set_ciMadre($_POST['ciMadre']);
 			 echo  $o->consultamama();
+		  }
+		  elseif($accion=='consultarVacuna'){
+			 echo  $o->consultarVacuna();
+		  }
+		  elseif($accion=='consultarVacuna2'){
+			 echo  $o->consultarVacuna2();
 		  }
 
 			elseif($accion=='consultapapa'){
@@ -119,6 +129,40 @@ require_once("modelo/".$pagina.".php");
 				$o->set_infom($_POST['infom']);
 				$o->set_colab_c($_POST['colab_c']);
 				$o->set_observacion($_POST['observacion']);
+
+				//vacuna
+				$o->set_vacuna1($_POST['vacuna1']);
+				$o->set_dosis1($_POST['dosis1']);
+
+				$o->set_vacuna2($_POST['vacuna2']);
+				$o->set_dosis2($_POST['dosis2']);
+
+				$o->set_vacuna3($_POST['vacuna3']);
+				$o->set_dosis3($_POST['dosis3']);
+
+				$o->set_vacuna4($_POST['vacuna4']);
+				$o->set_dosis4($_POST['dosis4']);
+
+				$o->set_vacuna5($_POST['vacuna5']);
+				$o->set_dosis5($_POST['dosis5']);
+
+				$o->set_vacuna6($_POST['vacuna6']);
+				$o->set_dosis6($_POST['dosis6']);
+
+				$o->set_vacuna7($_POST['vacuna7']);
+				$o->set_dosis7($_POST['dosis7']);
+
+				$o->set_vacuna8($_POST['vacuna8']);
+				$o->set_dosis8($_POST['dosis8']);
+
+				$o->set_vacuna9($_POST['vacuna9']);
+				$o->set_dosis9($_POST['dosis9']);
+
+				$o->set_vacuna10($_POST['vacuna10']);
+				$o->set_dosis10($_POST['dosis10']);
+
+
+
 
 
 
