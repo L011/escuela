@@ -63,6 +63,10 @@ require_once("modelo/".$pagina.".php");
 			 $o->set_ciPadre($_POST['ciPadre']);
 			 echo  $o->consultapapa();
 		  }
+		  elseif($accion=='llenavacuna'){
+			 $o->set_cedulaEscolar($_POST['cedulaEscolar']);
+			 echo  $o->llenavacuna();
+		  }
 		  elseif($accion=='consultahermanos'){
 			 $o->set_cedulaEscolar($_POST['cedulaEscolar']);
 			 echo  $o->consultahermanos();

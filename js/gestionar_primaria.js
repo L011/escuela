@@ -725,6 +725,36 @@ $("#modificar").on("click",function(){
 		datos.append('colab_c',$("#colab_c").val());
 		datos.append('observacion',$("#observacion").val());
 
+		datos.append('vacuna1',$("#vacuna1").val());
+		datos.append('dosis1',$("#dosis1").val());
+
+		datos.append('vacuna2',$("#vacuna2").val());
+		datos.append('dosis2',$("#dosis2").val());
+
+		datos.append('vacuna3',$("#vacuna3").val());
+		datos.append('dosis3',$("#dosis3").val());
+
+		datos.append('vacuna4',$("#vacuna4").val());
+		datos.append('dosis4',$("#dosis4").val());
+
+		datos.append('vacuna5',$("#vacuna5").val());
+		datos.append('dosis5',$("#dosis5").val());
+
+		datos.append('vacuna6',$("#vacuna6").val());
+		datos.append('dosis6',$("#dosis6").val());
+
+		datos.append('vacuna7',$("#vacuna7").val());
+		datos.append('dosis7',$("#dosis7").val());
+
+		datos.append('vacuna8',$("#vacuna8").val());
+		datos.append('dosis8',$("#dosis8").val());
+
+		datos.append('vacuna9',$("#vacuna9").val());
+		datos.append('dosis9',$("#dosis9").val());
+
+		datos.append('vacuna10',$("#vacuna10").val());
+		datos.append('dosis10',$("#dosis10").val());
+
 		enviaAjax(datos,'modificar');
 
 
@@ -784,6 +814,14 @@ function llenarpapa(cedula) {
 		datos.append('accion','consultapapa');
 	datos.append('ciPadre',cedula);
 	enviaAjax(datos,'consultapapa');
+}
+
+function llena_crud_vacuna(cedula) {
+	console.log(cedula);
+	var datos = new FormData();
+		datos.append('accion','llenavacuna');
+	datos.append('cedulaEscolar',cedula);
+	enviaAjax(datos,'llenavacuna');
 }
 
 
@@ -1349,6 +1387,85 @@ function enviaAjax(datos,accion){
 
 			    }
 
+			    else if(accion=='llenavacuna'){
+			   	
+
+			   		lee = JSON.parse(respuesta);
+
+			   		console.log(lee);
+
+			   		 if(lee['resultado']=='encontro'){
+
+			   		 	console.log("vacunas");
+
+			   		 	if (lee[0]) {
+
+			   		 		
+			   		 		$("#vacuna1").val(lee[0][0]);
+			   		 		$("#dosis1").val(lee[0][1]);
+
+				   		 	if (lee[1]) {
+				   		 		$("#vacuna2").val(lee[1][0]);
+				   		 		$("#dosis2").val(lee[1][1]);
+
+					   		 	if (lee[2]) {
+					   		 		$("#vacuna3").val(lee[2][0]);
+					   		 		$("#dosis3").val(lee[2][1]);
+
+						   		 	if (lee[3]) {
+						   		 		$("#vacuna4").val(lee[3][0]);
+						   		 		$("#dosis4").val(lee[3][1]);
+
+							   		 	if (lee[4]) {
+							   		 		$("#vacuna5").val(lee[4][0]);
+							   		 		$("#dosis5").val(lee[4][1]);
+
+								   		 	if (lee[5]) {
+								   		 		$("#vacuna6").val(lee[5][0]);
+								   		 		$("#dosis6").val(lee[5][1]);
+
+									   		 	if (lee[6]) {
+									   		 		$("#vacuna7").val(lee[6][0]);
+									   		 		$("#dosis7").val(lee[6][1]);
+
+										   		 	if (lee[7]) {
+										   		 		$("#vacuna8").val(lee[7][0]);
+										   		 		$("#dosis8").val(lee[7][1]);
+
+											   		 	if (lee[8]) {
+											   		 		$("#vacuna9").val(lee[8][0]);
+											   		 		$("#dosis9").val(lee[8][1]);
+
+												   		 	if (lee[9]) {
+												   		 		$("#vacuna10").val(lee[9][0]);
+												   		 		$("#dosis10").val(lee[9][1]);
+
+												   		 	}
+											   		 	}	
+										   		 	}	
+									   		 	}	
+								   		 	}	
+							   		 	}
+						   		 	}
+					   		 	}
+				   		 	}
+			   		 	}
+
+
+
+
+
+
+								
+						   								   	}
+						   	else if (lee['resultado']=='noencontro') {
+						   		
+
+						   	}
+			   		
+
+			    }
+
 			   else if(accion=='consultarepre'){
 			   	console.log(respuesta);
 
@@ -1421,7 +1538,12 @@ function enviaAjax(datos,accion){
 					   $("#direccionMadre").val(lee[0].direc_trab);
 					   $("#apellidoPadre").val(lee[0].apellidoPadre);
 
+
+
+
 					   $("#ciPadre").val(lee[0].cedula_p);
+					   console.log("siiiiiiiiii");
+					   llena_crud_vacuna( $("#cedulaEscolar").val());
 
 						 if($("#ciPadre").val().length > 6) {
 								llenarpapa( $("#ciPadre").val());
@@ -1720,7 +1842,7 @@ function generarCombination(cedulam, fechacum, type, nacionalidad){
 
 function desabilita() {
 	// body...
-	$('input:gt(0)').prop('disabled', true);
+	$('input:gt(1)').prop('disabled', true);
 	$('textarea').prop('disabled', true);
 	$('select').prop('disabled', true);
 

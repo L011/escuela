@@ -716,67 +716,152 @@ class primaria extends datos{
 						'$this->dosis1'
 						)
 				");
-				if ($this->vacuna2) {
-					
-				$co->query("insert into vacunacion(
-						id_vacuna,
-						cedula_e,
-						dosis
-					)
-					Values(
-						'$this->vacuna2',
-						'$this->cedulaEscolar',
-						'$this->dosis2'
-						)
-				");
 
-				if ($this->vacuna3) {
-					
-				$co->query("insert into vacunacion(
-						id_vacuna,
-						cedula_e,
-						dosis
-					)
-					Values(
-						'$this->vacuna3',
-						'$this->cedulaEscolar',
-						'$this->dosis3'
+					if ($this->vacuna2) {
+						
+					$co->query("insert into vacunacion(
+							id_vacuna,
+							cedula_e,
+							dosis
 						)
-				");
-				if ($this->vacuna4) {
-					
-				$co->query("insert into vacunacion(
-						id_vacuna,
-						cedula_e,
-						dosis
-					)
-					Values(
-						'$this->vacuna4',
-						'$this->cedulaEscolar',
-						'$this->dosis4'
-						)
-				");
-				if ($this->vacuna5) {
-					
-				$co->query("insert into vacunacion(
-						id_vacuna,
-						cedula_e,
-						dosis
-					)
-					Values(
-						'$this->vacuna5',
-						'$this->cedulaEscolar',
-						'$this->dosis5'
-						)
-				");
+						Values(
+							'$this->vacuna2',
+							'$this->cedulaEscolar',
+							'$this->dosis2'
+							)
+					");
+						if ($this->vacuna3) {
+						
+						$co->query("insert into vacunacion(
+								id_vacuna,
+								cedula_e,
+								dosis
+							)
+							Values(
+								'$this->vacuna3',
+								'$this->cedulaEscolar',
+								'$this->dosis3'
+								)
+						");
 
-				
-				}
-				}
-				}
-				}
-				}
+							if ($this->vacuna4) {
+						
+							$co->query("insert into vacunacion(
+									id_vacuna,
+									cedula_e,
+									dosis
+								)
+								Values(
+									'$this->vacuna4',
+									'$this->cedulaEscolar',
+									'$this->dosis4'
+									)
+							");
 
+							if ($this->vacuna5) {
+						
+								$co->query("insert into vacunacion(
+										id_vacuna,
+										cedula_e,
+										dosis
+									)
+									Values(
+										'$this->vacuna5',
+										'$this->cedulaEscolar',
+										'$this->dosis5'
+										)
+								");
+
+										if ($this->vacuna6) {
+							
+										$co->query("insert into vacunacion(
+												id_vacuna,
+												cedula_e,
+												dosis
+											)
+											Values(
+												'$this->vacuna6',
+												'$this->cedulaEscolar',
+												'$this->dosis6'
+												)
+										");
+
+											if ($this->vacuna7) {
+							
+											$co->query("insert into vacunacion(
+													id_vacuna,
+													cedula_e,
+													dosis
+												)
+												Values(
+													'$this->vacuna7',
+													'$this->cedulaEscolar',
+													'$this->dosis7'
+													)
+											");
+
+											if ($this->vacuna8) {
+							
+												$co->query("insert into vacunacion(
+														id_vacuna,
+														cedula_e,
+														dosis
+													)
+													Values(
+														'$this->vacuna8',
+														'$this->cedulaEscolar',
+														'$this->dosis8'
+														)
+												");
+													if ($this->vacuna9) {
+							
+													$co->query("insert into vacunacion(
+															id_vacuna,
+															cedula_e,
+															dosis
+														)
+														Values(
+															'$this->vacuna9',
+															'$this->cedulaEscolar',
+															'$this->dosis9'
+															)
+													");
+														if ($this->vacuna10) {
+							
+														$co->query("insert into vacunacion(
+																id_vacuna,
+																cedula_e,
+																dosis
+															)
+															Values(
+																'$this->vacuna10',
+																'$this->cedulaEscolar',
+																'$this->dosis10'
+																)
+														");
+														
+														}
+													
+													}
+												
+											}
+											
+										
+										}
+									
+									}
+								
+								}
+
+							
+							
+							}
+						
+						}
+						
+					}
+
+				}
 
 
 
@@ -852,6 +937,137 @@ class primaria extends datos{
 							cedula_es='$this->cedulaEscolar'
 
 						");
+
+
+				if ($this->vacuna1) {
+					
+				$co->query("Update vacunacion set
+						id_vacuna='$this->vacuna1',
+						cedula_e='$this->cedulaEscolar',
+						dosis='$this->dosis1'
+						where
+						id_vacuna='$this->vacuna1' AND cedula_e='$this->cedulaEscolar'					
+					
+				");
+
+					if ($this->vacuna2) {
+						
+					$co->query("Update vacunacion set
+						id_vacuna='$this->vacuna2',
+						cedula_e='$this->cedulaEscolar',
+						dosis='$this->dosis2'
+						where
+						id_vacuna='$this->vacuna2' AND cedula_e='$this->cedulaEscolar'					
+					");
+					
+						if ($this->vacuna3) {
+						
+						$co->query("Update vacunacion set
+							id_vacuna='$this->vacuna3',
+							cedula_e='$this->cedulaEscolar',
+							dosis='$this->dosis3'
+							where
+							id_vacuna='$this->vacuna3' AND cedula_e='$this->cedulaEscolar'					
+						
+						");
+
+							if ($this->vacuna4) {
+						
+							$co->query("Update vacunacion set
+									id_vacuna='$this->vacuna4',
+									cedula_e='$this->cedulaEscolar',
+									dosis='$this->dosis4'
+									where
+									id_vacuna='$this->vacuna4' AND cedula_e='$this->cedulaEscolar'					
+								
+							");
+
+							if ($this->vacuna5) {
+						
+								$co->query("Update vacunacion set
+										id_vacuna='$this->vacuna5',
+										cedula_e='$this->cedulaEscolar',
+										dosis='$this->dosis5'
+										where
+										id_vacuna='$this->vacuna5' AND cedula_e='$this->cedulaEscolar'					
+									
+								");
+
+										if ($this->vacuna6) {
+							
+										$co->query("Update vacunacion set
+												id_vacuna='$this->vacuna6',
+												cedula_e='$this->cedulaEscolar',
+												dosis='$this->dosis6'
+												where
+												id_vacuna='$this->vacuna6' AND cedula_e='$this->cedulaEscolar'					
+											
+										");
+
+											if ($this->vacuna7) {
+							
+											$co->query("Update vacunacion set
+													id_vacuna='$this->vacuna7',
+													cedula_e='$this->cedulaEscolar',
+													dosis='$this->dosis7'
+													where
+													id_vacuna='$this->vacuna7' AND cedula_e='$this->cedulaEscolar'					
+												
+											");
+
+											if ($this->vacuna8) {
+							
+												$co->query("Update vacunacion set
+														id_vacuna='$this->vacuna8',
+														cedula_e='$this->cedulaEscolar',
+														dosis='$this->dosis8'
+														where
+														id_vacuna='$this->vacuna8' AND cedula_e='$this->cedulaEscolar'					
+													
+												");
+													if ($this->vacuna9) {
+							
+													$co->query("Update vacunacion set
+															id_vacuna='$this->vacuna9',
+															cedula_e='$this->cedulaEscolar',
+															dosis='$this->dosis9'
+															where
+															id_vacuna='$this->vacuna9' AND cedula_e='$this->cedulaEscolar'					
+														
+													");
+														if ($this->vacuna10) {
+							
+														$co->query("Update vacunacion set
+																id_vacuna='$this->vacuna10',
+																cedula_e='$this->cedulaEscolar',
+																dosis='$this->dosis10'
+																where
+																id_vacuna='$this->vacuna10' AND cedula_e='$this->cedulaEscolar'					
+															
+														");
+														
+														}
+													
+													}
+												
+											}
+											
+										
+										}
+									
+									}
+								
+								}
+
+							
+							
+							}
+						
+						}
+						
+					}
+
+				}
 
 						return "Registro Modificado";
 			} catch(Exception $e) {
@@ -979,6 +1195,37 @@ class primaria extends datos{
 		try{
 
 			$resultado = $co->query("Select id, vacuna from vacuna");
+			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
+			if($fila){
+
+				$envia = array('resultado'=>"encontro");
+
+				$envia += $fila;
+
+				return json_encode($envia);
+
+			}
+			else{
+
+				$envia = array('resultado'=>"noencontro");
+				return json_encode($envia);
+
+
+			}
+
+		}catch(Exception $e){
+			$envia = array('resultado'=>$e->getMessage());
+			return json_encode($envia);
+		}
+
+	}
+
+	function llenavacuna(){
+		$co = $this->conecta();
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		try{
+
+			$resultado = $co->query("SELECT id_vacuna, dosis FROM `vacunacion` WHERE cedula_e = '$this->cedulaEscolar'");
 			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
 			if($fila){
 
