@@ -94,6 +94,7 @@ $("#cedulaEscolar").on("keypress",function(e){
 		});
 
 
+		//muestra cedula
 		$("#c_id").on('change', function(event) {
 
 			if ($("#c_id").val()== 'n') {
@@ -1845,6 +1846,8 @@ function desabilita() {
 	$('input:gt(1)').prop('disabled', true);
 	$('textarea').prop('disabled', true);
 	$('select').prop('disabled', true);
+	$('input:last()').prop('disabled', false);
+	$('select[name=tableajax_length]').prop('disabled', false);
 
 }
 function habilita() {

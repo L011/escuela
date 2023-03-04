@@ -5,10 +5,37 @@
     <main>
     <?php require_once("comunes/menu.php"); ?>
     <?php require_once("comunes/modal.php"); ?>
+    <?php require_once("comunes/modal_vacuna.php"); ?>
+       
+       <div class="container" style="display: none;" id="contenido">    
+
+          <div class="container text-center h2 text-primary">
+
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col-6">
+            <h2 class="text-center text-xxl mb-4">INGRESO PRE-ESCOLAR</h2>
+            
+        </div>
+        <div class="col">
+            <div class   ="col">
+          <button type ="button" class="btn btn-primary" id="formulario1" >
+           X
+          </button>
+        </div>
+
+
+            
+        </div>
+        
+    </div>
+
+  <hr>
+  </div>
+
         <form class="container mb-5">
-            <h2 class="text-center text-xxl mb-4">INSCRIPCIONES NIVEL PRE-ESCOLAR</h2><hr>
-
-
 
 
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -248,6 +275,21 @@
                                               <option value="no">No</option>
                                           </select>
                                       </div>
+                                      <div class="col">
+                                        <label for="">Tipo de Sangre</label>
+                                        <select id="blood" name="blood" class="form-control mb-3">
+                                              <option selected value="0">Seleccionar</option>
+                                              <option value="a+">A positivo (A+)</option>
+                                              <option value="a-">A negativo (A-)</option>
+                                              <option value="b+">B positivo (B+)</option>
+                                              <option value="b-">B negativo (B-)</option>
+                                              <option value="o+">O positivo (O+)</option>
+                                              <option value="o-">O negativo (O-)</option>
+                                              <option value="ab+">AB positivo (AB+)</option>
+                                              <option value="ab-"> ABnegativo (AB-)</option>
+                                          </select>
+                                      </div>
+
 
                                       <div class="col">
                                           <label for="">Se retira solo de la institucion</label>
@@ -387,6 +429,10 @@
 
                     <tr>
                         <th scope="row">Nombres</th>
+                        <th style="display: none;"><input id="id_1" class="form-control" type="text"></span></th>
+                        <th style="display: none;"><input id="id_2" class="form-control" type="text"></span></th>
+                        <th style="display: none;"><input id="id_3" class="form-control" type="text"></span></th>
+                        <th style="display: none;"><input id="id_4" class="form-control" type="text"></span></th>
 
                         <th><input id="n1" name="n1"  class="form-control" type="text"><span id="sn1"></span></th>
                         <th><input id="n2" name="n2" class="form-control" type="text"><span id="sn2"></span></th>
@@ -452,26 +498,35 @@
                         <th><input id="oc3" name="oc3" class="form-control" type="text"><span id="soc3"></span></th>
                         <th><input id="oc4" name="oc4" class="form-control" type="text"><span id="soc4"></span></th>
 
+
                     </tr>
                 </table>
                   <hr>
 
                   <div class="row mt-3">
-                                <div class="col-md-4">
+                                <div class="col">
                                     <div class="form-floating mb-3">
                                         <label for="ingresoMenFam">Ingreso mensual del grupo familiar</label>
                                         <input type="text" class="form-control" id="ingreso_m" placeholder="20000bs">
                                         <span id="pingresoMenFam"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <div class="form-floating mb-3">
-                                        <label for="personasDepIngre">Nro de personas que dependen de ese ingreso</label>
-                                        <input type="range" class="form-control" id="personas_ingreso_dep">
-                                    </div>
+                                <div class="col">
+                                    <label for="">Personas que dependen de ese ingreso</label>
+                                    <select class="form-control form-select mb-3" id="personas_ingreso_dep">
+                                        <option selected value="0">Seleccionar</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                    </select>
+
                                 </div>
-                                <div class="col-md-3">
-                                    <label for="">Tipo de Vivienda</label>
+                                <div class="col">
+                                    <label for=""  class="mb-4">Tipo de Vivienda</label>
                                     <select class="form-control form-select mb-3" id="tipo_vivienda">
                                         <option selected value="0">Seleccionar</option>
                                         <option value="1">Rancho</option>
@@ -479,9 +534,10 @@
                                         <option value="3">Quinta</option>
                                     </select>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col">
+                                  <label for="" class="mb-4">Tenencia de vivienda</label>
                                     <select class="form-control form-select mb-3" id="tenencia_vivienda">
-                                        <option selected value="0">Tenencia de la Vivienda</option>
+                                        <option selected value="0">Seleccionar</option>
                                         <option value="1">Propia</option>
                                         <option value="2">Pagada</option>
                                         <option value="3">Alquilada</option>
@@ -532,140 +588,303 @@
               <div class="tab-pane fade" id="pills-contact0" role="tabpanel" aria-labelledby="pills-contact0-tab">
 
                       <h3 class="text-xl mb-3">SALUD</h3>
+                    
                       <div class="row">
-                          <div class="col-md-3">
-                              <select class="form-control form-select mb-3" id="blood" name="blood">
-                                  <option selected>Tipo de Sangre</option>
-                                  <option value="">A positivo (A+)</option>
-                                  <option value="">A negativo (A-)</option>
-                                  <option value="">B positivo (B+)</option>
-                                  <option value="">B negativo (B-)</option>
-                                  <option value="">O positivo (O+)</option>
-                                  <option value="">O negativo (O-)</option>
-                                  <option value="">AB positivo (AB+)</option>
-                                  <option value=""> ABnegativo (AB-)</option>
-                              </select>
-                          </div>
-                      </div>
-                      <div class="row">
-                          
-                          <button type="button" class="btn btn-outline-success">ADD</button>
+              <div class="col-auto">
+                  <p class="mb-3"><strong>DATOS DE VACUNACION</strong></p>
+              </div>
+            </div>
+
+            <button class="btn btn-success mb-3" id="add_v">Agregar Vacuna no existente</button>
+
+            <table class="table table-bordered table-sm" style="text-align: center;"  >
+              <tr>
+                <th>
+                  #
+                </th>
+                <th>
+                  Vacuna
+                </th>
+                <th>
+                  Dosis
+                </th>
+              </tr>
 
 
-                      </div>
-
-                      <div class="row">
+              <tr>
+                <th scope="row">
+                  1
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna1" name="vacuna" class="form-control vacuna form-select">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis1" name="dosis" class="form-control form-select">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
                         
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  2
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna2" name="vacuna" class="form-control vacuna form-select">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis2" name="dosis" class="form-control form-select">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  3
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna3" name="vacuna" class="form-control vacuna form-select">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis3" name="dosis" class="form-control form-select">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  4
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna4" name="vacuna" class="form-control vacuna form-select">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis4" name="dosis" class="form-control form-select">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  5
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna5" name="vacuna" class="form-control vacuna form-select ">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis5" name="dosis" class="form-control form-select ">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  6
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna6" name="vacuna" class="form-control vacuna form-select ">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis6" name="dosis" class="form-control form-select ">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  7
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna7" name="vacuna" class="form-control vacuna form-select ">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis7" name="dosis" class="form-control form-select ">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  8
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna8" name="vacuna" class="form-control vacuna form-select ">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis8" name="dosis" class="form-control form-select ">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  9
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna9" name="vacuna" class="form-control vacuna form-select ">
+                        <option selected value="">Seleccionar</option>
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis9" name="dosis" class="form-control form-select ">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
 
-                        <table class="table table-striped table-hover">
-                        <thead>
-                          <tr>
-                            <th>Vacuna</th>
-                            <th>Dosis</th>
-                            
-                             <th><button type="button" class="btn btn-outline-success" id="add">ADD</button>
-</th>
-                            
-                          </tr>
-                      </thead>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  10
+                </th>
+                <td>
+                  <div class="col">
+                    <select id="vacuna10" name="vacuna" class="form-control vacuna form-select ">
+                        <option selected value="">Seleccionar</option>
 
-                      <tbody id="resultadoconsulta">
+                     
+                    </select>
+                </div>
+                </td>
+                <td>
+                 <div class="col">
+                      <select id="dosis10" name="dosis" class="form-control form-select ">
+                        <option selected value="">Seleccionar</option>
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                        <option  value="6">6</option>
 
-
-
-                      </tbody>
-
-                      <div class="modal-footer bg-light">
-                      <div class="col">
-
-                      </div>
-
-                      </div>
-                      </table>
-
-                      </div>
-
-
-
-                      <div class="row">
-                          <div class="col-md-2">
-                          <p>Vacunas recibidas:</p>
-                              <div class="form-check  mb-3 ">
-                                  <input class="form-check-input" name="vacunas[]" type="checkbox"  id="vacBCG" value="vacBCG">
-                                  <label class="form-check-label" for="vacBCG">BCG</label>
-                              </div>
-                          </div>
-                          <div class="col-md-2">
-                              <div class="form-check  mb-3 ">
-                                  <input class="form-check-input" name="vacunas[]" type="checkbox"  id="vacTriple" value="vacTriple">
-                                  <label class="form-check-label" for="vacTriple">TRIPLE</label>
-                              </div>
-                          </div>
-                          <div class="col-md-2">
-                              <div class="form-check  mb-3 ">
-                                  <input class="form-check-input" name="vacunas[]" type="checkbox"  id="vacPolio" value="vacPolio">
-                                  <label class="form-check-label" for="vacPolio">POLIO</label>
-                              </div>
-                          </div>
-                          <div class="col-md-2">
-                              <div class="form-check  mb-3 ">
-                                  <input class="form-check-input" name="vacunas[]" type="checkbox"  id="vacSarampion" value="vacSarampion">
-                                  <label class="form-check-label" for="vacSarampion">SARAMPION</label>
-                              </div>
-                          </div>
-                          <div class="col-md-2">
-                              <div class="form-check  mb-3 ">
-                                  <input class="form-check-input" name="vacunas[]" type="checkbox"  id="vacPPD" value="vacPPD">
-                                  <label class="form-check-label" for="vacPPD">PPD (Trivalente)</label>
-                              </div>
-                          </div>
-                          <div class="col-md-2">
-                              <div class="form-check  mb-3 ">
-                                  <input class="form-check-input" name="vacunas[]" type="checkbox"  id="vacAntite" value="vacAntite">
-                                  <label class="form-check-label" for="vacAntite">ANTITETANICA</label>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-md-6">
-                              <div class="form-floating mb-3">
-                              <label for="vacOtra">Otra Vacuna</label>
-                                  <textarea id="vacOtra" class="form-control "></textarea>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-auto">
-                              <p><b>Vacunas Covid:</b></p>
-                          </div>
-                          <div class="col-auto">
-                              <div class="form-check  mb-3">
-                                  <input class="form-check-input" name="vacunas" type="checkbox" role="switch" id="vac1d">
-                                  <label class="form-check-label" for="vac1d">1ra Dosis</label>
-                              </div>
-                          </div>
-
-                          <div class="col-auto">
-                              <div class="form-check mb-3">
-                                  <input class="form-check-input" name="vacunas" type="checkbox" role="switch" id="vac2d">
-                                  <label class="form-check-label" for="vac2d">2da Dosis</label>
-                              </div>
-                          </div>
-
-                          <div class="col-auto">
-                              <div class="form-check mb-3">
-                                  <input class="form-check-input" name="vacunas" type="checkbox" role="switch" id="vac3d">
-                                  <label class="form-check-label" for="vac3d">3ra Dosis</label>
-                              </div>
-                          </div>
-
-                          <div class="col-auto">
-                              <div class="form-check mb-3">
-                                  <input class="form-check-input" name="vacunas" type="checkbox" role="switch" id="vac4d">
-                                  <label class="form-check-label" for="vac4d">4ta Dosis</label>
-                              </div>
-                          </div>
-                      </div>
+                        
+                      </select>
+                  </div>
+                </td>
+              </tr>
+            </table>
 
                       <h3 class="text-left text-xl">DIFICULTADES OBSERVADAS</h3>
                       <div class="row">
@@ -933,49 +1152,49 @@
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-check  mb-3 ">
-                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="ha1" value="1" >
+                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="1" value="1" >
                                         <label for="ha1">Se lava las manos solo</label>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-check  mb-3 ">
-                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="ha2" value="2">
+                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="2" value="2">
                                         <label for="ha1">Se cepilla los dientes solo</label>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-check  mb-3 ">
-                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="ha3" value="3">
+                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="3" value="3">
                                         <label for="ha2">Se viste sin ayuda</label>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-check  mb-3 ">
-                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="ha4" value="4">
+                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="4" value="4">
                                         <label for="ha3">Se desviste sin ayuda</label>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-check  mb-3 ">
-                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="ha5" value="5">
+                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="5" value="5">
                                         <label for="ha4">Ordena sus juguetes</label>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-check  mb-3 ">
-                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="ha6" value="6">
+                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="6" value="6">
                                         <label for="ha5">Utiliza cubiertos</label>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-check  mb-3">
-                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="ha7"  value="7">
+                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="7"  value="7">
                                         <label for="ha6">Participa en tareas del hogar</label>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-check  mb-3 ">
-                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="ha8"  value="8">
+                                        <input type="checkbox" class="form-check-input" name="habito[]"  id="8"  value="8">
                                         <label for="ha7">Utiliza normas de cortesia</label>
                                     </div>
                                 </div>
@@ -1836,7 +2055,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-floating mb-3">
-                                    <label for="colaboracionInicial">De que forma colaboraria usted y otro familiar en la sección de inicial a la que será asignado a su representado?</label>
+                                    <label for="colaboracionInicial">¿De que forma colaboraria usted y otro familiar en la sección de inicial a la que será asignado a su representado?</label>
                                         <textarea class="form-control" id="colaboracionInicial"></textarea>
                                     </div>
                                 </div>
@@ -1847,31 +2066,31 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="form-check form-check-inline mb-3">
-                                        <input type="checkbox" class="form-check-input" name="diaColaborar" id="diaLunes">
+                                        <input type="checkbox" class="form-check-input" name="diaColaborar[]" id="1">
                                         <label for="diaLunes" class="form-check-label">Lunes</label>
                                     </div>
                                 </div>
                                 <div class="col-auto">
                                     <div class="form-check form-check-inline mb-3">
-                                        <input type="checkbox" class="form-check-input" name="diaColaborar" id="diaMartes">
+                                        <input type="checkbox" class="form-check-input" name="diaColaborar[]" id="2">
                                         <label for="diaMartes" class="form-check-label">Martes</label>
                                     </div>
                                 </div>
                                 <div class="col-auto">
                                     <div class="form-check form-check-inline mb-3">
-                                        <input type="checkbox" class="form-check-input" name="diaColaborar" id="diaMiercoles">
+                                        <input type="checkbox" class="form-check-input" name="diaColaborar[]" id="3">
                                         <label for="diaMiercoles" class="form-check-label">Miercoles</label>
                                     </div>
                                 </div>
                                 <div class="col-auto">
                                     <div class="form-check form-check-inline mb-3">
-                                        <input type="checkbox" class="form-check-input" name="diaColaborar" id="diaJueves">
+                                        <input type="checkbox" class="form-check-input" name="diaColaborar[]" id="4">
                                         <label for="diaJueves" class="form-check-label">Jueves</label>
                                     </div>
                                 </div>
                                 <div class="col-auto">
                                     <div class="form-check form-check-inline mb-3">
-                                        <input type="checkbox" class="form-check-input" name="diaColaborar" id="diaViernes">
+                                        <input type="checkbox" class="form-check-input" name="diaColaborar[]" id="5">
                                         <label for="diaViernes" class="form-check-label">Viernes</label>
                                     </div>
                                 </div>
@@ -1884,11 +2103,52 @@
                                     </div>
                                 </div>
                             </div><hr>
-                            <div class="col">
-                     <button type="button" class="btn btn-primary" id="incluir" >INCLUIR
+                            <div class="container" style="  display: flex; justify-content: center;">
+    
+    
 
-                     </button>
-                </div>
+    <div class="row">
+
+
+      <div class="col" style="margin-left: -2rem;">
+          <a href="?pagina=gestionar" style="margin-left: -13rem;" class="btn btn-primary">
+            <svg xmlns="img/arrow-return-left.svg" width="25" height="22" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class   ="col">
+          <button type ="button" class="btn btn-primary" id="incluir" >
+            <svg xmlns   ="img/file-earmark-plus.svg" width="25" height="22" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+            <path d      ="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
+            <path d      ="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="col">
+           <button type="button" class="btn btn-primary" id="modificar" >
+            <svg xmlns="img/pencil-fill.svg" width="25" height="22" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+              <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+            </svg>
+           </button>
+      </div>
+
+
+        <div class   ="col">
+          <button type="button" class="btn btn-primary" id="eliminar" >
+            <svg xmlns ="img/trash-fill.svg" width="25" height="22" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+            <path d    ="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+            </svg>
+          </button>
+        </div>
+
+
+    </div>
+
+
+  </div>   
 
               </div>
 
@@ -1898,27 +2158,66 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </form>
+
+      </div>
+
+                <div class="container mb-5">
+        <table class="table table-bordered table-hover" id="tableajax">
+         <thead class="thead-dark">
+         <tr>
+         <th>Cedula</th>
+         <th>Apellidos</th>
+         <th>Nombres</th>
+         <th>Representante</th>
+         <th>Acciones</th>
+
+         </tr>
+        </thead>
+
+
+        <tfoot class="thead-dark">
+         <tr>
+         <th>Cedula</th>
+         <th>Apellidos</th>
+         <th>Nombres</th>
+         <th>Representante</th>
+         <th>Acciones</th>
+
+         </tr>
+        </tfoot>
+
+        <tbody id="resultadoconsulta">
+
+
+
+        </tbody>
+
+        <div class="modal-footer">
+        <div class="col-7"><h2> Lista de estudiantes preescolar</h2></div>
+
+  <div class="col"></div>
+
+  <div class  ="col">
+          <button type ="button" class="btn btn-primary" id="formulario" >
+            <svg xmlns   ="img/file-earmark-plus.svg" width="25" height="22" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+            <path d      ="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
+            <path d      ="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+            </svg>
+          </button>
+  </div>
+
+        </div>
+        </table>
+
+      </div>
+
         <?php
             require_once("comunes/footer.php");
         ?>
     </main>
 </body>
 <script src="js/gestionar_preescolar.js"></script>
+<script src="js/confirmar.js"></script>
 <script src="js/botonVolver.js"></script>
 </html>

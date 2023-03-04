@@ -1,9 +1,10 @@
 
 $(document).ready(function(){
 	
-
+	tabla();
 	$("#add").click();
 	desabilita();
+	llena_vacuna();
 //VALIDACION DE DATOS
 
 //DATOS DEL NINO
@@ -12,6 +13,11 @@ $(document).ready(function(){
 		validarkeypress(/^[A-Za-z0-9-.\b\s]*$/,e);
 		/* Act on the event */
 	});
+
+	$("#vacuna_name").keyup(function(event) {
+	/* Act on the event */
+	$("#vacuna_name").removeClass('is-invalid');
+});
 
 
 	 $("#cedula_r").on("keypress",function(e){
@@ -703,14 +709,31 @@ $(document).ready(function(){
 
 //CONTROL DE BOTONES
 
-$("#add").on("click",function(){
+$("#add_v").on("click", function(event) {
+		event.preventDefault();
 
-	var datos = new FormData();
-	datos.append('accion','consultarVacuna');
+	
+		var datos = new FormData();
+		    datos.append('accion','consultarVacuna');
+				enviaAjax(datos,'consultarVacuna');
+	});
 
-	enviaAjax(datos,'consultarVacuna');
+	$("#agregar_vacuna").on("click", function(event) {
+		event.preventDefault();
+		if ($("#vacuna_name").val() != '') {
 
-});
+		console.log("as,dls,");
+		var datos = new FormData();
+		    datos.append('accion','vacuna_name');
+		    datos.append('vacuna_name',$("#vacuna_name").val());
+				enviaAjax(datos,'vacuna_name');
+				$("#add_v").click();
+		}
+		else{
+			$("#vacuna_name").addClass('is-invalid');
+		}
+
+	});
 
 
 
@@ -817,6 +840,7 @@ $("#incluir").on("click",function(){
 		datos.append('vive_con',$("#vive_con").val());
 		datos.append('canaima',$("#canaima").val());
 		datos.append('retirada',$("#retirada").val());
+		datos.append('blood',$("#blood").val());
 		datos.append('orden',$("#orden").val());
 		datos.append('nacionalidad',$("#nacionalidad").val());
 		datos.append('c_id',$("#c_id").val());
@@ -834,6 +858,11 @@ $("#incluir").on("click",function(){
 		datos.append('telefonoauto1',$("#telefonoauto1").val());
 
 		// personas en el hogar
+
+		datos.append('id_1',$("#id_1").val());
+		datos.append('id_2',$("#id_2").val());
+		datos.append('id_3',$("#id_3").val());
+		datos.append('id_4',$("#id_4").val());
 
 		datos.append('n1',$("#n1").val());
 		datos.append('a1',$("#a1").val());
@@ -939,6 +968,38 @@ $("#incluir").on("click",function(){
 		datos.append('alergia',$("#alergia").val());
 		datos.append('despa',$("#despa").val());
 		datos.append('fiebre_a',$("#fiebre_a").val());
+
+		// vacuna
+
+		datos.append('vacuna1',$("#vacuna1").val());
+		datos.append('dosis1',$("#dosis1").val());
+
+		datos.append('vacuna2',$("#vacuna2").val());
+		datos.append('dosis2',$("#dosis2").val());
+
+		datos.append('vacuna3',$("#vacuna3").val());
+		datos.append('dosis3',$("#dosis3").val());
+
+		datos.append('vacuna4',$("#vacuna4").val());
+		datos.append('dosis4',$("#dosis4").val());
+
+		datos.append('vacuna5',$("#vacuna5").val());
+		datos.append('dosis5',$("#dosis5").val());
+
+		datos.append('vacuna6',$("#vacuna6").val());
+		datos.append('dosis6',$("#dosis6").val());
+
+		datos.append('vacuna7',$("#vacuna7").val());
+		datos.append('dosis7',$("#dosis7").val());
+
+		datos.append('vacuna8',$("#vacuna8").val());
+		datos.append('dosis8',$("#dosis8").val());
+
+		datos.append('vacuna9',$("#vacuna9").val());
+		datos.append('dosis9',$("#dosis9").val());
+
+		datos.append('vacuna10',$("#vacuna10").val());
+		datos.append('dosis10',$("#dosis10").val());
 		
 
 
@@ -984,14 +1045,24 @@ $("#incluir").on("click",function(){
 
 
 $("#modificar").on("click",function(){
+
+
+confirmar();
+
+	$('#si').on('click', function() {
+
+		$('#botones').remove();
+
 	if(validarenvio()){
 		//console.log("M1");
 		var datos = new FormData();
+		datos.append('accion','modificar');
+
 		var checkboxs = $('input[type=checkbox][name="doc[]"]:checked');
 
 		checkboxs.each(function() {
 
-		datos.append('doc[]',$(this).val());
+		datos.append('doc[]',$(this).attr('id'));
 			
 		});
 
@@ -999,7 +1070,7 @@ $("#modificar").on("click",function(){
 
 		checkboxLlegar.each(function() {
 
-		datos.append('llegar[]',$(this).val());
+		datos.append('llegar[]',$(this).attr('id'));
 			
 		});
 
@@ -1008,7 +1079,7 @@ $("#modificar").on("click",function(){
 
 		checkboxhabito.each(function() {
 
-		datos.append('habito[]',$(this).val());
+		datos.append('habito[]',$(this).attr('id'));
 			
 		});
 
@@ -1016,7 +1087,7 @@ $("#modificar").on("click",function(){
 
 		checkboxcontrol.each(function() {
 
-		datos.append('control[]',$(this).val());
+		datos.append('control[]',$(this).attr('id'));
 			
 		});
 
@@ -1024,7 +1095,7 @@ $("#modificar").on("click",function(){
 
 		checkboxdessarrollo.each(function() {
 
-		datos.append('desarrollo[]',$(this).val());
+		datos.append('desarrollo[]',$(this).attr('id'));
 
 			
 		});
@@ -1034,7 +1105,7 @@ $("#modificar").on("click",function(){
 
 		checkboxantecedentes.each(function() {
 
-		datos.append('antece[]',$(this).val());
+		datos.append('antece[]',$(this).attr('id'));
 
 			
 		});
@@ -1044,7 +1115,7 @@ $("#modificar").on("click",function(){
 
 		checkboxequilibrio.each(function() {
 
-		datos.append('equilibrio[]',$(this).val());
+		datos.append('equilibrio[]',$(this).attr('id'));
 
 			
 		});
@@ -1054,7 +1125,7 @@ $("#modificar").on("click",function(){
 
 		checkboxfamiliar.each(function() {
 
-		datos.append('familiar[]',$(this).val());
+		datos.append('familiar[]',$(this).attr('id'));
 
 			
 		});
@@ -1064,7 +1135,16 @@ $("#modificar").on("click",function(){
 
 		checkboxenfermedades.each(function() {
 
-		datos.append('enfermedades[]',$(this).val());
+		datos.append('enfermedades[]',$(this).attr('id'));
+
+			
+		});
+
+			var checkboxdiaColaborar = $('input[type=checkbox][name="diaColaborar[]"]:checked');
+
+		checkboxdiaColaborar.each(function() {
+
+		datos.append('diaColaborar[]',$(this).attr('id'));
 
 			
 		});
@@ -1081,6 +1161,7 @@ $("#modificar").on("click",function(){
 		datos.append('estado_p',$("#estado_p").val());
 		datos.append('ciudad_p',$("#ciudad_p").val());
 		datos.append('vive_con',$("#vive_con").val());
+		datos.append('blood',$("#blood").val());
 		datos.append('canaima',$("#canaima").val());
 		datos.append('retirada',$("#retirada").val());
 		datos.append('orden',$("#orden").val());
@@ -1100,6 +1181,11 @@ $("#modificar").on("click",function(){
 		datos.append('telefonoauto1',$("#telefonoauto1").val());
 
 		// personas en el hogar
+
+		datos.append('id_1',$("#id_1").val());
+		datos.append('id_2',$("#id_2").val());
+		datos.append('id_3',$("#id_3").val());
+		datos.append('id_4',$("#id_4").val());
 
 		datos.append('n1',$("#n1").val());
 		datos.append('a1',$("#a1").val());
@@ -1205,12 +1291,58 @@ $("#modificar").on("click",function(){
 		datos.append('alergia',$("#alergia").val());
 		datos.append('despa',$("#despa").val());
 		datos.append('fiebre_a',$("#fiebre_a").val());
+
+		//vacuna
+		datos.append('vacuna1',$("#vacuna1").val());
+		datos.append('dosis1',$("#dosis1").val());
+
+		datos.append('vacuna2',$("#vacuna2").val());
+		datos.append('dosis2',$("#dosis2").val());
+
+		datos.append('vacuna3',$("#vacuna3").val());
+		datos.append('dosis3',$("#dosis3").val());
+
+		datos.append('vacuna4',$("#vacuna4").val());
+		datos.append('dosis4',$("#dosis4").val());
+
+		datos.append('vacuna5',$("#vacuna5").val());
+		datos.append('dosis5',$("#dosis5").val());
+
+		datos.append('vacuna6',$("#vacuna6").val());
+		datos.append('dosis6',$("#dosis6").val());
+
+		datos.append('vacuna7',$("#vacuna7").val());
+		datos.append('dosis7',$("#dosis7").val());
+
+		datos.append('vacuna8',$("#vacuna8").val());
+		datos.append('dosis8',$("#dosis8").val());
+
+		datos.append('vacuna9',$("#vacuna9").val());
+		datos.append('dosis9',$("#dosis9").val());
+
+		datos.append('vacuna10',$("#vacuna10").val());
+		datos.append('dosis10',$("#dosis10").val());
+
+		//colab
+
+		datos.append('colaboracionInicial',$("#colaboracionInicial").val());
+		datos.append('horarioColaborar',$("#horarioColaborar").val());
+
 		enviaAjax(datos,'modificar');
 
 	}
+
+});
+
 });
 
 $("#eliminar").on("click",function(){
+
+	confirmar();
+
+	$('#si').on('click', function() {
+
+		$('#botones').remove();
 
 	if(validarkeyup(/^[0-9]{7,8}$/,$("#cedulaEscolar"),
 		$("#pCedulaEscolar"),"El formato debe ser 9999999")==0){
@@ -1225,6 +1357,7 @@ $("#eliminar").on("click",function(){
 		datos.append('cedulaEscolar',$("#cedulaEscolar").val());
 		enviaAjax(datos,'eliminar');
 	}
+});
 
 });
 
@@ -1301,6 +1434,14 @@ function validarenvio(){
 	return true;
 }
 
+function llena_crud_vacuna(cedula) {
+	console.log(cedula);
+	var datos = new FormData();
+		datos.append('accion','llenavacuna');
+	datos.append('cedulaEscolar',cedula);
+	enviaAjax(datos,'llenavacuna');
+}
+
 
 //Funcion que muestra el modal con un mensaje
 function muestraMensaje(mensaje){
@@ -1312,13 +1453,15 @@ function muestraMensaje(mensaje){
 			},500000);
 }
 
-function muestraModalVacuna(mensaje){
 
+function modal_vacuna(mensaje){
 
-	var a ='<div class="row"><table class="table table-striped table-hover"><thead><tr><th>Vacuna</th><th><button type="button" class="btn btn-outline-success" id="add">ADD</button></th></tr></thead><tbody id="resultadoconsulta"></tbody><div class="modal-footer bg-light"><div class="col"></div></div></table></div>';
-	$("#contenidodemodal").html(a);
-	$("#resultadoconsulta").html(mensaje);
-			$("#mostrarmodal").modal("show");
+	$("#contenidodemodal_v").html(mensaje);
+			$("#mostrarmodal_v").modal("show");
+			setTimeout(function() {
+					$("#mostrarmodal_v").modal("hide");
+			},100000);
+			console.log(mensaje);
 }
 
 
@@ -1361,10 +1504,6 @@ function llenar_personas_hogar(datos,accion){
 
             	if (accion=='consultahogar') {
 
-			 	alert("aksndkljNADKOABSKJAGSFBASKLFBASJ");
-
-			 	console.log(data);
-
 			 	lee = JSON.parse(data);
             	
 
@@ -1372,7 +1511,9 @@ function llenar_personas_hogar(datos,accion){
 					if(lee['resultado']=='encontro'){
 
 						if (lee[0]) {
-						
+							
+							$("#id_1").val(lee[0].id);
+							
 							$("#n1").val(lee[0].nombre);
 							$("#a1").val(lee[0].apellido);
 							$("#sx1").val(lee[0].sexo);
@@ -1384,6 +1525,8 @@ function llenar_personas_hogar(datos,accion){
 							
 									if (lee[1]) {
 										
+										$("#id_2").val(lee[1].id);
+										
 										$("#n2").val(lee[1].nombre);
 										$("#a2").val(lee[1].apellido);
 										$("#sx2").val(lee[1].sexo);
@@ -1392,6 +1535,8 @@ function llenar_personas_hogar(datos,accion){
 										$("#oc2").val(lee[1].ocupacion);
 
 													if (lee[2]) {
+														
+														$("#id_3").val(lee[2].id);
 														
 														$("#n3").val(lee[2].nombre);
 														$("#a3").val(lee[2].apellido);
@@ -1402,6 +1547,8 @@ function llenar_personas_hogar(datos,accion){
 
 																		if (lee[3]) {
 																	
+																				$("#id_4").val(lee[3].id);
+																				
 																				$("#n4").val(lee[3].nombre);
 																				$("#a4").val(lee[3].apellido);
 																				$("#sx4").val(lee[3].sexo);
@@ -1555,9 +1702,221 @@ function enviaAjax(datos,accion){
 
 
 			   if(accion=='consultarVacuna'){
-				  $("#resultadoconsulta").html(respuesta);
+			   	console.log("ldakds");
+				  $("#contenidodemodal_v").html(respuesta);
+				  modal_vacuna(respuesta)
 
 			   }
+			   else if(accion=='vacuna_name'){
+			   	$("#add_v").click();
+			   	llena_vacuna();
+
+			   }
+
+			   else if(accion=='consultarVacuna2'){
+			   	console.log(respuesta);
+
+			   		lee = JSON.parse(respuesta);
+
+			   		 if(lee['resultado']=='encontro'){
+
+			   		 	console.log("vacunas");
+			   		 			$('select.vacuna').empty();
+
+
+
+									$('select.vacuna').append($('<option>', {
+								    value: "",
+								    text: 'Seleccionar'
+
+								}));
+
+									if (lee[0]) {
+
+
+											$('select.vacuna').append($('<option>', {
+										    value: lee[0][0],
+										    text: lee[0][1]
+
+										}));
+
+												if(lee[1]) {
+
+													$('select.vacuna').append($('<option>', {
+												  	 value: lee[1][0],
+												    text: lee[1][1]
+
+												}));
+
+													if(lee[2]) {
+
+														$('select.vacuna').append($('<option>', {
+													    value: lee[2][0],
+													    text: lee[2][1]
+
+													}));
+
+												}
+														if(lee[3]) {
+
+															$('select.vacuna').append($('<option>', {
+														   value: lee[3][0],
+														    text: lee[3][1]
+
+															}));
+
+															if(lee[4]) {
+
+																	$('select.vacuna').append($('<option>', {
+																    value: lee[4][0],
+																    text: lee[4][1]
+
+																}));
+
+																	if (lee[5]) {
+
+																			$('select.vacuna').append($('<option>', {
+																		    value: lee[5][0],
+																		    text: lee[5][1]
+
+																		}));
+
+
+																			if (lee[6]) {
+
+																					$('select.vacuna').append($('<option>', {
+																				    value: lee[6][0],
+																				    text: lee[6][1]
+
+																				}));
+
+																					if (lee[7]) {
+
+																							$('select.vacuna').append($('<option>', {
+																						    value: lee[7][0],
+																						    text: lee[7][1]
+
+																						}));
+
+																							if (lee[8]) {
+
+																									$('select.vacuna').append($('<option>', {
+																								    value: lee[8][0],
+																								    text: lee[8][1]
+
+																								}));
+
+																										if (lee[9]) {
+
+																												$('select.vacuna').append($('<option>', {
+																											    value: lee[9][0],
+																											    text: lee[9][1]
+
+																											}));
+																										}
+
+																							}
+
+																					}
+
+																			}
+
+																	}
+
+															}
+
+													}
+
+											}
+
+									}
+						   								   	}
+						   	else if (lee['resultado']=='noencontro') {
+						   		
+
+						   	}
+			   		
+
+			    }
+
+			    else if(accion=='llenavacuna'){
+			   	
+
+			   		lee = JSON.parse(respuesta);
+
+			   		console.log(lee);
+
+			   		 if(lee['resultado']=='encontro'){
+
+			   		 	console.log("vacunas");
+
+			   		 	if (lee[0]) {
+
+			   		 		
+			   		 		$("#vacuna1").val(lee[0][0]);
+			   		 		$("#dosis1").val(lee[0][1]);
+
+				   		 	if (lee[1]) {
+				   		 		$("#vacuna2").val(lee[1][0]);
+				   		 		$("#dosis2").val(lee[1][1]);
+
+					   		 	if (lee[2]) {
+					   		 		$("#vacuna3").val(lee[2][0]);
+					   		 		$("#dosis3").val(lee[2][1]);
+
+						   		 	if (lee[3]) {
+						   		 		$("#vacuna4").val(lee[3][0]);
+						   		 		$("#dosis4").val(lee[3][1]);
+
+							   		 	if (lee[4]) {
+							   		 		$("#vacuna5").val(lee[4][0]);
+							   		 		$("#dosis5").val(lee[4][1]);
+
+								   		 	if (lee[5]) {
+								   		 		$("#vacuna6").val(lee[5][0]);
+								   		 		$("#dosis6").val(lee[5][1]);
+
+									   		 	if (lee[6]) {
+									   		 		$("#vacuna7").val(lee[6][0]);
+									   		 		$("#dosis7").val(lee[6][1]);
+
+										   		 	if (lee[7]) {
+										   		 		$("#vacuna8").val(lee[7][0]);
+										   		 		$("#dosis8").val(lee[7][1]);
+
+											   		 	if (lee[8]) {
+											   		 		$("#vacuna9").val(lee[8][0]);
+											   		 		$("#dosis9").val(lee[8][1]);
+
+												   		 	if (lee[9]) {
+												   		 		$("#vacuna10").val(lee[9][0]);
+												   		 		$("#dosis10").val(lee[9][1]);
+
+												   		 	}
+											   		 	}	
+										   		 	}	
+									   		 	}	
+								   		 	}	
+							   		 	}
+						   		 	}
+					   		 	}
+				   		 	}
+			   		 	}
+
+
+
+
+
+
+								
+						   								   	}
+						   	else if (lee['resultado']=='noencontro') {
+						   		
+
+						   	}
+			   		
+
+			    }
 
 			   else if(accion=='consultarepre'){
 			   	console.log(respuesta);
@@ -1566,8 +1925,8 @@ function enviaAjax(datos,accion){
 
 			   		 if(lee['resultado']=='encontro'){
 
-						   		$("#representanten").html(lee[0].nombre);
-						   		$("#representantea").html(lee[0].apellido);
+						   		$("#representanten").html(lee[0].nombre_r);
+						   		$("#representantea").html(lee[0].apellido_r);
 						   		console.log(lee[0].nombre);
 
 						   		if (lee[0].nombre != '') {
@@ -1593,102 +1952,134 @@ function enviaAjax(datos,accion){
 			    }
 			   else if(accion=='consultatr'){
 
+
 				   lee = JSON.parse(respuesta);
+				   console.log("respuestaaaaaaaaaaa");
 
 
 				   if(lee['resultado']=='encontro'){
 
-//control de checkboxssc
+							//control de checkboxssc
 				   		//1111
 				   		var valor = $('input[name="doc[]"]');
 				   		var datos1 = lee[0].doc;
 
+				   		console.log(lee[0].doc);
+				   		console.log(valor.length);
+
+				   							
 				   		for (var i = 0; i < valor.length; i++) {
-				   			if (datos1.includes(valor[i].value)) {
+				   			if (datos1.includes(valor[i].id)) {
+				   				console.log(valor);
 				   				valor[i].checked= true;
 				   			}
 				   		}
 				   			//22222
-				   		var valor = $('input[name="llegar[]"]');
+				   		var valor2 = $('input[name="llegar[]"]');
 				   		var datos2 = lee[0].llegar;
 
-				   		for (var i = 0; i < valor.length; i++) {
-				   			if (datos2.includes(valor[i].value)) {
-				   				valor[i].checked= true;
+				   		for (var i = 0; i < valor2.length; i++) {
+				   			if (datos2.includes(valor2[i].id)) {
+				   				valor2[i].checked= true;
 				   			}
 				   		}
 
 				   		//3333
 
-				   		var valor = $('input[name="habito[]"]');
+				   		var valor3 = $('input[name="habito[]"]');
 				   		var datos3 = lee[0].check_habito;
 
 
-				   		for (var i = 0; i < valor.length; i++) {
-				   			if (datos3.includes(valor[i].value)) {
-				   				valor[i].checked= true;
+				   		for (var i = 0; i < valor3.length; i++) {
+				   			if (datos3.includes(valor3[i].id)) {
+				   				valor3[i].checked= true;
 				   			}
 				   		}
 
 				   		//4444444
 
-				   		var valor = $('input[name="control[]"]');
+				   		var valor4 = $('input[name="control[]"]');
 				   		var datos4 = lee[0].se_orina;
 
 
-				   		for (var i = 0; i < valor.length; i++) {
-				   			if (datos4.includes(valor[i].value)) {
-				   				valor[i].checked= true;
+				   		for (var i = 0; i < valor4.length; i++) {
+				   			if (datos4.includes(valor4[i].id)) {
+				   				valor4[i].checked= true;
 				   			}
 				   		}
 
 				   		//555555
-				   		var valor = $('input[name="desarrollo[]"]');
+				   		var valor5 = $('input[name="desarrollo[]"]');
 				   		var datos5 = lee[0].check_desarrollo;
 
 
-				   		for (var i = 0; i < valor.length; i++) {
-				   			if (datos5.includes(valor[i].value)) {
-				   				valor[i].checked= true;
+				   		for (var i = 0; i < valor5.length; i++) {
+				   			if (datos5.includes(valor5[i].id)) {
+				   				valor5[i].checked= true;
 				   			}
 				   		}
 
 				   		//666666666
 
-				   		var valor = $('input[name="antece[]"]');
+				   		var valor6 = $('input[name="antece[]"]');
 				   		var datos6 = lee[0].check_antecedentes;
 
 
-				   		for (var i = 0; i < valor.length; i++) {
-				   			if (datos6.includes(valor[i].value)) {
-				   				valor[i].checked= true;
+				   		for (var i = 0; i < valor6.length; i++) {
+				   			if (datos6.includes(valor6[i].id)) {
+				   				valor6[i].checked= true;
 				   			}
 				   		}
 
 				   		//77777777
 
-				   		var valor = $('input[name="equilibrio[]"]');
+				   		var valor7 = $('input[name="equilibrio[]"]');
 				   		var datos7 = lee[0].check_emocional;
 
 
-				   		for (var i = 0; i < valor.length; i++) {
-				   			if (datos7.includes(valor[i].value)) {
-				   				valor[i].checked= true;
+				   		for (var i = 0; i < valor7.length; i++) {
+				   			if (datos7.includes(valor7[i].id)) {
+				   				valor7[i].checked= true;
 				   			}
 				   		}
 
- /////////////////////// QUITAR LUEGO
+				   		//88888888888
+
+				   		var valor8 = $('input[name="enfermedades[]"]');
+				   		var datos8 = lee[0].check_enfermedad;
+
+
+				   		for (var i = 0; i < valor8.length; i++) {
+				   			if (datos8.includes(valor8[i].id)) {
+				   				valor8[i].checked= true;
+				   			}
+				   		}
+
+				   		//9999999999999
+
+				   		var valor9 = $('input[name="familiar[]"]');
+				   		var datos9 = lee[0].check_familiar;
+
+
+				   		for (var i = 0; i < valor9.length; i++) {
+				   			if (datos9.includes(valor9[i].id)) {
+				   				valor9[i].checked= true;
+				   			}
+				   		}
+
+
+						///////////// QUITAR LUEGO
 
 
 				   		$("#cedula_div").css('display', 'flex');
 
-/////////////////////// QUITAR LUEGO
+							///////////// QUITAR LUEGO
 
-						$("#apellidoPri").val(valor);
 						$("#cedulaEscolar").val(lee[0].cedula_e);
 
 						$("#cedula_r").val(lee[0].representante);
 
+						llena_crud_vacuna($("#cedulaEscolar").val());
 					   $("#apellidoPri").val(lee[0].apellido);
 					   $("#nombrePri").val(lee[0].nombre);
 					   $("#sexo").val(lee[0].sexo);
@@ -1696,6 +2087,7 @@ function enviaAjax(datos,accion){
 					   $("#estado_p").val(lee[0].estado_n);
 					   $("#ciudad_p").val(lee[0].ciudad_n);
 					   $("#vive_con").val(lee[0].quien_vive);
+					   $("#blood").val(lee[0].tipo_sangre);
 
 					   $("#orden").val(lee[0].orden);
 					   $("#nacionalidad").val(lee[0].nacionalidad);
@@ -1791,25 +2183,42 @@ function enviaAjax(datos,accion){
 						$("#tipoJuegoPref").val(lee[0].tipoJuegoPref);
 						$("#conQuienJuega").val(lee[0].conQuienJuega);
 
+						//enfermedad
+
+						$("#ex_dificultad").val(lee[0].ex_dificultad);
+						$("#sol_df").val(lee[0].sol_df);
+
+						$("#psico_pq").val(lee[0].psico_pq);
+						$("#afeccion").val(lee[0].afeccion);
+						$("#quirurgica").val(lee[0].quirurgica);
+						$("#alergia").val(lee[0].alergia);
+						$("#despa").val(lee[0].despa);
+						$("#fiebre_a").val(lee[0].fiebre_a);
+
+						//familiar
+
+						$("#ingreso_m").val(lee[0].ingreso_m);
+						$("#personas_ingreso_dep").val(lee[0].personas_ingreso_dep);
+						$("#tipo_vivienda").val(lee[0].tipo_vivienda);
+						$("#tenencia_vivienda").val(lee[0].tenencia_vivienda);
 
 
 
-						 if($("#ciPadre").val().length > 6) {
-								llenarpapa( $("#ciPadre").val());
-						 }
+
+					//		 if($("#ciPadre").val().length > 6) {
+					//				llenarpapa( $("#ciPadre").val());
+					//		 }
 
 
 					   $("#infom").val(lee[0].inf_medica);
 					   $("#colab_c").val(lee[0].colab_comun);
 					   $("#observacion").val(lee[0].observ);
+			}
 
 
-				   }
-
-
-					 else	if($("#ciPadre").val().length > 6) {
-					 	console.log("siiiiiiiiii");
-					 }
+					// else	if($("#ciPadre").val().length > 6) {
+					// 	console.log("siiiiiiiiii");
+					// }
 				   else if(lee['resultado']=='noencontro'){
 
 				   }
@@ -1818,7 +2227,7 @@ function enviaAjax(datos,accion){
 				   }
 
 
-			   }
+				 }
 
 				 else if(accion=='consultamama'){
 
@@ -1884,6 +2293,121 @@ function enviaAjax(datos,accion){
 
 }
 
+
+
+
+function tabla(){
+
+
+
+
+		var data=$("#tableajax").DataTable({
+			ajax:{
+
+			url:'modelo/tablaingresopreescolar.php',
+			
+			},
+			columns: [
+			        { data: 0 },
+			        { data: 1 },
+			        { data: 2 },
+			        { data: 3 },
+			       
+			       	       
+			   
+			    	{"render": function () {
+            return '<button type="button" id="ButtonEditar" class="editar edit-modal btn btn-warning botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> M</span></button><button type="button" id="ButtonEliminar" class="eliminar edit-modal btn btn-danger botonEditar"><span class="fa fa-edit"></span><span class="hidden-xs"> E</span></button>';
+        }},
+    ]
+		
+	});
+	editar("#tableajax tbody",data );
+
+}
+
+
+function editar(tbody, table){
+  $(tbody).on("click","button.editar", function(){
+	console.log("sakdopkaspo");
+    if(table.row(this).child.isShown()){
+        var data = table.row(this).data();
+    }else{
+        var data = table.row($(this).parents("tr")).data();
+        console.log(data);
+    }
+
+	all();
+		$("#incluir").prop('disabled', true);
+
+		console.log
+
+	  $("#cedulaEscolar").val(data[0]);
+	  $('#contenido').css('display', 'block');
+	  $('#formulario').css('display', 'none');
+
+      $("#cedula_div").css('display', 'flex');
+      $("#col_boton").css('display', 'none');
+
+
+	  var datos0 = new FormData();
+    	datos0.append('accion','consultatr');
+	    datos0.append('cedulaEscolar',data[0]);
+	    enviaAjax(datos0,'consultatr');
+
+	    console.log(data[0]);
+    
+      var datos2 = new FormData();
+        datos2.append('accion','consultarepre');
+      datos2.append('cedula_r',data[3]);
+      enviaAjax(datos2,'consultarepre');
+      $("#cedula_r").val(data[3]);
+
+    
+
+
+	 
+	 
+   
+    
+    
+  })
+  $(tbody).on("click","button.eliminar", function(){
+	console.log("sakdopkaspo");
+    if(table.row(this).child.isShown()){
+        var data = table.row(this).data();
+    }else{
+        var data = table.row($(this).parents("tr")).data();
+        console.log(data);
+    }
+
+    
+
+
+		confirmar();
+
+		$('#si').on('click', function() {
+
+			$('#botones').remove();
+
+		if(false){
+
+		}
+		else{
+
+			var datos = new FormData();
+		datos.append('accion','eliminar');
+		datos.append('cedulaEscolar',data[0]);
+		enviaAjax(datos,'eliminar');
+		}
+
+	});
+   
+    
+    
+  })
+}
+
+
 function limpia2() {
 	// body...
 
@@ -1924,9 +2448,12 @@ function generarCombination(cedulam, fechacum, type, nacionalidad){
 
 function desabilita() {
 	// body...
-	$('input:gt(5)').prop('disabled', true);
+	$('input:gt(6)').prop('disabled', true);
 	$('textarea').prop('disabled', true);
 	$('select').prop('disabled', true);
+	$('input:last()').prop('disabled', false);
+	$('select[name=tableajax_length]').prop('disabled', false);
+
 
 }
 function habilita() {
@@ -1937,11 +2464,44 @@ function habilita() {
 
 }
 
+$('#formulario').on('click', function() {
+	$('#formulario').css('display', 'none');
+
+	if ($('#contenido').is(":visible")) {
+		console.log("no");
+		$('#contenido').css('display', 'none');
+	}else{
+		$('#contenido').css('display', 'block');
+		console.log("se ve");
+
+	}
+
+	/* Act on the event */
+});
+
+$('#formulario1').on('click', function() {
+
+
+	$('#formulario').css('display', 'block');
+
+	if ($('#contenido').is(":visible")) {
+		console.log("no");
+		$('#contenido').css('display', 'none');
+	}else{
+		$('#contenido').css('display', 'block');
+		console.log("se ve");
+
+	}
+
+	/* Act on the event */
+});
+
 function aaa() {
 	// body...
 	var aass="partida_na,vacuna_c,fotos,copia_ce";
 
 	var valor = $('input[name="doc[]"]');
+	console.log(valor);
 				   		var datos1 = aass;
 
 				   		for (var i = 0; i < valor.length; i++) {
@@ -1959,3 +2519,14 @@ function llenar_f() {
 	datos.append('cedulaEscolar','V-21623356299');
 	enviaAjax(datos,'consultatr');
 	}		
+
+	function llena_vacuna() {
+
+	 var datos = new FormData();
+        datos.append('accion','consultarVacuna2');
+      enviaAjax(datos,'consultarVacuna2');
+
+
+}
+
+

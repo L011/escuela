@@ -42,8 +42,8 @@
               <img src="img/services/service-2.svg" alt="">
             </div>
             <div class="body">
-              <h5 class="text-secondary">Maestro</h5>
-              <p>Gestionar Maestro</p>
+              <h5 class="text-secondary">Empleado</h5>
+              <p>Gestionar Empleado</p>
               <a href="?pagina=registro_maestro" class="btn btn-primary">Gestionar</a>
             </div>
           </div>
