@@ -81,47 +81,69 @@ require_once("modelo/".$pagina.".php");
 			 echo  $o->eliminar();
 		  }
 		  else{
+
+		  	if (isset($_POST['doc'])) {
+		  		// code...
 		  	$a= $_POST['doc'];
 				$b = implode(",", $a);
 				$o->set_doc($b);
-
-
-				$c= $_POST['llegar'];
-				$d = implode(",", $c);
-				$o->set_llegar($d);
-
+		  	}
+		  	if(isset($_POST['habito'])) {
+		  		// code...
 
 				$e= $_POST['habito'];
 				$f = implode(",", $e);
 				$o->set_habito($f);
+		  	}
+		  	if(isset($_POST['llegar'])) {
+		  		// code...
+				$c= $_POST['llegar'];
+				$d = implode(",", $c);
+				$o->set_llegar($d);
 
+		  	}
+		  	if(isset($_POST['control'])) {
+		  		// code...
 				$g= $_POST['control'];
 				$h = implode(",", $g);
 				$o->set_control($h);
-
+		  	}
+		  	if (isset($_POST['desarrollo'])) {
+		  		// code...
 				$i= $_POST['desarrollo'];
 				$j = implode(",", $i);
 				$o->set_desarrollo($j);
-
+		  	}
+		  	if (isset($_POST['antece'])) {
+		  		// code...
 				$k= $_POST['antece'];
 				$l = implode(",", $k);
 				$o->set_antece($l);
-
+		  	}
+		  	if (isset($_POST['equilibrio'])) {
+		  		// code...
 				$m= $_POST['equilibrio'];
 				$n = implode(",", $m);
 				$o->set_equilibrio($n);
-
+		  	}
+		  	if (isset($_POST['familiar'])) {
+		  		// code...
 				$p= $_POST['familiar'];
 				$q = implode(",", $p);
 				$o->set_familiar($q);
-
+		  	}
+		  	if (isset($_POST['enfermedades'])) {
+		  		// code...
 				$p1= $_POST['enfermedades'];
 				$q1 = implode(",", $p1);
 				$o->set_enfermedades($q1);
-
+		  	}
+		  	if (isset($_POST['diaColaborar'])) {
+		  		// code...
 				$r1= $_POST['diaColaborar'];
 				$s1 = implode(",", $r1);
 				$o->set_diaColaborar($s1);
+		  	}
 
 
 
@@ -265,6 +287,21 @@ require_once("modelo/".$pagina.".php");
 				$o->set_despa($_POST['despa']);
 				$o->set_fiebre_a($_POST['fiebre_a']);
 
+				//padres
+
+				$o->set_apellidoMadre($_POST['apellidoMadre']);
+			  $o->set_nombreMadre($_POST['nombreMadre']);
+			  $o->set_ciMadre($_POST['ciMadre']);
+			  $o->set_telefonoMadre($_POST['telefonoMadre']);
+			  $o->set_direccionMadre($_POST['direccionMadre']);
+
+			  $o->set_apellidoPadre($_POST['apellidoPadre']);
+			  $o->set_nombrePadre($_POST['nombrePadre']);
+			  $o->set_ciPadre($_POST['ciPadre']);
+			  $o->set_telefonoPadre($_POST['telefonoPadre']);
+			  $o->set_direccionPadre($_POST['direccionPadre']);
+
+
 				//vacuna
 				$o->set_vacuna1($_POST['vacuna1']);
 				$o->set_dosis1($_POST['dosis1']);
@@ -302,13 +339,6 @@ require_once("modelo/".$pagina.".php");
 				$o->set_horarioColaborar($_POST['horarioColaborar']);
 				
 /*
-
-			  $o->set_nombre_hermano1($_POST['nombre_hermano1']);
-			  $o->set_nombre_hermano2($_POST['nombre_hermano2']);
-			  $o->set_nombre_hermano3($_POST['nombre_hermano3']);
-			  $o->set_nombre_hermano4($_POST['nombre_hermano4']);
-			  $o->set_quienRetirada($_POST['quienRetirada']);
-			  $o->set_quienTelefono($_POST['quienTelefono']);
 
 				$o->set_infom($_POST['infom']);
 				$o->set_colab_c($_POST['colab_c']);

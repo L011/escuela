@@ -4,6 +4,10 @@ $(document).ready(function(){
 	llenarLista();
 	tabla();
 	botonOff();
+
+		$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 	//console.log("Main")
 	//para obtener la fecha del servidor y calcular la
 	//edad de nacimiento que debe ser mayor a 18

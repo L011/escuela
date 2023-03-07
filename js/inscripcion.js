@@ -2,6 +2,10 @@ $(document).ready(function(){
 
 llenarLista();
 
+	$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
 var datosx = {
     cedulau: $("#cedulau").val(),
     cargou: $("#cargou").val()

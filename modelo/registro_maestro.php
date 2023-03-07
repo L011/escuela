@@ -180,18 +180,50 @@ class registro_maestro extends datos{
 		$co = $this->conecta();
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		if($this->existe($this->cedula)){
-			try {
-					$co->query("delete from empleados
-						where
-						cedula = '$this->cedula'
-						");
-						return "Registro Eliminado";
-			} catch(Exception $e) {
-				return $e->getMessage();
+
+			if($this->ver_empleado($this->cedula)){
+				try {
+						$co->query("delete from empleados
+							where
+							cedula = '$this->cedula'
+							");
+							return "Registro Eliminado";
+				} catch(Exception $e) {
+					return $e->getMessage();
+				}
+			}else{
+				return "Empleado no eliminado, esta asignado a una sección";
 			}
+
+
 		}
 		else{
 			return "Cedula no registrada";
+		}
+	}
+
+
+	private function ver_empleado($cedula){
+		$co = $this->conecta();
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		try{
+
+			$resultado = $co->query("SELECT cedula_mm FROM seccion WHERE cedula_mm='$cedula'");
+
+
+			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
+			if($fila){
+
+				return false;
+
+			}
+			else{
+
+				return true;
+			}
+
+		}catch(Exception $e){
+			return false;
 		}
 	}
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-02-2023 a las 02:09:30
+-- Tiempo de generación: 06-03-2023 a las 01:58:39
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.0.25
 
@@ -29,40 +29,26 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `antecedentes_prenatales_postnatales` (
   `cedula_e` varchar(15) NOT NULL,
-  `embarazo_deseado` varchar(2) NOT NULL,
-  `peso` float NOT NULL,
-  `talla` float NOT NULL,
-  `problemas_dias_despues` varchar(30) NOT NULL,
-  `padece_defectos` varchar(30) NOT NULL,
-  `no_deseado` varchar(2) NOT NULL,
-  `prematuro` varchar(2) NOT NULL,
-  `rubeola` varchar(2) NOT NULL,
-  `toxoplasmosis` varchar(2) NOT NULL,
-  `hipertension` varchar(2) NOT NULL,
-  `anemia` varchar(2) NOT NULL,
-  `preclampsia` varchar(2) NOT NULL,
-  `otras` varchar(30) NOT NULL,
-  `trabajo_durante` varchar(2) NOT NULL,
-  `normal` varchar(2) NOT NULL,
-  `cesarea` varchar(2) NOT NULL,
-  `a_termino` varchar(2) NOT NULL,
-  `forceps` varchar(2) NOT NULL,
+  `tipo_emparazo1` varchar(2) NOT NULL,
+  `tipo_emparazo2` varchar(2) NOT NULL,
+  `trabajo_durante` varchar(40) NOT NULL,
+  `tiempo_trabajo` varchar(2) NOT NULL,
   `edad_madre_parto` int(2) NOT NULL,
-  `problema_en_parto` varchar(30) NOT NULL
+  `problema_en_parto` varchar(30) NOT NULL,
+  `peso_a` varchar(5) NOT NULL,
+  `talla_a` varchar(5) NOT NULL,
+  `padece_defectos` varchar(30) NOT NULL,
+  `check_antecedentes` varchar(26) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `colaboracion`
+-- Volcado de datos para la tabla `antecedentes_prenatales_postnatales`
 --
 
-CREATE TABLE `colaboracion` (
-  `cedula_e` varchar(15) NOT NULL,
-  `colab_comun` varchar(20) NOT NULL,
-  `dia_disp` varchar(11) NOT NULL,
-  `horario` varchar(7) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `antecedentes_prenatales_postnatales` (`cedula_e`, `tipo_emparazo1`, `tipo_emparazo2`, `trabajo_durante`, `tiempo_trabajo`, `edad_madre_parto`, `problema_en_parto`, `peso_a`, `talla_a`, `padece_defectos`, `check_antecedentes`) VALUES
+('E-12032564343', '2', '2', 'trabajo trabajo', '1', 45, 'hola parto', '21.3', '23.4', 'defecto 32323', '1,2,4,9,10,12'),
+('E-32032564343', '2', '2', 'trabajo trabajo', '1', 45, 'hola parto', '21.3', '23.4', 'defecto 32323', ''),
+('V-12032564343', '2', '2', 'trabajo trabajo', '1', 45, 'hola parto', '21.3', '23.4', 'defecto 32323', '');
 
 -- --------------------------------------------------------
 
@@ -72,10 +58,19 @@ CREATE TABLE `colaboracion` (
 
 CREATE TABLE `control_esfinteres` (
   `cedula_e` varchar(15) NOT NULL,
-  `se_orina` varchar(2) NOT NULL,
+  `se_orina` varchar(6) NOT NULL,
   `banio_solo` varchar(2) NOT NULL,
-  `edad_no_panales` int(2) NOT NULL
+  `edad_no_panales` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `control_esfinteres`
+--
+
+INSERT INTO `control_esfinteres` (`cedula_e`, `se_orina`, `banio_solo`, `edad_no_panales`) VALUES
+('E-12032564343', '2', '1', '5'),
+('E-32032564343', '', '1', '5'),
+('V-12032564343', '', '1', '5');
 
 -- --------------------------------------------------------
 
@@ -86,33 +81,22 @@ CREATE TABLE `control_esfinteres` (
 CREATE TABLE `desarrollo_evolutivo` (
   `cedula_e` varchar(15) NOT NULL,
   `primeros_meses` varchar(30) NOT NULL,
-  `meses_gateo` varchar(15) NOT NULL,
-  `edad_caminar` int(2) NOT NULL,
-  `edad_hablar` int(2) NOT NULL,
-  `dificultad_palab` varchar(15) NOT NULL,
-  `gusta_conve` varchar(15) NOT NULL,
-  `tono_voz_bajo` varchar(2) NOT NULL,
-  `tono_voz_alto` varchar(2) NOT NULL,
-  `responde_llamado` varchar(2) NOT NULL,
-  `voltea` varchar(2) NOT NULL,
-  `restriega_ojos` varchar(2) NOT NULL,
-  `chupa_dedo` varchar(2) NOT NULL,
-  `sube_baja_esc` varchar(2) NOT NULL,
-  `lanza_obj` varchar(2) NOT NULL,
-  `rueda_pel` varchar(2) NOT NULL,
-  `abotona` varchar(2) NOT NULL,
-  `desabotona` varchar(2) NOT NULL,
-  `sabe_trenzar` varchar(2) NOT NULL,
-  `anudar` varchar(2) NOT NULL,
-  `reconoce_cuerpo` varchar(2) NOT NULL,
-  `probl_caminar` varchar(2) NOT NULL,
-  `peso` float NOT NULL,
-  `talla` float NOT NULL,
-  `zapatos_ortop` varchar(2) NOT NULL,
-  `sindrome_down` varchar(2) NOT NULL,
-  `sindrome_autista` varchar(2) NOT NULL,
-  `otro_sindrome` varchar(20) NOT NULL
+  `meses_gateo` varchar(20) NOT NULL,
+  `edad_caminar` varchar(2) NOT NULL,
+  `edad_hablar` varchar(2) NOT NULL,
+  `tono_voz` varchar(2) NOT NULL,
+  `mano_u` varchar(2) NOT NULL,
+  `check_desarrollo` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `desarrollo_evolutivo`
+--
+
+INSERT INTO `desarrollo_evolutivo` (`cedula_e`, `primeros_meses`, `meses_gateo`, `edad_caminar`, `edad_hablar`, `tono_voz`, `mano_u`, `check_desarrollo`) VALUES
+('E-12032564343', 'atendio hola hola', '3', '1', '2', '1', '2', '1,2,3,4,5,7,9,13,20,22,24'),
+('E-32032564343', 'atendio hola hola', '3', '1', '2', '1', '2', ''),
+('V-12032564343', 'atendio hola hola', '3', '1', '2', '1', '2', '');
 
 -- --------------------------------------------------------
 
@@ -121,27 +105,19 @@ CREATE TABLE `desarrollo_evolutivo` (
 --
 
 CREATE TABLE `documentos` (
+  `id` int(4) NOT NULL,
   `cedula_est` varchar(15) NOT NULL,
-  `partida` varchar(2) NOT NULL,
-  `certificado_v` varchar(2) NOT NULL,
-  `fotos` varchar(2) NOT NULL,
-  `cedula_r` varchar(2) NOT NULL,
-  `constancia_s` varchar(2) NOT NULL
+  `doc` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `documentos`
 --
 
-INSERT INTO `documentos` (`cedula_est`, `partida`, `certificado_v`, `fotos`, `cedula_r`, `constancia_s`) VALUES
-('', '', '', 'Se', '', ''),
-('', '', '', 'Se', '', ''),
-('', '', '', 'Se', '', ''),
-('', '', '', 'Se', '', ''),
-('', '', '', 'Se', '', ''),
-('', '', '', 'Se', '', ''),
-('', '', '', 'Se', '', ''),
-('', '', '', 'Se', '', '');
+INSERT INTO `documentos` (`id`, `cedula_est`, `doc`) VALUES
+(26, 'V-12032564343', 'partida_na,copia_ce,sano_n'),
+(27, 'E-12032564343', 'vacuna_c,copia_ce,sano_n'),
+(28, 'E-32032564343', ',,,');
 
 -- --------------------------------------------------------
 
@@ -151,11 +127,11 @@ INSERT INTO `documentos` (`cedula_est`, `partida`, `certificado_v`, `fotos`, `ce
 
 CREATE TABLE `empleados` (
   `cedula` varchar(15) NOT NULL,
-  `apellidos` varchar(20) NOT NULL,
-  `nombres` varchar(20) NOT NULL,
+  `apellidos` varchar(30) NOT NULL,
+  `nombres` varchar(30) NOT NULL,
   `sexo` varchar(9) NOT NULL,
-  `fechadenacimiento` varchar(10) NOT NULL,
-  `telefono` char(12) NOT NULL,
+  `fechadenacimiento` date NOT NULL,
+  `telefono` varchar(12) NOT NULL,
   `correo` varchar(50) NOT NULL,
   `cargo` varchar(14) NOT NULL,
   `clave` varchar(12) NOT NULL
@@ -166,7 +142,7 @@ CREATE TABLE `empleados` (
 --
 
 INSERT INTO `empleados` (`cedula`, `apellidos`, `nombres`, `sexo`, `fechadenacimiento`, `telefono`, `correo`, `cargo`, `clave`) VALUES
-('E-4234235', 'Castillo Montero', 'Meiry Angelic', 'F', '2022-12-01', '32458767445', 'sada23@gmai.com', 'Maestro', ''),
+('E-4234235', 'Castillo Montero', 'Meiry Angelic', 'F', '2022-12-01', '99908888888', 'sada23@gmai.com', 'Maestro', ''),
 ('V-12345678', 'Gerrero Bandera', 'Maribella', 'F', '2004-11-27', '02392324023', 'asbdf@serinf.com', 'Administrador', '12345678'),
 ('V-22334455', 'Izaguirre Zambrano', 'Stefany Yohana', 'F', '2022-08-10', '00416455075', 'empleado4@gmail.com', 'Maestro', '232323'),
 ('V-28764865', 'Monoga Rios', 'Vanessa Alexandra', 'M', '2023-01-12', '23324324323', 'venir@gmail.com', 'Administrador', ''),
@@ -183,24 +159,31 @@ INSERT INTO `empleados` (`cedula`, `apellidos`, `nombres`, `sexo`, `fechadenacim
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `enfermedades`
---
-
-CREATE TABLE `enfermedades` (
-  `id_enfermedad` varchar(2) NOT NULL,
-  `enfermedad` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `enfermedad_estudiante`
 --
 
 CREATE TABLE `enfermedad_estudiante` (
-  `id_enfermedad` varchar(2) NOT NULL,
-  `cedula_e` varchar(15) NOT NULL
+  `id` int(4) NOT NULL,
+  `cedula_e` varchar(15) NOT NULL,
+  `ex_dificultad` varchar(70) NOT NULL,
+  `sol_df` varchar(70) NOT NULL,
+  `psico_pq` varchar(70) NOT NULL,
+  `afeccion` varchar(70) NOT NULL,
+  `quirurgica` varchar(70) NOT NULL,
+  `alergia` varchar(70) NOT NULL,
+  `despa` varchar(70) NOT NULL,
+  `fiebre_a` varchar(70) NOT NULL,
+  `check_enfermedad` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `enfermedad_estudiante`
+--
+
+INSERT INTO `enfermedad_estudiante` (`id`, `cedula_e`, `ex_dificultad`, `sol_df`, `psico_pq`, `afeccion`, `quirurgica`, `alergia`, `despa`, `fiebre_a`, `check_enfermedad`) VALUES
+(6, 'V-12032564343', 'hola 23233', 'asdmkn23 32', 'asd ask 3242', 'hola hola 121212', 'Hola hola 12323', 'Hola 213232', 'Hola 12121212', 'Hol a1213313', ''),
+(7, 'E-12032564343', 'hola 23233', 'asdmkn23 32', 'asd ask 3242', 'hola hola 121212', 'Hola hola 12323', 'Hola 213232', 'Hola 12121212', 'Hol a1213313', '1,2,4'),
+(8, 'E-32032564343', 'hola 23233', 'asdmkn23 32', 'asd ask 3242', 'hola hola 121212', 'Hola hola 12323', 'Hola 213232', 'Hola 12121212', 'Hol a1213313', '');
 
 -- --------------------------------------------------------
 
@@ -210,30 +193,29 @@ CREATE TABLE `enfermedad_estudiante` (
 
 CREATE TABLE `equilibrio_emocional` (
   `cedula_e` varchar(15) NOT NULL,
-  `obediente` varchar(2) NOT NULL,
-  `agresivo` varchar(2) NOT NULL,
-  `timido` varchar(2) NOT NULL,
-  `llora_frec` varchar(2) NOT NULL,
-  `actitudes_nerviosas` varchar(2) NOT NULL,
-  `pataleos` varchar(2) NOT NULL,
-  `caprichos` varchar(2) NOT NULL,
-  `actua_frente_cond_na` varchar(30) NOT NULL,
-  `miedo` varchar(2) NOT NULL,
-  `soledad` varchar(2) NOT NULL,
-  `animales` varchar(2) NOT NULL,
-  `personas` varchar(2) NOT NULL,
-  `otros` varchar(2) NOT NULL,
-  `jueguetes` varchar(2) NOT NULL,
-  `comparte_jug` varchar(2) NOT NULL,
-  `espacio_jugar` varchar(20) NOT NULL,
-  `tv` varchar(2) NOT NULL,
-  `programas` varchar(30) NOT NULL,
-  `tiempo_en_tv` varchar(30) NOT NULL,
-  `personaje_imita` varchar(30) NOT NULL,
-  `escenas_familiar` varchar(2) NOT NULL,
-  `discusiones` varchar(2) NOT NULL,
-  `amigos` varchar(2) NOT NULL
+  `nino_obe` varchar(2) NOT NULL,
+  `formaReprender` varchar(30) NOT NULL,
+  `jugueteFav` varchar(30) NOT NULL,
+  `espacioJuego` varchar(30) NOT NULL,
+  `tiempoTv` varchar(6) NOT NULL,
+  `programasTv` varchar(30) NOT NULL,
+  `imitaPersonaje` varchar(30) NOT NULL,
+  `imitaFamiEscen` varchar(30) NOT NULL,
+  `orientComo` varchar(30) NOT NULL,
+  `anteriorPreescolar` varchar(50) NOT NULL,
+  `tipoJuegoPref` varchar(30) NOT NULL,
+  `conQuienJuega` varchar(30) NOT NULL,
+  `check_emocional` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `equilibrio_emocional`
+--
+
+INSERT INTO `equilibrio_emocional` (`cedula_e`, `nino_obe`, `formaReprender`, `jugueteFav`, `espacioJuego`, `tiempoTv`, `programasTv`, `imitaPersonaje`, `imitaFamiEscen`, `orientComo`, `anteriorPreescolar`, `tipoJuegoPref`, `conQuienJuega`, `check_emocional`) VALUES
+('E-12032564343', '2', 'hola hola ', 'hola hola', 'hola cuarto', '12', 'hola tv', 'hola imita', 'Hola familiar', 'orientar hola', 'preescolar otro', 'uno dos 234', 'primo pana', '1,3,5,6,8,10,15,16,18'),
+('E-32032564343', '2', 'hola hola ', 'hola hola', 'hola cuarto', '12', 'hola tv', 'hola imita', 'Hola familiar', 'orientar hola', 'preescolar otro', 'uno dos 234', 'primo pana', ''),
+('V-12032564343', '2', 'hola hola ', 'hola hola', 'hola cuarto', '12', 'hola tv', 'hola imita', 'Hola familiar', 'orientar hola', 'preescolar otro', 'uno dos 234', 'primo pana', '');
 
 -- --------------------------------------------------------
 
@@ -242,6 +224,7 @@ CREATE TABLE `equilibrio_emocional` (
 --
 
 CREATE TABLE `estudiante` (
+  `id` int(4) NOT NULL,
   `cedula_e` varchar(15) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `apellido` varchar(30) NOT NULL,
@@ -249,8 +232,8 @@ CREATE TABLE `estudiante` (
   `fecha_n` date NOT NULL,
   `estado_n` varchar(15) NOT NULL,
   `ciudad_n` varchar(15) NOT NULL,
-  `cedula_mama` varchar(15) NOT NULL,
-  `cedula_p` varchar(15) NOT NULL,
+  `cedula_mama` varchar(15) DEFAULT NULL,
+  `cedula_p` varchar(15) DEFAULT NULL,
   `retira_solo` varchar(2) NOT NULL,
   `posee_canai` varchar(2) NOT NULL,
   `inf_medica` text NOT NULL,
@@ -258,18 +241,21 @@ CREATE TABLE `estudiante` (
   `quien_vive` varchar(12) NOT NULL,
   `orden` varchar(2) NOT NULL,
   `nacionalidad` varchar(2) NOT NULL,
-  `c_id` varchar(2) NOT NULL
+  `c_id` varchar(2) NOT NULL,
+  `llegar` varchar(5) DEFAULT NULL,
+  `tipo_sangre` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `estudiante`
 --
 
-INSERT INTO `estudiante` (`cedula_e`, `nombre`, `apellido`, `sexo`, `fecha_n`, `estado_n`, `ciudad_n`, `cedula_mama`, `cedula_p`, `retira_solo`, `posee_canai`, `inf_medica`, `observ`, `quien_vive`, `orden`, `nacionalidad`, `c_id`) VALUES
-('V-123456654', 'Hd Graphics', 'RTX Geoforce', 'm', '2023-01-06', 'Lara', 'Barquisimeto', 'V-12876890', 'V-26987098', 'si', 'si', 'bnbnbnasasas', 'bnbnbnbnbasasasasas', 'abue', '1', 'V', 'n'),
-('V-13228967899', 'Pantalla camara', 'Corneta Rania', 'm', '2023-01-13', 'Lara', 'Barquisimeto', 'V-12876890', 'V-3249876', 'si', 'si', '----------------------------------------aaa---------', '----------------------------------------aaa-------', 'papa', '2', 'V', 'n'),
-('V-21623356238', 'Yisus H', 'Gomes Torrealba', 'm', '2016-03-28', 'Trijillo', 'Trujillo', 'V-3249876', 'V-3249876', 'no', 'si', 'Sin observaciones', 'lopsem ipsum', 'papa', '2', 'V', 'n'),
-('V-2228965384', 'San Andreas', 'Gt Racing', 'm', '2023-01-13', 'Lara', 'Barquisimeto', 'V-12876890', 'V-32565532', 'si', 'si', 'rtygfr sadnaisjd askdnsakjnd', 'sandinsadasndiasdd sadnisandas ', 'papamama', '1', 'E', 's');
+INSERT INTO `estudiante` (`id`, `cedula_e`, `nombre`, `apellido`, `sexo`, `fecha_n`, `estado_n`, `ciudad_n`, `cedula_mama`, `cedula_p`, `retira_solo`, `posee_canai`, `inf_medica`, `observ`, `quien_vive`, `orden`, `nacionalidad`, `c_id`, `llegar`, `tipo_sangre`) VALUES
+(58, 'E-1201231234', 'Hujioso Husus', 'Cardenas hiuoj', 'f', '2020-12-29', 'Bolivar', 'Bolivar askmdak', 'V-3249876', 'V-3249876', 'si', 'no', 'Hi1234', 'Hu32435', 'papa', '1', 'E', 'n', NULL, ''),
+(53, 'E-12032564343', 'Albertino G', 'Hola apellido', 'm', '2020-12-30', 'Trijillo', 'Trujillo', 'V-12876890', 'V-12876890', 'si', 'no', '', '', 'mama', '1', 'E', 'n', '1', 'a+'),
+(57, 'E-22132564343', 'Noemsin ianis', 'Tyusb ISabua', 'm', '2021-12-31', 'La guaira', 'valencia', 'V-3249876', 'V-3249876', 'si', 'si', 'Pruueba 12', 'Prueba 12345', 'papamama', '2', 'E', 'n', NULL, ''),
+(54, 'E-32032564343', 'Sabaneta', 'Carro fiat', 'm', '2020-12-30', 'Trijillo', 'Trujillo', NULL, NULL, 'si', 'no', '', '', 'mama', '3', 'E', 'n', '', 'a+'),
+(52, 'V-12032564343', 'Yisus H', 'Gomes Torrealba', 'm', '2020-12-30', 'Trijillo', 'Trujillo', 'V-12876890', 'V-12876890', 'si', 'no', '', '', 'mama', '1', 'V', 'n', '', 'a+');
 
 -- --------------------------------------------------------
 
@@ -279,11 +265,21 @@ INSERT INTO `estudiante` (`cedula_e`, `nombre`, `apellido`, `sexo`, `fecha_n`, `
 
 CREATE TABLE `familiar` (
   `cedula_e` varchar(15) NOT NULL,
-  `ingreso_m` float NOT NULL,
+  `ingreso_m` varchar(20) NOT NULL,
   `personas_ingreso_dep` varchar(2) NOT NULL,
-  `tipo_vivienda` varchar(10) NOT NULL,
-  `tenencia_vivienda` varchar(10) NOT NULL
+  `tipo_vivienda` varchar(2) NOT NULL,
+  `tenencia_vivienda` varchar(2) NOT NULL,
+  `check_familiar` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `familiar`
+--
+
+INSERT INTO `familiar` (`cedula_e`, `ingreso_m`, `personas_ingreso_dep`, `tipo_vivienda`, `tenencia_vivienda`, `check_familiar`) VALUES
+('E-12032564343', '2232442', '2', '2', '2', '2,3,4'),
+('E-32032564343', '2232442', '2', '2', '2', ''),
+('V-12032564343', '2232442', '2', '2', '2', '');
 
 -- --------------------------------------------------------
 
@@ -293,26 +289,28 @@ CREATE TABLE `familiar` (
 
 CREATE TABLE `habitos` (
   `cedula_e` varchar(15) NOT NULL,
-  `comidas_dia` int(2) NOT NULL,
+  `comidas_dia` varchar(2) NOT NULL,
   `come_solo` varchar(2) NOT NULL,
   `buen_apetit` varchar(2) NOT NULL,
-  `antes_escuela` varchar(15) NOT NULL,
-  `alimento_que_no` time NOT NULL,
-  `hora_domir` time NOT NULL,
-  `hora_levanta` varchar(15) NOT NULL,
-  `quien_duerme_niño` varchar(15) NOT NULL,
+  `antes_escuela` varchar(2) NOT NULL,
+  `alimento_que_no` varchar(50) NOT NULL,
+  `hora_domir` varchar(2) NOT NULL,
+  `hora_levanta` varchar(2) NOT NULL,
+  `quien_duerme_niño` varchar(30) NOT NULL,
   `como_es_sueño` varchar(2) NOT NULL,
   `despierta_const` varchar(2) NOT NULL,
   `rechinan_dientes` varchar(2) NOT NULL,
-  `lava_manos` varchar(2) NOT NULL,
-  `cepilla_dientes` varchar(2) NOT NULL,
-  `viste_sin_ayuda` varchar(2) NOT NULL,
-  `desviste_sin` varchar(2) NOT NULL,
-  `ordena` varchar(2) NOT NULL,
-  `cubiertos` varchar(2) NOT NULL,
-  `tareas_hogar` varchar(2) NOT NULL,
-  `normas_cortesia` varchar(2) NOT NULL
+  `check_habito` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `habitos`
+--
+
+INSERT INTO `habitos` (`cedula_e`, `comidas_dia`, `come_solo`, `buen_apetit`, `antes_escuela`, `alimento_que_no`, `hora_domir`, `hora_levanta`, `quien_duerme_niño`, `como_es_sueño`, `despierta_const`, `rechinan_dientes`, `check_habito`) VALUES
+('E-12032564343', '2', '1', '1', '2', 'hola 12321', '1', '3', 'Papa ', '1', '1', '1', '3,6,8'),
+('E-32032564343', '2', '1', '1', '2', 'hola 12321', '1', '3', 'Papa ', '1', '1', '1', ''),
+('V-12032564343', '2', '1', '1', '2', 'hola 12321', '1', '3', 'Papa ', '1', '1', '1', '');
 
 -- --------------------------------------------------------
 
@@ -321,26 +319,12 @@ CREATE TABLE `habitos` (
 --
 
 CREATE TABLE `hermanos` (
-  `id` int(2) NOT NULL,
+  `id` int(5) NOT NULL,
   `cedula_e` varchar(15) NOT NULL,
   `nom_ape` varchar(40) NOT NULL,
   `grado` varchar(10) NOT NULL,
   `turno` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `hermanos`
---
-
-INSERT INTO `hermanos` (`id`, `cedula_e`, `nom_ape`, `grado`, `turno`) VALUES
-(79, 'V-2228965384', 'carlitos', '2', 'm'),
-(80, 'V-13228967899', 'carlote', '2', 'm'),
-(81, 'V-2228965384', 'mantequilla nelly', '1', 'm'),
-(82, 'V-2228965384', 'como un quejido que el viento se lleva', '3', 'm'),
-(91, 'V-21623356238', 'asdasd', '1', 't'),
-(92, 'V-21623356238', 'asdas', 'preescolar', 't'),
-(93, 'V-21623356238', 'dasda', '', 'm'),
-(94, 'V-21623356238', 'sdasdas', '2', 't');
 
 -- --------------------------------------------------------
 
@@ -364,8 +348,8 @@ CREATE TABLE `padres` (
 INSERT INTO `padres` (`cedula_m`, `nombre_m`, `apellido_m`, `telefono_m`, `direc_trab`, `parentesco`) VALUES
 ('V-1231231', 'Francisco', 'Bertino', '03245545345', 'Via las veritas, zona norte', ''),
 ('V-1234567', 'Yusus', 'Francisca', '03277787877', 'Barquisimeto, calle 4', ''),
-('V-12876890', 'Ulala', 'Carton Piedra', '2323423543', 'jhajshjdahsjdsad', ''),
-('V-26987098', 'Tengo Hambre', 'Hamburgue', 'sadasdas', 'sadsadasda', ''),
+('V-12876890', 'Ulala', 'Carton Jijija', '2323423543', 'jhajshjdahsjdsad', ''),
+('V-26987098', 'Ulala', 'Carton Piedra', '2323423543', 'jhajshjdahsjdsad', ''),
 ('V-3249876', 'Francisco', 'Bertino', '03245545345', 'Via las veritas, zona norte', ''),
 ('V-32565532', 'Ulala', 'Carton Piedra', '2323423543', 'jhajshjdahsjdsad', ''),
 ('V-34567432', 'Ramona', 'Ramno', 'sakdajsiodjas', 'Por ahi', ''),
@@ -379,14 +363,105 @@ INSERT INTO `padres` (`cedula_m`, `nombre_m`, `apellido_m`, `telefono_m`, `direc
 --
 
 CREATE TABLE `personas_en_casa` (
-  `id` int(2) NOT NULL,
+  `id` int(5) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `apellido` varchar(30) NOT NULL,
   `sexo` varchar(1) NOT NULL,
-  `edad` int(2) NOT NULL,
+  `edad` varchar(2) NOT NULL,
   `parentesco` varchar(30) NOT NULL,
   `ocupacion` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `personas_en_casa`
+--
+
+INSERT INTO `personas_en_casa` (`id`, `nombre`, `apellido`, `sexo`, `edad`, `parentesco`, `ocupacion`) VALUES
+(1, 'asdasd', 'sadasasd', 's', '00', 'asadsad', 'sadasdsa'),
+(2, '111n1jk1jk1bj1', '111n1jk1jk1bj1', 'm', '00', '111n1jk1jk1bj1', '111n1jk1jk1bj1'),
+(3, '2k2n2n2kjn2ki', '2k2n2n2kjn2ki', 'f', '00', '2k2n2n2kjn2ki', '2k2n2n2kjn2ki'),
+(4, '3kn3lknjk3nkj3', '3kn3lknjk3nkj3', 'm', '00', '3kn3lknjk3nkj3', '3kn3lknjk3nkj3'),
+(5, '4mkl4nl4kn4', '4mkl4nl4kn4', 'f', '00', '4mkl4nl4kn4', '4mkl4nl4kn4'),
+(6, '111n1jk1jk1bj1', '111n1jk1jk1bj1', 'm', '00', '111n1jk1jk1bj1', '111n1jk1jk1bj1'),
+(7, '2k2n2n2kjn2ki', '2k2n2n2kjn2ki', 'm', '00', '2k2n2n2kjn2ki', '2k2n2n2kjn2ki'),
+(8, '3kn3lknjk3nkj3', '3kn3lknjk3nkj3', 'm', '00', '3kn3lknjk3nkj3', '3kn3lknjk3nkj3'),
+(9, '4mkl4nl4kn4', '4mkl4nl4kn4', 'm', '00', '4mkl4nl4kn4', '4mkl4nl4kn4'),
+(10, '111n1jk1jk1bj1', '111n1jk1jk1bj1', 'm', '00', '111n1jk1jk1bj1', '111n1jk1jk1bj1'),
+(11, '2k2n2n2kjn2ki', '2k2n2n2kjn2ki', 'm', '00', '2k2n2n2kjn2ki', '2k2n2n2kjn2ki'),
+(12, '3kn3lknjk3nkj3', '3kn3lknjk3nkj3', 'm', '00', '3kn3lknjk3nkj3', '3kn3lknjk3nkj3'),
+(13, '4mkl4nl4kn4', '4mkl4nl4kn4', 'm', '00', '4mkl4nl4kn4', '4mkl4nl4kn4'),
+(14, '111n1jk1jk1bj1', '111n1jk1jk1bj1', 'm', '00', '111n1jk1jk1bj1', '111n1jk1jk1bj1'),
+(15, '2k2n2n2kjn2ki', '2k2n2n2kjn2ki', 'm', '00', '2k2n2n2kjn2ki', '2k2n2n2kjn2ki'),
+(16, '3kn3lknjk3nkj3', '3kn3lknjk3nkj3', 'm', '00', '3kn3lknjk3nkj3', '3kn3lknjk3nkj3'),
+(17, '4mkl4nl4kn4', '4mkl4nl4kn4', 'm', '00', '4mkl4nl4kn4', '4mkl4nl4kn4'),
+(18, '111n1jk1jk1bj1', '111n1jk1jk1bj1', 'm', '00', '111n1jk1jk1bj1', '111n1jk1jk1bj1'),
+(19, '2k2n2n2kjn2ki', '2k2n2n2kjn2ki', 'm', '00', '2k2n2n2kjn2ki', '2k2n2n2kjn2ki'),
+(20, '3kn3lknjk3nkj3', '3kn3lknjk3nkj3', 'm', '00', '3kn3lknjk3nkj3', '3kn3lknjk3nkj3'),
+(21, '4mkl4nl4kn4', '4mkl4nl4kn4', 'm', '00', '4mkl4nl4kn4', '4mkl4nl4kn4'),
+(22, '111n1jk1jk1bj1', '111n1jk1jk1bj1', 'm', '00', '111n1jk1jk1bj1', '111n1jk1jk1bj1'),
+(23, '2k2n2n2kjn2ki', '2k2n2n2kjn2ki', 'm', '00', '2k2n2n2kjn2ki', '2k2n2n2kjn2ki'),
+(24, '3kn3lknjk3nkj3', '3kn3lknjk3nkj3', 'm', '00', '3kn3lknjk3nkj3', '3kn3lknjk3nkj3'),
+(25, '4mkl4nl4kn4', '4mkl4nl4kn4', 'm', '00', '4mkl4nl4kn4', '4mkl4nl4kn4'),
+(26, '111n1jk1jk1bj1', '111n1jk1jk1bj1', 'm', '00', '111n1jk1jk1bj1', '111n1jk1jk1bj1'),
+(27, '2k2n2n2kjn2ki', '2k2n2n2kjn2ki', 'm', '00', '2k2n2n2kjn2ki', '2k2n2n2kjn2ki'),
+(28, '3kn3lknjk3nkj3', '3kn3lknjk3nkj3', 'm', '00', '3kn3lknjk3nkj3', '3kn3lknjk3nkj3'),
+(29, '4mkl4nl4kn4', '4mkl4nl4kn4', 'm', '00', '4mkl4nl4kn4', '4mkl4nl4kn4'),
+(30, '111n1jk1jk1bj1', '111n1jk1jk1bj1', 'm', '00', '111n1jk1jk1bj1', '111n1jk1jk1bj1'),
+(31, '2k2n2n2kjn2ki', '2k2n2n2kjn2ki', 'm', '00', '2k2n2n2kjn2ki', '2k2n2n2kjn2ki'),
+(32, '3kn3lknjk3nkj3', '3kn3lknjk3nkj3', 'm', '00', '3kn3lknjk3nkj3', '3kn3lknjk3nkj3'),
+(33, '4mkl4nl4kn4', '4mkl4nl4kn4', 'm', '00', '4mkl4nl4kn4', '4mkl4nl4kn4'),
+(34, '111n1jk1jk1bj1', '111n1jk1jk1bj1', 'm', '00', '111n1jk1jk1bj1', '111n1jk1jk1bj1'),
+(35, '2k2n2n2kjn2ki', '2k2n2n2kjn2ki', 'm', '00', '2k2n2n2kjn2ki', '2k2n2n2kjn2ki'),
+(36, '3kn3lknjk3nkj3', '3kn3lknjk3nkj3', 'm', '00', '3kn3lknjk3nkj3', '3kn3lknjk3nkj3'),
+(37, '4mkl4nl4kn4', '4mkl4nl4kn4', 'm', '00', '4mkl4nl4kn4', '4mkl4nl4kn4'),
+(38, '111n1jk1jk1bj1', '111n1jk1jk1bj1', 'm', '00', '111n1jk1jk1bj1', '111n1jk1jk1bj1'),
+(39, '2k2n2n2kjn2ki', '2k2n2n2kjn2ki', 'm', '00', '2k2n2n2kjn2ki', '2k2n2n2kjn2ki'),
+(40, '3kn3lknjk3nkj3', '3kn3lknjk3nkj3', 'm', '00', '3kn3lknjk3nkj3', '3kn3lknjk3nkj3'),
+(41, '4mkl4nl4kn4', '4mkl4nl4kn4', 'm', '00', '4mkl4nl4kn4', '4mkl4nl4kn4'),
+(42, '111n1jk1jk1bj1', '111n1jk1jk1bj1', 'm', '00', '111n1jk1jk1bj1', '111n1jk1jk1bj1'),
+(43, '2k2n2n2kjn2ki', '2k2n2n2kjn2ki', 'm', '00', '2k2n2n2kjn2ki', '2k2n2n2kjn2ki'),
+(44, '3kn3lknjk3nkj3', '3kn3lknjk3nkj3', 'm', '00', '3kn3lknjk3nkj3', '3kn3lknjk3nkj3'),
+(45, '4mkl4nl4kn4', '4mkl4nl4kn4', 'm', '00', '4mkl4nl4kn4', '4mkl4nl4kn4'),
+(46, 'dsda skndas', 'sdas', 'm', '', 'paosdmas', 'asldjkad'),
+(47, '', '', 'n', '', '', ''),
+(48, '', '', 'S', '', '', ''),
+(49, '', '', 'S', '', '', ''),
+(50, 'HAjshdj sahdisna fa', 'dnasjkdnaf asknaiofsaof', 'm', '20', 'hajsdsadjasd', 'asldkioasmfioasfsa'),
+(51, '874723h42323', '432jnr32jn4324', 'f', '20', 'asmndn 2n3eiun23e', 'daskmd dqkwmdw'),
+(52, '', '', 'S', '', '', ''),
+(53, '', '', 'S', '', '', ''),
+(54, 'HAjshdj sahdisna fa', 'dnasjkdnaf asknaiofsaof', 'm', '20', 'hajsdsadjasd', 'asldkioasmfioasfsa'),
+(55, '874723h42323', '432jnr32jn4324', 'f', '20', 'asmndn 2n3eiun23e', 'daskmd dqkwmdw'),
+(56, '', '', 'S', '', '', ''),
+(57, '', '', 'S', '', '', ''),
+(58, 'dsda skndas', 'sdas', 'm', '', 'paosdmas', 'asldjkad'),
+(59, '', '', 'n', '', '', ''),
+(60, '', '', 'n', '', '', ''),
+(61, '', '', 'n', '', '', ''),
+(62, 'holasa sadsa', 'jola hola', 'f', '20', 'holahola', 'herrero'),
+(63, '', '', 'S', '', '', ''),
+(64, '', '', 'S', '', '', ''),
+(65, '', '', 'S', '', '', ''),
+(66, 'holasa sadsa', 'jola hola', 'f', '', 'holahola', 'herrero'),
+(67, '', '', 'n', '', '', ''),
+(68, '', '', 'n', '', '', ''),
+(69, '', '', 'n', '', '', ''),
+(70, 'holasa sadsa', 'jola hola', 'f', '', 'holahola', 'herrero'),
+(71, '', '', 'n', '', '', ''),
+(72, '', '', 'n', '', '', ''),
+(73, '', '', 'n', '', '', '');
+
+--
+-- Disparadores `personas_en_casa`
+--
+DELIMITER $$
+CREATE TRIGGER `llena_personas_hogar` AFTER INSERT ON `personas_en_casa` FOR EACH ROW BEGIN
+      
+		INSERT INTO personas_estudiante(id_persona,cedula_e)
+        VALUES(NEW.id,(SELECT cedula_e FROM estudiante ORDER BY id DESC LIMIT 1));
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -395,10 +470,28 @@ CREATE TABLE `personas_en_casa` (
 --
 
 CREATE TABLE `personas_estudiante` (
-  `id` int(2) NOT NULL,
+  `id` int(5) NOT NULL,
   `cedula_e` varchar(15) NOT NULL,
-  `id_persona` int(2) NOT NULL
+  `id_persona` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `personas_estudiante`
+--
+
+INSERT INTO `personas_estudiante` (`id`, `cedula_e`, `id_persona`) VALUES
+(62, 'V-12032564343', 62),
+(63, 'V-12032564343', 63),
+(64, 'V-12032564343', 64),
+(65, 'V-12032564343', 65),
+(66, 'E-12032564343', 66),
+(67, 'E-12032564343', 67),
+(68, 'E-12032564343', 68),
+(69, 'E-12032564343', 69),
+(70, 'E-32032564343', 70),
+(71, 'E-32032564343', 71),
+(72, 'E-32032564343', 72),
+(73, 'E-32032564343', 73);
 
 -- --------------------------------------------------------
 
@@ -407,10 +500,72 @@ CREATE TABLE `personas_estudiante` (
 --
 
 CREATE TABLE `persona_retira` (
-  `id_persona` int(1) NOT NULL,
-  `nombre_apellido` varchar(30) NOT NULL,
+  `id_persona` int(5) NOT NULL,
+  `nombre_apellido` varchar(60) NOT NULL,
   `telefono` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `persona_retira`
+--
+
+INSERT INTO `persona_retira` (`id_persona`, `nombre_apellido`, `telefono`) VALUES
+(2, 'qweqwe', '1212e'),
+(3, 'qweasd', '3434'),
+(4, 'asads', 'asdsa'),
+(5, 'dasdas', 'das'),
+(6, '', ''),
+(7, '', ''),
+(8, '0909090', '9090900'),
+(9, '9090', '09009990'),
+(10, 'asads', 'asdsa'),
+(11, 'dasdas', 'das'),
+(12, 'asads', 'asdsa'),
+(13, 'dasdas', 'das'),
+(14, 'asads', 'asdsa'),
+(15, 'dasdas', 'das'),
+(16, 'asads', 'asdsa'),
+(17, 'dasdas', 'das'),
+(18, 'asads', 'asdsa'),
+(19, 'dasdas', 'das'),
+(20, 'asads', 'asdsa'),
+(21, 'dasdas', 'das'),
+(22, 'asads', 'asdsa'),
+(23, 'dasdas', 'das'),
+(24, 'asads', 'asdsa'),
+(25, 'dasdas', 'das'),
+(26, 'asads', 'asdsa'),
+(27, 'dasdas', 'das'),
+(28, 'asads', 'asdsa'),
+(29, 'dasdas', 'das'),
+(30, 'asads', 'asdsa'),
+(31, 'dasdas', 'das'),
+(32, '$this->oc1', '32942344234'),
+(33, 'sadasdas', '9999999999999'),
+(34, 'hola ssiasnais', '341248235943'),
+(35, 'nxznvxc8 xvhxicnv', '9492305823523'),
+(36, 'hola ssiasnais', '341248235943'),
+(37, 'nxznvxc8 xvhxicnv', '9492305823523'),
+(38, 'oamentehueca', '32942344234'),
+(39, 'Ailas Terca', '9999999999999'),
+(40, 'Hola hola', '3243-4234332'),
+(41, 'bai bia', '2131-2342335'),
+(42, 'Hola hola', '3243-4234332'),
+(43, 'bai bia', '2131-2342335'),
+(44, 'Hola hola', '3243-4234332'),
+(45, 'bai bia', '2131-2342335');
+
+--
+-- Disparadores `persona_retira`
+--
+DELIMITER $$
+CREATE TRIGGER `after_insert_persona_retira` AFTER INSERT ON `persona_retira` FOR EACH ROW BEGIN
+      
+		INSERT INTO retira_estudiantes(id_persona,cedula_e)
+        VALUES(NEW.id_persona,(SELECT cedula_e FROM estudiante ORDER BY id DESC LIMIT 1));
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -420,9 +575,9 @@ CREATE TABLE `persona_retira` (
 
 CREATE TABLE `representante` (
   `cedula` varchar(15) NOT NULL,
-  `nombre` varchar(30) NOT NULL,
-  `apellido` varchar(30) NOT NULL,
-  `telefono` varchar(12) NOT NULL,
+  `nombre_r` varchar(30) NOT NULL,
+  `apellido_r` varchar(30) NOT NULL,
+  `telefono_r` varchar(12) NOT NULL,
   `estudio` varchar(15) NOT NULL,
   `religion` varchar(20) NOT NULL,
   `civil` varchar(14) NOT NULL,
@@ -442,10 +597,11 @@ CREATE TABLE `representante` (
 -- Volcado de datos para la tabla `representante`
 --
 
-INSERT INTO `representante` (`cedula`, `nombre`, `apellido`, `telefono`, `estudio`, `religion`, `civil`, `nacion`, `direc`, `paren_repre`, `ocupa`, `correo`, `cuenta_b`, `tipo_c`, `banco`, `carnet_p`, `serial_p`) VALUES
+INSERT INTO `representante` (`cedula`, `nombre_r`, `apellido_r`, `telefono_r`, `estudio`, `religion`, `civil`, `nacion`, `direc`, `paren_repre`, `ocupa`, `correo`, `cuenta_b`, `tipo_c`, `banco`, `carnet_p`, `serial_p`) VALUES
+('V-1231234', 'Gutierre', 'Albertino', '03432342453', 'bachillar', 'Católica', 'soltero', 'extranjero', 'Via las vegas ', 'padre', 'Herrero', 'agusnda@gmail.com', '01023423534534543445', 'corriente', '18', '0000034534', '0000030453'),
 ('V-23356238', 'Marco', 'Eduardo', '32342343234', 'primaria', 'Católica', 'divorciado', 'venezolano', 'Via turumero', 'padre', 'Viajando a las estrellas', 'agiujsuikdm@gmail.com', '23324235235324344333', 'corriente', '10', '2142342343', '2342342343'),
 ('V-23456436', 'Recuerdos', 'Salsa Casino', '32342343234', 'primaria', 'Católica', 'soltero', 'venezolano', 'sdkmaskdmsad', 'madre', 'kspdofjasfoa', 'agiujsuikdm@gmail.com', '01023938473284233434', 'corriente', '10', '0000423434', '0000034233'),
-('V-32564343', 'Antonio', 'Pedro', '02449485434', 'bachillar', 'Ateísmo', 'divorciado', 'extranjero', 'Las veritas', 'tia', 'Ama de casa', 'hioiiss@gmail.com', '2904893859353553535444444', 'ahorro', '9', '245325453454353', '435983495834944');
+('V-32564343', 'Antonio L', 'Pedro A', '02449999999', 'bachillar', 'Ateísmo', 'divorciado', 'extranjero', 'Las veritas', 'tia', 'Ama de casa', 'hioiiss@gmail.com', '29048938593535535354', 'ahorro', '9', '0004035345', '0000345435');
 
 -- --------------------------------------------------------
 
@@ -454,9 +610,21 @@ INSERT INTO `representante` (`cedula`, `nombre`, `apellido`, `telefono`, `estudi
 --
 
 CREATE TABLE `retira_estudiantes` (
-  `id_persona` int(1) NOT NULL,
+  `id_persona` int(5) NOT NULL,
   `cedula_e` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `retira_estudiantes`
+--
+
+INSERT INTO `retira_estudiantes` (`id_persona`, `cedula_e`) VALUES
+(40, 'V-12032564343'),
+(41, 'V-12032564343'),
+(42, 'E-12032564343'),
+(43, 'E-12032564343'),
+(44, 'E-32032564343'),
+(45, 'E-32032564343');
 
 -- --------------------------------------------------------
 
@@ -465,7 +633,7 @@ CREATE TABLE `retira_estudiantes` (
 --
 
 CREATE TABLE `seccion` (
-  `id` int(2) NOT NULL,
+  `id` int(5) NOT NULL,
   `seccion` varchar(8) NOT NULL,
   `grado` varchar(14) NOT NULL,
   `cedula_mm` varchar(15) NOT NULL,
@@ -478,17 +646,16 @@ CREATE TABLE `seccion` (
 
 INSERT INTO `seccion` (`id`, `seccion`, `grado`, `cedula_mm`, `anio_escolar`) VALUES
 (10, 'Mañana A', 'Quinto Grado', 'V-12345678', '2022-2023'),
-(6, 'Tarde B', 'Quinto Grado', 'V-22334455', '2022-2023'),
-(22, 'Tarde D', 'Pre-escolar', 'V-28764865', '2022-2023'),
-(15, 'Mañana A', 'Primer Grado', 'V-54785123', '2022-2023'),
-(19, 'Mañana B', 'Pre-escolar', 'V-56234986', '2022-2023'),
-(20, 'Mañana A', 'Pre-escolar', 'V-56432578', '2022-2023'),
-(18, 'Mañana A', 'Sexto Grado', 'V-56872567', '2022-2023'),
 (11, 'Mañana A', 'Segundo Grado', 'V-78086345', '2022-2023'),
 (12, 'Tarde B', 'Cuarto Grado', 'V-78237463', '2022-2023'),
 (13, 'Tarde B', 'Sexto Grado', 'V-78755733', '2022-2023'),
+(15, 'Mañana A', 'Primer Grado', 'V-54785123', '2022-2023'),
 (16, 'Tarde B', 'Tercer Grado', 'V-87650765', '2022-2023'),
-(17, 'Mañana A', 'Cuarto Grado', 'V-90876345', '2022-2023');
+(18, 'Mañana A', 'Sexto Grado', 'V-56872567', '2022-2023'),
+(19, 'Mañana B', 'Pre-escolar', 'V-56234986', '2022-2023'),
+(20, 'Mañana A', 'Pre-escolar', 'V-56432578', '2022-2023'),
+(22, 'Tarde D', 'Pre-escolar', 'V-28764865', '2022-2023'),
+(25, 'Tarde B', 'Primer Grado', 'V-22334455', '2023-2024');
 
 -- --------------------------------------------------------
 
@@ -500,7 +667,7 @@ CREATE TABLE `seccion_estudiante` (
   `id` int(2) NOT NULL,
   `representante` varchar(15) NOT NULL,
   `cedula_es` varchar(15) NOT NULL,
-  `seccion_1` int(2) DEFAULT NULL,
+  `seccion_1` int(5) DEFAULT NULL,
   `talla` varchar(4) NOT NULL,
   `peso` varchar(4) NOT NULL,
   `calzado` varchar(4) NOT NULL,
@@ -516,10 +683,11 @@ CREATE TABLE `seccion_estudiante` (
 --
 
 INSERT INTO `seccion_estudiante` (`id`, `representante`, `cedula_es`, `seccion_1`, `talla`, `peso`, `calzado`, `camisa`, `pantalon`, `colab_comun`, `dia_disp`, `horario`) VALUES
-(90, 'V-32564343', 'V-123456654', 15, '435.', '23.4', '32.3', '43.2', '43.4', 'bnbnbnbnbsasasas', '', ''),
-(91, 'V-23356238', 'V-2228965384', 11, '43.3', '23.4', '32', 'S', 'M', 'asdjiosan dsan dasnd', '', ''),
-(92, 'V-23456436', 'V-13228967899', 10, '435.', '23.4', '32.3', '43.2', '43.4', '----------------------------------------aaa-------', '', ''),
-(96, 'V-23356238', 'V-21623356238', NULL, '23.4', '32.3', '34', 'M', 'S', 'lopsem ipsum', '', '');
+(141, 'V-32564343', 'V-12032564343', NULL, '43.0', '23.3', '36', '45', '32', '', '', ''),
+(142, 'V-32564343', 'E-12032564343', 25, '43.0', '23.3', '36', '45', '32', 'Hola colab', '1,3,5', '12'),
+(143, 'V-32564343', 'E-32032564343', 11, '43.0', '23.3', '36', '45', '32', 'Hola colab', '', '12'),
+(146, 'V-32564343', 'E-22132564343', NULL, '23.4', '30.2', '36', '45', '24', 'Prueba 123', '', ''),
+(147, 'V-1231234', 'E-1201231234', NULL, '45.2', '23.4', '36', '45', '32', 'Ho2345', '', '');
 
 -- --------------------------------------------------------
 
@@ -528,9 +696,21 @@ INSERT INTO `seccion_estudiante` (`id`, `representante`, `cedula_es`, `seccion_1
 --
 
 CREATE TABLE `vacuna` (
-  `id_vacuna` varchar(2) NOT NULL,
+  `id` int(4) NOT NULL,
   `vacuna` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `vacuna`
+--
+
+INSERT INTO `vacuna` (`id`, `vacuna`) VALUES
+(3, 'Sarampeón'),
+(4, 'Covid'),
+(5, 'Hola'),
+(6, 'BCG'),
+(7, 'Pentavalente'),
+(8, 'Tetanos');
 
 -- --------------------------------------------------------
 
@@ -539,10 +719,31 @@ CREATE TABLE `vacuna` (
 --
 
 CREATE TABLE `vacunacion` (
-  `id_vacuna` varchar(2) NOT NULL,
+  `id` int(5) NOT NULL,
+  `id_vacuna` int(4) NOT NULL,
   `cedula_e` varchar(15) NOT NULL,
   `dosis` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `vacunacion`
+--
+
+INSERT INTO `vacunacion` (`id`, `id_vacuna`, `cedula_e`, `dosis`) VALUES
+(132, 4, 'V-12032564343', '2'),
+(133, 5, 'V-12032564343', '2'),
+(134, 6, 'V-12032564343', '3'),
+(135, 4, 'E-12032564343', '2'),
+(136, 5, 'E-12032564343', '2'),
+(137, 6, 'E-12032564343', '3'),
+(139, 7, 'E-32032564343', '2'),
+(140, 3, 'E-32032564343', '2'),
+(141, 6, 'E-32032564343', '3'),
+(151, 5, 'E-22132564343', '2'),
+(152, 3, 'E-22132564343', '3'),
+(153, 4, 'E-22132564343', '5'),
+(154, 8, 'E-22132564343', '3'),
+(155, 6, 'E-1201231234', '3');
 
 --
 -- Índices para tablas volcadas
@@ -552,35 +753,28 @@ CREATE TABLE `vacunacion` (
 -- Indices de la tabla `antecedentes_prenatales_postnatales`
 --
 ALTER TABLE `antecedentes_prenatales_postnatales`
-  ADD PRIMARY KEY (`cedula_e`),
-  ADD KEY `cedula_e` (`cedula_e`);
-
---
--- Indices de la tabla `colaboracion`
---
-ALTER TABLE `colaboracion`
-  ADD PRIMARY KEY (`cedula_e`),
-  ADD KEY `cedula_e` (`cedula_e`);
+  ADD UNIQUE KEY `cedula_e` (`cedula_e`) USING BTREE;
 
 --
 -- Indices de la tabla `control_esfinteres`
 --
 ALTER TABLE `control_esfinteres`
-  ADD PRIMARY KEY (`cedula_e`),
+  ADD UNIQUE KEY `cedula_e_2` (`cedula_e`),
   ADD KEY `cedula_e` (`cedula_e`);
 
 --
 -- Indices de la tabla `desarrollo_evolutivo`
 --
 ALTER TABLE `desarrollo_evolutivo`
-  ADD PRIMARY KEY (`cedula_e`),
-  ADD KEY `cedula_e` (`cedula_e`);
+  ADD UNIQUE KEY `cedula_e` (`cedula_e`) USING BTREE;
 
 --
 -- Indices de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  ADD KEY `cedula_est` (`cedula_est`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `cedula_est` (`cedula_est`) USING BTREE,
+  ADD KEY `id` (`id`);
 
 --
 -- Indices de la tabla `empleados`
@@ -589,16 +783,10 @@ ALTER TABLE `empleados`
   ADD PRIMARY KEY (`cedula`);
 
 --
--- Indices de la tabla `enfermedades`
---
-ALTER TABLE `enfermedades`
-  ADD PRIMARY KEY (`id_enfermedad`);
-
---
 -- Indices de la tabla `enfermedad_estudiante`
 --
 ALTER TABLE `enfermedad_estudiante`
-  ADD KEY `id_enfermedad` (`id_enfermedad`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `cedula_e` (`cedula_e`);
 
 --
@@ -613,6 +801,7 @@ ALTER TABLE `equilibrio_emocional`
 --
 ALTER TABLE `estudiante`
   ADD PRIMARY KEY (`cedula_e`),
+  ADD UNIQUE KEY `id` (`id`),
   ADD KEY `fk_mama` (`cedula_mama`),
   ADD KEY `fk_papa` (`cedula_p`);
 
@@ -620,15 +809,14 @@ ALTER TABLE `estudiante`
 -- Indices de la tabla `familiar`
 --
 ALTER TABLE `familiar`
-  ADD PRIMARY KEY (`cedula_e`),
-  ADD KEY `cedula_e` (`cedula_e`);
+  ADD UNIQUE KEY `cedula_e` (`cedula_e`) USING BTREE;
 
 --
 -- Indices de la tabla `habitos`
 --
 ALTER TABLE `habitos`
-  ADD PRIMARY KEY (`cedula_e`),
-  ADD KEY `cedula_e` (`cedula_e`);
+  ADD UNIQUE KEY `cedula_e_2` (`cedula_e`),
+  ADD UNIQUE KEY `cedula_e` (`cedula_e`) USING BTREE;
 
 --
 -- Indices de la tabla `hermanos`
@@ -680,8 +868,9 @@ ALTER TABLE `retira_estudiantes`
 -- Indices de la tabla `seccion`
 --
 ALTER TABLE `seccion`
-  ADD PRIMARY KEY (`cedula_mm`) USING BTREE,
-  ADD KEY `id` (`id`) USING BTREE;
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`) USING BTREE,
+  ADD KEY `cedula_mm` (`cedula_mm`);
 
 --
 -- Indices de la tabla `seccion_estudiante`
@@ -696,47 +885,95 @@ ALTER TABLE `seccion_estudiante`
 -- Indices de la tabla `vacuna`
 --
 ALTER TABLE `vacuna`
-  ADD KEY `id_vacuna` (`id_vacuna`),
-  ADD KEY `vacuna` (`vacuna`);
+  ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
 -- Indices de la tabla `vacunacion`
 --
 ALTER TABLE `vacunacion`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `cedula_e` (`cedula_e`),
-  ADD KEY `id_vacuna` (`id_vacuna`);
+  ADD KEY `vacunacion_2` (`id_vacuna`) USING BTREE;
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
+-- AUTO_INCREMENT de la tabla `documentos`
+--
+ALTER TABLE `documentos`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT de la tabla `enfermedad_estudiante`
+--
+ALTER TABLE `enfermedad_estudiante`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `estudiante`
+--
+ALTER TABLE `estudiante`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+
+--
 -- AUTO_INCREMENT de la tabla `hermanos`
 --
 ALTER TABLE `hermanos`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+
+--
+-- AUTO_INCREMENT de la tabla `personas_en_casa`
+--
+ALTER TABLE `personas_en_casa`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+
+--
+-- AUTO_INCREMENT de la tabla `personas_estudiante`
+--
+ALTER TABLE `personas_estudiante`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+
+--
+-- AUTO_INCREMENT de la tabla `persona_retira`
+--
+ALTER TABLE `persona_retira`
+  MODIFY `id_persona` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de la tabla `seccion`
 --
 ALTER TABLE `seccion`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `seccion_estudiante`
 --
 ALTER TABLE `seccion_estudiante`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+
+--
+-- AUTO_INCREMENT de la tabla `vacuna`
+--
+ALTER TABLE `vacuna`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `vacunacion`
+--
+ALTER TABLE `vacunacion`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `colaboracion`
+-- Filtros para la tabla `antecedentes_prenatales_postnatales`
 --
-ALTER TABLE `colaboracion`
-  ADD CONSTRAINT `colaboracion_ibfk_1` FOREIGN KEY (`cedula_e`) REFERENCES `estudiante` (`cedula_e`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `antecedentes_prenatales_postnatales`
+  ADD CONSTRAINT `antecedentes_prenatales_postnatales_ibfk_1` FOREIGN KEY (`cedula_e`) REFERENCES `estudiante` (`cedula_e`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `control_esfinteres`
@@ -751,10 +988,10 @@ ALTER TABLE `desarrollo_evolutivo`
   ADD CONSTRAINT `desarrollo_evolutivo_ibfk_1` FOREIGN KEY (`cedula_e`) REFERENCES `estudiante` (`cedula_e`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `enfermedades`
+-- Filtros para la tabla `documentos`
 --
-ALTER TABLE `enfermedades`
-  ADD CONSTRAINT `enfermedades_ibfk_1` FOREIGN KEY (`id_enfermedad`) REFERENCES `enfermedad_estudiante` (`id_enfermedad`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `documentos`
+  ADD CONSTRAINT `documentos_ibfk_1` FOREIGN KEY (`cedula_est`) REFERENCES `estudiante` (`cedula_e`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `enfermedad_estudiante`
@@ -794,28 +1031,17 @@ ALTER TABLE `hermanos`
   ADD CONSTRAINT `fk_hermanos` FOREIGN KEY (`cedula_e`) REFERENCES `estudiante` (`cedula_e`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `personas_en_casa`
---
-ALTER TABLE `personas_en_casa`
-  ADD CONSTRAINT `personas_en_casa_ibfk_1` FOREIGN KEY (`id`) REFERENCES `personas_estudiante` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `personas_estudiante`
 --
 ALTER TABLE `personas_estudiante`
   ADD CONSTRAINT `personas_estudiante_ibfk_1` FOREIGN KEY (`cedula_e`) REFERENCES `estudiante` (`cedula_e`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `persona_retira`
---
-ALTER TABLE `persona_retira`
-  ADD CONSTRAINT `persona_retira_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `retira_estudiantes` (`id_persona`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `retira_estudiantes`
 --
 ALTER TABLE `retira_estudiantes`
-  ADD CONSTRAINT `retira_estudiantes_ibfk_1` FOREIGN KEY (`cedula_e`) REFERENCES `estudiante` (`cedula_e`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `retira_estudiantes_ibfk_1` FOREIGN KEY (`cedula_e`) REFERENCES `estudiante` (`cedula_e`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `retira_estudiantes_ibfk_2` FOREIGN KEY (`id_persona`) REFERENCES `persona_retira` (`id_persona`);
 
 --
 -- Filtros para la tabla `seccion`
@@ -828,20 +1054,14 @@ ALTER TABLE `seccion`
 --
 ALTER TABLE `seccion_estudiante`
   ADD CONSTRAINT `fk_cedula_e` FOREIGN KEY (`cedula_es`) REFERENCES `estudiante` (`cedula_e`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_representante` FOREIGN KEY (`representante`) REFERENCES `representante` (`cedula`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `seccion_estudiante_ibfk_1` FOREIGN KEY (`seccion_1`) REFERENCES `seccion` (`id`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `vacuna`
---
-ALTER TABLE `vacuna`
-  ADD CONSTRAINT `vacuna_ibfk_1` FOREIGN KEY (`id_vacuna`) REFERENCES `vacunacion` (`id_vacuna`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_representante` FOREIGN KEY (`representante`) REFERENCES `representante` (`cedula`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `vacunacion`
 --
 ALTER TABLE `vacunacion`
-  ADD CONSTRAINT `vacunacion_ibfk_1` FOREIGN KEY (`cedula_e`) REFERENCES `estudiante` (`cedula_e`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `vacunacion_ibfk_1` FOREIGN KEY (`cedula_e`) REFERENCES `estudiante` (`cedula_e`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `vacunacion_ibfk_2` FOREIGN KEY (`id_vacuna`) REFERENCES `vacuna` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

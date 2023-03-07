@@ -97,10 +97,11 @@ class matricula extends datos{
 		try{
 			
 			
-			$resultado = $co->prepare("Select e.nombre, e.apellido, e.cedula_e, e.sexo, e.fecha_n, e.estado_n, e.ciudad_n, s.talla, s.peso, s.calzado, s.camisa, s.pantalon, s.representante, r.nombre_r, r.apellido_r, r.paren_repre, r.telefono_r, se.anio_escolar, se.seccion  from seccion_estudiante s 
+			$resultado = $co->prepare("Select e.nombre, e.apellido, e.cedula_e, e.sexo, e.fecha_n, e.estado_n, e.ciudad_n, s.talla, s.peso, s.calzado, s.camisa, s.pantalon, s.representante, r.nombre_r, r.apellido_r, r.paren_repre, r.telefono_r, se.anio_escolar, se.seccion, em.cedula, em.nombres, em.apellidos  from seccion_estudiante s 
 				INNER JOIN estudiante e ON e.cedula_e = s.cedula_es
                 INNER JOIN representante r ON r.cedula = s.representante
                 INNER JOIN seccion se ON se.id = s.seccion_1
+                INNER JOIN empleados em ON em.cedula = se.cedula_mm
 				WHERE s.seccion_1=(SELECT id FROM seccion WHERE grado=:grado and seccion=:seccion) ");
 			$resultado->bindValue(':grado',$this->grado);
 			$resultado->bindValue(':seccion',$this->seccion);
@@ -111,6 +112,9 @@ class matricula extends datos{
 			$cuenta = $co->query("SELECT COUNT(seccion) AS numero FROM seccion s
 			INNER JOIN seccion_estudiante e ON s.id=e.seccion_1
 			WHERE s.grado='$this->grado' and s.seccion='$this->seccion'");
+
+			$admin = $co->query("SELECT cedula, nombres, apellidos, telefono FROM `empleados` 
+			WHERE cargo='Administrador'");
 
 
 			$cuenta_m = $co->query("SELECT es.sexo, COUNT(*) as cuenta
@@ -131,6 +135,8 @@ class matricula extends datos{
 			$num = $cuenta->fetchAll(PDO::FETCH_BOTH);
 			
 			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
+
+			$fila_admin = $admin->fetchAll(PDO::FETCH_BOTH);
 			
 			//aqui es donde comienza el cambio, debido a que se va a armar una variable en memoria
 			//con el contenido html que se enviara a la libreria dompdf
@@ -168,7 +174,7 @@ $html = $html."<body style='text-align: center; align-content: center;font-size:
 					$html = $html."<td>Dependencia:<u> Nacional </u>";
 					$html = $html."</td>";
 
-					$html = $html."<td> Codigo: <u> ---------------- </u>";
+					$html = $html."<td> Codigo: <u> 02347823523</u>";
 					$html = $html."</td>";
 				$html = $html."</tr>";
 
@@ -203,14 +209,25 @@ $html = $html."<body style='text-align: center; align-content: center;font-size:
 				$html = $html."</tr>";
 
 				$html = $html."<tr> ";
-					$html = $html."<td> Directora: <u> --------------- </u>";
+					$html = $html."<td> Directora: <u> ".$fila_admin[0]['nombres']." 
+					".$fila_admin[0]['apellidos']." </u>";
 					$html = $html."</td>";
 
-					$html = $html."<td> Cedula de identidad: <u> --------------- </u>";
+					$html = $html."<td> Cedula de identidad: <u> ".$fila_admin[0]['cedula']." </u>";
 					$html = $html."</td>";
 
-					$html = $html."<td> Telefono: <u> -------------------- </u>";
+					$html = $html."<td> Telefono: <u> ".$fila_admin[0]['telefono']." </u>";
 					$html = $html."</td>";
+					
+				$html = $html."</tr>";
+				$html = $html."<tr> ";
+					$html = $html."<td> Maestro (a): <u>".$fila[0]['nombres']."
+					".$fila[0]['apellidos']."</u>";
+					$html = $html."</td>";
+
+					$html = $html."<td> Cedula de identidad: <u>".$fila[0]['cedula']." </u>";
+					$html = $html."</td>";
+
 					
 				$html = $html."</tr>";
 
@@ -313,8 +330,8 @@ $html = $html."<body style='text-align: center; align-content: center;font-size:
 
 		
 		//comentar esto al probar en su casa
-		echo $html;
-     	exit;
+		//echo $html;
+     	//exit;
       //fin de comentario
 
  

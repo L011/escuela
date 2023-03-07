@@ -1085,20 +1085,21 @@ class primaria extends datos{
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		if($this->existe($this->cedulaEscolar)){
 
-			try {
-					$co->query("delete from estudiante
-						where
-						cedula_e = '$this->cedulaEscolar'
-						");
+			if ($this->ver_seccion($this->cedulaEscolar)) {
+				// code...
 
-						$co->query("delete from seccion_estudiante
+				try {
+						$co->query("delete from estudiante
 							where
-							cedula_es = '$this->cedulaEscolar'
+							cedula_e = '$this->cedulaEscolar'
 							");
-
-						return "Registro Eliminado";
-			} catch(Exception $e) {
-				return $e->getMessage();
+							return "Registro Eliminado";
+				} catch(Exception $e) {
+					return $e->getMessage();
+				}
+			}
+			else{
+				return "Estudiante esta inscrito, no se puede eliminar. Primero de debe eliminar la inscripcion";
 			}
 		}
 		else{
@@ -1145,6 +1146,30 @@ class primaria extends datos{
 
 							)
 							");
+
+		}catch(Exception $e){
+			return false;
+		}
+	}
+
+	private function ver_seccion($cedula){
+		$co = $this->conecta();
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		try{
+
+			$resultado = $co->query("Select seccion_1 from seccion_estudiante where cedula_es='$cedula'");
+
+
+			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
+			if($fila[0][0] == NULL){
+
+				return true;
+
+			}
+			else{
+
+				return false;
+			}
 
 		}catch(Exception $e){
 			return false;

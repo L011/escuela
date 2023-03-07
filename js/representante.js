@@ -1,6 +1,10 @@
 $(document).ready(function(){
 
 
+	$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
 	botonOff();
   tabla();
 	//DATOS DEL REPRESENTANTE LEGAL

@@ -196,6 +196,19 @@ class preescolar extends datos{
 	private $colaboracionInicial;
 	private $horarioColaborar;
 
+	//padres
+
+	private $apellidoMadre;
+	private $nombreMadre;
+	private $ciMadre;
+	private $telefonoMadre;
+	private $direccionMadre;
+	private $apellidoPadre;
+	private $nombrePadre;
+	private $ciPadre;
+	private $telefonoPadre;
+	private $direccionPadre;
+
 /*
 
 
@@ -319,7 +332,6 @@ class preescolar extends datos{
 	function set_fiebre_a($valor){
 		$this->fiebre_a =$valor;
 	}
-
 
 
 	//familiar
@@ -1048,8 +1060,44 @@ class preescolar extends datos{
 				
 				*/
 
-			
-//se quito papa y mama
+			if (!$this->existemama($this->ciMadre)) {
+					// code...
+					$co->query("insert into padres(
+						cedula_m,
+						nombre_m,
+						apellido_m,
+						telefono_m,
+						direc_trab
+						)
+						Values(
+							'$this->ciMadre',
+							'$this->nombreMadre',
+							'$this->apellidoMadre',
+							'$this->telefonoMadre',
+							'$this->direccionMadre'
+
+							)
+							");
+				}
+				if (!$this->existepapa($this->ciPadre)) {
+					// code...
+					$co->query("insert into padres(
+						cedula_m,
+						nombre_m,
+						apellido_m,
+						telefono_m,
+						direc_trab
+						)
+						Values(
+							'$this->ciPadre',
+							'$this->nombrePadre',
+							'$this->apellidoPadre',
+							'$this->telefonoPadre',
+							'$this->direccionPadre'
+
+							)
+							");
+				}
 
 				$co->query("insert into estudiante(
 					cedula_e,
@@ -1083,8 +1131,8 @@ class preescolar extends datos{
 						'$this->estado_p',
 						'$this->ciudad_p',
 						'$this->vive_con',
-						'V-12876890',
-						'V-12876890',
+						'$this->ciMadre',
+						'$this->ciPadre',
 						
 						'$this->retirada',
 						'$this->canaima',
@@ -1767,6 +1815,27 @@ class preescolar extends datos{
 					
 				");
 
+
+					$co->query("Update padres set
+						cedula_m='$this->ciMadre',
+						nombre_m=	'$this->nombreMadre',
+						apellido_m='$this->apellidoMadre',
+						telefono_m='$this->telefonoMadre',
+						direc_trab='$this->direccionMadre'
+						where
+						cedula_m = '$this->ciMadre'
+					");
+
+					$co->query("Update padres set
+						cedula_m=	'$this->ciPadre',
+						nombre_m=	'$this->nombreMadre',
+						apellido_m='$this->apellidoMadre',
+						telefono_m='$this->telefonoMadre',
+						direc_trab='$this->direccionMadre'
+						where
+						cedula_m = '$this->ciPadre'
+					");
+
 					$co->query("UPDATE documentos SET
 					cedula_est ='$this->cedulaEscolar',
 					doc ='$this->doc'
@@ -1975,7 +2044,7 @@ class preescolar extends datos{
 				");
 
 
-				$co->query("UPDATE familiar SET 
+				$co->query("UPDATE enfermedad_estudiante SET 
 
 					cedula_e = '$this->cedulaEscolar',
 					ex_dificultad = '$this->ex_dificultad',
@@ -1986,7 +2055,24 @@ class preescolar extends datos{
 					alergia = '$this->alergia',
 					despa = '$this->despa',
 					fiebre_a = '$this->fiebre_a',
-					check_enfermeda = '$this->enfermedades'
+					check_enfermedad = '$this->enfermedades'
+
+					where
+					cedula_e = '$this->cedulaEscolar'
+					
+
+
+				");
+
+				$co->query("UPDATE familiar SET 
+
+				
+					cedula_e= '$this->cedulaEscolar',
+					ingreso_m= '$this->ingreso_m',
+					personas_ingreso_dep= '$this->personas_ingreso_dep',
+					tipo_vivienda= '$this->tipo_vivienda',
+					tenencia_vivienda= '$this->tenencia_vivienda',
+					check_familiar= '$this->familiar'		
 
 					where
 					cedula_e = '$this->cedulaEscolar'
@@ -2287,14 +2373,22 @@ class preescolar extends datos{
 		$co = $this->conecta();
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		if($this->existe($this->cedulaEscolar)){
-			try {
-					$co->query("delete from estudiante
-						where
-						cedula_e = '$this->cedulaEscolar'
-						");
-						return "Registro Eliminado";
-			} catch(Exception $e) {
-				return $e->getMessage();
+
+			if ($this->ver_seccion($this->cedulaEscolar)) {
+				// code...
+
+				try {
+						$co->query("delete from estudiante
+							where
+							cedula_e = '$this->cedulaEscolar'
+							");
+							return "Registro Eliminado";
+				} catch(Exception $e) {
+					return $e->getMessage();
+				}
+			}
+			else{
+				return "Estudiante esta inscrito, no se puede eliminar. Primero de debe eliminar la inscripcion";
 			}
 		}
 		else{
@@ -2313,6 +2407,30 @@ class preescolar extends datos{
 
 			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
 			if($fila){
+
+				return true;
+
+			}
+			else{
+
+				return false;
+			}
+
+		}catch(Exception $e){
+			return false;
+		}
+	}
+
+	private function ver_seccion($cedula){
+		$co = $this->conecta();
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		try{
+
+			$resultado = $co->query("Select seccion_1 from seccion_estudiante where cedula_es='$cedula'");
+
+
+			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
+			if($fila[0][0] == NULL){
 
 				return true;
 

@@ -21,7 +21,7 @@
         </div>
         <div class="col">
             <div class   ="col">
-          <button type ="button" class="btn btn-primary" id="formulario1" >
+          <button type ="button" data-toggle="tooltip" data-placement="bottom" title="Cerrar Formulario" class="btn btn-primary" id="formulario1" >
            X
           </button>
         </div>
@@ -38,36 +38,7 @@
         <form class="container mb-5">
 
 
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Documentos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Datos niño</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Datos Familiares</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-contact0-tab" data-toggle="pill" href="#pills-contact0" role="tab" aria-controls="pills-contact0" aria-selected="false">Salud</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-contact1-tab" data-toggle="pill" href="#pills-contact1" role="tab" aria-controls="pills-contact1" aria-selected="false">Habitos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-contact3-tab" data-toggle="pill" href="#pills-contact3" role="tab" aria-controls="pills-contact3" aria-selected="false">Emocional</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-contact4-tab" data-toggle="pill" href="#pills-contact4" role="tab" aria-controls="pills-contact4" aria-selected="false">Antecedentes</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-contact5-tab" data-toggle="pill" href="#pills-contact5" role="tab" aria-controls="pills-contact5" aria-selected="false">Desarrollo</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-contact6-tab" data-toggle="pill" href="#pills-contact6" role="tab" aria-controls="pills-contact6" aria-selected="false">Colaboración</a>
-              </li>
-
-            </ul>
+            
 
 
 
@@ -152,14 +123,14 @@
                                       <div class="col">
                                           <div class=" mb-3">
                                               <label for="apellidoPri">Apellido</label>
-                                              <input type="text" class="form-control " id="apellidoPri"  name="apellidoPri">
+                                              <input type="text" class="form-control  no_A" id="apellidoPri"  name="apellidoPri">
                                               <span id="pApellidoPri"></span>
                                           </div>
                                       </div>
                                       <div class="col">
                                           <div class=" mb-3">
                                               <label for="nombrePri">Nombre</label>
-                                              <input type="text" class="form-control " id="nombrePri"  name="nombrePri">
+                                              <input type="text" class="form-control no_A" id="nombrePri"  name="nombrePri">
                                               <span id="pNombrePri"></span>
                                           </div>
                                       </div>
@@ -183,14 +154,14 @@
                                       <div class="col">
                                           <div class="form-floating mb-3">
                                               <label for="estadoprimaria">Estado de nacimiento</label>
-                                              <input type="text" class="form-control" id="estado_p" name="estado_p">
+                                              <input type="text" class="form-control no_A" id="estado_p" name="estado_p">
                                               <span id="estadoprimaria"></span>
                                           </div>
                                       </div>
                                       <div class="col">
                                           <div class="form-floating mb-3">
                                               <label for="ciudadprimaria">Ciudad de nacimiento</label>
-                                              <input type="text" class="form-control" id="ciudad_p" name="ciudad_p">
+                                              <input type="text" class="form-control no_A" id="ciudad_p" name="ciudad_p">
                                               <span id="pciudadprimaria"></span>
                                           </div>
                                       </div>
@@ -210,7 +181,7 @@
 
                                      <div class="col">
                                           <label for="">Nacionalidad</label>
-                                          <select id="nacionalidad" name="nacionalidad" class="form-control mb-3">
+                                          <select id="nacionalidad" name="nacionalidad no_A" class="form-control mb-3">
                                               <option value="0" selected>Seleccionar</option>
                                               <option value="V">Venezolano(a)</option>
                                               <option value="E">Extranjero(a)</option>
@@ -353,14 +324,14 @@
                     <div class="col">
                         <div class="form-floating mb-3">
                             <label for="personasAutorizadas">Nombre y Apellido</label>
-                            <input type="text" class="form-control" id="personasAuto" name="personasAuto">
+                            <input type="text" class="form-control no_A" id="personasAuto" name="personasAuto">
                           <span id="SpersonasAuto"></span>
                       </div>
                   </div>
                   <div class="col">
                       <div class="form-floating mb-3">
                           <label for="telefonoautorizado">Telefono</label>
-                          <input type="text" class="form-control" id="telefonoauto"  name="telefonoauto">
+                          <input type="text" class="form-control tele_A" id="telefonoauto"  name="telefonoauto">
                           <span id="ptelefonoautorizado"></span>
                       </div>
                   </div>
@@ -369,14 +340,14 @@
                   <div class="col">
                       <div class="form-floating mb-3">
                           <label for="personasAutorizadas1">Nombre y Apellido</label>
-                          <input type="text" class="form-control" id="personasAuto1" name="personasAuto1">
+                          <input type="text" class="form-control no_A" id="personasAuto1" name="personasAuto1">
                           <span id="ppersonasAutorizadas1"></span>
                       </div>
                   </div>
                   <div class="col">
                       <div class="form-floating mb-3">
                           <label for="telefonoautorizado1">Telefono</label>
-                          <input type="text" class="form-control" id="telefonoauto1" name="telefonoauto1">
+                          <input type="text" class="form-control tele_A" id="telefonoauto1" name="telefonoauto1">
                           <span id="ptelefonoautorizado1"></span>
                       </div>
                   </div>
@@ -410,6 +381,101 @@
 
                       <hr>
           </div>
+          <div class="tab-pane fade" id="pills-padres" role="tabpanel" aria-labelledby="pills-padres-tab"> 
+
+             <!--Inicio de la tercera parteeparte parteee-->
+                    <div class="row">
+                      <div class="col-auto">
+                          <p class="mb-3"><strong>DATOS DE LA MADRE</strong></p>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class=" mb-3">
+                        <label for="ciMadre">Cedula de Identidad</label>
+                        <input type="text" class="form-control " id="ciMadre" name="ciMadre">
+                        <span id="pCiMadre"></span>
+                      </div>
+                    </div>
+                      <div class="col">
+                          <div class=" mb-3">
+                              <label for="apellidoMadre">Apellido</label>
+                              <input type="text" class="form-control " id="apellidoMadre" name="apellidoMadre">
+                              <span id="pApellidoMadre"></span>
+                          </div>
+                      </div>
+                      <div class="col">
+                          <div class=" mb-3">
+                              <label for="nombreMadre">Nombre</label>
+                              <input type="text" class="form-control " id="nombreMadre" name="nombreMadre">
+                              <span id="pNombreMadre"></span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-4">
+                          <div class=" mb-3">
+                              <label for="telefonoMadre">Telefono</label>
+                              <input type="text" class="form-control " id="telefonoMadre" name="telefonoMadre">
+                              <span id="pTelefonoMadre"></span>
+                          </div>
+                      </div>
+                      <div class="col">
+                          <div class=" mb-3">
+                              <label for="direccionMadre">Dirección de Trabajo</label>
+                              <input type="text" class="form-control " id="direccionMadre" name="direccionMadre">
+                              <span id="pDireccionMadre"></span>
+                          </div>
+                      </div>
+                  </div>
+
+                <div class="row">
+                    <div class="col-auto">
+                        <p class="mb-3"><strong>DATOS DEL PADRE</strong></p>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class=" mb-3">
+                      <label for="ciPadre">Cedula de Identidad</label>
+                      <input type="text" class="form-control " id="ciPadre" name="ciPadre">
+                      <span id="pCiPadre"></span>
+                    </div>
+                  </div>
+                    <div class="col">
+                        <div class=" mb-3">
+                            <label for="apellidoPadre">Apellido</label>
+                            <input type="text" class="form-control " id="apellidoPadre" name="apellidoPadre">
+                            <span id="pApellidoPadre"></span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class=" mb-3">
+                            <label for="nombrePadre">Nombre</label>
+                            <input type="text" class="form-control " id="nombrePadre" name="nombrePadre">
+                            <span id="pNombrePadre"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class=" mb-3">
+                            <label for="telefonoPadre">Telefono</label>
+                            <input type="text" class="form-control " id="telefonoPadre" name="telefonoPadre">
+                            <span id="pTelefonoPadre"></span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class=" mb-3">
+                            <label for="direccionPadre">Dirección de Trabajo</label>
+                            <input type="text" class="form-control " id="direccionPadre" name="direccionPadre">
+                            <span id="pDireccionPadre"></span>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+          </div>
 
               <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
 
@@ -434,17 +500,17 @@
                         <th style="display: none;"><input id="id_3" class="form-control" type="text"></span></th>
                         <th style="display: none;"><input id="id_4" class="form-control" type="text"></span></th>
 
-                        <th><input id="n1" name="n1"  class="form-control" type="text"><span id="sn1"></span></th>
-                        <th><input id="n2" name="n2" class="form-control" type="text"><span id="sn2"></span></th>
-                        <th><input id="n3" name="n3" class="form-control" type="text"><span id="sn3"></span></th>
-                        <th><input id="n4" name="n4" class="form-control" type="text"><span id="sn4"></span></th>
+                        <th><input id="n1" name="n1"  class="form-control no_A" type="text"><span id="sn1"></span></th>
+                        <th><input id="n2" name="n2" class="form-control no_A" type="text"><span id="sn2"></span></th>
+                        <th><input id="n3" name="n3" class="form-control no_A" type="text"><span id="sn3"></span></th>
+                        <th><input id="n4" name="n4" class="form-control no_A" type="text"><span id="sn4"></span></th>
                     </tr>
                     <tr>
                         <th scope="row">Apellidos</th>
-                        <th><input id="a1" name="a1" class="form-control" type="text"><span id="sa1"></span></th>
-                        <th><input id="a2" name="a2" class="form-control" type="text"><span id="sa2"></span></th>
-                        <th><input id="a3" name="a3" class="form-control" type="text"><span id="sa3"></span></th>
-                        <th><input id="a4" name="a4" class="form-control" type="text"><span id="sa4"></span></th>
+                        <th><input id="a1" name="a1" class="form-control no_A" type="text"><span id="sa1"></span></th>
+                        <th><input id="a2" name="a2" class="form-control no_A" type="text"><span id="sa2"></span></th>
+                        <th><input id="a3" name="a3" class="form-control no_A" type="text"><span id="sa3"></span></th>
+                        <th><input id="a4" name="a4" class="form-control no_A" type="text"><span id="sa4"></span></th>
                     </tr>
                     <tr>
                         <th scope="row">Sexo</th>
@@ -486,17 +552,17 @@
                     </tr>
                     <tr>
                         <th scope="row">Parentesco</th>
-                        <th><input id="pt1"name="pt1"  class="form-control" type="text"><span id="spt1"></span></th>
-                        <th><input id="pt2"name="pt2"  class="form-control" type="text"><span id="spt2"></span></th>
-                        <th><input id="pt3"name="pt3"  class="form-control" type="text"><span id="spt3"></span></th>
-                        <th><input id="pt4"name="pt4" class="form-control" type="text"><span id="spt4"></span></th>
+                        <th><input id="pt1"name="pt1"  class="form-control no_A" type="text"><span id="spt1"></span></th>
+                        <th><input id="pt2"name="pt2"  class="form-control no_A" type="text"><span id="spt2"></span></th>
+                        <th><input id="pt3"name="pt3"  class="form-control no_A" type="text"><span id="spt3"></span></th>
+                        <th><input id="pt4"name="pt4" class="form-control no_A" type="text"><span id="spt4"></span></th>
                     </tr>
                     <tr>
                         <th scope="row">Ocupación</th>
-                        <th><input id="oc1" name="oc1" class="form-control" type="text"><span id="soc1"></span></th>
-                        <th><input id="oc2" name="oc2" class="form-control" type="text"><span id="soc2"></span></th>
-                        <th><input id="oc3" name="oc3" class="form-control" type="text"><span id="soc3"></span></th>
-                        <th><input id="oc4" name="oc4" class="form-control" type="text"><span id="soc4"></span></th>
+                        <th><input id="oc1" name="oc1" class="form-control no_B" type="text"><span id="soc1"></span></th>
+                        <th><input id="oc2" name="oc2" class="form-control no_B" type="text"><span id="soc2"></span></th>
+                        <th><input id="oc3" name="oc3" class="form-control no_B" type="text"><span id="soc3"></span></th>
+                        <th><input id="oc4" name="oc4" class="form-control no_B" type="text"><span id="soc4"></span></th>
 
 
                     </tr>
@@ -507,7 +573,7 @@
                                 <div class="col">
                                     <div class="form-floating mb-3">
                                         <label for="ingresoMenFam">Ingreso mensual del grupo familiar</label>
-                                        <input type="text" class="form-control" id="ingreso_m" placeholder="20000bs">
+                                        <input type="text" class="form-control nu_1" id="ingreso_m" placeholder="20000bs">
                                         <span id="pingresoMenFam"></span>
                                     </div>
                                 </div>
@@ -897,13 +963,13 @@
                               <div class="col-md-6">
                                   <div class="form-floating mb-3">
                                       <label for="expliqueDificuldad">Explique la Dificultad</label>
-                                      <textarea id="ex_dificultad" name="ex_dificultad" class="form-control "></textarea>
+                                      <textarea id="ex_dificultad" name="ex_dificultad" class="form-control tx_1"></textarea>
                                   </div>
                               </div>
                               <div class="col-md-6">
                                   <div class="form-floating mb-3">
                                       <label for="solucionarDificuldad">Como ha tratado de solucionarlo</label>
-                                      <textarea id="sol_df" name="sol_df" class="form-control "></textarea>
+                                      <textarea id="sol_df" name="sol_df" class="form-control tx_1"></textarea>
                                   </div>
                               </div>
                           </div>
@@ -918,7 +984,7 @@
                               <div class="col-md-6">
                                   <div class="form-floating mb-3">
                                   <label for="psicologoExplique">¿Por qué?</label>
-                                      <textarea id="psico_pq" name="psico_pq" class="form-control"></textarea>
+                                      <textarea id="psico_pq" name="psico_pq" class="form-control tx_1"></textarea>
                                   </div>
                               </div>
                           </div>
@@ -966,7 +1032,7 @@
                               <div class="col-md-6">
                                   <div class="form-floating mb-3">
                                   <label for="atenEspExplique">¿Padece alguna afección que requiere atención especial atención?</label>
-                                      <textarea type="text" class="form-control" id="afeccion" name="afeccion"></textarea>
+                                      <textarea type="text" class="form-control tx_1" id="afeccion" name="afeccion"></textarea>
                                   </div>
                               </div>
                          
@@ -977,7 +1043,7 @@
                        
 
                               <label for="interQueTipo">De que tipo</label>
-                              <input type="text" class="form-control" id="quirurgica" name="quirurgica">
+                              <input type="text" class="form-control tx_1" id="quirurgica" name="quirurgica">
                           
                           </div>             
 
@@ -991,7 +1057,7 @@
                               <div class="col-md-6">
                                 
                                       <label for="alergiasAQue">¿A que presenta alergias el niño?</label>
-                                      <input type="text" class="form-control" id="alergia" name="alergia">
+                                      <input type="text" class="form-control no_B" id="alergia" name="alergia">
                                       <span id="palergiasAQue"></span>
                               </div>
                               
@@ -1001,7 +1067,7 @@
                               <div class="col-md-6">
                                  
                                       <label for="desparTiempo">¿Cada Cuanto Tiempo Ha sido desparasitado?</label>
-                                      <input type="text" class="form-control" id="despa" name="despa">
+                                      <input type="text" class="form-control no_B" id="despa" name="despa">
                                       <span id="pdesparTiempo"></span>
                                   
                               </div>
@@ -1010,7 +1076,7 @@
                           <div class="col-md-6">
                               
                               <label for="fiebreAltMed">En caso de fiebre alta ¿cúal medicamento acostumbra administrarle?</label>
-                              <input type="text" class="form-control" id="fiebre_a" name="fiebre_a">
+                              <input type="text" class="form-control no_B" id="fiebre_a" name="fiebre_a">
                              
                           </div>
                       </div>
@@ -1069,7 +1135,7 @@
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
                                 <label for="alimNoConsCual">¿Existe algún alimento que no pueda ingerir por prescripción médica?</label>
-                                <input type="text" class="form-control" id="alimento_no" name="alimento_no">
+                                <input type="text" class="form-control no_B" id="alimento_no" name="alimento_no">
                                 <span id="palimNoConsCual"></span>
                             </div>
                         </div>
@@ -1114,7 +1180,7 @@
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
                             <label for="conQuienDuerme">¿Con quien duerme el niño?</label>
-                            <input type="text" class="form-control" id="quien_sleep" name="quien_sleep">
+                            <input type="text" class="form-control no_A" id="quien_sleep" name="quien_sleep">
                             <span id="pconQuienDuerme"></span>
                         </div>
                     </div>
@@ -1279,7 +1345,7 @@
                                 <div class="col mb-3">
                                     <div class="form-floating">
                                         <label for="formaReprender">¿Usted que hace cuando el niño presenta conductas no adecuadas?</label>
-                                        <input type="text" class="form-control" id="formaReprender" name="formaReprender">
+                                        <input type="text" class="form-control no_A" id="formaReprender" name="formaReprender">
                                         <span id="pformaReprender"></span>
                                     </div>
                                 </div>
@@ -1411,21 +1477,21 @@
                                             <div class="col-md-2">
                                                 <div class="form-floating mb-3">
                                                     <label for="tiempoTv">Tiempo</label>
-                                                    <input type="text" class="form-control" id="tiempoTv" name="tiempoTv" placeholder="Horas">
+                                                    <input type="text" class="form-control nu_1" id="tiempoTv" name="tiempoTv" placeholder="Horas">
                                                     <span id="ptiempoTv"></span>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3">
                                                     <label for="programasTv">Programas</label>
-                                                    <input type="text" class="form-control" id="programasTv" name="programasTv">
+                                                    <input type="text" class="form-control no_B" id="programasTv" name="programasTv">
                                                     <span id="pprogramasTv"></span>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-floating mb-3">
                                                     <label for="imitaPersonaje">Personaje que imita</label>
-                                                    <input type="text" class="form-control" id="imitaPersonaje" name="imitaPersonaje">
+                                                    <input type="text" class="form-control no_B" id="imitaPersonaje" name="imitaPersonaje">
                                                     <span id="pimitaPersonaje"></span>
                                                 </div>
                                             </div>
@@ -1441,7 +1507,7 @@
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
                                         <label for="imitaFamiEscen">Cuales</label>
-                                        <input type="text" class="form-control" id="imitaFamiEscen" name="imitaFamiEscen">
+                                        <input type="text" class="form-control no_B" id="imitaFamiEscen" name="imitaFamiEscen">
                                         <span id="pimitaFamiEscen"></span>
                                     </div>
                                 </div>
@@ -1497,7 +1563,7 @@
                                     <div class="col-md-3">
                                         <div class="form-floating">
                                             <label for="cuidadorEspecificar">Especificar pariente u otro</label>
-                                            <input type="text" class="form-control" id="cuidadorEspecificar">
+                                            <input type="text" class="form-control no_A" id="cuidadorEspecificar">
                                             <span id="pcuidadorEspecificar"></span>
                                         </div>
                                     </div>
@@ -1512,14 +1578,14 @@
                                         <div class="col-md-6">
                                             
                                               <label for="tipoJuegoPref">¿Como ha orientado al niño respecto a su ingreso a esta institución?</label>
-                                                <input type="text" class="form-control" id="orientComo" name="orientComo" placeholder="Como lo ha hecho">
+                                                <input type="text" class="form-control no_A" id="orientComo" name="orientComo" placeholder="Como lo ha hecho">
                                                 <span id="porientComo"></span>
                                            
                                         </div>
                                          <div class="col-md-6">
                                     <div class="form-floating mb-3">
                                         <label for="anteriorPreecolar">Si el niño ha asistido anteriormente a otro preescolar, especifique cual fue</label>
-                                        <input type="text" class="form-control" id="anteriorPreescolar" name="anteriorPreescolar" placeholder="Explique">
+                                        <input type="text" class="form-control no_B" id="anteriorPreescolar" name="anteriorPreescolar" placeholder="Explique">
                                         <span id="panteriorPreecolar"></span>
                                     </div>
                                 </div>
@@ -1531,7 +1597,7 @@
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
                                         <label for="tipoJuegoPref">Que tipo de juegos prefiere</label>
-                                        <input type="text" class="form-control" id="tipoJuegoPref" name="tipoJuegoPref">
+                                        <input type="text" class="form-control no_B" id="tipoJuegoPref" name="tipoJuegoPref">
                                         <span id="ptipoJuegoPref"></span>
                                     </div>
                                 </div>
@@ -1539,7 +1605,7 @@
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
                                         <label for="conQuienJuega">Con quien juega generalmente</label>
-                                        <input type="text" class="form-control" id="conQuienJuega" name="conQuienJuega">
+                                        <input type="text" class="form-control no_B" id="conQuienJuega" name="conQuienJuega">
                                         <span id="pconQuienJuega"></span>
                                     </div>
                                 </div>
@@ -1584,7 +1650,7 @@
 
                       <div class="col">
                           <label for="trabajoEmbarazoTipo">¿Trabajo en embarazo?</label>
-                                <input type="text" class="form-control" id="trabajoEmbarazoTipo" name="trabajoEmbarazoTipo" placeholder="Explique">
+                                <input type="text" class="form-control no_B" id="trabajoEmbarazoTipo" name="trabajoEmbarazoTipo" placeholder="Explique">
                                 <span id="ptrabajoEmbarazoTipo"></span>
                       </div>
 
@@ -1700,7 +1766,7 @@
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
                                 <label for="partoExplique">¿Surgió algún problema a la hora del parto?</label>
-                                <input type="text" class="form-control" id="partoExplique" name="partoExplique" placeholder="Explique">
+                                <input type="text" class="form-control no_B" id="partoExplique" name="partoExplique" placeholder="Explique">
                                 <span id="ppartoExplique"></span>
                             </div>
                         </div>
@@ -1711,21 +1777,21 @@
                     <div class="col-auto">
                         <div class="form-floating mb-3">
                             <label for="pesoNatal">Peso (Kg.)</label>
-                            <input type="text" class="form-control" id="pesoNatal" name="pesoNatal">
+                            <input type="text" class="form-control nu_1" id="pesoNatal" name="pesoNatal">
                             <span id="ppesoNatal"></span>
                         </div>
                     </div>
                     <div class="col-auto">
                         <div class="form-floating mb-3">
                             <label for="tallaNatal">Talla (Cm.)</label>
-                            <input type="text" class="form-control" id="tallaNatal" name="tallaNatal">
+                            <input type="text" class="form-control nu_1" id="tallaNatal" name="tallaNatal">
                             <span id="ptallaNatal"></span>
                         </div>
                     </div>
                     <div class="col">
                             <div class="form-floating mb-3">
                                 <label for="defectosNatalEspe">¿Tuvo defectos?</label>
-                                <input type="text" class="form-control" id="defectosNatalEspe" placeholder="Explique" >
+                                <input type="text" class="form-control no_B" id="defectosNatalEspe" placeholder="Explique" >
                                 <span id="pdefectosNatalEspe"></span>
                             </div>
                         </div>
@@ -1778,7 +1844,7 @@
                       <div class="col-md-6">
                           <div class="form-floating mb-3">
                               <label for="quienLoCuido">Quien lo atendió en los primeros meses</label>
-                              <input type="text" class="form-control" id="quienLoCuido" name="quienLoCuido">
+                              <input type="text" class="form-control no_A" id="quienLoCuido" name="quienLoCuido">
                               <span id="pquienLoCuido"></span>
                           </div>
                       </div>
@@ -2056,7 +2122,7 @@
                                 <div class="col-md-12">
                                     <div class="form-floating mb-3">
                                     <label for="colaboracionInicial">¿De que forma colaboraria usted y otro familiar en la sección de inicial a la que será asignado a su representado?</label>
-                                        <textarea class="form-control" id="colaboracionInicial"></textarea>
+                                        <textarea class="form-control tx_1" id="colaboracionInicial"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -2099,7 +2165,7 @@
                                 <div class="col-auto">
                                     <div class="form-floating mb-3">
                                     <label for="Horario">Horario</label>
-                                        <input type="text" class="form-control" id="horarioColaborar">
+                                        <input type="text" class="form-control nu_1" id="horarioColaborar">
                                     </div>
                                 </div>
                             </div><hr>
@@ -2111,7 +2177,7 @@
 
 
       <div class="col" style="margin-left: -2rem;">
-          <a href="?pagina=gestionar" style="margin-left: -13rem;" class="btn btn-primary">
+          <a href="?pagina=gestionar" style="margin-left: -13rem;"  data-toggle="tooltip" data-placement="bottom" title="Regresar"class="btn btn-primary">
             <svg xmlns="img/arrow-return-left.svg" width="25" height="22" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
             </svg>
@@ -2119,7 +2185,7 @@
         </div>
 
         <div class   ="col">
-          <button type ="button" class="btn btn-primary" id="incluir" >
+          <button type ="button" class="btn btn-primary"   data-toggle="tooltip" data-placement="bottom" title="Incluir" id="incluir" >
             <svg xmlns   ="img/file-earmark-plus.svg" width="25" height="22" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
             <path d      ="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
             <path d      ="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
@@ -2128,7 +2194,7 @@
         </div>
 
         <div class="col">
-           <button type="button" class="btn btn-primary" id="modificar" >
+           <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Modificar" id="modificar" >
             <svg xmlns="img/pencil-fill.svg" width="25" height="22" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
               <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
             </svg>
@@ -2137,7 +2203,7 @@
 
 
         <div class   ="col">
-          <button type="button" class="btn btn-primary" id="eliminar" >
+          <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Eliminar" id="eliminar" >
             <svg xmlns ="img/trash-fill.svg" width="25" height="22" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
             <path d    ="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
             </svg>
@@ -2155,7 +2221,39 @@
 
           </div>
 
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Documentos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Datos niño</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-padres" role="tab" aria-controls="pills-padres" aria-selected="false">Padres</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Datos Familiares</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-contact0-tab" data-toggle="pill" href="#pills-contact0" role="tab" aria-controls="pills-contact0" aria-selected="false">Salud</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-contact1-tab" data-toggle="pill" href="#pills-contact1" role="tab" aria-controls="pills-contact1" aria-selected="false">Habitos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-contact3-tab" data-toggle="pill" href="#pills-contact3" role="tab" aria-controls="pills-contact3" aria-selected="false">Emocional</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-contact4-tab" data-toggle="pill" href="#pills-contact4" role="tab" aria-controls="pills-contact4" aria-selected="false">Antecedentes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-contact5-tab" data-toggle="pill" href="#pills-contact5" role="tab" aria-controls="pills-contact5" aria-selected="false">Desarrollo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-contact6-tab" data-toggle="pill" href="#pills-contact6" role="tab" aria-controls="pills-contact6" aria-selected="false">Colaboración</a>
+              </li>
 
+            </ul>
 
 
         </form>
@@ -2199,7 +2297,7 @@
   <div class="col"></div>
 
   <div class  ="col">
-          <button type ="button" class="btn btn-primary" id="formulario" >
+          <button type ="button" data-toggle="tooltip" data-placement="bottom" title="Abrir Formulario" class="btn btn-primary" id="formulario" >
             <svg xmlns   ="img/file-earmark-plus.svg" width="25" height="22" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
             <path d      ="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
             <path d      ="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>

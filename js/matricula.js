@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+	$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 
 
 $("#generar").prop('disabled', true);

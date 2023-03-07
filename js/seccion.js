@@ -3,6 +3,10 @@ $(document).ready(function(){
 llenarMaestro();
  tabla();
 
+ 	$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
 
 
 

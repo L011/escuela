@@ -4,6 +4,11 @@ $(document).ready(function(){
 tabla();
 desabilita();
 llena_vacuna();
+botonOff();
+
+	$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 
 	//alert("at1");
 	//console.log("Main")
@@ -168,8 +173,6 @@ $("#cedulaEscolar").on("keypress",function(e){
 	$("#telefonoPadre").on("keyup",function(){
 	    validarkeyup(/^[0-9]{11,12}$/,$(this),$("#pTelefonoPadre"),"00000000000");
 	});
-
-
 
 
 /*
@@ -1506,9 +1509,11 @@ function enviaAjax(datos,accion){
 
 
 
+
 				  console.log(lee['resultado']);
 				   if(lee['resultado']=='encontro'){
 
+				   botonOn();
 
 						
 					   $("#apellidoPri").val(lee[0].apellido);
@@ -1755,7 +1760,17 @@ function editar(tbody, table){
   })
 }
 
+function botonOff() {
+	$("#modificar").prop('disabled', true);
+	$("#eliminar").prop('disabled', true);
+}
 
+function botonOn() {
+
+	$("#incluir").prop('disabled', true);
+	$("#modificar").prop('disabled', false);
+	$("#eliminar").prop('disabled', false);
+}
 
 //funcion para pasar de la lista a el formulario
 function coloca(linea){

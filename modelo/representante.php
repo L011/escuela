@@ -218,18 +218,47 @@ class representante extends datos{
 		$co = $this->conecta();
 		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		if($this->existe($this->cedula)){
-			try {
-					$co->query("delete from representante
-						where
-						cedula = '$this->cedula'
-						");
-						return "Registro Eliminado";
-			} catch(Exception $e) {
-				return $e->getMessage();
+			if ($this->ver_representante($this->cedula)) {
+				try {
+						$co->query("delete from representante
+							where
+							cedula = '$this->cedula'
+							");
+							return "Registro Eliminado";
+				} catch(Exception $e) {
+					return $e->getMessage();
+				}
+			}
+			else{
+				return "Representante no eliminado, esta registrado con un estudiante. ";
 			}
 		}
 		else{
 			return "Cedula no registrada";
+		}
+	}
+
+	private function ver_representante($cedula){
+		$co = $this->conecta();
+		$co->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		try{
+
+			$resultado = $co->query("Select representante from seccion_estudiante where representante='$cedula'");
+
+
+			$fila = $resultado->fetchAll(PDO::FETCH_BOTH);
+			if($fila){
+
+				return false;
+
+			}
+			else{
+
+				return true;
+			}
+
+		}catch(Exception $e){
+			return false;
 		}
 	}
 
